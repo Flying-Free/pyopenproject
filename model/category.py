@@ -1,4 +1,4 @@
-from src.extract.business.service_factory import ServiceFactory
+from business.service_factory import ServiceFactory
 
 
 class Category:

@@ -1,6 +1,6 @@
-from src.extract.business.impl.activity.find_by_context import FindByContext
-from src.extract.business.impl.status.find_by_id import FindById
-from src.extract.business.status_service import StatusService
+from business.impl.activity.find_by_context import FindByContext
+from business.impl.status.find_by_id import FindById
+from business.status_service import StatusService
 
 
 class StatusServiceImpl(StatusService):

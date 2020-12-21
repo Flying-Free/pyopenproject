@@ -1,7 +1,7 @@
-from src.extract.business.category_service import CategoryService
-from src.extract.business.impl.work_package.find_all import FindAll
-from src.extract.business.impl.work_package.find_by_context import FindByContext
-from src.extract.business.impl.work_package.find_by_id import FindById
+from business.category_service import CategoryService
+from business.impl.work_package.find_all import FindAll
+from business.impl.work_package.find_by_context import FindByContext
+from business.impl.work_package.find_by_id import FindById
 
 
 class CategoryServiceImpl(CategoryService):

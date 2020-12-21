@@ -1,8 +1,8 @@
-from src.extract.business.impl.time_entry.delete import Delete
-from src.extract.business.impl.time_entry.find_between_days import FindBetweenDays
-from src.extract.business.impl.time_entry.find_by_context import FindByContext
-from src.extract.business.impl.time_entry.find_by_id import FindById
-from src.extract.business.time_entry_service import TimeEntryService
+from business.impl.time_entry.delete import Delete
+from business.impl.time_entry.find_between_days import FindBetweenDays
+from business.impl.time_entry.find_by_context import FindByContext
+from business.impl.time_entry.find_by_id import FindById
+from business.time_entry_service import TimeEntryService
 
 
 class TimeEntryServiceImpl(TimeEntryService):

@@ -1,0 +1,27 @@
+postgres/autoinstall install
+postgres/db_host localhost
+postgres/db_port 5432
+postgres/db_username user
+postgres/db_password changeme
+postgres/db_name openproject
+server/autoinstall install
+
+server/hostname localhost
+server/server_path_prefix 
+server/ssl no
+repositories/svn-install skip
+repositories/git-install install
+repositories/git-path /var/db/openproject/git
+repositories/git-http-backend /usr/lib/git-core/git-http-backend/
+smtp/autoinstall smtp
+smtp/authentication none
+smtp/host
+smtp/port 25
+smtp/domain
+smtp/admin_email
+memcached/autoinstall install
+server/variant apache2
+
+smtp/host smtp.example.host
+smtp/domain localhost
+smtp/admin_email admin.example.com

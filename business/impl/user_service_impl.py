@@ -1,9 +1,9 @@
-from src.extract.business.impl.user.find_all import FindAll
-from src.extract.business.impl.user.find_by_context import FindByContext
-from src.extract.business.impl.user.find_by_id import FindById
-from src.extract.business.impl.user.lock import Lock
-from src.extract.business.impl.user.unlock import Unlock
-from src.extract.business.user_service import UserService
+from business.impl.user.find_all import FindAll
+from business.impl.user.find_by_context import FindByContext
+from business.impl.user.find_by_id import FindById
+from business.impl.user.lock import Lock
+from business.impl.user.unlock import Unlock
+from business.user_service import UserService
 
 
 class UserServiceImpl(UserService):

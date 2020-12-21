@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class StatusService(object):
+class StatusService:
     __metaclass__ = ABCMeta
 
     @abstractmethod

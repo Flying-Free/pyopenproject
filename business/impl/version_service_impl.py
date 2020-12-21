@@ -1,7 +1,7 @@
-from src.extract.business.impl.work_package.find_all import FindAll
-from src.extract.business.impl.work_package.find_by_context import FindByContext
-from src.extract.business.impl.work_package.find_by_id import FindById
-from src.extract.business.version_service import VersionService
+from business.impl.work_package.find_all import FindAll
+from business.impl.work_package.find_by_context import FindByContext
+from business.impl.work_package.find_by_id import FindById
+from business.version_service import VersionService
 
 
 class VersionServiceImpl(VersionService):

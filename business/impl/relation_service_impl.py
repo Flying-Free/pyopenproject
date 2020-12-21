@@ -1,6 +1,4 @@
-from src.extract.business.activity_service import ActivityService
-from src.extract.business.impl.activity.find_by_context import FindByContext
-
+from business.relation_service import RelationService
 
 class RelationServiceImpl(RelationService):
 

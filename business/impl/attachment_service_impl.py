@@ -1,5 +1,5 @@
-from src.extract.business.activity_service import ActivityService
-from src.extract.business.impl.activity.find_by_context import FindByContext
+from business.attachment_service import AttachmentService
+from business.impl.activity.find_by_context import FindByContext
 
 
 class AttachmentServiceImpl(AttachmentService):

@@ -1,7 +1,7 @@
-from src.extract.business.impl.work_package.find_all import FindAll
-from src.extract.business.impl.work_package.find_by_context import FindByContext
-from src.extract.business.impl.work_package.find_by_id import FindById
-from src.extract.business.membership_service import MembershipService
+from business.impl.work_package.find_all import FindAll
+from business.impl.work_package.find_by_context import FindByContext
+from business.impl.work_package.find_by_id import FindById
+from business.membership_service import MembershipService
 
 
 class MembershipServiceImpl(MembershipService):

@@ -1,7 +1,13 @@
-from src.extract.business.project_service import ProjectService
+from business.project_service import ProjectService
 
 
 class ProjectServiceImpl(ProjectService):
+    def find_project_by_context(self, context):
+        pass
+
+    def find_projects_by_context(self, context):
+        pass
+
     def find_all(self):
         pass
 
