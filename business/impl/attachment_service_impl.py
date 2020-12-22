@@ -1,5 +1,5 @@
 from business.attachment_service import AttachmentService
-from business.impl.attachment.download_by_context import DownloadByContext
+from business.impl.command.attachment.download_by_context import DownloadByContext
 
 
 class AttachmentServiceImpl(AttachmentService):

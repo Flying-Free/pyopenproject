@@ -1,5 +1,5 @@
 from business.custom_action_service import CustomActionService
-from business.impl.activity.find_by_context import FindByContext
+from business.impl.command.activity.find_by_context import FindByContext
 
 
 class CustomActionServiceImpl(CustomActionService):

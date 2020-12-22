@@ -1,6 +1,5 @@
-from business.impl.attachment.download_by_context import DownloadByContext
-from business.impl.post.add_attachment import AddAttachment
-from business.impl.post.list_attachments import ListAttachments
+from business.impl.command.post.add_attachment import AddAttachment
+from business.impl.command.post.list_attachments import ListAttachments
 
 
 class PostServiceImpl(PostService):

@@ -1,8 +1,8 @@
-from business.impl.user.find_all import FindAll
-from business.impl.user.find_by_context import FindByContext
-from business.impl.user.find_by_id import FindById
-from business.impl.user.lock import Lock
-from business.impl.user.unlock import Unlock
+from business.impl.command.user.find_all import FindAll
+from business.impl.command.user.find_by_context import FindByContext
+from business.impl.command.user.find_by_id import FindById
+from business.impl.command.user.lock import Lock
+from business.impl.command.user.unlock import Unlock
 from business.user_service import UserService
 
 
