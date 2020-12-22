@@ -1,5 +1,5 @@
 from abc import abstractmethod, ABCMeta
-from src.extract.business.impl.command import Command
+from business.impl.command import Command
 
 
 class UserCommand(Command):

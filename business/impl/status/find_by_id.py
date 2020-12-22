@@ -1,8 +1,8 @@
-from src.extract.api_connection.connection import Connection
-from src.extract.api_connection.exceptions.request_exception import RequestError
-from src.extract.business.exception.business_error import BusinessError
-from src.extract.business.impl.status.status_command import StatusCommand
-from src.extract.model.status import Status
+from api_connection.connection import Connection
+from api_connection.exceptions.request_exception import RequestError
+from business.exception.business_error import BusinessError
+from business.impl.status.status_command import StatusCommand
+from model.status import Status
 
 
 class FindById(StatusCommand):

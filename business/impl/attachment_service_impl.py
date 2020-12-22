@@ -4,5 +4,5 @@ from business.impl.activity.find_by_context import FindByContext
 
 class AttachmentServiceImpl(AttachmentService):
 
-    def find_by_context(self, context):
+    def download_by_context(self, context):
         return FindByContext(context).execute()

@@ -1,7 +1,7 @@
-from src.extract.api_connection.connection import Connection
-from src.extract.api_connection.exceptions.request_exception import RequestError
-from src.extract.business.exception.business_error import BusinessError
-from src.extract.business.impl.time_entry.time_entry_command import TimeEntryCommand
+from api_connection.connection import Connection
+from api_connection.exceptions.request_exception import RequestError
+from business.exception.business_error import BusinessError
+from business.impl.time_entry.time_entry_command import TimeEntryCommand
 
 
 class Delete(TimeEntryCommand):
