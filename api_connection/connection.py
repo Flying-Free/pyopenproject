@@ -1,4 +1,4 @@
-import os
+import json
 import yaml
 import requests
 from requests.auth import HTTPBasicAuth

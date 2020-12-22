@@ -1,8 +1,8 @@
 from business.attachment_service import AttachmentService
-from business.impl.activity.find_by_context import FindByContext
+from business.impl.attachment.download_by_context import DownloadByContext
 
 
 class AttachmentServiceImpl(AttachmentService):
 
     def download_by_context(self, context):
-        return FindByContext(context).execute()
+        return DownloadByContext(context).execute()
