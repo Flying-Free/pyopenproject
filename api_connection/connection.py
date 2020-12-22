@@ -3,7 +3,7 @@ import yaml
 import requests
 from requests.auth import HTTPBasicAuth
 
-from src.extract.api_connection.exceptions.request_exception import RequestError
+from api_connection.exceptions.request_exception import RequestError
 
 
 class Connection:
@@ -98,6 +98,29 @@ class Connection:
         except requests.exceptions.TooManyRedirects as err:
             # Tell the user their URL was bad and try a different one
             raise RequestError(f"Error running PUT with the URL: '{self.url_base + context}'." +
+                               f"\n {response.text}") from err
+        except requests.exceptions.RequestException as err:
+            # catastrophic error. bail.
+            raise SystemExit(err)
+        except requests.exceptions.HTTPError as err:
+            # The response was an http error.
+            raise SystemExit(err)
+
+    def patch(self, context, body):
+        try:
+            response = requests.patch(
+                self.url_base + context,
+                auth=HTTPBasicAuth(self.api_user, self.api_key),
+                body=body
+            )
+            return json.loads(response.json())
+        except requests.exceptions.Timeout as err:
+            # Maybe set up for a retry, or continue in a retry loop
+            raise RequestError(f"Timeout running PATCH with the URL: '{self.url_base + context}'." +
+                               f"\n {response.text}") from err
+        except requests.exceptions.TooManyRedirects as err:
+            # Tell the user their URL was bad and try a different one
+            raise RequestError(f"Error running PATCH with the URL: '{self.url_base + context}'." +
                                f"\n {response.text}") from err
         except requests.exceptions.RequestException as err:
             # catastrophic error. bail.
