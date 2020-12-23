@@ -1,8 +1,10 @@
+from abc import ABC
+
 from business.custom_object_service import CustomObjectService
-from business.impl.command.activity.find_by_context import FindByContext
+from business.impl.command.custom_object.find import Find
 
 
-class CustomObjectServiceImpl(CustomObjectService):
+class CustomObjectServiceImpl(CustomObjectService, ABC):
 
-    def find_by_context(self, context):
-        return FindByContext(context).execute()
+    def find(self, custom_object):
+        return Find(custom_object).execute()
