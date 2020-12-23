@@ -1,8 +1,12 @@
 from business.custom_action_service import CustomActionService
-from business.impl.command.activity.find_by_context import FindByContext
+from business.impl.command.custom_action.execute import Execute
+from business.impl.command.custom_action.find import Find
 
 
 class CustomActionServiceImpl(CustomActionService):
 
-    def find_by_context(self, context):
-        return FindByContext(context).execute()
+    def execute(self, custom_action):
+        return Find(custom_action).execute()
+
+    def find(self, custom_action):
+        return Execute(custom_action).execute()
