@@ -5,7 +5,7 @@ class PostService:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def list_attachments(self, context, identifier, body): raise NotImplementedError
+    def list_attachments(self, post): raise NotImplementedError
 
     @abstractmethod
-    def add_attachment(self, context, identifier, body): raise NotImplementedError
+    def add_attachment(self, post, attachment): raise NotImplementedError
