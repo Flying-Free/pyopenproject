@@ -9,3 +9,6 @@ class PostService:
 
     @abstractmethod
     def add_attachment(self, post, attachment): raise NotImplementedError
+
+    @abstractmethod
+    def find(self, post): raise NotImplementedError
