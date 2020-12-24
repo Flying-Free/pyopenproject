@@ -1,7 +1,6 @@
-from business.activity_service import ActivityService
 from business.document_service import DocumentService
-from business.impl.command.activity.find import Find
-from business.impl.command.activity.find_by_context import FindByContext
+from business.impl.command.document.find import Find
+from business.impl.command.document.find_all import FindAll
 
 
 class DocumentServiceImpl(DocumentService):
