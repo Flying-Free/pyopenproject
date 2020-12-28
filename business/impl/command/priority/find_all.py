@@ -16,4 +16,4 @@ class FindAll(PriorityCommand):
             for priority in json_obj._embedded.elements:
                 yield Priority(priority)
         except RequestError as re:
-            raise BusinessError(f"Error finding all prioritys") from re
+            raise BusinessError(f"Error finding all priorities") from re

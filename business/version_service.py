@@ -13,6 +13,9 @@ class VersionService:
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError
 
+    @abstractmethod
+    def find_projects(self, context): raise NotImplementedError
+
     # TODO: Review what params we need to create a new version
     @abstractmethod
     def new_version(self): raise NotImplementedError

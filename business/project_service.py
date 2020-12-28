@@ -5,16 +5,28 @@ class ProjectService:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def find_all(self): raise NotImplementedError
+    def find(self, project): raise NotImplementedError
 
     @abstractmethod
-    def find_by_id(self, identifier): raise NotImplementedError
+    def update(self, project): raise NotImplementedError
 
     @abstractmethod
-    def find_project_by_context(self, context): raise NotImplementedError
+    def delete(self, project): raise NotImplementedError
 
     @abstractmethod
-    def find_projects_by_context(self, context): raise NotImplementedError
+    def create(self, project): raise NotImplementedError
+
+    @abstractmethod
+    def create_form(self, project): raise NotImplementedError
+
+    @abstractmethod
+    def update_form(self, project): raise NotImplementedError
+
+    @abstractmethod
+    def find_all(self, filters, sortBy): raise NotImplementedError
+
+    @abstractmethod
+    def find_parents(self, filters, of, sortBy): raise NotImplementedError
 
     # TODO: Review what params we need to create a new project
     # @abstractmethod
