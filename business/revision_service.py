@@ -6,3 +6,6 @@ class RevisionService:
 
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError
+
+    @abstractmethod
+    def find(self, revision): raise NotImplementedError
