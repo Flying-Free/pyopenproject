@@ -6,3 +6,9 @@ class RoleService:
 
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError
+
+    @abstractmethod
+    def find(self, role): raise NotImplementedError
+
+    @abstractmethod
+    def find_all(self, role): raise NotImplementedError
