@@ -7,12 +7,9 @@ from model.status import Status
 
 class FindByContext(StatusCommand):
 
-    def __init__(self, context):
-        self.context = context
-
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.context}")
+            json_obj = Connection().get(f"{self.CONTEXT}")
             return Status(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding status by context: {self.context}") from re
+            raise BusinessError(f"Error finding status by context: {self.CONTEXT}") from re
