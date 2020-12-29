@@ -11,11 +11,10 @@ class TimeEntryService(object):
     def find_between_days(self, start_date, end_date): raise NotImplementedError
 
     @abstractmethod
-    def find_by_id(self, identifier): raise NotImplementedError
+    def find(self, time_entry): raise NotImplementedError
 
     @abstractmethod
     def delete(self, identifier): raise NotImplementedError
 
-    # TODO: Review what params we need to create a new time entry
     @abstractmethod
-    def new_time_entry(self): raise NotImplementedError
+    def create(self): raise NotImplementedError
