@@ -10,6 +10,17 @@ class MembershipService:
     @abstractmethod
     def find(self, membership): raise NotImplementedError
 
-    # TODO: Review what params we need to create a new membership
     @abstractmethod
-    def new_membership(self): raise NotImplementedError
+    def update_membership(self, membership): raise NotImplementedError
+
+    @abstractmethod
+    def delete_membership(self, membership): raise NotImplementedError
+
+    @abstractmethod
+    def new_membership(self, membership): raise NotImplementedError
+
+    @abstractmethod
+    def membership_schema(self): raise NotImplementedError
+
+    @abstractmethod
+    def available_memberships(self): raise NotImplementedError

@@ -1,30 +1,39 @@
 from business.impl.command.user.find_all import FindAll
-from business.impl.command.user.find_by_context import FindByContext
-from business.impl.command.user.find_by_id import FindById
+from business.impl.command.user.find import Find
 from business.impl.command.user.lock import Lock
 from business.impl.command.user.unlock import Unlock
+from business.impl.command.user.update import Update
+from business.impl.command.user.delete import Delete
+from business.impl.command.user.create import Create
 from business.user_service import UserService
 
 
 class UserServiceImpl(UserService):
 
-    def lock_user(self, context):
-        return Lock().execute()
+    def lock_user(self, user):
+        lock = Lock(user)
+        return lock.execute()
 
-    def unlock_user(self, context):
-        return Unlock().execute()
+    def unlock_user(self, user):
+        unlock = Unlock(user)
+        return unlock.execute()
 
-    def find_all(self):
-        find_all = FindAll()
+    def find_all(self, offset, pageSize,filters, sortBy):
+        find_all = FindAll(offset, pageSize,filters, sortBy)
         return find_all.execute()
 
-    def find_by_id(self, identifier):
-        find_by_id = FindById(identifier)
-        return find_by_id.execute()
+    def find(self, user):
+        find= Find(user)
+        return find.execute()
 
-    def find_by_context(self, context):
-        find_by_context = FindByContext(context)
-        return find_by_context.execute()
+    def update_user(self, user):
+        update = Update(user)
+        return update.execute()
 
-    # TODO: Review what params we need to create a new user
-    def new_user(self): raise NotImplementedError
+    def delete_user(self, user):
+        delete = Delete(user)
+        return delete.execute()
+
+    def new_user(self, user):
+        new = Create(user)
+        return new.execute()

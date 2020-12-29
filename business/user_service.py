@@ -5,20 +5,22 @@ class UserService:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def find_all(self): raise NotImplementedError
+    def find_all(self, offset, pageSize, filters, sortBy): raise NotImplementedError
 
     @abstractmethod
-    def find_by_id(self, identifier): raise NotImplementedError
+    def find(self, user): raise NotImplementedError
 
     @abstractmethod
-    def find_by_context(self, context): raise NotImplementedError
+    def lock_user(self, user): raise NotImplementedError
 
     @abstractmethod
-    def lock_user(self, context): raise NotImplementedError
+    def unlock_user(self, user): raise NotImplementedError
 
     @abstractmethod
-    def unlock_user(self, context): raise NotImplementedError
+    def update_user(self, user): raise NotImplementedError
 
-    # TODO: Review what params we need to create a new user
     @abstractmethod
-    def new_user(self): raise NotImplementedError
+    def delete_user(self, user): raise NotImplementedError
+
+    @abstractmethod
+    def new_user(self, user): raise NotImplementedError

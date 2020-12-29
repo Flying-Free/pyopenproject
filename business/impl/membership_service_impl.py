@@ -12,5 +12,16 @@ class MembershipServiceImpl(MembershipService):
     def find(self):
         return Find(self).execute()
 
-    # TODO: Review what params we need to create a new membership
-    def new_membership(self): raise NotImplementedError
+    def update_membership(self, membership): raise NotImplementedError
+
+
+    def delete_membership(self, membership): raise NotImplementedError
+
+
+    def new_membership(self, membership): raise NotImplementedError
+
+
+    def membership_schema(self): raise NotImplementedError
+
+
+    def available_memberships(self): raise NotImplementedError

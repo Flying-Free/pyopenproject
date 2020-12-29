@@ -5,14 +5,14 @@ from business.impl.command.user.user_command import UserCommand
 from model.user import User
 
 
-class FindById(UserCommand):
+class Delete(UserCommand):
 
-    def __init__(self, identifier):
-        self.identifier = identifier
+    def __init__(self, user):
+        self.user = user
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}/{self.identifier}")
+            json_obj = Connection().delete(f"{self.CONTEXT}/{self.user.id}")
             return User(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding user by ID: {self.identifier}") from re
+            raise BusinessError(f"Error deleting user by ID: {self.user.id}") from re
