@@ -5,7 +5,7 @@ from business.impl.command.project.project_command import ProjectCommand
 from model.budget import Budget
 
 
-class ListBudgets(ProjectCommand):
+class FindBudgets(ProjectCommand):
 
     def __init__(self, project):
         self.project = project

@@ -5,7 +5,7 @@ from business.impl.command.project.project_command import ProjectCommand
 from model.category import Category
 
 
-class ListCategories(ProjectCommand):
+class FindCategories(ProjectCommand):
 
     def __init__(self, project):
         self.project = project

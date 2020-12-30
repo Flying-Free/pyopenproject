@@ -8,8 +8,8 @@ from model.project import Project
 
 class FindAvailable(MembershipCommand):
 
-    def __init__(self, help_text):
-        self.help_text = help_text
+    def __init__(self, membership):
+        self.membership = membership
 
     def execute(self):
         try:
