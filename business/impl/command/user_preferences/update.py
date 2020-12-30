@@ -17,4 +17,4 @@ class Update(UserPreferencesCommand):
             json_obj = Connection().patch(f"{self.CONTEXT}", json.dumps(self.userPreferences.__dict__))
             return UserPreferences(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error updating user by id: {self.user.id}") from re
+            raise BusinessError(f"Error updating user preferences") from re
