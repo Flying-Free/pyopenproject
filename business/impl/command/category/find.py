@@ -4,13 +4,14 @@ from business.exception.business_error import BusinessError
 from business.impl.command.category.category_command import CategoryCommand
 from model.category import Category
 
+class Find(CategoryCommand):
 
-class FindAll(CategoryCommand):
+    def __init__(self, identifier):
+        self.identifier = identifier
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}")
-            for work_package in json_obj._embedded.elements:
-                yield Category(work_package)
+            json_obj = Connection().get(f"{self.CONTEXT}/{self.identifier}")
+            return Category(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding all categories") from re
+            raise BusinessError(f"Error finding category by id: {self.identifier}") from re
