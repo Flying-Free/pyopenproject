@@ -4,17 +4,15 @@ from api_connection.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
 from business.exception.business_error import BusinessError
 from business.impl.command.time_entry.time_entry_command import TimeEntryCommand
-from model.form import Form
+from model.project import Project
 
 
-class CreateForm(TimeEntryCommand):
-
-    def __init__(self, form):
-        self.form = form
+class FindProjects(TimeEntryCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().post(f"{self.CONTEXT}/form", json.dumps(self.form.__dict__))
-            return Form(json_obj)
+            json_obj = Connection().get(f"{self.CONTEXT}/available_projects")
+            for tEntry in json.loads(json_obj):
+                yield Project(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error creating form: {self.form.name}") from re
+            raise BusinessError(f"Error finding all projects by context: {self.context}") from re

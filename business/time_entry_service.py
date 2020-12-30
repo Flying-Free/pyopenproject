@@ -24,3 +24,12 @@ class TimeEntryService(object):
 
     @abstractmethod
     def find_schema(self, time_entry): raise NotImplementedError
+
+    @abstractmethod
+    def create_form(self, form): raise NotImplementedError
+
+    @abstractmethod
+    def update_form(self, time_entry, form): raise NotImplementedError
+
+    @abstractmethod
+    def find_projects(self, time_entry): raise NotImplementedError
