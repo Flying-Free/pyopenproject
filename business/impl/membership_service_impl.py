@@ -5,6 +5,8 @@ from business.impl.command.membership.create import Create
 from business.impl.command.membership.delete import Delete
 from business.impl.command.membership.find_schema import FindSchema
 from business.impl.command.membership.find_available import FindAvailable
+from business.impl.command.membership.create_form import CreateForm
+from business.impl.command.membership.update_form import UpdateForm
 
 from business.membership_service import MembershipService
 
@@ -32,7 +34,8 @@ class MembershipServiceImpl(MembershipService):
     def available_memberships(self):
         return FindAvailable(self).execute
 
-    def new_membership_form(self): raise NotImplementedError
+    def new_membership_form(self, membership):
+        return CreateForm(self, membership).execute()
 
-
-    def update_membership_form(self): raise NotImplementedError
+    def update_membership_form(self, membership):
+        return UpdateForm(self, membership).execute()
