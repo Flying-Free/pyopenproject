@@ -24,3 +24,9 @@ class MembershipService:
 
     @abstractmethod
     def available_memberships(self): raise NotImplementedError
+
+    @abstractmethod
+    def new_membership_form(self): raise NotImplementedError
+
+    @abstractmethod
+    def update_membership_form(self): raise NotImplementedError

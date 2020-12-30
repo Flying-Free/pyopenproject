@@ -11,29 +11,22 @@ from business.user_service import UserService
 class UserServiceImpl(UserService):
 
     def lock_user(self, user):
-        lock = Lock(user)
-        return lock.execute()
+        return Lock(user).execute()
 
     def unlock_user(self, user):
-        unlock = Unlock(user)
-        return unlock.execute()
+        return Unlock(user).execute()
 
-    def find_all(self, offset, pageSize,filters, sortBy):
-        find_all = FindAll(offset, pageSize,filters, sortBy)
-        return find_all.execute()
+    def find_all(self, offset, pageSize, filters, sortBy):
+        return FindAll(offset, pageSize, filters, sortBy).execute()
 
     def find(self, user):
-        find= Find(user)
-        return find.execute()
+        return Find(user).execute()
 
     def update_user(self, user):
-        update = Update(user)
-        return update.execute()
+        return Update(user).execute()
 
     def delete_user(self, user):
-        delete = Delete(user)
-        return delete.execute()
+        Delete(user).execute()
 
     def new_user(self, user):
-        new = Create(user)
-        return new.execute()
+        return Create(user).execute()

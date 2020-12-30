@@ -12,7 +12,6 @@ class Delete(UserCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().delete(f"{self.CONTEXT}/{self.user.id}")
-            return User(json_obj)
+            Connection().delete(f"{self.CONTEXT}/{self.user.id}")
         except RequestError as re:
             raise BusinessError(f"Error deleting user by ID: {self.user.id}") from re
