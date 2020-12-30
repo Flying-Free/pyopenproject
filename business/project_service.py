@@ -28,6 +28,5 @@ class ProjectService:
     @abstractmethod
     def find_parents(self, filters, of, sortBy): raise NotImplementedError
 
-    # TODO: Review what params we need to create a new project
-    # @abstractmethod
-    # def new_project(self): raise NotImplementedError
+    @abstractmethod
+    def find_types(self, project): raise NotImplementedError

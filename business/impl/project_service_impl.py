@@ -4,6 +4,7 @@ from business.impl.command.project.delete import Delete
 from business.impl.command.project.find import Find
 from business.impl.command.project.find_all import FindAll
 from business.impl.command.project.find_parents import FindParents
+from business.impl.command.project.find_types import FindTypes
 from business.impl.command.project.update import Update
 from business.impl.command.project.update_form import UpdateForm
 from business.project_service import ProjectService
@@ -34,3 +35,6 @@ class ProjectServiceImpl(ProjectService):
 
     def find(self, project):
         return Find(project).execute()
+
+    def find_types(self, project):
+        return FindTypes(project).execute()
