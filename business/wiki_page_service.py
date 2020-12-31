@@ -5,6 +5,9 @@ class WikiPageService:
     __metaclass__ = ABCMeta
 
     @abstractmethod
+    def find(self, wiki_page): raise NotImplementedError
+
+    @abstractmethod
     def list_attachments(self, context, identifier, body): raise NotImplementedError
 
     @abstractmethod
