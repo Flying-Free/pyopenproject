@@ -3,11 +3,11 @@ import unittest
 
 from dateutil.relativedelta import relativedelta
 
-from business.impl.time_entry_service_impl import TimeEntryServiceImpl
+from business.time_entry_service import TimeEntryService
 
 
-class TimeEntriesServiceTestCase(unittest.TestCase):
-    tEntryReq = TimeEntryServiceImpl()
+class TimeEntryServiceTestCase(unittest.TestCase):
+    tEntryReq = TimeEntryService()
 
     def time_entries_request(self):
         today = datetime.today()
