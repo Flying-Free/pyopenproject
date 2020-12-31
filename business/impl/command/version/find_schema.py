@@ -1,11 +1,11 @@
 from api_connection.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
 from business.exception.business_error import BusinessError
-from business.impl.command.project.project_command import ProjectCommand
+from business.impl.command.version.version_command import VersionCommand
 from model.schema import Schema
 
 
-class FindSchema(ProjectCommand):
+class FindSchema(VersionCommand):
 
     def execute(self):
         try:

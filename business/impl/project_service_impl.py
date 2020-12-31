@@ -24,7 +24,7 @@ class ProjectServiceImpl(ProjectService):
     def delete(self, project):
         return Delete(project).execute()
 
-    def find_all(self):
+    def find_all(self, filters, sortBy):
         return FindAll().execute()
 
     def create(self, project):
@@ -36,8 +36,8 @@ class ProjectServiceImpl(ProjectService):
     def create_form(self, form):
         return CreateForm(form).execute()
 
-    def update_form(self, project, form):
-        return UpdateForm(project, form).execute()
+    def update_form(self, project):
+        return UpdateForm(project).execute()
 
     def find_parents(self, filters, of, sortBy):
         return FindParents(filters, of, sortBy).execute()

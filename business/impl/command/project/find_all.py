@@ -8,11 +8,14 @@ from model.project import Project
 
 
 class FindAll(ProjectCommand):
+    def __init__(self, filters, sortBy):
+        self.filters = filters
+        self.sortBy = sortBy
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}")
+            json_obj = Connection().get(f"{self.CONTEXT}?{self.filters},{self.sortBy}")
             for tEntry in json.loads(json_obj):
                 yield Project(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding all projects by context: {self.context}") from re
+            raise BusinessError(f"Error finding all projects by context: {self.filters},{self.sortBy}") from re
