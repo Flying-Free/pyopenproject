@@ -1,3 +1,5 @@
+import json
+
 from api_connection.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
 from business.exception.business_error import BusinessError
@@ -5,14 +7,15 @@ from business.impl.command.work_package.work_package_command import WorkPackageC
 from model.work_package import WorkPackage
 
 
-class FindById(WorkPackageCommand):
+class Create(WorkPackageCommand):
 
-    def __init__(self, identifier):
-        self.identifier = identifier
+    def __init__(self, work_package, notify):
+        self.work_package = work_package
+        self.notify = notify
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}/{self.identifier}")
+            json_obj = Connection().post(f"{self.CONTEXT}?{self.notify}", json.dumps(self.work_package.__dict__))
             return WorkPackage(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding work package by id: {self.identifier}") from re
+            raise BusinessError(f"Error creating work package") from re

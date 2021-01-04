@@ -14,7 +14,7 @@ class UpdateForm(VersionCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().post(f"{self.CONTEXT}/{self.version.id}/form", json.dumps(self.form.__dict__))
+            json_obj = Connection().post(f"{self.CONTEXT}/{self.version.id}/form", json.dumps(self.version.__dict__))
             return Form(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating version {self.version.id}") from re

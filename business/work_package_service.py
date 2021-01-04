@@ -23,7 +23,7 @@ class WorkPackageService:
     def delete_work_package(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
-    def find_schema(self, identifier): raise NotImplementedError
+    def find_schema(self, schema): raise NotImplementedError
 
     @abstractmethod
     def find_all_schemas(self, filters): raise NotImplementedError
@@ -38,7 +38,7 @@ class WorkPackageService:
     def new_work_package(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
-    def new_work_package_form(self): raise NotImplementedError
+    def new_work_package_form(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def new_relation(self, work_package, relation): raise NotImplementedError
