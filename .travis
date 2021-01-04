@@ -1,4 +1,3 @@
-language: python
 
 services:
   - docker
@@ -7,7 +6,6 @@ before_install:
 - docker run -it -p 8080:80 -e SECRET_KEY_BASE=secret openproject/community:11
 
 script:
--  pip install -r requirements.txt
 -  python -m unittest
 
 notifications:
