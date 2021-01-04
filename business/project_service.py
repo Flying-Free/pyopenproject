@@ -42,3 +42,15 @@ class ProjectService:
     # Documentation in the page for the Budget endpoint
     @abstractmethod
     def find_budgets(self, project): raise NotImplementedError
+
+    # Documentation in the page for the Work Package endpoint
+    @abstractmethod
+    def find_work_packages(self, project): raise NotImplementedError
+
+    # Documentation in the page for the Work Package endpoint
+    @abstractmethod
+    def create_work_package(self, project, notify, workPackage): raise NotImplementedError
+
+    # Documentation in the page for the Work Package endpoint
+    @abstractmethod
+    def create_work_package_form(self, project, notify, form): raise NotImplementedError

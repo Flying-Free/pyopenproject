@@ -40,10 +40,6 @@ class WorkPackageService:
     @abstractmethod
     def new_work_package_form(self): raise NotImplementedError
 
-    #belongs to /project context
-    #@abstractmethod
-    #def find_by_project(self, project, offset, pageSize, filters, sortBy, groupBy, showSums, notify): raise NotImplementedError
-
     @abstractmethod
     def new_relation(self, work_package, relation): raise NotImplementedError
 
