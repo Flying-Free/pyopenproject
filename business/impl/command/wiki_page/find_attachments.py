@@ -5,7 +5,7 @@ from business.impl.command.wiki_page.wiki_command import WikiPageCommand
 from model.attachment import Attachment
 
 
-class ListAttachments(WikiPageCommand):
+class FindAttachments(WikiPageCommand):
 
     def __init__(self, wiki_page):
         self.wiki_page = wiki_page
