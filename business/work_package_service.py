@@ -75,11 +75,3 @@ class WorkPackageService:
 
     @abstractmethod
     def new_activity(self, work_package, activity, notify): raise NotImplementedError
-
-    # belongs to /project context
-    #@abstractmethod
-    #def find_available_assignees_by_work_package(self, project, work_package): raise NotImplementedError
-
-    # belongs to /project context
-    #@abstractmethod
-    #def find_available_responsibles_by_work_package(self, project, work_package): raise NotImplementedError

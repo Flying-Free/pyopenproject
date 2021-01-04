@@ -5,6 +5,8 @@ from business.impl.command.project.create_work_package_form import CreateWorkPac
 from business.impl.command.project.delete import Delete
 from business.impl.command.project.find import Find
 from business.impl.command.project.find_all import FindAll
+from business.impl.command.project.find_available_assignees import FindAvailableAssignees
+from business.impl.command.project.find_available_responsibles import FindAvailableResponsibles
 from business.impl.command.project.find_budgets import FindBudgets
 from business.impl.command.project.find_parents import FindParents
 from business.impl.command.project.find_schema import FindSchema
@@ -17,6 +19,8 @@ from business.project_service import ProjectService
 
 
 class ProjectServiceImpl(ProjectService):
+
+
 
     def find(self, project):
         return Find(project).execute()
@@ -54,7 +58,7 @@ class ProjectServiceImpl(ProjectService):
     def find_budgets(self, project):
         return FindBudgets(project).execute()
 
-    def find_work_packages(self, project,offset,pageSize,filters,sortBy,groupBy,showSums,notify):
+    def find_work_packages(self, project, offset, pageSize,filters, sortBy, groupBy, showSums, notify):
         return FindWorkPackages(project, offset, pageSize, filters, sortBy, groupBy, showSums, notify).execute()
 
     def create_work_package(self, project, notify, workPackage):
@@ -63,3 +67,8 @@ class ProjectServiceImpl(ProjectService):
     def create_work_package_form(self, project, notify, form):
         return CreateWorkPackageForm(project, notify, form).execute()
 
+    def find_available_assignees(self, project):
+        return FindAvailableAssignees(project).execute()
+
+    def find_available_responsibles(self, project):
+        return FindAvailableResponsibles(project).execute()

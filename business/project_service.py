@@ -54,3 +54,11 @@ class ProjectService:
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
     def create_work_package_form(self, project, notify, form): raise NotImplementedError
+
+    # Documentation in the page for the Work Package endpoint
+    @abstractmethod
+    def find_available_assignees(self, project): raise NotImplementedError
+
+    # Documentation in the page for the Work Package endpoint
+    @abstractmethod
+    def find_available_responsibles(self, project): raise NotImplementedError
