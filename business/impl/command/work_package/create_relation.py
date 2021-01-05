@@ -9,9 +9,9 @@ from model.relation import Relation
 
 class CreateRelation(WorkPackageCommand):
 
-    def __init__(self, work_package, notify):
+    def __init__(self, work_package, relation):
         self.work_package = work_package
-        self.notify = notify
+        self.relation = relation
 
     def execute(self):
         try:

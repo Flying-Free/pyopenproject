@@ -13,6 +13,15 @@ from business.impl.command.work_package.create_form import CreateForm
 from business.impl.command.work_package.create_relation import CreateRelation
 from business.impl.command.work_package.find_relations_by_work_package import FindRelationsByWorkPackage
 from business.impl.command.work_package.create_relation_form import CreateRelationForm
+from business.impl.command.work_package.find_watchers_by_work_package import FindWatchersByWorkPackage
+from business.impl.command.work_package.create_watcher import CreateWatcher
+from business.impl.command.work_package.delete_watcher import DeleteWatcher
+from business.impl.command.work_package.find_relation_candidates_by_work_package import FindRelationCandidatesByWorkPackage
+from business.impl.command.work_package.find_available_watchers_by_work_package import FindAvailableWatchersByWorkPackage
+from business.impl.command.work_package.find_available_projects_by_work_package import FindAvailableProjectsByWorkPackage
+from business.impl.command.work_package.find_revisions_by_work_package import FindRevisionsByWorkPackage
+from business.impl.command.work_package.find_activities_by_work_package import FindActivitiesByWorkPackage
+from business.impl.command.work_package.create_activity import CreateActivity
 from business.work_package_service import WorkPackageService
 
 
@@ -64,28 +73,29 @@ class WorkPackageServiceImpl(WorkPackageService):
     def new_relation_form(self, work_package, relation):
         return CreateRelationForm(work_package, relation).execute()
 
-    def find_watchers_by_work_package(self): raise NotImplementedError
+    def find_watchers_by_work_package(self, work_package):
+        return FindWatchersByWorkPackage(work_package).execute()
 
+    def new_watcher(self, work_package, watcher):
+        return CreateWatcher(work_package, watcher).execute()
 
-    def new_watcher(self, work_package, watcher): raise NotImplementedError
+    def delete_watcher(self, work_package, watcher):
+        DeleteWatcher(work_package, watcher).execute()
 
+    def find_relation_candidates_by_work_package(self, work_package, filters, query, type, pageSize):
+        return FindRelationCandidatesByWorkPackage(work_package, filters, query, type, pageSize).execute()
 
-    def delete_watcher(self, work_package, watcher): raise NotImplementedError
+    def find_available_watchers_by_work_package(self, work_package):
+        return FindAvailableWatchersByWorkPackage(work_package).execute()
 
+    def find_available_projects_by_work_package(self, work_package):
+        return FindAvailableProjectsByWorkPackage(work_package).execute()
 
-    def find_relation_candidates_by_work_package(self, work_package, filters, query, type, pageSize): raise NotImplementedError
+    def find_revisions_by_work_package(self, work_package):
+        return FindRevisionsByWorkPackage(work_package).execute()
 
+    def find_activities_by_work_package(self, work_package, notify):
+        return FindActivitiesByWorkPackage(work_package, notify).execute()
 
-    def find_available_watchers_by_work_package(self, work_package): raise NotImplementedError
-
-
-    def find_available_projects_by_work_package(self, work_package): raise NotImplementedError
-
-
-    def find_revisions_by_work_package(self, work_package): raise NotImplementedError
-
-
-    def find_activities_by_work_package(self, work_package, notify): raise NotImplementedError
-
-
-    def new_activity(self, work_package, activity, notify): raise NotImplementedError
+    def new_activity(self, work_package, activity, notify):
+        return CreateActivity(work_package,activity, notify).execute()

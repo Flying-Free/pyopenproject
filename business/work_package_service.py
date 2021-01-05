@@ -50,7 +50,7 @@ class WorkPackageService:
     def new_relation_form(self, relation): raise NotImplementedError
 
     @abstractmethod
-    def find_watchers_by_work_package(self): raise NotImplementedError
+    def find_watchers_by_work_package(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def new_watcher(self, work_package, watcher): raise NotImplementedError
