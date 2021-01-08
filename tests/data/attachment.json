@@ -1,0 +1,30 @@
+{
+  "_type": "Attachment",
+  "_links": {
+    "self": {
+      "href": "/api/v3/attachments/1"
+    },
+    "container": {
+  "href": "/api/v3/work_packages/1"
+},
+"author": {
+"href": "/api/v3/users/1"
+},
+"staticDownloadLocation": {
+"href": "/api/v3/attachments/1/download"
+}
+"downloadLocation": {
+"href": "/some/remote/aws/url/image.png"
+}
+},
+"id": 1,
+"fileName": "cat.png",
+"filesize": 24,
+"description": {
+"format": "plain",
+"raw": "A picture of a cute cat",
+"html": "<p>A picture of a cute cat</p>"
+},
+"contentType": "image/png",
+"createdAt": "2014-05-21T08:51:20Z"
+}

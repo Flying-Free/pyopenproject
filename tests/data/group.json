@@ -1,0 +1,13 @@
+{
+  "_type": "Group",
+  "id": 9,
+  "name": "The group",
+  "createdAt": "2015-09-23T11:06:36Z",
+  "updatedAt": "2015-09-23T11:06:36Z",
+  "_links": {
+    "self": {
+      "href": "/api/v3/groups/9",
+      "title": "The group"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "_type": "Role",
+  "id": 3,
+  "name": "Manager",
+  "_links": {
+    "self": {
+      "href": "/api/v3/roles/3",
+      "title": "Manager"
+    }
+  }
+}
