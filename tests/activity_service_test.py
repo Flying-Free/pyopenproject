@@ -6,8 +6,8 @@ from business.activity_service import ActivityService
 class ActivityServiceTestCase(unittest.TestCase):
     actSer = ActivityService()
 
-    def find_activity(self):
+    def test_find_activity(self):
         self.assertNotNull(self.actSer.find(Activity()))
 
-    def update_activity(self):
+    def test_update_activity(self):
         self.assertNotNull(self.actSer.update(Activity()))
