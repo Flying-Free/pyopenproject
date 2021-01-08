@@ -16,6 +16,11 @@ class Connection:
         self.api_user = cfg["api_conn"]["user"]
         self.api_key = cfg["api_conn"]["password"]
 
+    def __int__(self, url, user, password):
+        self.url_base = url
+        self.api_user = user
+        self.api_key = password
+
     def get(self, context):
         try:
             response = requests.get(
