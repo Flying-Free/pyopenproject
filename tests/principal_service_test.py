@@ -6,5 +6,5 @@ from business.principal_service import PrincipalService
 class PrincipalServiceTestCase(unittest.TestCase):
     principalSer = PrincipalService()
 
-    def principal_request(self):
-        self.assertNotNull(self.principalSer.request(1))
+    def test_find_all(self):
+        self.assertNotNull(self.principalSer.find_all(filters))

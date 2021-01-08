@@ -4,7 +4,10 @@ from business.help_texts_service import HelpTextsService
 
 
 class HelpTextsServiceTestCase(unittest.TestCase):
-    groupSer = HelpTextsService()
+    helpSer = HelpTextsService()
 
-    def help_texts_request(self):
-        self.assertNotNull(self.groupSer.request(1))
+    def test_find(self):
+        self.assertNotNull(self.helpSer.find(help_test))
+
+    def test_find_all(self):
+        self.assertNotNull(self.helpSer.find_all(help_test))

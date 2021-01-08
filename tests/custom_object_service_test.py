@@ -6,5 +6,5 @@ from business.custom_object_service import CustomObjectService
 class CustomObjectServiceTestCase(unittest.TestCase):
     caSer = CustomObjectService()
 
-    def custom_object_request(self):
-        self.assertNotNull(self.caSer.request(1))
+    def test_find(self):
+        self.assertNotNull(self.caSer.find(custom_object))

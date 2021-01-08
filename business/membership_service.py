@@ -11,13 +11,13 @@ class MembershipService:
     def find(self, membership): raise NotImplementedError
 
     @abstractmethod
-    def update_membership(self, membership): raise NotImplementedError
+    def update(self, membership): raise NotImplementedError
 
     @abstractmethod
-    def delete_membership(self, membership): raise NotImplementedError
+    def delete(self, membership): raise NotImplementedError
 
     @abstractmethod
-    def new_membership(self, membership): raise NotImplementedError
+    def create(self, membership): raise NotImplementedError
 
     @abstractmethod
     def membership_schema(self): raise NotImplementedError
@@ -26,7 +26,7 @@ class MembershipService:
     def available_memberships(self): raise NotImplementedError
 
     @abstractmethod
-    def new_membership_form(self, membership): raise NotImplementedError
+    def create_form(self, membership): raise NotImplementedError
 
     @abstractmethod
-    def update_membership_form(self, membership): raise NotImplementedError
+    def update_form(self, membership): raise NotImplementedError

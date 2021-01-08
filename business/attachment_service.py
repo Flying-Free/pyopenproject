@@ -17,4 +17,4 @@ class AttachmentService:
     def find_all(self): raise NotImplementedError
 
     @abstractmethod
-    def download_by_context(self): raise NotImplementedError
+    def download_by_context(self,context): raise NotImplementedError

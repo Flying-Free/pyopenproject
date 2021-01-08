@@ -6,5 +6,8 @@ from business.category_service import CategoryService
 class CategoryServiceTestCase(unittest.TestCase):
     catSer = CategoryService()
 
-    def category_request(self):
-        self.assertNotNull(self.catSer.request(1))
+    def test_find(self):
+        self.assertNotNull(self.catSer.find(category))
+
+    def test_find_by_context(self):
+        self.assertNotNull(self.catSer.find_by_context(context))
