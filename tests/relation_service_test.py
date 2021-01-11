@@ -22,7 +22,7 @@ class RelationServiceTestCase(unittest.TestCase):
         self.assertNotNull(self.relationSer.find_all(filters, sortBy))
 
     def test_update_form(self):
-        self.assertNotNull(self.relationSer.request(1))
+        self.assertNotNull(self.relationSer.update_form(relation))
 
     def find_by_context(self):
-        self.assertNotNull(self.relationSer.request(1))
+        self.assertNotNull(self.relationSer.find_by_context(context))
