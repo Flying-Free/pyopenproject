@@ -6,7 +6,23 @@ from business.relation_service import RelationService
 class RelationServiceTestCase(unittest.TestCase):
     relationSer = RelationService()
 
-    def relation_request(self):
+    def test_find(self):
+        self.assertNotNull(self.relationSer.find(relation))
+
+    def test_update(self):
+        self.assertNotNull(self.relationSer.update(relation))
+
+    def test_delete(self):
+        self.assertNotNull(self.relationSer.delete(relation))
+
+    def test_find_schema(self):
+        self.assertNotNull(self.relationSer.find_schema())
+
+    def test_find_all(self):
+        self.assertNotNull(self.relationSer.find_all(filters, sortBy))
+
+    def test_update_form(self):
         self.assertNotNull(self.relationSer.request(1))
 
-#TODO: Hear
+    def find_by_context(self):
+        self.assertNotNull(self.relationSer.request(1))
