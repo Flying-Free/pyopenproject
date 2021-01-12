@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "debian/buster64"
+  config.vm.box = "generic/debian10"
   config.vm.boot_timeout=600
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -61,7 +61,8 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  config.vm.provision "file", source: "./installer.dat", destination: "$HOME/installer.dat"
+  config.vm.provision "file", source: "./installer.dat", destination: "/home/vagrant/installer.dat"
+  config.vm.provision "file", source: "./configuration.yml", destination: "/home/vagrant/configuration.yml"
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
@@ -71,22 +72,44 @@ Vagrant.configure("2") do |config|
    config.vm.provision "shell", inline: <<-SHELL
     # Install dependences
     sudo apt-get -qq install -y gnupg
+
     echo "================ Install dependences ================"
+
+    sudo apt-get -qq install -y  postgresql postgresql-client
+    sudo su postgres <<EOF
+psql -c "CREATE USER openproject WITH PASSWORD 'openproject'"
+createdb -O openproject openproject
+EOF
+
+    echo "================ Install & Configure PostgreSQL ================"
+
     # Import the PGP key used to sign our packages:
     wget -qO- https://dl.packager.io/srv/opf/openproject/key | sudo apt-key add -
+
     echo "===== Import the PGP key used to sign our packages ====="
 
     # Add the OpenProject package source:
     sudo wget -qO /etc/apt/sources.list.d/openproject.list \
       https://dl.packager.io/srv/opf/openproject/stable/11/installer/debian/10.repo
+
     echo "========== Add the OpenProject package source =========="
 
     # Download the OpenProject package:
     sudo apt-get -qq update
     sudo apt-get -qq -y install openproject
+
     echo "================ Install OpenProject ==================="
 
-    # sudo cp $HOME/installer.dat /etc/openproject/
-    # sudo openproject configure
+#     sudo cp -rf  /home/vagrant/installer.dat /etc/openproject
+#     sudo openproject config:set DATABASE_URL="postgresql://openproject:openproject@127.0.0.1:5432/openproject"
+#     MAKE THIS MANUALLY
+#     sudo openproject configure
+#
+#     MAKE THIS MANUALLY
+#     sudo cp -rf /home/vagrant/configuration.yml /opt/openproject/config
+#     sudo openproject restart
+
+    echo "================ Configure OpenProject ==================="
+
    SHELL
 end
