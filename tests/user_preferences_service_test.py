@@ -6,5 +6,8 @@ from business.user_preferences_service import UserPreferencesService
 class UserPreferencesServiceTestCase(unittest.TestCase):
     userPrefSer = UserPreferencesService()
 
-    def type_request(self):
-        self.assertNotNull(self.userPrefSer.request(1))
+    def find(self):
+        self.assertNotNull(self.userPrefSer.find())
+
+    def update(self):
+        self.assertNotNull(self.userPrefSer.update(user_preferences))

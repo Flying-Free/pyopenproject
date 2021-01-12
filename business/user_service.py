@@ -23,4 +23,4 @@ class UserService:
     def delete_user(self, user): raise NotImplementedError
 
     @abstractmethod
-    def new_user(self, user): raise NotImplementedError
+    def create_user(self, user): raise NotImplementedError

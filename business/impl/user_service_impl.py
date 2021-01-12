@@ -1,10 +1,10 @@
-from business.impl.command.user.find_all import FindAll
+from business.impl.command.user.create import Create
+from business.impl.command.user.delete import Delete
 from business.impl.command.user.find import Find
+from business.impl.command.user.find_all import FindAll
 from business.impl.command.user.lock import Lock
 from business.impl.command.user.unlock import Unlock
 from business.impl.command.user.update import Update
-from business.impl.command.user.delete import Delete
-from business.impl.command.user.create import Create
 from business.user_service import UserService
 
 
@@ -28,5 +28,5 @@ class UserServiceImpl(UserService):
     def delete_user(self, user):
         Delete(user).execute()
 
-    def new_user(self, user):
+    def create_user(self, user):
         return Create(user).execute()

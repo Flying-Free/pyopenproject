@@ -5,7 +5,7 @@ from business.impl.command.status.status_command import StatusCommand
 from model.status import Status
 
 
-class FindById(StatusCommand):
+class Find(StatusCommand):
 
     def __init__(self, status):
         self.status = status

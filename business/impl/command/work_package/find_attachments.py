@@ -5,7 +5,7 @@ from business.impl.command.work_package.work_package_command import WorkPackageC
 from model.attachment import Attachment
 
 
-class ListAttachments(WorkPackageCommand):
+class FindAttachments(WorkPackageCommand):
 
     def __init__(self, work_package):
         self.work_package = work_package

@@ -8,7 +8,7 @@ class WorkPackageService:
     def find_by_context(self, context): raise NotImplementedError
 
     @abstractmethod
-    def list_attachments(self, work_package): raise NotImplementedError
+    def find_attachments(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def add_attachment(self, work_package, attachment): raise NotImplementedError
