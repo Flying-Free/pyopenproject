@@ -6,7 +6,6 @@ from business.activity_service import ActivityService
 
 class ActivityServiceTestCase(unittest.TestCase):
 
-
     def setUp(self):
         self.actSer = ActivityService()
         self.activity = json.loads('/data/activity.json')

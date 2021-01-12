@@ -1,10 +1,14 @@
+import json
 import unittest
 
 from business.grid_service import GridService
 
 
 class GridServiceTestCase(unittest.TestCase):
-    gridSer = GridService()
+
+    def setUp(self):
+        self.gridSer = GridService()
+        self.grid = json.loads('/data/grid.json')
 
     def test_find(self):
         self.assertNotNull(self.gridSer.find(grid))
@@ -13,10 +17,10 @@ class GridServiceTestCase(unittest.TestCase):
         self.assertNotNull(self.gridSer.find_all(offset, pageSize, filters, sortBy))
 
     def test_create(self):
-        self.assertNotNull(self.gridSer.create(grid))
+        self.assertNotNull(self.gridSer.create(self.grid))
 
     def test_update(self):
-        self.assertNotNull(self.gridSer.update(grid))
+        self.assertNotNull(self.gridSer.update(self.grid))
 
     def test_create_form(self):
-        self.assertNotNull(self.gridSer.create_form(grid))
+        self.assertNotNull(self.gridSer.create_form(self.grid))
