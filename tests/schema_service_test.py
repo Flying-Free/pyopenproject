@@ -4,4 +4,6 @@ from business.schema_service import SchemaService
 
 
 class SchemaServiceTestCase(unittest.TestCase):
-    schemaSer = SchemaService()
+
+    def setUp(self):
+        self.schemaSer = SchemaService()

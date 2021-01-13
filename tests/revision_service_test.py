@@ -1,18 +1,18 @@
 import json
 import unittest
 
-from business.relation_service import RelationService
+from business.revision_service import RevisionService
 
 
-class RelationServiceTestCase(unittest.TestCase):
+class RevisionServiceTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.relationSer = RelationService()
-        self.relation = json.loads('/data/relation.json')
+        self.revisionSer = RevisionService()
+        self.revision = json.loads('/data/revision.json')
 
     def test_find(self):
-        self.assertNotNull(self.relationSer.find(self.relation))
+        self.assertNotNull(self.revisionSer.find(self.revision))
 
     def test_find_by_context(self):
-        self.assertNotNull(self.relationSer.find_by_context(context))
+        self.assertNotNull(self.revisionSer.find_by_context(context))
 

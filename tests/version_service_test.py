@@ -1,38 +1,41 @@
+import json
 import unittest
 
 from business.version_service import VersionService
 
 
 class VersionServiceTestCase(unittest.TestCase):
-    versionSer = VersionService()
 
+    def setUp(self):
+        self.versionSer = VersionService()
+        self.version = json.loads('/data/version.json')
 
-    def find(self, version):
-        self.assertNotNull(self.versionSer.request(1))
+    def test_find(self, ):
+        self.assertNotNull(self.versionSer.find(self.version))
 
-    def update_version(self, version):
-        self.assertNotNull(self.versionSer.request(1))
+    def test_update(self):
+        self.assertNotNull(self.versionSer.update(self.version))
 
-    def delete_version(self, version):
-        self.assertNotNull(self.versionSer.request(1))
+    def test_delete(self):
+        self.assertNotNull(self.versionSer.delete(1))
 
-    def find_all(self, filters):
-        self.assertNotNull(self.versionSer.request(1))
+    def test_find_all(self):
+        self.assertNotNull(self.versionSer.find_all(filters))
 
-    def new_version(self, version):
-        self.assertNotNull(self.versionSer.request(1))
+    def test_create(self):
+        self.assertNotNull(self.versionSer.create(self.version))
 
-    def find_by_context(self, context):
-        self.assertNotNull(self.versionSer.request(1))
+    def find_by_context(self):
+        self.assertNotNull(self.versionSer.find_by_context(context))
 
     def find_schema(self):
-        self.assertNotNull(self.versionSer.request(1))
+        self.assertNotNull(self.versionSer.find_schema())
 
-    def new_version_form(self, version):
-        self.assertNotNull(self.versionSer.request(1))
+    def create_form(self):
+        self.assertNotNull(self.versionSer.create_form(self.version))
 
-    def update_version_form(self, version):
-        self.assertNotNull(self.versionSer.request(1))
+    def update_form(self):
+        self.assertNotNull(self.versionSer.update_form(self.version))
 
     def find_projects(self):
-        self.assertNotNull(self.versionSer.request(1))
+        self.assertNotNull(self.versionSer.find_projects())

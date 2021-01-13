@@ -17,7 +17,7 @@ class WorkPackageService:
     def find(self, notify): raise NotImplementedError
 
     @abstractmethod
-    def update_work_package(self, work_package, notify): raise NotImplementedError
+    def update(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
     def delete_work_package(self, work_package, notify): raise NotImplementedError
@@ -29,31 +29,31 @@ class WorkPackageService:
     def find_all_schemas(self, filters): raise NotImplementedError
 
     @abstractmethod
-    def update_work_package_form(self, work_package): raise NotImplementedError
+    def update_form(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def find_all(self, notify, offset, pageSize,filters, sortBy, groupBy, showSums): raise NotImplementedError
 
     @abstractmethod
-    def new_work_package(self, work_package, notify): raise NotImplementedError
+    def create(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
-    def new_work_package_form(self, work_package): raise NotImplementedError
+    def create_form(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def new_relation(self, work_package, relation): raise NotImplementedError
+    def create_relation(self, work_package, relation): raise NotImplementedError
 
     @abstractmethod
     def find_relations_by_work_package(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def new_relation_form(self, relation): raise NotImplementedError
+    def create_relation_form(self, relation): raise NotImplementedError
 
     @abstractmethod
     def find_watchers_by_work_package(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def new_watcher(self, work_package, watcher): raise NotImplementedError
+    def create_watcher(self, work_package, watcher): raise NotImplementedError
 
     @abstractmethod
     def delete_watcher(self, work_package, watcher): raise NotImplementedError
@@ -74,4 +74,4 @@ class WorkPackageService:
     def find_activities_by_work_package(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
-    def new_activity(self, work_package, activity, notify): raise NotImplementedError
+    def create_activity(self, work_package, activity, notify): raise NotImplementedError
