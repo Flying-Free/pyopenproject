@@ -50,7 +50,7 @@ class Connection:
             response = requests.post(
                 self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
-                body=body
+                json=body
             )
             if response.json()["_type"] == "Error":
                 raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
@@ -101,7 +101,7 @@ class Connection:
             response = requests.put(
                 self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
-                body=body
+                data=body
             )
             if response.json()["_type"] == "Error":
                 raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
@@ -127,7 +127,7 @@ class Connection:
             response = requests.patch(
                 self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
-                body=body
+                data=body
             )
             if response.json()["_type"] == "Error":
                 raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
