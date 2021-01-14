@@ -1,17 +1,20 @@
 import json
 import unittest
 
+from business.service_factory import ServiceFactory
 from business.services.grid_service import GridService
+from model.grid import Grid
 
 
 class GridServiceTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.gridSer = GridService()
-        self.grid = json.loads('/data/grid.json')
+        self.gridSer = ServiceFactory.get_grid_service()
+        with open('./data/grid.json') as f:
+            self.grid = Grid(json.load(f))
 
     def test_find(self):
-        self.assertNotNull(self.gridSer.find(grid))
+        self.assertNotNull(self.gridSer.find(self.grid))
 
     def test_find_all(self):
         self.assertNotNull(self.gridSer.find_all(offset, pageSize, filters, sortBy))

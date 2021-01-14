@@ -9,7 +9,8 @@ class ProjectServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.proSer = ProjectService()
-        self.project = Project(json.loads('./data/project.json'))
+        with open('./data/project.json') as f:
+            self.project = Project(json.load(f))
 
     def test_find(self):
         self.assertNotNull(self.proSer.find(self.project))

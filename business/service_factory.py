@@ -1,3 +1,4 @@
+from business.services.help_texts_service import HelpTextsService
 from business.services.impl.activity_service_impl import ActivityServiceImpl
 from business.services.impl.attachment_service_impl import AttachmentServiceImpl
 from business.services.impl.budget_service_impl import BudgetServiceImpl
@@ -5,6 +6,7 @@ from business.services.impl.category_service_impl import CategoryServiceImpl
 from business.services.impl.configuration_service_impl import ConfigurationServiceImpl
 from business.services.impl.custom_action_service_impl import CustomActionServiceImpl
 from business.services.impl.custom_object_service_impl import CustomObjectServiceImpl
+from business.services.impl.grid_service_impl import GridServiceImpl
 from business.services.impl.group_service_impl import GroupServiceImpl
 from business.services.impl.membership_service_impl import MembershipServiceImpl
 from business.services.impl.priority_service_impl import PriorityServiceImpl
@@ -52,8 +54,16 @@ class ServiceFactory:
         return CustomObjectServiceImpl()
 
     @staticmethod
+    def get_grid_service():
+        return GridServiceImpl()
+
+    @staticmethod
     def get_group_service():
         return GroupServiceImpl()
+
+    @staticmethod
+    def get_help_texts_service():
+        return HelpTextsService()
 
     @staticmethod
     def get_membership_service():

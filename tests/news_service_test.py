@@ -2,13 +2,15 @@ import json
 import unittest
 
 from business.services.news_service import NewsService
+from model.new import New
 
 
 class NewsServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.newsSer = NewsService()
-        self.new = json.loads('/data/new.json')
+        with open('./data/new.json') as f:
+            self.new = New(json.load(f))
 
     def test_find(self):
         self.assertNotNull(self.newsSer.find(self.new))

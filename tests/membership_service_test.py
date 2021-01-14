@@ -2,13 +2,15 @@ import json
 import unittest
 
 from business.services.membership_service import MembershipService
+from model.membership import Membership
 
 
 class MembershipServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.membershipSer = MembershipService()
-        self.membership = json.loads('/data/membership.json')
+        with open('./data/membership.json') as f:
+            self.membership = Membership(json.load(f))
 
     def test_find_all(self):
         self.assertNotNull(self.membershipSer.find_all())
