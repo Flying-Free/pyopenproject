@@ -2,13 +2,15 @@ import json
 import unittest
 
 from business.services.attachment_service import AttachmentService
+from model.attachment import Attachment
 
 
 class AttachmentServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.attSer = AttachmentService()
-        self.attachment = json.loads('/data/attachment.json')
+        with open('./data/attachment.json') as f:
+            self.attachment = Attachment(json.load(f))
 
     def test_create(self):
         self.assertNotNull(self.attSer.create(self.attachment))

@@ -1,4 +1,4 @@
-from business.services.impl.user_service_impl import UserServiceImpl
+import business.services.impl.user_service_impl as user_service_impl
 
 
 class User:
@@ -8,12 +8,12 @@ class User:
 
     def lock(self):
         if self._link.lock.href is not None:
-            return UserServiceImpl().lock_user(self.id)
+            return user_service_impl.UserServiceImpl().lock_user(self.id)
         return None
 
     def unlock(self):
         if self._link.lock.href is not None:
-            return UserServiceImpl().unlock_user(self.id)
+            return user_service_impl.UserServiceImpl().unlock_user(self.id)
         return None
 
     # TODO:
@@ -28,4 +28,4 @@ class User:
     #         },
 
     def delete(self):
-        UserServiceImpl().delete(self.id)
+        user_service_impl.UserServiceImpl().delete(self.id)
