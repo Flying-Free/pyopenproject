@@ -1,14 +1,16 @@
 import json
 import unittest
 
-from business.configuration_service import ConfigurationService
+from business.impl.configuration_service_impl import ConfigurationServiceImpl
+from model.configuration import Configuration
 
 
 class ConfigurationServiceTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.confSer = ConfigurationService()
-        self.configuration = json.loads('/data/configuration.json')
+        self.confSer = ConfigurationServiceImpl()
+        with open('./data/configuration.json') as f:
+            self.configuration = Configuration(json.load(f))
 
     def test_find(self):
-        self.assertNotNull(self.confSer.find())
+        self.assertIsNotNone(self.confSer.find())

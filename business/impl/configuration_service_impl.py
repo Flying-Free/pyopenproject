@@ -1,8 +1,8 @@
-from business.activity_service import ActivityService
+from business.configuration_service import ConfigurationService
 from business.impl.command.activity.find import Find
 
 
-class ConfigurationServiceImpl(ActivityService):
+class ConfigurationServiceImpl(ConfigurationService):
 
-    def list(self):
-        return List().execute()
+    def find(self):
+        return Find().execute()

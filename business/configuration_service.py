@@ -5,4 +5,4 @@ class ConfigurationService:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def list(self): raise NotImplementedError
+    def find(self): raise NotImplementedError
