@@ -1,5 +1,5 @@
 api_conn:
   host: "http://127.0.0.1"
   port: 8080
-  user: "apikey"
-  password: "changeme"
+  user: "admin"
+  password: "admin"
