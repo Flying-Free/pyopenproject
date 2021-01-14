@@ -12,14 +12,14 @@ from business.query_service import QueryService
 
 class QueryServiceImpl(QueryService):
 
-
     def update(self, query):
         return Update(query).execute()
 
     def find(self, query, offset, pageSize, filters, columns, sortBy, groupBy, showSums, timelineVisible,
-                     timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes, showHierarchies):
+             timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes, showHierarchies):
         return Find(query, offset, pageSize, filters, columns, sortBy, groupBy, showSums, timelineVisible,
-                     timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes, showHierarchies).execute()
+                    timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes,
+                    showHierarchies).execute()
 
     def delete(self, query):
         return Delete(query).execute()
@@ -41,4 +41,3 @@ class QueryServiceImpl(QueryService):
 
     def schema(self):
         return Schema().execute()
-

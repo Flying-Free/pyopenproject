@@ -6,8 +6,8 @@ from business.role_service import RoleService
 
 class RoleServiceImpl(RoleService):
 
-    def find_all(self, role):
-        return FindAll(role).execute()
+    def find_all(self, filters):
+        return FindAll(filters).execute()
 
     def find(self, role):
         return Find(role).execute()

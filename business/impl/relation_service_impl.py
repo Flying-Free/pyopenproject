@@ -7,6 +7,7 @@ from business.impl.command.relation.update import Update
 from business.impl.command.relation.update_form import UpdateForm
 from business.relation_service import RelationService
 
+
 class RelationServiceImpl(RelationService):
 
     def find(self, relation):
