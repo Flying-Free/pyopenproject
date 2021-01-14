@@ -1,4 +1,3 @@
-import json
 import yaml
 import requests
 from requests.auth import HTTPBasicAuth
@@ -9,10 +8,10 @@ from api_connection.exceptions.request_exception import RequestError
 class Connection:
 
     def __init__(self):
-        with open("config.yml", "r") as ymlfile:
-            cfg = yaml.load(ymlfile)
+        with open("../config.yml", "r") as ymlfile:
+            cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 
-        self.url_base = cfg["api_conn"]["host"] + ":" + cfg["api_conn"]["port"]
+        self.url_base = cfg["api_conn"]["host"] + ":" + str(cfg["api_conn"]["port"])
         self.api_user = cfg["api_conn"]["user"]
         self.api_key = cfg["api_conn"]["password"]
 
@@ -24,10 +23,10 @@ class Connection:
     def get(self, context):
         try:
             response = requests.get(
-                self.URL_BASE + context,
+                self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key)
             )
-            return json.loads(response.json())
+            return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running GET with the URL: '{self.url_base + context}'." +
@@ -50,7 +49,7 @@ class Connection:
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
                 body=body
             )
-            return json.loads(response.json())
+            return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running POST with the URL: '{self.url_base + context}'." +
@@ -72,7 +71,7 @@ class Connection:
                 self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key)
             )
-            return json.loads(response.json())
+            return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running DELETE with the URL: '{self.url_base + context}'." +
@@ -95,7 +94,7 @@ class Connection:
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
                 body=body
             )
-            return json.loads(response.json())
+            return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running PUT with the URL: '{self.url_base + context}'." +
@@ -118,7 +117,7 @@ class Connection:
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
                 body=body
             )
-            return json.loads(response.json())
+            return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running PATCH with the URL: '{self.url_base + context}'." +

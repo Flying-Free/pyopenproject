@@ -1,5 +1,5 @@
 from business.configuration_service import ConfigurationService
-from business.impl.command.activity.find import Find
+from business.impl.command.configuration.find import Find
 
 
 class ConfigurationServiceImpl(ConfigurationService):

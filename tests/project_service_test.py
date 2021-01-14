@@ -2,13 +2,14 @@ import json
 import unittest
 
 from business.project_service import ProjectService
+from model.project import Project
 
 
 class ProjectServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.proSer = ProjectService()
-        self.project = json.loads('/data/project.json')
+        self.project = Project(json.loads('./data/project.json'))
 
     def test_find(self):
         self.assertNotNull(self.proSer.find(self.project))
@@ -20,8 +21,7 @@ class ProjectServiceTestCase(unittest.TestCase):
         self.assertNotNull(self.proSer.delete(self.project))
 
     def test_find_all(self):
-        self.assertNotNull(self.proSer.find_all(filters,sortBy))
-
+        self.assertNotNull(self.proSer.find_all(None, None))
 
     def test_create(self):
         self.assertNotNull(self.proSer.create(self.project))
@@ -32,10 +32,8 @@ class ProjectServiceTestCase(unittest.TestCase):
     def test_create_form(self):
         self.assertNotNull(self.proSer.create_form(self.project))
 
-
     def test_update_form(self):
         self.assertNotNull(self.proSer.update_form(self.project))
-
 
     def test_find_parents(self):
         self.assertNotNull(self.proSer.find_parents(filters, of, sortBy))

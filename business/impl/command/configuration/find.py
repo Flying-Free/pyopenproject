@@ -5,11 +5,11 @@ from business.impl.command.configuration.configuration_command import Configurat
 from model.configuration import Configuration
 
 
-class List(ConfigurationCommand):
+class Find(ConfigurationCommand):
 
     def execute(self):
         try:
             json_obj = Connection().get(f"{self.CONTEXT}")
-            return  Configuration(json_obj)
+            return Configuration(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error listing configuration") from re
