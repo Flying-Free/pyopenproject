@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+import business.service_factory as service_factory
 
 
 class Principal:
@@ -8,5 +8,6 @@ class Principal:
 
     def get_user(self):
         if self._links.user.href is not None:
-            return ServiceFactory.get_user_service().find_by_context(self._links.user.href)
+            return service_factory.ServiceFactory.get_user_service()\
+                .find_by_context(self._links.user.href)
         return None

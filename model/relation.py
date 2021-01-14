@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+import business.service_factory as service_factory
 
 
 class Relation:
@@ -9,16 +9,19 @@ class Relation:
     def get_from(self):
         work_package_from = self._links.__getattribute__("from").href
         if work_package_from.href is not None:
-            return ServiceFactory.get_work_package_service().find_by_context(work_package_from)
+            return service_factory.ServiceFactory.get_work_package_service()\
+                .find_by_context(work_package_from)
         return None
 
     def get_to(self):
         if self._links.to.href is not None:
-            return ServiceFactory.get_work_package_service().find_by_context(self._links.to.href)
+            return service_factory.ServiceFactory.get_work_package_service()\
+                .find_by_context(self._links.to.href)
         return None
 
     def delete(self):
-        ServiceFactory.get_relation_service().delete(self.id)
+        service_factory.ServiceFactory.get_relation_service()\
+            .delete(self.id)
 
     # TODO:
     #         "update": {

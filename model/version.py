@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+import business.service_factory as service_factory
 
 
 class Version:
@@ -8,12 +8,14 @@ class Version:
 
     def get_defining_project(self):
         if self._links.definingProject.href is not None:
-            ServiceFactory.get_project_service().find_project_by_context(self._links.definingProject.href)
+            service_factory.ServiceFactory.get_project_service()\
+                .find_project_by_context(self._links.definingProject.href)
         return None
 
     def get_available_in_projects(self):
         if self._links.availableInProjects.href is not None:
-            ServiceFactory.get_project_service().find_projects_by_context(self._links.availableInProjects.href)
+            service_factory.ServiceFactory.get_project_service()\
+                .find_projects_by_context(self._links.availableInProjects.href)
         return None
 
     # TODO:

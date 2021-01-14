@@ -26,6 +26,9 @@ class Connection:
                 self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key)
             )
+            if response.json()["_type"] == "Error":
+                raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
+                                   f"Message: {response.json()['message']}")
             return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
@@ -49,6 +52,9 @@ class Connection:
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
                 body=body
             )
+            if response.json()["_type"] == "Error":
+                raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
+                                   f"Message: {response.json()['message']}")
             return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
@@ -71,6 +77,9 @@ class Connection:
                 self.url_base + context,
                 auth=HTTPBasicAuth(self.api_user, self.api_key)
             )
+            if response.json()["_type"] == "Error":
+                raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
+                                   f"Message: {response.json()['message']}")
             return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
@@ -94,6 +103,9 @@ class Connection:
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
                 body=body
             )
+            if response.json()["_type"] == "Error":
+                raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
+                                   f"Message: {response.json()['message']}")
             return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
@@ -117,6 +129,9 @@ class Connection:
                 auth=HTTPBasicAuth(self.api_user, self.api_key),
                 body=body
             )
+            if response.json()["_type"] == "Error":
+                raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
+                                   f"Message: {response.json()['message']}")
             return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop

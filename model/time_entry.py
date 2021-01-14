@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+import business.service_factory as service_factory
 
 
 class TimeEntry:
@@ -8,27 +8,32 @@ class TimeEntry:
 
     def get_schema(self):
         if self._links.schema.href is not None:
-            return ServiceFactory.get_schema_service().find_by_context(self._links.schema.href)
+            return service_factory.ServiceFactory.get_schema_service()\
+                .find_by_context(self._links.schema.href)
         return None
 
     def get_project(self):
         if self._links.project.href is not None:
-            return ServiceFactory.get_project_service().find_by_context(self._link.project.href)
+            return service_factory.ServiceFactory.get_project_service()\
+                .find_by_context(self._link.project.href)
         return None
 
     def get_work_package(self):
         if self._links.workPackage.href is not None:
-            return ServiceFactory.get_work_package_service().find_by_context(self._link.workPackage.href)
+            return service_factory.ServiceFactory.get_work_package_service()\
+                .find_by_context(self._link.workPackage.href)
         return None
 
     def get_user(self):
         if self._links.user.href is not None:
-            return ServiceFactory.get_user_service().find_by_context(self._link.user.href)
+            return service_factory.ServiceFactory.get_user_service()\
+                .find_by_context(self._link.user.href)
         return None
 
     def get_activity(self):
         if self._links.activity.href is not None:
-            return ServiceFactory.get_activity_service().find_by_context(self._link.activity.href)
+            return service_factory.ServiceFactory.get_activity_service()\
+                .find_by_context(self._link.activity.href)
         return None
 
     # TODO: Study how to perform this actions associated to the project
@@ -42,4 +47,5 @@ class TimeEntry:
     #         }
 
     def delete(self):
-        ServiceFactory.get_time_entry_service().delete(self.id)
+        service_factory.ServiceFactory.get_time_entry_service()\
+            .delete(self.id)

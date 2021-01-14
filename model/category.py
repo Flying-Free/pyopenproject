@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+import business.service_factory as service_factory
 
 
 class Category:
@@ -8,10 +8,12 @@ class Category:
 
     def get_project(self):
         if self._links.project.href is not None:
-            return ServiceFactory.get_project_service().find_by_context(self._link.project.href)
+            return service_factory.ServiceFactory.get_project_service()\
+                .find_by_context(self._link.project.href)
         return None
 
     def get_default_assignee(self):
         if self._links.defaultAssignee.href is not None:
-            return ServiceFactory.get_user_service().find_by_context(self._link.defaultAssignee.href)
+            return service_factory.ServiceFactory.get_user_service()\
+                .find_by_context(self._link.defaultAssignee.href)
         return None

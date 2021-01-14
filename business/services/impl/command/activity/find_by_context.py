@@ -13,7 +13,12 @@ class FindByContext(ActivityCommand):
     def execute(self):
         try:
             json_obj = Connection().get(f"{self.context}")
-            return Activity(json_obj)
+            if json_obj["_type"] == "Activity::Comment":
+                return Activity(json_obj)
+            elif json_obj["_type"] == "Error":
+                raise BusinessError(f"Error finding activity by context {self.context}: \n"
+                                    f"\tError Identifier: {json_obj['errorIdentifier']}\n"
+                                    f"\tMessage: {json_obj['message']}")
         except RequestError as re:
             raise BusinessError(f"Error finding activity by context: {self.context}") from re
 

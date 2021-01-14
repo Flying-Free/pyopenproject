@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+import business.service_factory as service_factory
 
 
 class Membership:
@@ -8,17 +8,20 @@ class Membership:
 
     def get_schema(self):
         if self._links.schema.href is not None:
-            return ServiceFactory.get_schema_service().find_by_context(self._links.schema.href)
+            return service_factory.ServiceFactory.get_schema_service()\
+                .find_by_context(self._links.schema.href)
         return None
 
     def get_project(self):
         if self._links.project.href is not None:
-            return ServiceFactory.get_priority_service().find_by_context(self._link.project.href)
+            return service_factory.ServiceFactory.get_priority_service()\
+                .find_by_context(self._link.project.href)
         return None
 
     def get_principal(self):
         if self._links.user.href is not None:
-            return ServiceFactory.get_membership_service().find_member_by_context(self._link.principal.href)
+            return service_factory.ServiceFactory.get_membership_service()\
+                .find_member_by_context(self._link.principal.href)
         return None
 
     def get_roles(self):
@@ -26,7 +29,8 @@ class Membership:
             return None
         else:
             for role in self._link.roles:
-                yield ServiceFactory.get_role_service().find_by_context(role.href)
+                yield service_factory.ServiceFactory.get_role_service()\
+                    .find_by_context(role.href)
 
     # TODO
     #     "update": {
