@@ -1,4 +1,5 @@
 import datetime
+import json
 import unittest
 
 from dateutil.relativedelta import relativedelta
@@ -7,7 +8,10 @@ from business.time_entry_service import TimeEntryService
 
 
 class TimeEntryServiceTestCase(unittest.TestCase):
-    tEntryReq = TimeEntryService()
+
+    def setUp(self):
+        self.tEntryReq = TimeEntryService()
+        self.root = json.loads('/data/time_entry.json')
 
     def time_entries_request(self):
         today = datetime.today()

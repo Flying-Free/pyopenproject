@@ -42,7 +42,7 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find(self, work_package, notify):
         return Find(work_package, notify).execute()
 
-    def update_work_package(self, work_package, notify):
+    def update(self, work_package, notify):
         return Update(work_package, notify)
 
     def delete_work_package(self, work_package, notify):
@@ -54,31 +54,31 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_all_schemas(self, filters):
         return FindAllSchemas(filters)
 
-    def update_work_package_form(self, work_package):
+    def update_form(self, work_package):
         return UpdateForm(work_package)
 
     def find_all(self, notify, offset, pageSize, filters, sortBy, groupBy, showSums):
         return FindAll(notify, offset, pageSize, filters, sortBy, groupBy, showSums).execute()
 
-    def new_work_package(self, work_package, notify):
+    def create(self, work_package, notify):
         return Create(work_package, notify)
 
-    def new_work_package_form(self, work_package):
+    def create_form(self, work_package):
         return CreateForm(work_package).execute()
 
-    def new_relation(self, work_package, relation):
+    def create_relation(self, work_package, relation):
         return CreateRelation(work_package, relation).execute
 
     def find_relations_by_work_package(self, work_package):
         return FindRelationsByWorkPackage(work_package).execute()
 
-    def new_relation_form(self, work_package, relation):
+    def create_relation_form(self, work_package, relation):
         return CreateRelationForm(work_package, relation).execute()
 
     def find_watchers_by_work_package(self, work_package):
         return FindWatchersByWorkPackage(work_package).execute()
 
-    def new_watcher(self, work_package, watcher):
+    def create_watcher(self, work_package, watcher):
         return CreateWatcher(work_package, watcher).execute()
 
     def delete_watcher(self, work_package, watcher):
@@ -99,5 +99,5 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_activities_by_work_package(self, work_package, notify):
         return FindActivitiesByWorkPackage(work_package, notify).execute()
 
-    def new_activity(self, work_package, activity, notify):
+    def create_activity(self, work_package, activity, notify):
         return CreateActivity(work_package,activity, notify).execute()

@@ -1,10 +1,14 @@
+import json
 import unittest
 
 from business.group_service import GroupService
 
 
 class GroupServiceTestCase(unittest.TestCase):
-    groupSer = GroupService()
+
+    def setUp(self):
+        self.groupSer = GroupService()
+        self.group = json.loads('/data/group.json')
 
     def find(self):
-        self.assertNotNull(self.groupSer.find(group))
+        self.assertNotNull(self.groupSer.find(self.group))
