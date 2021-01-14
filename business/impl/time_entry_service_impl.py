@@ -5,6 +5,7 @@ from business.impl.command.time_entry.find import Find
 from business.impl.command.time_entry.find_all import FindAll
 from business.impl.command.time_entry.find_between_days import FindBetweenDays
 from business.impl.command.time_entry.find_by_context import FindByContext
+from business.impl.command.time_entry.find_projects import FindProjects
 from business.impl.command.time_entry.find_schema import FindSchema
 from business.impl.command.time_entry.update_form import UpdateForm
 from business.time_entry_service import TimeEntryService

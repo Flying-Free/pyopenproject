@@ -20,8 +20,6 @@ from business.project_service import ProjectService
 
 class ProjectServiceImpl(ProjectService):
 
-
-
     def find(self, project):
         return Find(project).execute()
 
@@ -58,7 +56,7 @@ class ProjectServiceImpl(ProjectService):
     def find_budgets(self, project):
         return FindBudgets(project).execute()
 
-    def find_work_packages(self, project, offset, pageSize,filters, sortBy, groupBy, showSums, notify):
+    def find_work_packages(self, project, offset, pageSize, filters, sortBy, groupBy, showSums, notify):
         return FindWorkPackages(project, offset, pageSize, filters, sortBy, groupBy, showSums, notify).execute()
 
     def create_work_package(self, project, notify, workPackage):
