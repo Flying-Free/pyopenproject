@@ -18,6 +18,8 @@ class ActivityServiceTestCase(unittest.TestCase):
         with self.assertRaises(BusinessError):
             self.actSer.find(self.activity)
 
+    # TODO: Test to find an Activity
+
     def test_update_activity(self):
         # TODO: We need a way to create activity in order to change it
         # self.assertIsNotNone(self.actSer.update(self.activity))

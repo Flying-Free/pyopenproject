@@ -12,7 +12,7 @@ class Find(CustomActionCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}/{self.custom_action.id}")
+            json_obj = Connection().get(self.custom_action._links["self"]["href"])
             return CustomAction(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding custom_action by id: {self.custom_action.id}") from re
+            raise BusinessError(f"Error finding custom_action: {self.custom_action._links['self']['href']}") from re

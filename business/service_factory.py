@@ -1,5 +1,6 @@
 from business.services.impl.activity_service_impl import ActivityServiceImpl
 from business.services.impl.attachment_service_impl import AttachmentServiceImpl
+from business.services.impl.budget_service_impl import BudgetServiceImpl
 from business.services.impl.category_service_impl import CategoryServiceImpl
 from business.services.impl.configuration_service_impl import ConfigurationServiceImpl
 from business.services.impl.custom_action_service_impl import CustomActionServiceImpl
@@ -31,6 +32,10 @@ class ServiceFactory:
         return AttachmentServiceImpl()
 
     @staticmethod
+    def get_budget_service():
+        return BudgetServiceImpl()
+
+    @staticmethod
     def get_category_service():
         return CategoryServiceImpl()
 
@@ -39,7 +44,7 @@ class ServiceFactory:
         return ConfigurationServiceImpl()
 
     @staticmethod
-    def get_custom_action():
+    def get_custom_action_service():
         return CustomActionServiceImpl()
 
     @staticmethod

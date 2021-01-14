@@ -14,7 +14,8 @@ class Execute(CustomActionCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().post(f"{self.CONTEXT}/{self.custom_action.id}/execute", json.dumps(self.custom_action.__dict__))
+            json_obj = Connection()\
+                .post(f"{self.custom_action._links['self']['href']}/execute", json.dumps(self.custom_action.__dict__))
             return CustomAction(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error executing custom_action: {self.custom_action.id}") from re

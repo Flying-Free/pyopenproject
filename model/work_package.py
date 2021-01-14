@@ -272,5 +272,5 @@ class WorkPackage:
             return None
         else:
             for custom_action in self._links.customActions:
-                yield service_factory.ServiceFactory.get_custom_action()\
+                yield service_factory.ServiceFactory.get_custom_action_service()\
                     .find_by_context(custom_action.href)
