@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.help_texts_service import HelpTextsService
+from business.services.help_texts_service import HelpTextsService
 
 
 class HelpTextsServiceTestCase(unittest.TestCase):

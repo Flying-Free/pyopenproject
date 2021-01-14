@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.budget_service import BudgetService
+from business.services.budget_service import BudgetService
 
 
 class BudgetServiceTestCase(unittest.TestCase):

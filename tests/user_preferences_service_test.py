@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.user_preferences_service import UserPreferencesService
+from business.services.user_preferences_service import UserPreferencesService
 
 
 class UserPreferencesServiceTestCase(unittest.TestCase):

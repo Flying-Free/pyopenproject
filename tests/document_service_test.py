@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.document_service import DocumentService
+from business.services.document_service import DocumentService
 
 
 class DocumentServiceTestCase(unittest.TestCase):

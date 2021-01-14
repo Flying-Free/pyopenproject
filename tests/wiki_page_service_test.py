@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.wiki_page_service import WikiPageService
+from business.services.wiki_page_service import WikiPageService
 
 
 class WikiPageServiceTestCase(unittest.TestCase):

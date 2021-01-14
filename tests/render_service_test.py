@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.render_service import RenderService
+from business.services.render_service import RenderService
 
 
 class RenderServiceTestCase(unittest.TestCase):

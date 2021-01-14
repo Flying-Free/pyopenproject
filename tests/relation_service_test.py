@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.relation_service import RelationService
+from business.services.relation_service import RelationService
 
 
 class RelationServiceTestCase(unittest.TestCase):

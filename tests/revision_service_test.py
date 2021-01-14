@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.revision_service import RevisionService
+from business.services.revision_service import RevisionService
 
 
 class RevisionServiceTestCase(unittest.TestCase):

@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.priority_service import PriorityService
+from business.services.priority_service import PriorityService
 
 
 class PriorityServiceTestCase(unittest.TestCase):

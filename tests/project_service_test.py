@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.project_service import ProjectService
+from business.services.project_service import ProjectService
 from model.project import Project
 
 

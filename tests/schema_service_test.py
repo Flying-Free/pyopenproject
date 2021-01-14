@@ -1,6 +1,6 @@
 import unittest
 
-from business.schema_service import SchemaService
+from business.services.schema_service import SchemaService
 
 
 class SchemaServiceTestCase(unittest.TestCase):

@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.custom_action_service import CustomActionService
+from business.services.custom_action_service import CustomActionService
 
 
 class CustomActionServiceTestCase(unittest.TestCase):

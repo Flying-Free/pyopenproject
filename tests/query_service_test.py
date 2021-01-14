@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.query_service import QueryService
+from business.services.query_service import QueryService
 
 
 class QueryServiceTestCase(unittest.TestCase):

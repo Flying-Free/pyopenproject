@@ -4,7 +4,7 @@ import unittest
 
 from dateutil.relativedelta import relativedelta
 
-from business.time_entry_service import TimeEntryService
+from business.services.time_entry_service import TimeEntryService
 
 
 class TimeEntryServiceTestCase(unittest.TestCase):

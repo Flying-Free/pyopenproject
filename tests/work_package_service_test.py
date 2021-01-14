@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.work_package_service import WorkPackageService
+from business.services.work_package_service import WorkPackageService
 
 
 class WorkPackageServiceTestCase(unittest.TestCase):

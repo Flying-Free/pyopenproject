@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.principal_service import PrincipalService
+from business.services.principal_service import PrincipalService
 
 
 class PrincipalServiceTestCase(unittest.TestCase):

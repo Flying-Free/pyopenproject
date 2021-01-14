@@ -1,4 +1,5 @@
-from business.service_factory import ServiceFactory
+from business.services.impl.user_service_impl import UserServiceImpl
+from business.services.impl.work_package_service_impl import WorkPackageServiceImpl
 
 
 class Activity:
@@ -8,10 +9,10 @@ class Activity:
 
     def get_work_package(self):
         if self._links.workPackage.href is not None:
-            return ServiceFactory.get_work_package_service().find_by_context(self._link.workPackage.href)
+            return WorkPackageServiceImpl().find_by_context(self._link.workPackage.href)
         return None
 
     def get_user(self):
         if self._links.user.href is not None:
-            return ServiceFactory.get_user_service().find_by_context(self._links.user.href)
+            return UserServiceImpl().find_by_context(self._links.user.href)
         return None

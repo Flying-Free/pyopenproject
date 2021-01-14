@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.type_service import TypeService
+from business.services.type_service import TypeService
 
 
 class TypeServiceTestCase(unittest.TestCase):

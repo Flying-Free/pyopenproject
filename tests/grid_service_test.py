@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.grid_service import GridService
+from business.services.grid_service import GridService
 
 
 class GridServiceTestCase(unittest.TestCase):

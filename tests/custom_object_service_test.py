@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.custom_object_service import CustomObjectService
+from business.services.custom_object_service import CustomObjectService
 
 
 class CustomObjectServiceTestCase(unittest.TestCase):

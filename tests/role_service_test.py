@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.role_service import RoleService
+from business.services.role_service import RoleService
 
 
 class RoleServiceTestCase(unittest.TestCase):

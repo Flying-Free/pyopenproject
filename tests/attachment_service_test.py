@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.attachment_service import AttachmentService
+from business.services.attachment_service import AttachmentService
 
 
 class AttachmentServiceTestCase(unittest.TestCase):

@@ -1,22 +1,23 @@
-from business.impl.activity_service_impl import ActivityServiceImpl
-from business.impl.attachment_service_impl import AttachmentServiceImpl
-from business.impl.category_service_impl import CategoryServiceImpl
-from business.impl.custom_action_service_impl import CustomActionServiceImpl
-from business.impl.custom_object_service_impl import CustomObjectServiceImpl
-from business.impl.group_service_impl import GroupServiceImpl
-from business.impl.membership_service_impl import MembershipServiceImpl
-from business.impl.priority_service_impl import PriorityServiceImpl
-from business.impl.project_service_impl import ProjectServiceImpl
-from business.impl.relation_service_impl import RelationServiceImpl
-from business.impl.revision_service_impl import RevisionServiceImpl
-from business.impl.role_service_impl import RoleServiceImpl
-from business.impl.schema_service_impl import SchemaServiceImpl
-from business.impl.status_service_impl import StatusServiceImpl
-from business.impl.time_entry_service_impl import TimeEntryServiceImpl
-from business.impl.type_service_impl import TypeServiceImpl
-from business.impl.user_service_impl import UserServiceImpl
-from business.impl.version_service_impl import VersionServiceImpl
-from business.impl.work_package_service_impl import WorkPackageServiceImpl
+from business.services.impl.activity_service_impl import ActivityServiceImpl
+from business.services.impl.attachment_service_impl import AttachmentServiceImpl
+from business.services.impl.category_service_impl import CategoryServiceImpl
+from business.services.impl.configuration_service_impl import ConfigurationServiceImpl
+from business.services.impl.custom_action_service_impl import CustomActionServiceImpl
+from business.services.impl.custom_object_service_impl import CustomObjectServiceImpl
+from business.services.impl.group_service_impl import GroupServiceImpl
+from business.services.impl.membership_service_impl import MembershipServiceImpl
+from business.services.impl.priority_service_impl import PriorityServiceImpl
+from business.services.impl.project_service_impl import ProjectServiceImpl
+from business.services.impl.relation_service_impl import RelationServiceImpl
+from business.services.impl.revision_service_impl import RevisionServiceImpl
+from business.services.impl.role_service_impl import RoleServiceImpl
+from business.services.impl.schema_service_impl import SchemaServiceImpl
+from business.services.impl.status_service_impl import StatusServiceImpl
+from business.services.impl.time_entry_service_impl import TimeEntryServiceImpl
+from business.services.impl.type_service_impl import TypeServiceImpl
+from business.services.impl.user_service_impl import UserServiceImpl
+from business.services.impl.version_service_impl import VersionServiceImpl
+from business.services.impl.work_package_service_impl import WorkPackageServiceImpl
 
 
 class ServiceFactory:
@@ -32,6 +33,10 @@ class ServiceFactory:
     @staticmethod
     def get_category_service():
         return CategoryServiceImpl()
+
+    @staticmethod
+    def get_configuration_service():
+        return ConfigurationServiceImpl()
 
     @staticmethod
     def get_custom_action():

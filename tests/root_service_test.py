@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.root_service import RootService
+from business.services.root_service import RootService
 
 
 class RootServiceTestCase(unittest.TestCase):

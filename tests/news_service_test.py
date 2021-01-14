@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from business.news_service import NewsService
+from business.services.news_service import NewsService
 
 
 class NewsServiceTestCase(unittest.TestCase):

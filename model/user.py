@@ -1,4 +1,4 @@
-from business.service_factory import ServiceFactory
+from business.services.impl.user_service_impl import UserServiceImpl
 
 
 class User:
@@ -8,12 +8,12 @@ class User:
 
     def lock(self):
         if self._link.lock.href is not None:
-            return ServiceFactory.get_user_service().lock_user(self.id)
+            return UserServiceImpl().lock_user(self.id)
         return None
 
     def unlock(self):
         if self._link.lock.href is not None:
-            return ServiceFactory.get_user_service().unlock_user(self.id)
+            return UserServiceImpl().unlock_user(self.id)
         return None
 
     # TODO:
@@ -27,6 +27,5 @@ class User:
     #             "method": "patch"
     #         },
 
-
     def delete(self):
-        ServiceFactory.get_user_service().delete(self.id)
+        UserServiceImpl().delete(self.id)
