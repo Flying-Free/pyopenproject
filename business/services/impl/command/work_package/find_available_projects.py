@@ -5,7 +5,7 @@ from business.services.impl.command.work_package.work_package_command import Wor
 from model.project import Project
 
 
-class FindAvailableProjectsByWorkPackage(WorkPackageCommand):
+class FindAvailableProjects(WorkPackageCommand):
     def __init__(self, work_package):
         self.work_package = work_package
 

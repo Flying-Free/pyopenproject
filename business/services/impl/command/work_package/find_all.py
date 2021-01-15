@@ -6,8 +6,7 @@ from model.work_package import WorkPackage
 
 
 class FindAll(WorkPackageCommand):
-    def __init__(self, notify, offset, pageSize, filters, sortBy, groupBy, showSums):
-        self.notify = notify
+    def __init__(self, offset, pageSize, filters, sortBy, groupBy, showSums):
         self.offset = offset
         self.pageSize = pageSize
         self.filters = filters
@@ -17,7 +16,7 @@ class FindAll(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}?{self.notify},{self.offset},{self.pageSize},{self.filters},{self.sortBy},{self.groupBy},{self.showSums}")
+            json_obj = Connection().get(f"{self.CONTEXT}?,{self.offset},{self.pageSize},{self.filters},{self.sortBy},{self.groupBy},{self.showSums}")
             for work_package in json_obj._embedded.elements:
                 yield WorkPackage(work_package)
         except RequestError as re:
