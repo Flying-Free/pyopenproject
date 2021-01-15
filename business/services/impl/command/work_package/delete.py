@@ -7,13 +7,12 @@ from model.work_package import WorkPackage
 
 class Delete(WorkPackageCommand):
 
-    def __init__(self, work_package, notify):
+    def __init__(self, work_package):
         self.work_package = work_package
-        self.notify = notify
 
     def execute(self):
         try:
-            json_obj = Connection().delete(f"{self.CONTEXT}/{self.work_package.id}?{self.notify}")
+            json_obj = Connection().delete(f"{self.CONTEXT}/{self.work_package.id}")
             return WorkPackage(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error deleting work package: {self.work_package.id}") from re

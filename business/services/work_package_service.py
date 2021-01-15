@@ -14,13 +14,13 @@ class WorkPackageService:
     def add_attachment(self, work_package, attachment): raise NotImplementedError
 
     @abstractmethod
-    def find(self, notify): raise NotImplementedError
+    def find(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def update(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
-    def delete_work_package(self, work_package, notify): raise NotImplementedError
+    def delete(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def find_schema(self, schema): raise NotImplementedError
@@ -44,13 +44,13 @@ class WorkPackageService:
     def create_relation(self, work_package, relation): raise NotImplementedError
 
     @abstractmethod
-    def find_relations_by_work_package(self, work_package): raise NotImplementedError
+    def find_relations(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def create_relation_form(self, relation): raise NotImplementedError
 
     @abstractmethod
-    def find_watchers_by_work_package(self, work_package): raise NotImplementedError
+    def find_watchers(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def create_watcher(self, work_package, watcher): raise NotImplementedError
@@ -59,19 +59,19 @@ class WorkPackageService:
     def delete_watcher(self, work_package, watcher): raise NotImplementedError
 
     @abstractmethod
-    def find_relation_candidates_by_work_package(self, work_package, filters, query, type, pageSize): raise NotImplementedError
+    def find_relation_candidates(self, work_package, filters, query, type, pageSize): raise NotImplementedError
 
     @abstractmethod
-    def find_available_watchers_by_work_package(self, work_package): raise NotImplementedError
+    def find_available_watchers(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_available_projects_by_work_package(self, work_package): raise NotImplementedError
+    def find_available_projects(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_revisions_by_work_package(self, work_package): raise NotImplementedError
+    def find_revisions(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_activities_by_work_package(self, work_package, notify): raise NotImplementedError
+    def find_activities(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
     def create_activity(self, work_package, activity, notify): raise NotImplementedError

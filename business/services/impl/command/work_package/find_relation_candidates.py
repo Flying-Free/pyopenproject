@@ -5,7 +5,7 @@ from business.services.impl.command.work_package.work_package_command import Wor
 from model.relation import Relation
 
 
-class FindRelationCandidatesByWorkPackage(WorkPackageCommand):
+class FindRelationCandidates(WorkPackageCommand):
     def __init__(self, work_package, filters, query, type, pageSize):
         self.work_package = work_package
         self.filters = filters
