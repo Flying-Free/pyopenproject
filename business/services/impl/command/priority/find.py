@@ -1,4 +1,4 @@
-from api_connection.connection import Connection
+from model.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
 from business.exception.business_error import BusinessError
 from business.services.impl.command.priority.priority_command import PriorityCommand

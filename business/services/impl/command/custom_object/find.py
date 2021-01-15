@@ -1,4 +1,4 @@
-from api_connection.connection import Connection
+from model.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
 from business.exception.business_error import BusinessError
 from business.services.impl.command.custom_object.custom_object_command import CustomObjectCommand
@@ -12,7 +12,7 @@ class Find(CustomObjectCommand):
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}/{self.custom_object.id}")
+            json_obj = Connection().get(f"{self.custom_object._links['self']['href']}")
             return CustomObject(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding custom_object by id: {self.custom_object.id}") from re
+            raise BusinessError(f"Error finding custom_object: {self.custom_object._links['self']['href']}") from re

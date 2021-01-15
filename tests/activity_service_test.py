@@ -1,15 +1,24 @@
 import json
 import unittest
 
+import yaml
+
+from business.exception.business_error import BusinessError
 from business.service_factory import ServiceFactory
 from model.activity import Activity
-from business.exception.business_error import BusinessError
 
 
 class ActivityServiceTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.actSer = ServiceFactory.get_activity_service()
+        with open("../api_connection/config.yml", "r") as ymlfile:
+            cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
+        url_base = cfg["api_conn"]["host"] + ":" + str(cfg["api_conn"]["port"])
+        api_user = cfg["api_conn"]["user"]
+        api_key = cfg["api_conn"]["password"]
+
+        self.factory = ServiceFactory(url=url_base, user=api_user, api_key=api_key)
+        self.actSer = self.factory.get_activity_service()
         with open('./data/activity.json') as f:
             self.activity = Activity(json.load(f))
 

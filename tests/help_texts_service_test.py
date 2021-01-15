@@ -2,7 +2,7 @@ import json
 import unittest
 
 from business.service_factory import ServiceFactory
-from business.services.help_texts_service import HelpTextsService
+from business.services.help_texts_service import HelpTextsServiceImpl
 from model.help_text import HelpText
 
 

@@ -1,4 +1,3 @@
-from business.services.help_texts_service import HelpTextsService
 from business.services.impl.activity_service_impl import ActivityServiceImpl
 from business.services.impl.attachment_service_impl import AttachmentServiceImpl
 from business.services.impl.budget_service_impl import BudgetServiceImpl
@@ -8,6 +7,7 @@ from business.services.impl.custom_action_service_impl import CustomActionServic
 from business.services.impl.custom_object_service_impl import CustomObjectServiceImpl
 from business.services.impl.grid_service_impl import GridServiceImpl
 from business.services.impl.group_service_impl import GroupServiceImpl
+from business.services.impl.help_texts_service_impl import HelpTextsServiceImpl
 from business.services.impl.membership_service_impl import MembershipServiceImpl
 from business.services.impl.priority_service_impl import PriorityServiceImpl
 from business.services.impl.project_service_impl import ProjectServiceImpl
@@ -21,98 +21,81 @@ from business.services.impl.type_service_impl import TypeServiceImpl
 from business.services.impl.user_service_impl import UserServiceImpl
 from business.services.impl.version_service_impl import VersionServiceImpl
 from business.services.impl.work_package_service_impl import WorkPackageServiceImpl
+from model.connection import Connection
 
 
 class ServiceFactory:
 
-    @staticmethod
-    def get_activity_service():
-        return ActivityServiceImpl()
+    def __init__(self, url, api_key, user=None):
+        self.conn = Connection(url=url, apikey=api_key) \
+            if user is None \
+            else Connection(url=url, user=user, apikey=api_key)
 
-    @staticmethod
-    def get_attachment_service():
-        return AttachmentServiceImpl()
+    def get_activity_service(self):
+        return ActivityServiceImpl(self.conn)
 
-    @staticmethod
-    def get_budget_service():
-        return BudgetServiceImpl()
+    def get_attachment_service(self):
+        return AttachmentServiceImpl(self.conn)
 
-    @staticmethod
-    def get_category_service():
-        return CategoryServiceImpl()
+    def get_budget_service(self):
+        return BudgetServiceImpl(self.conn)
 
-    @staticmethod
-    def get_configuration_service():
-        return ConfigurationServiceImpl()
+    def get_category_service(self):
+        return CategoryServiceImpl(self.conn)
 
-    @staticmethod
-    def get_custom_action_service():
-        return CustomActionServiceImpl()
+    def get_configuration_service(self):
+        return ConfigurationServiceImpl(self.conn)
 
-    @staticmethod
-    def get_custom_object_service():
-        return CustomObjectServiceImpl()
+    def get_custom_action_service(self):
+        return CustomActionServiceImpl(self.conn)
 
-    @staticmethod
-    def get_grid_service():
-        return GridServiceImpl()
+    def get_custom_object_service(self):
+        return CustomObjectServiceImpl(self.conn)
 
-    @staticmethod
-    def get_group_service():
-        return GroupServiceImpl()
+    def get_grid_service(self):
+        return GridServiceImpl(self.conn)
 
-    @staticmethod
-    def get_help_texts_service():
-        return HelpTextsService()
+    def get_group_service(self):
+        return GroupServiceImpl(self.conn)
 
-    @staticmethod
-    def get_membership_service():
-        return MembershipServiceImpl()
+    def get_help_texts_service(self):
+        return HelpTextsServiceImpl(self.conn)
 
-    @staticmethod
-    def get_priority_service():
-        return PriorityServiceImpl()
+    def get_membership_service(self):
+        return MembershipServiceImpl(self.conn)
 
-    @staticmethod
-    def get_project_service():
-        return ProjectServiceImpl()
+    def get_priority_service(self):
+        return PriorityServiceImpl(self.conn)
 
-    @staticmethod
-    def get_relation_service():
-        return RelationServiceImpl()
+    def get_project_service(self):
+        return ProjectServiceImpl(self.conn)
 
-    @staticmethod
-    def get_revision_service():
-        return RevisionServiceImpl()
+    def get_relation_service(self):
+        return RelationServiceImpl(self.conn)
 
-    @staticmethod
-    def get_role_service():
-        return RoleServiceImpl()
+    def get_revision_service(self):
+        return RevisionServiceImpl(self.conn)
 
-    @staticmethod
-    def get_schema_service():
-        return SchemaServiceImpl()
+    def get_role_service(self):
+        return RoleServiceImpl(self.conn)
 
-    @staticmethod
-    def get_status_service():
-        return StatusServiceImpl()
+    def get_schema_service(self):
+        return SchemaServiceImpl(self.conn)
 
-    @staticmethod
-    def get_time_entry_service():
-        return TimeEntryServiceImpl()
+    def get_status_service(self):
+        return StatusServiceImpl(self.conn)
 
-    @staticmethod
-    def get_type_service():
-        return TypeServiceImpl()
+    def get_time_entry_service(self):
+        return TimeEntryServiceImpl(self.conn)
 
-    @staticmethod
-    def get_user_service():
-        return UserServiceImpl()
+    def get_type_service(self):
+        return TypeServiceImpl(self.conn)
 
-    @staticmethod
-    def get_version_service():
-        return VersionServiceImpl()
+    def get_user_service(self):
+        return UserServiceImpl(self.conn)
 
-    @staticmethod
-    def get_work_package_service():
-        return WorkPackageServiceImpl()
+    def get_version_service(self):
+        return VersionServiceImpl(self.conn)
+
+    def get_work_package_service(self):
+        return WorkPackageServiceImpl(self.conn)
