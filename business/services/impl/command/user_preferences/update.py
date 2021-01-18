@@ -10,8 +10,7 @@ from model.user_preferences import UserPreferences
 class Update(UserPreferencesCommand):
 
     def __init__(self, connection, userPreferences):
-        super(connection)
-        self.userPreferences = userPreferences
+super().__init__(connection)        self.userPreferences = userPreferences
 
     def execute(self):
         try:

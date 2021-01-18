@@ -10,7 +10,7 @@ from model.relation import Relation
 class UpdateForm(RelationCommand):
 
     def __init__(self, connection, relation, form):
-        super(connection)
+        super().__init__(connection)
         self.relation = relation
         self.form = form
 

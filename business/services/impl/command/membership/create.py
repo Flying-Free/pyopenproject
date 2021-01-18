@@ -10,7 +10,7 @@ from model.membership import Membership
 class Create(MembershipCommand):
 
     def __init__(self, connection, membership):
-        super(connection)
+        super().__init__(connection)
         self.membership = membership
 
     def execute(self):

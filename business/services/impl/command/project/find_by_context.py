@@ -8,7 +8,7 @@ from model.project import Project
 class FindByContext(ProjectCommand):
 
     def __init__(self, connection, context):
-        super(connection)
+        super().__init__(connection)
         self.context = context
 
     def execute(self):

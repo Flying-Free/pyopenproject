@@ -8,7 +8,7 @@ from model.custom_action import CustomAction
 class Find(CustomActionCommand):
 
     def __init__(self, connection, custom_action):
-        super(connection)
+        super().__init__(connection)
         self.custom_action = custom_action
 
     def execute(self):

@@ -8,7 +8,7 @@ from model.schema import Schema
 class FindSchema(VersionCommand):
 
     def __init__(self, connection):
-        super(connection)
+        super().__init__(connection)
 
     def execute(self):
         try:

@@ -7,7 +7,7 @@ from business.services.impl.command.render.render_command import RenderCommand
 class ToMarkdown(RenderCommand):
 
     def __init__(self, connection, text):
-        super(connection)
+        super().__init__(connection)
         self.text = text
 
     def execute(self):

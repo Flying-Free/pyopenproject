@@ -10,7 +10,7 @@ from model.query import Query
 class CreateForm(QueryCommand):
 
     def __init__(self, connection, form):
-        super(connection)
+        super().__init__(connection)
         self.form = form
 
     def execute(self):

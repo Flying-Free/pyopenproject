@@ -8,7 +8,7 @@ from model.grid import Grid
 class Create(GridCommand):
 
     def __init__(self, connection, grid):
-        super(connection)
+        super().__init__(connection)
         self.grid = grid
 
     def execute(self):

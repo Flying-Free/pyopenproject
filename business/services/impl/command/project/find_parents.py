@@ -10,7 +10,7 @@ from model.project import Project
 class FindParents(ProjectCommand):
 
     def __init__(self, connection, filters, of, sortBy):
-        super(connection)
+        super().__init__(connection)
         self.filters = filters
         self.of = of
         self.sortBy = sortBy

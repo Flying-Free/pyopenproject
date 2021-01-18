@@ -10,7 +10,7 @@ from model.type import Type
 class FindTypes(ProjectCommand):
 
     def __init__(self, connection, project):
-        super(connection)
+        super().__init__(connection)
         self.project = project
 
     def execute(self):

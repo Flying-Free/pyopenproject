@@ -8,7 +8,7 @@ from model.group import Group
 class Find(GroupCommand):
 
     def __init__(self, connection, group):
-        super(connection)
+        super().__init__(connection)
         self.group = group
 
     def execute(self):

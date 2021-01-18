@@ -10,7 +10,7 @@ from model.version import Version
 class Create(VersionCommand):
 
     def __init__(self, connection, version):
-        super(connection)
+        super().__init__(connection)
         self.version = version
 
     def execute(self):

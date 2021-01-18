@@ -10,7 +10,7 @@ from model.query import Query
 class FindAll(QueryCommand):
 
     def __init__(self, connection, filters):
-        super(connection)
+        super().__init__(connection)
         self.filters = filters
 
     def execute(self):

@@ -8,7 +8,7 @@ from model.category import Category
 class FindByContext(CategoryCommand):
 
     def __init__(self, connection, context):
-        super(connection)
+        super().__init__(connection)
         self.context = context
 
     def execute(self):

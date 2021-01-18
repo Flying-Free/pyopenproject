@@ -8,7 +8,7 @@ from model.custom_object import CustomObject
 class Find(CustomObjectCommand):
 
     def __init__(self, connection, custom_object):
-        super(connection)
+        super().__init__(connection)
         self.custom_object = custom_object
 
     def execute(self):

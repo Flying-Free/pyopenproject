@@ -8,7 +8,7 @@ from model.document import Document
 class FindAll(DocumentCommand):
 
     def __init__(self, connection, offset, pageSize, sortBy):
-        super(connection)
+        super().__init__(connection)
         self.offset = offset
         self.pageSize = pageSize
         self.sortBy = sortBy

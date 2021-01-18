@@ -9,8 +9,7 @@ from business.services.impl.command.wiki_page.wiki_command import WikiPageComman
 class AddAttachment(WikiPageCommand):
 
     def __init__(self, connection, work_package, attachment):
-        super(connection)
-        self.work_package = work_package
+super().__init__(connection)        self.work_package = work_package
         self.attachment = attachment
 
     def execute(self):

@@ -9,7 +9,7 @@ from business.services.impl.command.post.post_command import PostCommand
 class AddAttachment(PostCommand):
 
     def __init__(self, connection, post, attachment):
-        super(connection)
+        super().__init__(connection)
         self.post = post
         self.attachment = attachment
 

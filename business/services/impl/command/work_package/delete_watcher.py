@@ -8,8 +8,7 @@ from model.user import User
 class DeleteWatcher(WorkPackageCommand):
 
     def __init__(self, connection, work_package, watcher):
-        super(connection)
-        self.work_package = work_package
+super().__init__(connection)        self.work_package = work_package
         self.watcher = watcher
 
     def execute(self):

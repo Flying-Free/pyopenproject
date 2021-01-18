@@ -8,7 +8,7 @@ from model.new import News
 class FindAll(NewsCommand):
 
     def __init__(self, connection, offset, pageSize, filters, sortBy):
-        super(connection)
+        super().__init__(connection)
         self.offset = offset
         self.pageSize = pageSize
         self.filters = filters

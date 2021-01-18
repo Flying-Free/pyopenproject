@@ -7,7 +7,7 @@ from business.services.impl.command.render.render_command import RenderCommand
 class ToPlain(RenderCommand):
 
     def __init__(self, connection, context, text):
-        super(connection)
+        super().__init__(connection)
         self.context = context
         self.text = text
 

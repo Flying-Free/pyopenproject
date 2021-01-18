@@ -8,7 +8,7 @@ from model.post import Post
 class Find(PostCommand):
 
     def __init__(self, connection, post):
-        super(connection)
+        super().__init__(connection)
         self.post = post
 
     def execute(self):

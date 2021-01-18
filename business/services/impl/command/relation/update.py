@@ -10,7 +10,7 @@ from model.relation import Relation
 class Update(RelationCommand):
 
     def __init__(self, connection, relation):
-        super(connection)
+        super().__init__(connection)
         self.relation = relation
 
     def execute(self):

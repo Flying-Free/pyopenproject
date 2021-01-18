@@ -8,7 +8,7 @@ from model.budget import Budget
 class Find(BudgetCommand):
 
     def __init__(self, connection, budget):
-        super(connection)
+        super().__init__(connection)
         self.budget = budget
 
     def execute(self):

@@ -10,8 +10,7 @@ from business.services.impl.command.work_package.work_package_command import Wor
 class CreateActivity(WorkPackageCommand):
 
     def __init__(self, connection, work_package, activity, notify):
-        super(connection)
-        self.work_package = work_package
+super().__init__(connection)        self.work_package = work_package
         self.activity = activity
         self.notify = notify
 

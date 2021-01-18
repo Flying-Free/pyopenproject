@@ -1,3 +1,4 @@
+super().__init__(connection)
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
@@ -8,7 +9,7 @@ from model.schema import Schema
 class FindSchema(ProjectCommand):
 
     def __init__(self, connection):
-        super(connection)
+        super().__init__(connection)
 
     def execute(self):
         try:

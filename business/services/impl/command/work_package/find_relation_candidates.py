@@ -7,8 +7,7 @@ from model.relation import Relation
 
 class FindRelationCandidates(WorkPackageCommand):
     def __init__(self, connection, work_package, filters, query, type, pageSize):
-        super(connection)
-        self.work_package = work_package
+super().__init__(connection)        self.work_package = work_package
         self.filters = filters
         self.query = query
         self.type = type

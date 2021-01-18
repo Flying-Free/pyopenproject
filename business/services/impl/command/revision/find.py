@@ -8,7 +8,7 @@ from model.revision import Revision
 class Find(RevisionCommand):
 
     def __init__(self, connection, revision):
-        super(connection)
+        super().__init__(connection)
         self.revision = revision
 
     def execute(self):

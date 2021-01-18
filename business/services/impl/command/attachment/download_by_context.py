@@ -7,7 +7,7 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class DownloadByContext(AttachmentCommand):
 
     def __init__(self, connection, context):
-        super(connection)
+        super().__init__(connection)
         self.context = context
 
     def execute(self):

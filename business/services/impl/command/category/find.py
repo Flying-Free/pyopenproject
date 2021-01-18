@@ -8,7 +8,7 @@ from model.category import Category
 class Find(CategoryCommand):
 
     def __init__(self, connection, category):
-        super(connection)
+        super().__init__(connection)
         self.category = category
 
     def execute(self):

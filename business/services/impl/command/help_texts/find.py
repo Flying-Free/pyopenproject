@@ -8,7 +8,7 @@ from model.help_text import HelpText
 class Find(HelpTextsCommand):
 
     def __init__(self, connection, help_text):
-        super(connection)
+        super().__init__(connection)
         self.help_text = help_text
 
     def execute(self):

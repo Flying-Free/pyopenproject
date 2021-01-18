@@ -10,8 +10,7 @@ from model.time_entry import TimeEntry
 class FindAll(TimeEntryCommand):
 
     def __init__(self, connection, offset, pageSize, filters, sortBy):
-        super(connection)
-        self.offset = offset
+super().__init__(connection)        self.offset = offset
         self.pageSize = pageSize
         self.filters = filters
         self.sortBy = sortBy

@@ -9,7 +9,7 @@ from model.version import Version
 
 class FindAll(VersionCommand):
     def __init__(self, connection, filters):
-        super(connection)
+        super().__init__(connection)
         self.filters = filters
 
     def execute(self):

@@ -10,6 +10,7 @@ from model.version import Version
 class FindVersions(ProjectCommand):
 
     def __init__(self, connection, project):
+        super().__init__(connection)
         self.project = project
 
     def execute(self):

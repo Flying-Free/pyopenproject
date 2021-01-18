@@ -8,8 +8,7 @@ from model.user import User
 class FindAll(UserCommand):
 
     def __init__(self, connection, offset, pageSize, filters, sortBy):
-        super(connection)
-        self.offset = offset
+super().__init__(connection)        self.offset = offset
         self.pageSize = pageSize
         self.filters = filters
         self.sortBy = sortBy

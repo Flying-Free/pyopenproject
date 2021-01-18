@@ -8,7 +8,7 @@ from model.activity import Activity
 class FindByContext(ActivityCommand):
 
     def __init__(self, connection, context):
-        super(connection)
+        super().__init__(connection)
         self.context = context
 
     def execute(self):

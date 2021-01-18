@@ -8,8 +8,7 @@ from model.schema import Schema
 class FindSchema(WorkPackageCommand):
 
     def __init__(self, connection, schema):
-        super(connection)
-        self.schema = schema
+super().__init__(connection)        self.schema = schema
 
     def execute(self):
         try:

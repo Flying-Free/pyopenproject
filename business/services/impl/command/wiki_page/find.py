@@ -9,8 +9,7 @@ from business.services.impl.command.wiki_page.wiki_command import WikiPageComman
 class Find(WikiPageCommand):
 
     def __init__(self, connection, wiki_page):
-        super(connection)
-        self.wiki_page = wiki_page
+super().__init__(connection)        self.wiki_page = wiki_page
 
     def execute(self):
         try:

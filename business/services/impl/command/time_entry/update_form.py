@@ -10,8 +10,7 @@ from model.form import Form
 class UpdateForm(TimeEntryCommand):
 
     def __init__(self, connection, time_entry, form):
-        super(connection)
-        self.time_entry = time_entry
+super().__init__(connection)        self.time_entry = time_entry
         self.form = form
 
     def execute(self):

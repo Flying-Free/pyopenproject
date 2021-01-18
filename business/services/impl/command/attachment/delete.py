@@ -7,7 +7,7 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class Delete(AttachmentCommand):
 
     def __init__(self, connection, attachment):
-        super(connection)
+        super().__init__(connection)
         self.attachment = attachment
 
     def execute(self):

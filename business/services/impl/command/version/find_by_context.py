@@ -8,7 +8,7 @@ from model.version import Version
 class FindByContext(VersionCommand):
 
     def __init__(self, connection, context):
-        super(connection)
+        super().__init__(connection)
         self.context = context
 
     def execute(self):

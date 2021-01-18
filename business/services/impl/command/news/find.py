@@ -8,7 +8,7 @@ from model.new import News
 class Find(NewsCommand):
 
     def __init__(self, connection, news):
-        super(connection)
+        super().__init__(connection)
         self.news = news
 
     def execute(self):

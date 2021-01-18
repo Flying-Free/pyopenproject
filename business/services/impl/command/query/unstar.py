@@ -8,7 +8,7 @@ from model.query import Query
 class Unstar(QueryCommand):
 
     def __init__(self, connection, query):
-        super(connection)
+        super().__init__(connection)
         self.query = query
 
     def execute(self):

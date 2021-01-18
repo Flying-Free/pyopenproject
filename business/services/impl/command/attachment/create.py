@@ -8,7 +8,7 @@ from model.attachment import Attachment
 class Create(AttachmentCommand):
 
     def __init__(self, connection, attachment):
-        super(connection)
+        super().__init__(connection)
         self.attachment = attachment
 
     def execute(self):

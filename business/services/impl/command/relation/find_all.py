@@ -10,7 +10,7 @@ from model.relation import Relation
 class FindAll(RelationCommand):
 
     def __init__(self, connection, filters, sortBy):
-        super(connection)
+        super().__init__(connection)
         self.filters = filters
         self.sortBy = sortBy
 

@@ -10,7 +10,7 @@ from model.activity import Activity
 class Update(ActivityCommand):
 
     def __init__(self, connection, activity):
-        super(connection)
+        super().__init__(connection)
         self.activity = activity
 
     def execute(self):

@@ -10,8 +10,7 @@ from model.status import Status
 class FindAll(StatusCommand):
 
     def __init__(self, connection):
-        super(connection)
-
+super().__init__(connection)
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()

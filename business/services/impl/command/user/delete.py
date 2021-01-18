@@ -7,8 +7,7 @@ from business.services.impl.command.user.user_command import UserCommand
 class Delete(UserCommand):
 
     def __init__(self, connection, user):
-        super(connection)
-        self.user = user
+super().__init__(connection)        self.user = user
 
     def execute(self):
         try:

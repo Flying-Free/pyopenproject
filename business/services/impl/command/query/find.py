@@ -10,7 +10,7 @@ class Find(QueryCommand):
     def __init__(self, connection, activity, offset, pageSize, filters, columns, sortBy, groupBy, showSums,
                  timelineVisible, timelineLabels, timelineZoomLevel, highlightingMode,
                  highlightedAttributes, showHierarchies):
-        super(connection)
+        super().__init__(connection)
         self.offset = offset
         self.pageSize = pageSize
         self.filters = filters

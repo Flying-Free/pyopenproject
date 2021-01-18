@@ -8,7 +8,7 @@ from model.work_package import WorkPackage
 class FindWorkPackages(ProjectCommand):
 
     def __init__(self, connection, project, offset, pageSize, filters, sortBy, groupBy, showSums, notify):
-        super(connection)
+        super().__init__(connection)
         self.project = project
         self.offset = offset
         self.pageSize = pageSize

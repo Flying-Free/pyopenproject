@@ -8,7 +8,7 @@ from model.document import Document
 class Find(DocumentCommand):
 
     def __init__(self, connection, document):
-        super(connection)
+        super().__init__(connection)
         self.document = document
 
     def execute(self):

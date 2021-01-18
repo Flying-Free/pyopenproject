@@ -8,7 +8,7 @@ from model.priority import Priority
 class Find(PriorityCommand):
 
     def __init__(self, connection, priority):
-        super(connection)
+        super().__init__(connection)
         self.priority = priority
 
     def execute(self):

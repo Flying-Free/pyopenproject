@@ -9,7 +9,7 @@ from model.project import Project
 
 class FindAll(ProjectCommand):
     def __init__(self, connection, filters, sortBy):
-        super(connection)
+        super().__init__(connection)
         self.filters = filters
         self.sortBy = sortBy
 

@@ -8,7 +8,7 @@ from model.principal import Principal
 class FindAll(PrincipalCommand):
 
     def __init__(self, connection, filters):
-        super(connection)
+        super().__init__(connection)
         self.filters = filters
 
     def execute(self):

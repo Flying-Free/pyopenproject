@@ -8,7 +8,7 @@ from model.help_text import HelpText
 class FindAll(HelpTextsCommand):
 
     def __init__(self, connection):
-        super(connection)
+        super().__init__(connection)
 
     def execute(self):
         try:

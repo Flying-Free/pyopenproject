@@ -8,8 +8,7 @@ from model.work_package import WorkPackage
 class FindByContext(WorkPackageCommand):
 
     def __init__(self, connection, context):
-        super(connection)
-        self.context = context
+super().__init__(connection)        self.context = context
 
     def execute(self):
         try:

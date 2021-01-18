@@ -8,7 +8,7 @@ from model.grid import Grid
 class FindAll(GridCommand):
 
     def __init__(self, connection, offset, pageSize, filters, sortBy):
-        super(connection)
+        super().__init__(connection)
         self.offset = offset
         self.pageSize = pageSize
         self.filters = filters

@@ -10,7 +10,7 @@ from model.form import Form
 class CreateWorkPackageForm(ProjectCommand):
 
     def __init__(self, connection, project, notify, form):
-        super(connection)
+        super().__init__(connection)
         self.project = project
         self.notify = notify
         self.form = form
