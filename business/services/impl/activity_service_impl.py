@@ -6,8 +6,8 @@ from business.services.impl.command.activity.update import Update
 
 class ActivityServiceImpl(ActivityService):
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     def find_by_context(self, context):
         return FindByContext(self.connection, context).execute()
