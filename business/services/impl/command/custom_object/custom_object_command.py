@@ -8,5 +8,8 @@ class CustomObjectCommand(Command):
 
     CONTEXT = "/api/v3/custom_objects"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

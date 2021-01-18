@@ -6,11 +6,14 @@ from business.services.impl.command.activity.update import Update
 
 class ActivityServiceImpl(ActivityService):
 
+    def __init__(self):
+        super
+
     def find_by_context(self, context):
-        return FindByContext(context).execute()
+        return FindByContext(self.connection, context).execute()
 
     def find(self, activity):
-        return Find(activity).execute()
+        return Find(self.connection, activity).execute()
 
     def update(self, activity):
-        return Update(activity).execute()
+        return Update(self.connection, activity).execute()

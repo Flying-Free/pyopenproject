@@ -4,5 +4,8 @@ from business.services.impl.command.configuration.find import Find
 
 class ConfigurationServiceImpl(ConfigurationService):
 
+    def __init__(self, connection):
+        super(ConfigurationServiceImpl, self).__init__(connection)
+
     def find(self):
-        return Find().execute()
+        return Find(self.connection).execute()

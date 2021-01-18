@@ -11,7 +11,7 @@ from model.activity import Activity
 class ActivityServiceTestCase(unittest.TestCase):
 
     def setUp(self):
-        with open("../api_connection/config.yml", "r") as ymlfile:
+        with open("conf/config.yml", "r") as ymlfile:
             cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
         url_base = cfg["api_conn"]["host"] + ":" + str(cfg["api_conn"]["port"])
         api_user = cfg["api_conn"]["user"]

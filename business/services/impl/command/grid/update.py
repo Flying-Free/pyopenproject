@@ -1,5 +1,5 @@
-from model.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
+from api_connection.requests.patch_request import PatchRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.grid.grid_command import GridCommand
 from model.grid import Grid
@@ -7,12 +7,14 @@ from model.grid import Grid
 
 class Update(GridCommand):
 
-    def __init__(self, grid):
+    def __init__(self, connection, grid):
+        super(connection)
         self.grid = grid
 
     def execute(self):
         try:
-            json_obj = Connection().patch(f"{self.CONTEXT}")
+            json_obj = PatchRequest(connection=self.connection,
+                                    context=f"{self.CONTEXT}").execute()
             return Grid(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding grid by id: {self.grid.id}") from re

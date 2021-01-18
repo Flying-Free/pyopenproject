@@ -8,5 +8,8 @@ class TimeEntryCommand(Command):
 
     CONTEXT = "/api/v3/time_entries"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

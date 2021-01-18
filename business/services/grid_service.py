@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class GridService:
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        super
+
     @abstractmethod
     def find(self, grid): raise NotImplementedError
 

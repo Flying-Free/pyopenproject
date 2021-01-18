@@ -8,5 +8,8 @@ class QueryCommand(Command):
 
     CONTEXT = "/api/v3/queries"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

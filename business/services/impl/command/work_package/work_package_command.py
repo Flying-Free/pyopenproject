@@ -8,5 +8,8 @@ class WorkPackageCommand(Command):
 
     CONTEXT = "/api/v3/work_packages/"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

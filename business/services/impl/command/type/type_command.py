@@ -8,5 +8,8 @@ class TypeCommand(Command):
 
     CONTEXT = "/api/v3/types"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

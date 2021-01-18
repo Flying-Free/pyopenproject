@@ -8,5 +8,8 @@ class MembershipCommand(Command):
 
     CONTEXT = "/api/v3/memberships"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class ProjectService:
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        super
+
     @abstractmethod
     def find(self, project): raise NotImplementedError
 

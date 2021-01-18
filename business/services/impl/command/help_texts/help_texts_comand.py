@@ -8,5 +8,8 @@ class HelpTextsCommand(Command):
 
     CONTEXT = "/api/v3/help_texts"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

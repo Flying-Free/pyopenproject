@@ -1,7 +1,7 @@
 import json
 
-from model.connection import Connection
 from api_connection.exceptions.request_exception import RequestError
+from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.role.role_command import RoleCommand
 from model.role import Role
@@ -9,12 +9,13 @@ from model.role import Role
 
 class FindAll(RoleCommand):
 
-    def __init__(self, filters):
+    def __init__(self, connection, filters):
+        super(connection)
         self.filters = filters
 
     def execute(self):
         try:
-            json_obj = Connection().get(f"{self.CONTEXT}?{self.filters}")
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}").execute()
             for tEntry in json.loads(json_obj):
                 yield Role(tEntry)
         except RequestError as re:

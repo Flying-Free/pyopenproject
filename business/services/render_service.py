@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class RenderService:
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        super
+
     @abstractmethod
     def to_markdown(self, text): raise NotImplementedError
 

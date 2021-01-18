@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class PostService:
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        super
+
     @abstractmethod
     def list_attachments(self, post): raise NotImplementedError
 

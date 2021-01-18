@@ -8,5 +8,8 @@ class PriorityCommand(Command):
 
     CONTEXT = "/api/v3/priorities"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

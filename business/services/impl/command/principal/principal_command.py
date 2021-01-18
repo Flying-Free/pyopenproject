@@ -8,5 +8,8 @@ class PrincipalCommand(Command):
 
     CONTEXT = "/api/v3/principals"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

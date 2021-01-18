@@ -8,5 +8,8 @@ class GroupCommand(Command):
 
     CONTEXT = "/api/v3/groups"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

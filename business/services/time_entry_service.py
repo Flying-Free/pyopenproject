@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class TimeEntryService(object):
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        super
+
     @abstractmethod
     def find_by_context(self): raise NotImplementedError
 

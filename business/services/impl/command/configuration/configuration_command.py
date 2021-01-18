@@ -8,5 +8,8 @@ class ConfigurationCommand(Command):
 
     CONTEXT = "/api/v3/configuration"
 
+    def __init__(self, connection):
+        self.connection = connection
+
     @abstractmethod
     def execute(self): raise NotImplementedError

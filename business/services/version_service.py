@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class VersionService:
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        super
+
     @abstractmethod
     def find(self, version): raise NotImplementedError
 

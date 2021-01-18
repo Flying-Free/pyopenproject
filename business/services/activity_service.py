@@ -1,8 +1,13 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class ActivityService:
+
+class ActivityService(AbstractService):
     __metaclass__ = ABCMeta
+
+    def __init__(self):
+        super
 
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError

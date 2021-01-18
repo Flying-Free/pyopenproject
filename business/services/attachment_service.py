@@ -1,8 +1,13 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class AttachmentService:
+
+class AttachmentService(AbstractService):
     __metaclass__ = ABCMeta
+
+    def __init__(self):
+        super
 
     @abstractmethod
     def create(self, attachment): raise NotImplementedError
