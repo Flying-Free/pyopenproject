@@ -8,7 +8,7 @@ class WikiPageService:
     def find(self, wiki_page): raise NotImplementedError
 
     @abstractmethod
-    def find_attachments(self, context, identifier, body): raise NotImplementedError
+    def find_attachments(self, wiki_page): raise NotImplementedError
 
     @abstractmethod
-    def add_attachment(self, context, identifier, body): raise NotImplementedError
+    def add_attachment(self, wiki_page, attachment): raise NotImplementedError
