@@ -7,7 +7,8 @@ from business.services.impl.command.time_entry.time_entry_command import TimeEnt
 class Delete(TimeEntryCommand):
 
     def __init__(self, connection, time_entry):
-super().__init__(connection)        self.time_entry = time_entry
+        super().__init__(connection)
+        self.time_entry = time_entry
 
     def execute(self):
         try:

@@ -10,7 +10,8 @@ from model.role import Role
 class FindAll(RoleCommand):
 
     def __init__(self, connection, filters):
-super().__init__(connection)        self.filters = filters
+        super().__init__(connection)
+        self.filters = filters
 
     def execute(self):
         try:

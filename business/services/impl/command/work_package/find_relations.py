@@ -7,7 +7,8 @@ from model.relation import Relation
 
 class FindRelations(WorkPackageCommand):
     def __init__(self, connection, work_package):
-super().__init__(connection)        self.work_package = work_package
+        super().__init__(connection)
+        self.work_package = work_package
 
     def execute(self):
         try:

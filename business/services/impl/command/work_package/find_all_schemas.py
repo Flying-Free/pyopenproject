@@ -9,7 +9,8 @@ from model.schema import Schema
 
 class FindAllSchemas(WorkPackageCommand):
     def __init__(self, connection, filters):
-super().__init__(connection)        self.filters = filters
+        super().__init__(connection)
+        self.filters = filters
 
     def execute(self):
         try:

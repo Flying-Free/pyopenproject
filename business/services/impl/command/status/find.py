@@ -8,7 +8,8 @@ from model.status import Status
 class Find(StatusCommand):
 
     def __init__(self, connection, status):
-super().__init__(connection)        self.status = status
+        super().__init__(connection)
+        self.status = status
 
     def execute(self):
         try:

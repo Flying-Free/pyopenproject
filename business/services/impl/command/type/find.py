@@ -8,7 +8,8 @@ from model.type import Type
 class Find(TypeCommand):
 
     def __init__(self, connection, type):
-super().__init__(connection)        self.type = type
+        super().__init__(connection)
+        self.type = type
 
     def execute(self):
         try:

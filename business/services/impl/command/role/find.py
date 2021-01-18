@@ -8,7 +8,8 @@ from model.role import Role
 class Find(RoleCommand):
 
     def __init__(self, connection, role):
-super().__init__(connection)        self.role = role
+        super().__init__(connection)
+        self.role = role
 
     def execute(self):
         try:

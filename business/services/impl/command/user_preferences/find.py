@@ -8,7 +8,8 @@ from model.user_preferences import UserPreferences
 class Find(UserPreferencesCommand):
 
     def __init__(self, connection):
-super().__init__(connection)
+        super().__init__(connection)
+
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()

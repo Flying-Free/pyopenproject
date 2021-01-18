@@ -8,7 +8,8 @@ from model.attachment import Attachment
 class FindAttachments(WikiPageCommand):
 
     def __init__(self, connection, wiki_page):
-super().__init__(connection)        self.wiki_page = wiki_page
+        super().__init__(connection)
+        self.wiki_page = wiki_page
 
     def execute(self):
         try:

@@ -7,9 +7,9 @@ from model.revision import Revision
 
 class FindByContext(RevisionCommand):
 
-    def __init__(self, connection, context):
-super().__init__(connection)        self.context = context
+    def __init__(self, connection, context):        super().__init__(connection)
 
+    self.context = context
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.context}").execute()

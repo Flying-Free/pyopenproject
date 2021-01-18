@@ -1,15 +1,15 @@
-from model.wiki_page import WikiPage
-
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.wiki_page.wiki_command import WikiPageCommand
+from model.wiki_page import WikiPage
 
 
 class Find(WikiPageCommand):
 
     def __init__(self, connection, wiki_page):
-super().__init__(connection)        self.wiki_page = wiki_page
+        super().__init__(connection)
+        self.wiki_page = wiki_page
 
     def execute(self):
         try:

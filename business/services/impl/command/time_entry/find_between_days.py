@@ -8,7 +8,8 @@ from model.time_entry import TimeEntry
 class FindBetweenDays(TimeEntryCommand):
 
     def __init__(self, connection, start_date, end_date):
-super().__init__(connection)        self.start_date = start_date
+        super().__init__(connection)
+        self.start_date = start_date
         self.end_date = end_date
 
     def execute(self):

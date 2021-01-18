@@ -7,7 +7,8 @@ from model.work_package import WorkPackage
 
 class FindAll(WorkPackageCommand):
     def __init__(self, connection, offset, pageSize, filters, sortBy, groupBy, showSums):
-super().__init__(connection)        self.offset = offset
+        super().__init__(connection)
+        self.offset = offset
         self.pageSize = pageSize
         self.filters = filters
         self.sortBy = sortBy

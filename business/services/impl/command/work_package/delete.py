@@ -7,7 +7,8 @@ from business.services.impl.command.work_package.work_package_command import Wor
 class Delete(WorkPackageCommand):
 
     def __init__(self, connection, work_package):
-super().__init__(connection)        self.work_package = work_package
+        super().__init__(connection)
+        self.work_package = work_package
 
     def execute(self):
         try:

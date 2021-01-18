@@ -10,7 +10,8 @@ from model.relation import Relation
 class CreateRelation(WorkPackageCommand):
 
     def __init__(self, connection, work_package, relation):
-super().__init__(connection)        self.work_package = work_package
+        super().__init__(connection)
+        self.work_package = work_package
         self.relation = relation
 
     def execute(self):

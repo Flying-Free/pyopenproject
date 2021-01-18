@@ -10,7 +10,8 @@ from model.form import Form
 class CreateForm(TimeEntryCommand):
 
     def __init__(self, connection, form):
-super().__init__(connection)        self.form = form
+        super().__init__(connection)
+        self.form = form
 
     def execute(self):
         try:

@@ -10,7 +10,7 @@ from model.work_package import WorkPackage
 class Update(WorkPackageCommand):
 
     def __init__(self, connection, work_package, notify):
-        super(Update, self).__init__(connection)
+        super().__init__(connection)
         self.work_package = work_package
         self.notify = notify
 

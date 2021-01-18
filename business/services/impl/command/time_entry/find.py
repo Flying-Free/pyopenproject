@@ -8,7 +8,8 @@ from model.time_entry import TimeEntry
 class Find(TimeEntryCommand):
 
     def __init__(self, connection, time_entry):
-super().__init__(connection)        self.time_entry = time_entry
+        super().__init__(connection)
+        self.time_entry = time_entry
 
     def execute(self):
         try:

@@ -10,7 +10,7 @@ from model.form import Form
 class UpdateForm(WorkPackageCommand):
 
     def __init__(self, connection, work_package):
-        super(UpdateForm, self).__init__(connection)
+        super().__init__(connection)
         self.work_package = work_package
 
     def execute(self):

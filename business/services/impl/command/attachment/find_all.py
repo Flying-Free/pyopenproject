@@ -8,8 +8,7 @@ from model.attachment import Attachment
 class FindAll(AttachmentCommand):
 
     def __init__(self, connection):
-        super().__init__(connection)
-
+                super().__init__(connection)
 
     def execute(self):
         try:
