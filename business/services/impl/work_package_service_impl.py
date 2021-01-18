@@ -96,8 +96,8 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_revisions(self, work_package):
         return FindRevisions(work_package).execute()
 
-    def find_activities(self, work_package, notify):
-        return FindActivities(work_package, notify).execute()
+    def find_activities(self, work_package):
+        return FindActivities(work_package).execute()
 
     def create_activity(self, work_package, activity, notify):
         return CreateActivity(work_package,activity, notify).execute()

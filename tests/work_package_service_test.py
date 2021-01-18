@@ -12,6 +12,16 @@ class WorkPackageServiceTestCase(unittest.TestCase):
         self.wpSer = ServiceFactory.get_work_package_service()
         with open('./data/work_package.json') as f:
             self.work_package = WorkPackage(json.load(f))
+        with open('./data/relation.json') as f:
+            self.relation = WorkPackage(json.load(f))
+        with open('./data/user.json') as f:
+            self.watcher = WorkPackage(json.load(f))
+        with open('./data/activity.json') as f:
+            self.activity = WorkPackage(json.load(f))
+        with open('./data/schema.json') as f:
+            self.schema = WorkPackage(json.load(f))
+        with open('./data/attachment.json') as f:
+            self.attachment = WorkPackage(json.load(f))
 
     # TODO
     def test_find_by_context(self):
@@ -23,7 +33,7 @@ class WorkPackageServiceTestCase(unittest.TestCase):
 
     # TODO
     def test_add_attachment(self):
-        self.assertIsNotNone(self.wpSer.add_attachment(self.work_package, attachment))
+        self.assertIsNotNone(self.wpSer.add_attachment(self.work_package, self.attachment))
 
     def test_find(self):
         # There's no activity --> Exception
@@ -41,7 +51,7 @@ class WorkPackageServiceTestCase(unittest.TestCase):
 
     # TODO
     def test_find_schema(self):
-        self.assertIsNotNone(self.wpSer.find_schema(schema))
+        self.assertIsNotNone(self.wpSer.find_schema(self.schema))
 
     def test_find_all_schemas(self):
         self.assertIsNotNone(self.wpSer.find_all_schemas('[{ "id": { "operator": "=", "values": ["12-1", "14-2"] } }]'))
@@ -50,7 +60,8 @@ class WorkPackageServiceTestCase(unittest.TestCase):
         self.assertIsNotNone(self.wpSer.update_work_package(self.work_package))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.wpSer.find_all(25, 25,'[{ "type_id": { "operator": "=", "values": ["1", "2"] }}]', '[["status", "asc"]]', "status", True))
+        self.assertIsNotNone(self.wpSer.find_all(25, 25,'[{ "type_id": { "operator": "=", "values": ["1", "2"] }}]',
+                                                 '[["status", "asc"]]', "status", True))
 
     def test_create(self):
         # Without notify
@@ -62,26 +73,29 @@ class WorkPackageServiceTestCase(unittest.TestCase):
     def test_create_form(self):
         self.assertIsNotNone(self.wpSer.create_form(self.work_package))
 
+    # TODO
     def test_create_relation(self):
-        self.assertIsNotNone(self.wpSer.create_relation(self.work_package, relation))
+
+        self.assertIsNotNone(self.wpSer.create_relation(self.work_package, self.relation))
 
     def test_find_relations(self):
         self.assertIsNotNone(self.wpSer.find_relations(self.work_package))
 
     def test_create_relation_form(self):
-        self.assertIsNotNone(self.wpSer.create_relation_form(relation))
+        self.assertIsNotNone(self.wpSer.create_relation_form(self.relation))
 
     def test_find_watchers(self):
         self.assertIsNotNone(self.wpSer.find_watchers(self.work_package))
 
     def test_create_watcher(self):
-        self.assertIsNotNone(self.wpSer.create_watcher(self.work_package, watcher))
+        self.assertIsNotNone(self.wpSer.create_watcher(self.work_package, self.watcher))
 
     def test_delete_watcher(self):
-        self.assertIsNotNone(self.wpSer.delete_watcher(self.work_package, watcher))
+        self.assertIsNotNone(self.wpSer.delete_watcher(self.work_package, self.watcher))
 
     def test_find_relation_candidates(self):
-        self.assertIsNotNone(self.wpSer.find_relation_candidates(self.work_package, filters, query, type, pageSize))
+        self.assertIsNotNone(self.wpSer.find_relation_candidates(self.work_package,
+                            '[{ "status_id": { "operator": "o", "values": null } }]', "rollout", "follows", 25))
 
     def test_find_available_watchers(self):
         self.assertIsNotNone(self.wpSer.find_available_watchers(self.work_package))
@@ -89,11 +103,13 @@ class WorkPackageServiceTestCase(unittest.TestCase):
     def test_find_available_projects(self):
         self.assertIsNotNone(self.wpSer.find_available_projects(self.work_package))
 
-    def test_find_revisions(self, work_package):
+    def test_find_revisions(self):
         self.assertIsNotNone(self.wpSer.find_revisions(self.work_package))
 
     def test_find_activities(self):
-        self.assertIsNotNone(self.wpSer.find_activities(self.work_package, notify))
+        self.assertIsNotNone(self.wpSer.find_activities(self.work_package))
 
     def test_create_activity(self):
-        self.assertIsNotNone(self.wpSer.create_activity(self.work_package, activity, notify))
+        self.assertIsNotNone(self.wpSer.create_activity(self.work_package, self.activity))
+        self.assertIsNotNone(self.wpSer.create_activity(self.work_package, self.activity, False))
+
