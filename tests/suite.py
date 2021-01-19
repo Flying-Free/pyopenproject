@@ -12,7 +12,8 @@ def suite():
     return test_suite
 
 
-mySuit = suite()
+if __name__ == '__main__':
+    mySuit = suite()
 
-runner = unittest.TextTestRunner()
-runner.run(mySuit)
+    runner = unittest.TextTestRunner()
+    runner.run(mySuit)
