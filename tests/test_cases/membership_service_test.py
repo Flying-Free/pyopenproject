@@ -1,5 +1,6 @@
 import json
 
+from business.exception.business_error import BusinessError
 from model.membership import Membership
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -16,7 +17,9 @@ class MembershipServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.membershipSer.find_all())
     
     def test_find(self):
-        self.assertIsNotNone(self.membershipSer.find(self.membership))
+        # There's no membership to update --> Exception
+        with self.assertRaises(BusinessError):
+            self.membershipSer.find(self.membership)
 
     def test_update(self):
         self.assertIsNotNone(self.membershipSer.update(self.membership))

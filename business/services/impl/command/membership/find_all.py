@@ -1,8 +1,8 @@
+import model.membership as mem
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.membership.membership_command import MembershipCommand
-from model.membership import Membership
 
 
 class FindAll(MembershipCommand):
@@ -15,6 +15,6 @@ class FindAll(MembershipCommand):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}").execute()
             for membership in json_obj._embedded.elements:
-                yield Membership(membership)
+                yield mem.Membership(membership)
         except RequestError as re:
             raise BusinessError(f"Error finding all memberships") from re

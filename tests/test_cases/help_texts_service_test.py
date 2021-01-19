@@ -11,7 +11,7 @@ class HelpTextsServiceTestCase(OpenProjectTestCase):
         self.helpSer = self.factory.get_help_texts_service()
         with open('../data/help_text.json') as f:
             self.help_text = HelpText(json.load(f))
-
+    # TODO: Error json parser
     def test_find(self):
         self.assertIsNotNone(self.helpSer.find(self.help_text))
 

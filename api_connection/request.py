@@ -22,14 +22,14 @@ class Request(Command):
             return response.json()
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
-            raise RequestError(f"Timeout running GET with the URL: '{self.connection.url_base + self.context}'." +
+            raise RequestError(f"Timeout running request with the URL: '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except requests.exceptions.TooManyRedirects as err:
             # Tell the user their URL was bad and try a different one
-            raise RequestError(f"Error running GET with the URL: '{self.connection.url_base + self.context}'." +
+            raise RequestError(f"Error running request with the URL: '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except JSONDecodeError as err:
-            raise RequestError(f"Error running GET with the URL: '{self.connection.url_base + self.context}'." +
+            raise RequestError(f"Error running request with the URL: '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except requests.exceptions.RequestException as err:
             # catastrophic error. bail.
