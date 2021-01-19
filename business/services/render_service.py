@@ -16,4 +16,4 @@ class RenderService(AbstractService):
     def to_markdown_by_context(self, context, text): raise NotImplementedError
 
     @abstractmethod
-    def to_plain(self, context): raise NotImplementedError
+    def to_plain(self, context, text): raise NotImplementedError

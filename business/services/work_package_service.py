@@ -76,7 +76,7 @@ class WorkPackageService(AbstractService):
     def find_revisions(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_activities(self, work_package, notify): raise NotImplementedError
+    def find_activities(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def create_activity(self, work_package, activity, notify): raise NotImplementedError

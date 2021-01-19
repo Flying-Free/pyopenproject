@@ -15,10 +15,9 @@ class Update(QueryCommand):
 
     def execute(self):
         try:
-            # TODO: We need to review this request for an update
             json_obj = PatchRequest(connection=self.connection,
                                     context=f"{self.CONTEXT}/{self.query.id}",
-                                    json=json.dumps(self.project.__dict__)).execute()
+                                    json=json.dumps(self.query.__dict__)).execute()
             return Query(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating query by id: {self.query.id}") from re

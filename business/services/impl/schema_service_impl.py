@@ -3,5 +3,5 @@ from business.services.schema_service import SchemaService
 
 
 class SchemaServiceImpl(SchemaService):
-    # TODO: Why this implementation is empty?
+    # OpenProject organization hasn't develop it yet
     pass

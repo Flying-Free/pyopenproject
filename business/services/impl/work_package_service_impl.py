@@ -99,8 +99,7 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_revisions(self, work_package):
         return FindRevisions(self.connection, work_package).execute()
 
-    def find_activities(self, work_package, notify):
-        # TODO: review parameter notify
+    def find_activities(self, work_package):
         return FindActivities(self.connection, work_package).execute()
 
     def create_activity(self, work_package, activity, notify):

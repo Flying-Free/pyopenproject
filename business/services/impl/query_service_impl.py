@@ -3,6 +3,7 @@ from business.services.impl.command.query.create_form import CreateForm
 from business.services.impl.command.query.delete import Delete
 from business.services.impl.command.query.find import Find
 from business.services.impl.command.query.find_all import FindAll
+from business.services.impl.command.query.find_by_context import FindByContext
 from business.services.impl.command.query.schema import Schema
 from business.services.impl.command.query.star import Star
 from business.services.impl.command.query.unstar import Unstar
@@ -12,9 +13,8 @@ from business.services.query_service import QueryService
 
 class QueryServiceImpl(QueryService):
 
-    # TODO: To fill the method
     def find_by_context(self, context):
-        raise NotImplementedError
+        raise FindByContext(context).execute()
 
     def __init__(self, connection):
         super().__init__(connection)

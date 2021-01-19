@@ -2,13 +2,15 @@ import json
 import unittest
 
 from business.services.version_service import VersionService
+from model.version import Version
 
 
 class VersionServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.versionSer = VersionService()
-        self.version = json.loads('/data/version.json')
+        with open('./data/version.json') as f:
+            self.version = Version(json.load(f))
 
     def test_find(self, ):
         self.assertNotNull(self.versionSer.find(self.version))
@@ -20,11 +22,12 @@ class VersionServiceTestCase(unittest.TestCase):
         self.assertNotNull(self.versionSer.delete(1))
 
     def test_find_all(self):
-        self.assertNotNull(self.versionSer.find_all(filters))
+        self.assertNotNull(self.versionSer.find_all('[{ "sharing": { "operator": "*", "values": ["system"] }" }]'))
 
     def test_create(self):
         self.assertNotNull(self.versionSer.create(self.version))
 
+    # TODO
     def find_by_context(self):
         self.assertNotNull(self.versionSer.find_by_context(context))
 
