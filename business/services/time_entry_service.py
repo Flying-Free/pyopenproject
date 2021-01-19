@@ -1,14 +1,16 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class TimeEntryService(object):
+
+class TimeEntryService(AbstractService):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     @abstractmethod
-    def find_by_context(self): raise NotImplementedError
+    def find_by_context(self, context): raise NotImplementedError
 
     @abstractmethod
     def find_between_days(self, start_date, end_date): raise NotImplementedError
@@ -20,13 +22,13 @@ class TimeEntryService(object):
     def delete(self, identifier): raise NotImplementedError
 
     @abstractmethod
-    def create(self): raise NotImplementedError
+    def create(self, time_entry): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset,pageSize,filters,sortBy): raise NotImplementedError
+    def find_all(self, offset, page_size, filters, sort_by): raise NotImplementedError
 
     @abstractmethod
-    def find_schema(self, time_entry): raise NotImplementedError
+    def find_schema(self): raise NotImplementedError
 
     @abstractmethod
     def create_form(self, form): raise NotImplementedError

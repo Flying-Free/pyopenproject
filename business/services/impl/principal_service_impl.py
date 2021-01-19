@@ -4,5 +4,8 @@ from business.services.principal_service import PrincipalService
 
 class PrincipalServiceImpl(PrincipalService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find_all(self, filters):
-        return FindAll(filters).execute()
+        return FindAll(self.connection, filters).execute()

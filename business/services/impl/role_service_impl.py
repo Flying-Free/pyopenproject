@@ -6,11 +6,14 @@ from business.services.role_service import RoleService
 
 class RoleServiceImpl(RoleService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find_all(self, filters):
-        return FindAll(filters).execute()
+        return FindAll(self.connection, filters).execute()
 
     def find(self, role):
-        return Find(role).execute()
+        return Find(self.connection, role).execute()
 
     def find_by_context(self, context):
-        return FindByContext(context).execute()
+        return FindByContext(self.connection, context).execute()

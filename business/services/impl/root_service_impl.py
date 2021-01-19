@@ -4,6 +4,8 @@ from business.services.root_service import RootService
 
 class RootServiceImpl(RootService):
 
-    def find(self):
-        return Find().execute()
+    def __init__(self, connection):
+        super().__init__(connection)
 
+    def find(self):
+        return Find(self.connection).execute()

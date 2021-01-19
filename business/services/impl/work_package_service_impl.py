@@ -30,74 +30,78 @@ from business.services.work_package_service import WorkPackageService
 
 class WorkPackageServiceImpl(WorkPackageService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find_by_context(self, context):
-        return FindByContext(context).execute()
+        return FindByContext(self.connection, context).execute()
 
     def find_attachments(self, work_package):
-        return FindAttachments(work_package).execute()
+        return FindAttachments(self.connection, work_package).execute()
 
     def add_attachment(self, work_package, attachment):
-        return AddAttachment(work_package, attachment).execute()
+        return AddAttachment(self.connection, work_package, attachment).execute()
 
     def find(self, work_package):
-        return Find(work_package).execute()
+        return Find(self.connection, work_package).execute()
 
     def update(self, work_package, notify):
-        return Update(work_package, notify)
+        return Update(self.connection, work_package, notify)
 
     def delete(self, work_package):
-        Delete(work_package).execute()
+        Delete(self.connection, work_package).execute()
 
     def find_schema(self, schema):
-        return FindSchema(schema)
+        return FindSchema(self.connection, schema)
 
     def find_all_schemas(self, filters):
-        return FindAllSchemas(filters)
+        return FindAllSchemas(self.connection, filters)
 
     def update_form(self, work_package):
-        return UpdateForm(work_package)
+        return UpdateForm(self.connection, work_package)
 
-    def find_all(self, offset, pageSize, filters, sortBy, groupBy, showSums):
-        return FindAll(offset, pageSize, filters, sortBy, groupBy, showSums).execute()
+    def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums):
+        return FindAll(self.connection, offset, page_size, filters, sort_by, group_by, show_sums).execute()
 
     def create(self, work_package, notify):
-        return Create(work_package, notify)
+        return Create(self.connection, work_package, notify)
 
     def create_form(self, work_package):
-        return CreateForm(work_package).execute()
+        return CreateForm(self.connection, work_package).execute()
 
     def create_relation(self, work_package, relation):
-        return CreateRelation(work_package, relation).execute
+        return CreateRelation(self.connection, work_package, relation).execute
 
     def find_relations(self, work_package):
-        return FindRelations(work_package).execute()
+        return FindRelations(self.connection, work_package).execute()
 
     def create_relation_form(self, work_package, relation):
-        return CreateRelationForm(work_package, relation).execute()
+        return CreateRelationForm(self.connection, work_package, relation).execute()
 
     def find_watchers(self, work_package):
-        return FindWatchers(work_package).execute()
+        return FindWatchers(self.connection, work_package).execute()
 
     def create_watcher(self, work_package, watcher):
-        return CreateWatcher(work_package, watcher).execute()
+        return CreateWatcher(self.connection, work_package, watcher).execute()
 
     def delete_watcher(self, work_package, watcher):
-        DeleteWatcher(work_package, watcher).execute()
+        DeleteWatcher(self.connection, work_package, watcher).execute()
 
-    def find_relation_candidates(self, work_package, filters, query, type, pageSize):
-        return FindRelationCandidates(work_package, filters, query, type, pageSize).execute()
+    def find_relation_candidates(self, work_package, filters, query, type, page_size):
+        return FindRelationCandidates(self.connection, work_package, filters, query, type, page_size).execute()
 
     def find_available_watchers(self, work_package):
-        return FindAvailableWatchers(work_package).execute()
+        return FindAvailableWatchers(self.connection, work_package).execute()
 
     def find_available_projects(self, work_package):
-        return FindAvailableProjects(work_package).execute()
+        return FindAvailableProjects(self.connection, work_package).execute()
 
     def find_revisions(self, work_package):
-        return FindRevisions(work_package).execute()
+        return FindRevisions(self.connection, work_package).execute()
 
-    def find_activities(self, work_package):
-        return FindActivities(work_package).execute()
+    def find_activities(self, work_package, notify):
+        # TODO: review parameter notify
+        return FindActivities(self.connection, work_package).execute()
 
     def create_activity(self, work_package, activity, notify):
-        return CreateActivity(work_package,activity, notify).execute()
+        return CreateActivity(self.connection, work_package, activity, notify).execute()

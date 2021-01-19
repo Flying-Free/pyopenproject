@@ -1,11 +1,13 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class ProjectService:
+
+class ProjectService(AbstractService):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     @abstractmethod
     def find(self, project): raise NotImplementedError
@@ -34,7 +36,7 @@ class ProjectService:
     @abstractmethod
     def find_parents(self, filters, of, sortBy): raise NotImplementedError
 
-    #Documentation in the page for the Version endpoint
+    # Documentation in the page for the Version endpoint
     @abstractmethod
     def find_versions(self, project): raise NotImplementedError
 
@@ -48,11 +50,12 @@ class ProjectService:
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def find_work_packages(self, project): raise NotImplementedError
+    def find_work_packages(self, project, offset, page_size, filters,
+                           sort_by, group_by, show_sums, notify): raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def create_work_package(self, project, notify, workPackage): raise NotImplementedError
+    def create_work_package(self, project, notify, work_package): raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod

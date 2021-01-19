@@ -5,8 +5,11 @@ from business.services.revision_service import RevisionService
 
 class RevisionServiceImpl(RevisionService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, revision):
-        return Find(revision).execute()
+        return Find(self.connection, revision).execute()
 
     def find_by_context(self, context):
-        return FindByContext(context).execute()
+        return FindByContext(self.connection, context).execute()

@@ -5,8 +5,11 @@ from business.services.impl.command.help_texts.find_all import FindAll
 
 class HelpTextsServiceImpl(HelpTextsService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, help_text):
-        return Find(help_text).execute()
+        return Find(self.connection, help_text).execute()
 
     def find_all(self):
-        return FindAll().execute()
+        return FindAll(self.connection).execute()

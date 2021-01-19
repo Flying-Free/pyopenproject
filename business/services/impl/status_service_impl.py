@@ -6,11 +6,14 @@ from business.services.status_service import StatusService
 
 class StatusServiceImpl(StatusService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find_all(self):
-        return FindAll().execute()
+        return FindAll(self.connection).execute()
 
     def find_by_context(self):
-        return FindByContext().execute()
+        return FindByContext(self.connection).execute()
 
     def find(self, status):
-        return Find(status).execute()
+        return Find(self.connection, status).execute()

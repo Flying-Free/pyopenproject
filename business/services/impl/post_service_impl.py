@@ -6,11 +6,14 @@ from business.services.post_service import PostService
 
 class PostServiceImpl(PostService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def list_attachments(self, post):
-        return ListAttachments(post).execute()
+        return ListAttachments(self.connection, post).execute()
 
     def add_attachment(self, post, attachment):
-        return AddAttachment(post, attachment).execute()
+        return AddAttachment(self.connection, post, attachment).execute()
 
     def find(self, post):
-        return Find(post).execute()
+        return Find(self.connection, post).execute()

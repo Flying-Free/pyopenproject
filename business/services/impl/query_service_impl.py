@@ -12,32 +12,39 @@ from business.services.query_service import QueryService
 
 class QueryServiceImpl(QueryService):
 
-    def update(self, query):
-        return Update(query).execute()
+    # TODO: To fill the method
+    def find_by_context(self, context):
+        raise NotImplementedError
 
-    def find(self, query, offset, pageSize, filters, columns, sortBy, groupBy, showSums, timelineVisible,
-             timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes, showHierarchies):
-        return Find(query, offset, pageSize, filters, columns, sortBy, groupBy, showSums, timelineVisible,
-                    timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes,
-                    showHierarchies).execute()
+    def __init__(self, connection):
+        super().__init__(connection)
+
+    def update(self, query):
+        return Update(self.connection, query).execute()
+
+    def find(self, query, offset, page_size, filters, columns, sort_by, group_by, show_sums, timeline_visible,
+             timeline_labels, timeline_zoom_level, highlighting_mode, highlighted_attributes, show_hierarchies):
+        return Find(self.connection, query, offset, page_size, filters, columns, sort_by, group_by,
+                    show_sums, timeline_visible, timeline_labels, timeline_zoom_level,
+                    highlighting_mode, highlighted_attributes, show_hierarchies).execute()
 
     def delete(self, query):
-        return Delete(query).execute()
+        return Delete(self.connection, query).execute()
 
     def star(self, query):
-        return Star(query).execute()
+        return Star(self.connection, query).execute()
 
     def unstar(self, query):
-        return Unstar(query).execute()
+        return Unstar(self.connection, query).execute()
 
     def find_all(self, filters):
-        return FindAll(filters).execute()
+        return FindAll(self.connection, filters).execute()
 
     def create(self, query):
-        return Create(query).execute()
+        return Create(self.connection, query).execute()
 
     def create_form(self, form):
-        return CreateForm(form).execute()
+        return CreateForm(self.connection, form).execute()
 
     def schema(self):
-        return Schema().execute()
+        return Schema(self.connection).execute()

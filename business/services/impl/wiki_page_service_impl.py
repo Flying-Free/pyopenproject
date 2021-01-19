@@ -6,11 +6,14 @@ from business.services.wiki_page_service import WikiPageService
 
 class WikiPageServiceImpl(WikiPageService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, wiki_page):
-        return Find(wiki_page).execute()
+        return Find(self.connection, wiki_page).execute()
 
     def find_attachments(self, wiki):
-        return FindAttachments(wiki).execute()
+        return FindAttachments(self.connection, wiki).execute()
 
     def add_attachment(self, wiki, attachment):
-        return AddAttachment(wiki, attachment).execute()
+        return AddAttachment(self.connection, wiki, attachment).execute()

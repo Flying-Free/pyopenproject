@@ -1,11 +1,13 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class WorkPackageService:
+
+class WorkPackageService(AbstractService):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError
@@ -35,7 +37,7 @@ class WorkPackageService:
     def update_form(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, notify, offset, pageSize,filters, sortBy, groupBy, showSums): raise NotImplementedError
+    def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums): raise NotImplementedError
 
     @abstractmethod
     def create(self, work_package, notify): raise NotImplementedError
@@ -50,7 +52,7 @@ class WorkPackageService:
     def find_relations(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def create_relation_form(self, relation): raise NotImplementedError
+    def create_relation_form(self, work_package, relation): raise NotImplementedError
 
     @abstractmethod
     def find_watchers(self, work_package): raise NotImplementedError

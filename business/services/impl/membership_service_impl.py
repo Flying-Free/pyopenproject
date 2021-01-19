@@ -12,29 +12,32 @@ from business.services.membership_service import MembershipService
 
 class MembershipServiceImpl(MembershipService):
 
-    def find_all(self, filters):
-        return FindAll(filters).execute()
+    def __init__(self, connection):
+        super().__init__(connection)
 
-    def find(self):
-        return Find(self).execute()
+    def find_all(self, filters):
+        return FindAll(self.connection, filters).execute()
+
+    def find(self, membership):
+        return Find(self.connection, membership).execute()
 
     def update(self, membership):
-        return Update(self, membership).execute()
+        return Update(self.connection, membership).execute()
 
     def delete(self, membership):
-        Delete(self, membership)
+        Delete(self.connection, membership)
 
     def create(self, membership):
-        return Create(self, membership).execute()
+        return Create(self.connection, membership).execute()
 
-    def membership_schema(self):
-        return FindSchema(self).execute()
+    def membership_schema(self, membership):
+        return FindSchema(self.connection, membership).execute()
 
-    def available_memberships(self):
-        return FindAvailable(self).execute
+    def available_memberships(self, membership):
+        return FindAvailable(self.connection, membership).execute
 
     def create_form(self, membership):
-        return CreateForm(self, membership).execute()
+        return CreateForm(self.connection, membership).execute()
 
     def update_form(self, membership):
-        return UpdateForm(self, membership).execute()
+        return UpdateForm(self.connection, membership).execute()

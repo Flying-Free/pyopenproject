@@ -7,13 +7,19 @@ from model.priority import Priority
 
 class FindAll(PriorityCommand):
 
-    def __init__(self, connection, filters):
+    def __init__(self, connection, offset, page_size, filters, sort_by):
         super().__init__(connection)
+        self.offset = offset
+        self.page_size = page_size
+        self.filters = filters
+        self.sort_by = sort_by
         self.filters = filters
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
+            json_obj = GetRequest(self.connection,
+                                  f"{self.CONTEXT}?{self.offset},{self.pageSize},"
+                                  f"{self.filters},{self.sortBy}").execute()
             for priority in json_obj._embedded.elements:
                 yield Priority(priority)
         except RequestError as re:

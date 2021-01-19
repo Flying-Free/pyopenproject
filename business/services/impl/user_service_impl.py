@@ -10,23 +10,26 @@ from business.services.user_service import UserService
 
 class UserServiceImpl(UserService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def lock_user(self, user):
-        return Lock(user).execute()
+        return Lock(self.connection, user).execute()
 
     def unlock_user(self, user):
-        return Unlock(user).execute()
+        return Unlock(self.connection, user).execute()
 
-    def find_all(self, offset, pageSize, filters, sortBy):
-        return FindAll(offset, pageSize, filters, sortBy).execute()
+    def find_all(self, offset, page_size, filters, sort_by):
+        return FindAll(self.connection, offset, page_size, filters, sort_by).execute()
 
     def find(self, user):
-        return Find(user).execute()
+        return Find(self.connection, user).execute()
 
     def update_user(self, user):
-        return Update(user).execute()
+        return Update(self.connection, user).execute()
 
     def delete_user(self, user):
-        Delete(user).execute()
+        Delete(self.connection, user).execute()
 
     def create_user(self, user):
-        return Create(user).execute()
+        return Create(self.connection, user).execute()

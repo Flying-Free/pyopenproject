@@ -8,18 +8,20 @@ from business.services.impl.command.attachment.find_all import FindAll
 
 class AttachmentServiceImpl(AttachmentService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def create(self, attachment):
-        return Create(attachment).execute()
+        return Create(self.connection, attachment).execute()
 
     def delete(self, attachment):
-        return Delete(attachment).execute()
+        return Delete(self.connection, attachment).execute()
 
     def find(self, attachment):
-        return Find(attachment).execute()
+        return Find(self.connection, attachment).execute()
 
     def find_all(self):
-        return FindAll().execute()
+        return FindAll(self.connection).execute()
 
     def download_by_context(self, context):
-        return DownloadByContext(context).execute()
-
+        return DownloadByContext(self.connection, context).execute()

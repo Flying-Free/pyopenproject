@@ -5,8 +5,11 @@ from business.services.impl.command.category.find_by_context import FindByContex
 
 class CategoryServiceImpl(CategoryService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, category):
-        return Find(category).execute()
+        return Find(self.connection, category).execute()
 
     def find_by_context(self, context):
-        return FindByContext(context).execute()
+        return FindByContext(self.connection, context).execute()

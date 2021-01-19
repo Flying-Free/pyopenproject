@@ -1,11 +1,13 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class RelationService:
+
+class RelationService(AbstractService):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError
@@ -23,10 +25,10 @@ class RelationService:
     def find_schema(self): raise NotImplementedError
 
     @abstractmethod
-    def find_schema(self, type): raise NotImplementedError
+    def find_schema_by_type(self, type): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, filters, sortBy): raise NotImplementedError
+    def find_all(self, filters, sort_by): raise NotImplementedError
 
     @abstractmethod
-    def update_form(self, relation): raise NotImplementedError
+    def update_form(self, relation, form): raise NotImplementedError

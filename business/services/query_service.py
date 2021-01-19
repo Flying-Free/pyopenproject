@@ -1,18 +1,21 @@
 from abc import ABCMeta, abstractmethod
 
+from business.services.abstract_service import AbstractService
 
-class QueryService:
+
+class QueryService(AbstractService):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     @abstractmethod
     def find_by_context(self, context): raise NotImplementedError
 
     @abstractmethod
-    def find(self, query,offset,pageSize,filters,columns,sortBy,groupBy,showSums,timelineVisible,timelineLabels,
-                     timelineZoomLevel,highlightingMode,highlightedAttributes,showHierarchies): raise NotImplementedError
+    def find(self, query, offset, pageSize, filters, columns, sortBy, groupBy, showSums, timelineVisible,
+             timelineLabels, timelineZoomLevel, highlightingMode,
+             highlightedAttributes, showHierarchies): raise NotImplementedError
 
     @abstractmethod
     def update(self, query): raise NotImplementedError
@@ -40,4 +43,3 @@ class QueryService:
 
     @abstractmethod
     def schema(self): raise NotImplementedError
-

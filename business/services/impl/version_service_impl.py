@@ -13,32 +13,35 @@ from business.services.version_service import VersionService
 
 class VersionServiceImpl(VersionService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, version):
-        return Find(version).execute()
+        return Find(self.connection, version).execute()
 
     def update(self, version):
-        return Update(version).execute()
+        return Update(self.connection, version).execute()
 
     def delete(self, version):
-        Delete.execute(version).execute()
+        return Delete(self.connection, version).execute()
 
     def find_all(self, filters):
-        return FindAll(filters).execute()
+        return FindAll(self.connection, filters).execute()
 
     def create(self, version):
-        return Create(version).execute()
+        return Create(self.connection, version).execute()
 
     def find_by_context(self, context):
-        return FindByContext(context).execute()
+        return FindByContext(self.connection, context).execute()
 
     def find_schema(self):
-        return FindSchema.execute()
+        return FindSchema(self.connection).execute()
 
     def create_form(self, version):
-        return CreateForm(version).execute
+        return CreateForm(self.connection, version).execute
 
     def update_form(self, version):
-        return UpdateForm(version).execute()
+        return UpdateForm(self.connection, version).execute()
 
     def find_projects(self):
-        return FindProjects().execute()
+        return FindProjects(self.connection).execute()

@@ -5,8 +5,11 @@ from business.services.priority_service import PriorityService
 
 class PriorityServiceImpl(PriorityService):
 
-    def find(self, priority):
-        return Find(priority).execute()
+    def __init__(self, connection):
+        super().__init__(connection)
 
-    def find_all(self):
-        return FindAll().execute()
+    def find(self, priority):
+        return Find(self.connection, priority).execute()
+
+    def find_all(self, offset, page_size, filters, sort_by):
+        return FindAll(self.connection, offset, page_size, filters, sort_by).execute()

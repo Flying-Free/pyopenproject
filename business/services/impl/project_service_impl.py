@@ -20,53 +20,57 @@ from business.services.project_service import ProjectService
 
 class ProjectServiceImpl(ProjectService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, project):
-        return Find(project).execute()
+        return Find(self.connection, project).execute()
 
     def update(self, project):
-        return Update(project).execute()
+        return Update(self.connection, project).execute()
 
     def delete(self, project):
-        return Delete(project).execute()
+        return Delete(self.connection, project).execute()
 
-    def find_all(self, filters, sortBy):
-        return FindAll().execute()
+    def find_all(self, filters, sort_by):
+        return FindAll(self.connection, filters, sort_by).execute()
 
     def create(self, project):
-        return Create(project).execute()
+        return Create(self.connection, project).execute()
 
     def find_schema(self):
-        return FindSchema().execute()
+        return FindSchema(self.connection).execute()
 
     def create_form(self, form):
-        return CreateForm(form).execute()
+        return CreateForm(self.connection, form).execute()
 
     def update_form(self, project):
-        return UpdateForm(project).execute()
+        return UpdateForm(self.connection, project).execute()
 
-    def find_parents(self, filters, of, sortBy):
-        return FindParents(filters, of, sortBy).execute()
+    def find_parents(self, filters, of, sort_by):
+        return FindParents(self.connection, filters, of, sort_by).execute()
 
     def find_versions(self, project):
-        return FindVersions(project).execute()
+        return FindVersions(self.connection, project).execute()
 
     def find_types(self, project):
-        return FindTypes(project).execute()
+        return FindTypes(self.connection, project).execute()
 
     def find_budgets(self, project):
-        return FindBudgets(project).execute()
+        return FindBudgets(self.connection, project).execute()
 
-    def find_work_packages(self, project, offset, pageSize, filters, sortBy, groupBy, showSums, notify):
-        return FindWorkPackages(project, offset, pageSize, filters, sortBy, groupBy, showSums, notify).execute()
+    def find_work_packages(self, project, offset, page_size, filters, sort_by, group_by, show_sums, notify):
+        return FindWorkPackages(self.connection, project, offset, page_size, filters,
+                                sort_by, group_by, show_sums, notify).execute()
 
-    def create_work_package(self, project, notify, workPackage):
-        return CreateWorkPackage(project, notify, workPackage).execute()
+    def create_work_package(self, project, notify, work_package):
+        return CreateWorkPackage(self.connection, project, notify, work_package).execute()
 
     def create_work_package_form(self, project, notify, form):
-        return CreateWorkPackageForm(project, notify, form).execute()
+        return CreateWorkPackageForm(self.connection, project, notify, form).execute()
 
     def find_available_assignees(self, project):
-        return FindAvailableAssignees(project).execute()
+        return FindAvailableAssignees(self.connection, project).execute()
 
     def find_available_responsibles(self, project):
-        return FindAvailableResponsibles(project).execute()
+        return FindAvailableResponsibles(self.connection, project).execute()

@@ -6,8 +6,8 @@ from business.services.abstract_service import AbstractService
 class AttachmentService(AbstractService):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super
+    def __init__(self, connection):
+        super().__init__(connection)
 
     @abstractmethod
     def create(self, attachment): raise NotImplementedError

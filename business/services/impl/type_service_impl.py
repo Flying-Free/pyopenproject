@@ -5,10 +5,11 @@ from business.services.type_service import TypeService
 
 class TypeServiceImpl(TypeService):
 
+    def __init__(self, connection):
+        super().__init__(connection)
+
     def find(self, type):
-        return Find(type).execute()
+        return Find(self.connection, type).execute()
 
     def find_all(self):
-        return FindAll().execute
-
-
+        return FindAll(self.connection).execute
