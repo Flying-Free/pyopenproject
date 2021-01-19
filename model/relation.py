@@ -32,3 +32,6 @@ class Relation:
     #             "href": "/api/v3/relations/1",
     #             "method": "PATCH"
     #         }
+
+    def __str__(self):
+        return self.__dict__

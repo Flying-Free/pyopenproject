@@ -29,3 +29,6 @@ class Attachment:
             return service_factory.ServiceFactory.get_attachment_service()\
                 .download_by_context(self._links.downloadLocation.href)
         return None
+
+    def __str__(self):
+        return self.__dict__

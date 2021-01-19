@@ -9,3 +9,6 @@ class CustomAction:
     #         "title": "Execute Change project and type",
     #         "method": "post"
     #     }
+
+    def __str__(self):
+        return self.__dict__

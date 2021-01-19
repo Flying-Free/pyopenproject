@@ -32,3 +32,6 @@ class User:
     def delete(self):
         service_factory.ServiceFactory.get_user_service()\
             .delete(self.id)
+
+    def __str__(self):
+        return self.__dict__

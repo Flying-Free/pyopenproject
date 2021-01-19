@@ -274,3 +274,6 @@ class WorkPackage:
             for custom_action in self._links.customActions:
                 yield service_factory.ServiceFactory.get_custom_action_service()\
                     .find_by_context(custom_action.href)
+
+    def __str__(self):
+        return self.__dict__

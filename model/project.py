@@ -69,3 +69,6 @@ class Project:
     def delete(self):
         service_factory.ServiceFactory.get_project_service()\
             .delete(self.id)
+
+    def __str__(self):
+        return self.__dict__

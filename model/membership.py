@@ -42,3 +42,6 @@ class Membership:
     #         "method": "patch"
     #     },
     #  },
+
+    def __str__(self):
+        return self.__dict__

@@ -17,3 +17,6 @@ class Activity:
             return service_factory.ServiceFactory.get_user_service()\
                 .find_by_context(self._links.user.href)
         return None
+
+    def __str__(self):
+        return self.__dict__

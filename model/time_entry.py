@@ -49,3 +49,6 @@ class TimeEntry:
     def delete(self):
         service_factory.ServiceFactory.get_time_entry_service()\
             .delete(self.id)
+
+    def __str__(self):
+        return self.__dict__

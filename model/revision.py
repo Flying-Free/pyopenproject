@@ -23,3 +23,6 @@ class Revision:
             return service_factory.ServiceFactory.get_project_service()\
                 .find_by_context(self._links.showRevision.href)
         return None
+
+    def __str__(self):
+        return self.__dict__

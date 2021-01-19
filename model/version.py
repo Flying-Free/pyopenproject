@@ -21,3 +21,6 @@ class Version:
     # TODO:
     #         "update": { "href": "/api/v3/versions/11/form", "method": "POST" }
     #         "updateImmediately": { "href": "/api/v3/versions/11", "method": "PATCH" }
+
+    def __str__(self):
+        return self.__dict__
