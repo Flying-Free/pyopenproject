@@ -1,19 +1,19 @@
 import json
-import unittest
 
-from business.services.priority_service import PriorityService
 from model.priority import Priority
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class PriorityServiceTestCase(unittest.TestCase):
+class PriorityServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.prioritySer = PriorityService()
+        super().setUp()
+        self.prioritySer = self.factory.get_priority_service()
         with open('../data/priority.json') as f:
             self.priority = Priority(json.load(f))
 
     def test_find_all(self):
-        self.assertNotNull(self.prioritySer.find(self.priority))
+        self.assertIsNotNone(self.prioritySer.find(self.priority))
 
     def test_find_all(self):
-        self.assertNotNull(self.prioritySer.find_all(filters))
+        self.assertIsNotNone(self.prioritySer.find_all(filters))

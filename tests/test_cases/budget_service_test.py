@@ -15,7 +15,7 @@ class BudgetServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         # TODO: We need a way to create a budget in order to change it
-        # self.assertNotNull(self.budSer.find(self.budget))
+        # self.assertIsNotNone(self.budSer.find(self.budget))
         pass
 
     def test_not_found(self):

@@ -10,8 +10,12 @@ from business.services.impl.grid_service_impl import GridServiceImpl
 from business.services.impl.group_service_impl import GroupServiceImpl
 from business.services.impl.help_texts_service_impl import HelpTextsServiceImpl
 from business.services.impl.membership_service_impl import MembershipServiceImpl
+from business.services.impl.news_service_impl import NewsServiceImpl
+from business.services.impl.post_service_impl import PostServiceImpl
+from business.services.impl.principal_service_impl import PrincipalServiceImpl
 from business.services.impl.priority_service_impl import PriorityServiceImpl
 from business.services.impl.project_service_impl import ProjectServiceImpl
+from business.services.impl.query_service_impl import QueryServiceImpl
 from business.services.impl.relation_service_impl import RelationServiceImpl
 from business.services.impl.revision_service_impl import RevisionServiceImpl
 from business.services.impl.role_service_impl import RoleServiceImpl
@@ -68,11 +72,26 @@ class ServiceFactory:
     def get_membership_service(self):
         return MembershipServiceImpl(self.conn)
 
+    def get_news_service(self):
+        return NewsServiceImpl(self.conn)
+
+    def get_post_service(self):
+        return PostServiceImpl(self.conn)
+
+    def get_previewing_service(self):
+        return PreviewingServiceImpl(self.conn)
+
+    def get_principal_service(self):
+        return PrincipalServiceImpl(self.conn)
+
     def get_priority_service(self):
         return PriorityServiceImpl(self.conn)
 
     def get_project_service(self):
         return ProjectServiceImpl(self.conn)
+
+    def get_query_service(self):
+        return QueryServiceImpl(self.conn)
 
     def get_relation_service(self):
         return RelationServiceImpl(self.conn)

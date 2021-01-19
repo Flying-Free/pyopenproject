@@ -150,7 +150,7 @@ class WorkPackage:
     #     "title": "Add comment"
     #   },
     #   "previewMarkup": {
-    #     "href": "/api/v3/render/markdown?context=/api/v3/work_packages/147",
+    #     "href": "/api/v3/previewing/markdown?context=/api/v3/work_packages/147",
     #     "method": "post"
     #   },
 

@@ -1,6 +1,5 @@
 import datetime
 import json
-import unittest
 
 from dateutil.relativedelta import relativedelta
 
@@ -8,9 +7,10 @@ from business.services.time_entry_service import TimeEntryService
 from model.time_entry import TimeEntry
 
 
-class TimeEntryServiceTestCase(unittest.TestCase):
+class TimeEntryServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
+        super().setUp()
         self.tEntryReq = TimeEntryService()
         with open('../data/time_entry.json') as f:
             self.time_entry = TimeEntry(json.load(f))

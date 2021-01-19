@@ -1,22 +1,25 @@
 import json
-import unittest
 
-from business.services.post_service import PostService
+from model.attachment import Attachment
 from model.post import Post
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class PostServiceTestCase(unittest.TestCase):
+class PostServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.postSer = PostService()
+        super().setUp()
+        self.postSer = self.factory.get_post_service()
         with open('../data/post.json') as f:
             self.post = Post(json.load(f))
 
     def list_attachments(self):
-        self.assertNotNull(self.postSer.list_attachments(self.post))
+        self.assertIsNotNone(self.postSer.list_attachments(self.post))
 
     def add_attachment(self):
-        self.assertNotNull(self.postSer.add_attachment(self.post, attachment))
+        with open('../data/attachment.json') as f:
+            attachment = Attachment(json.load(f))
+        self.assertIsNotNone(self.postSer.add_attachment(self.post, attachment))
 
     def find(self):
-        self.assertNotNull(self.postSer.find(self.post))
+        self.assertIsNotNone(self.postSer.find(self.post))

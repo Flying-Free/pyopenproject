@@ -13,7 +13,7 @@ class DocumentServiceTestCase(OpenProjectTestCase):
             self.custom_object = Document(json.load(f))
 
     def test_find(self):
-        self.assertNotNull(self.docSer.find(self.document))
+        self.assertIsNotNone(self.docSer.find(self.document))
 
     def test_find_all(self):
-        self.assertNotNull(self.docSer.find_all(offset, pageSize, sortBy))
+        self.assertIsNotNone(self.docSer.find_all(offset, pageSize, sortBy))

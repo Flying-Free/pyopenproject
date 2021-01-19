@@ -1,16 +1,16 @@
 import json
-import unittest
 
-from business.services.principal_service import PrincipalService
 from model.principal import Principal
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class PrincipalServiceTestCase(unittest.TestCase):
+class PrincipalServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.principalSer = PrincipalService()
+        super().setUp()
+        self.principalSer = self.factory.get_principal_service()
         with open('../data/principal.json') as f:
             self.principal = Principal(json.load(f))
 
     def test_find_all(self):
-        self.assertNotNull(self.principalSer.find_all(filters))
+        self.assertIsNotNone(self.principalSer.find_all(filters))

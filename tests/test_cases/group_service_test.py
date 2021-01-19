@@ -1,16 +1,16 @@
 import json
-import unittest
 
-from business.service_factory import ServiceFactory
 from model.group import Group
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class GroupServiceTestCase(unittest.TestCase):
+class GroupServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.groupSer = ServiceFactory.get_group_service()
+        super().setUp()
+        self.groupSer = self.factory.get_group_service()
         with open('../data/group.json') as f:
             self.group = Group(json.load(f))
 
     def find(self):
-        self.assertNotNull(self.groupSer.find(self.group))
+        self.assertIsNotNone(self.groupSer.find(self.group))

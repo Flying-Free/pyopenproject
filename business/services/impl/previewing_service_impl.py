@@ -1,10 +1,10 @@
-from business.services.impl.command.render.to_markdown import ToMarkdown
-from business.services.impl.command.render.to_markdown_by_context import ToMarkdownByContext
-from business.services.impl.command.render.to_plain import ToPlain
-from business.services.render_service import RenderService
+from business.services.impl.command.previewing.to_markdown import ToMarkdown
+from business.services.impl.command.previewing.to_markdown_by_context import ToMarkdownByContext
+from business.services.impl.command.previewing.to_plain import ToPlain
+from business.services.previewing_service import PreviewingService
 
 
-class RenderServiceImpl(RenderService):
+class PreviewingServiceImpl(PreviewingService):
 
     def __init__(self, connection):
         super().__init__(connection)

@@ -3,10 +3,10 @@ from abc import abstractmethod, ABCMeta
 from business.services.impl.command.command import Command
 
 
-class RenderCommand(Command):
+class PreviewingCommand(Command):
     __metaclass__ = ABCMeta
 
-    CONTEXT = "/api/v3/render"
+    CONTEXT = "/api/v3/previewing"
 
     def __init__(self, connection):
         self.connection = connection
