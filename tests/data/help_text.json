@@ -2,7 +2,7 @@
     "_type": "HelpText",
     "_links": {
         "self": {
-            "href": "/api/v3/help_texts/1",
+            "href": "/api/v3/help_texts/1"
         },
         "editText": {
             "type": "text/html",
