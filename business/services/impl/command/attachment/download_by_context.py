@@ -6,12 +6,12 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 
 class DownloadByContext(AttachmentCommand):
 
-    def __init__(self, connection, context):
+    def __init__(self, connection, attachment):
         super().__init__(connection)
-        self.context = context
+        self.attachment = attachment
 
     def execute(self):
         try:
-            GetRequest(self.connection, f"{self.context}").execute()
+            GetRequest(self.connection, f'{self.attachment.__dict__["_links"]["downloadLocation"]["href"]}').execute()
         except RequestError as re:
             raise BusinessError(f"Error downloading attachment by context: {self.context}") from re

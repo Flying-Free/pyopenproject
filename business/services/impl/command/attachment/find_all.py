@@ -8,7 +8,7 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class FindAll(AttachmentCommand):
 
     def __init__(self, connection):
-                super().__init__(connection)
+        super().__init__(connection)
 
     def execute(self):
         try:

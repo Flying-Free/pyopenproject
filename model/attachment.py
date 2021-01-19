@@ -25,9 +25,9 @@ class Attachment:
         return None
 
     def download_location(self):
-        if self._links.downloadLocation.href is not None:
-            return service_factory.ServiceFactory.get_attachment_service()\
-                .download_by_context(self._links.downloadLocation.href)
+        if self.__dict__["_links"]["downloadLocation"]["href"] is not None:
+            return service_factory.ServiceFactory.get_attachment_service() \
+                .download_by_context(self.__dict__["_links"]["downloadLocation"]["href"])
         return None
 
     def __str__(self):

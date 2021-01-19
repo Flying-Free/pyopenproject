@@ -36,8 +36,6 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(attachment)
         self.assertEqual(self.attachment.__dict__, attachment.__dict__)
 
-    def test_find_all(self):
-        self.assertIsNotNone(self.attSer.find_all())
-
-    def test_download_by_context(self, context):
-        self.assertIsNotNone(self.attSer.download_by_context(1))
+    def test_download_by_context(self):
+        file_content = self.attSer.download_by_context(self.attachment)
+        print(file_content)
