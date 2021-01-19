@@ -9,7 +9,7 @@ class RoleServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.roleSer = RoleService()
-        with open('./data/role.json') as f:
+        with open('../data/role.json') as f:
             self.role = Role(json.load(f))
 
     def test_find(self):

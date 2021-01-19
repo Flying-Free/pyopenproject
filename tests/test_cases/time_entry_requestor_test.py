@@ -12,7 +12,7 @@ class TimeEntryServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.tEntryReq = TimeEntryService()
-        with open('./data/time_entry.json') as f:
+        with open('../data/time_entry.json') as f:
             self.time_entry = TimeEntry(json.load(f))
 
     def time_entries_request(self):

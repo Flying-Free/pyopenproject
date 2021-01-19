@@ -9,7 +9,7 @@ class VersionServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.versionSer = VersionService()
-        with open('./data/version.json') as f:
+        with open('../data/version.json') as f:
             self.version = Version(json.load(f))
 
     def test_find(self, ):

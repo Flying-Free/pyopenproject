@@ -9,7 +9,7 @@ class NewsServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.newsSer = NewsService()
-        with open('./data/new.json') as f:
+        with open('../data/new.json') as f:
             self.new = New(json.load(f))
 
     def test_find(self):

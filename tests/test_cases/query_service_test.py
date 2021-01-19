@@ -10,7 +10,7 @@ class QueryServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.querySer = QueryService()
-        with open('./data/query.json') as f:
+        with open('../data/query.json') as f:
             self.query = Query(json.load(f))
 
     def test_update(self):

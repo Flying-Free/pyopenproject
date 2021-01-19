@@ -9,7 +9,7 @@ class RootServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.rootSer = RootService()
-        with open('./data/root.json') as f:
+        with open('../data/root.json') as f:
             self.root = Root(json.load(f))
 
     def test_find(self):

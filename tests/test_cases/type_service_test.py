@@ -9,7 +9,7 @@ class TypeServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.typeSer = TypeService()
-        with open('./data/type.json') as f:
+        with open('../data/type.json') as f:
             self.type = Type(json.load(f))
 
     def test_find_all(self):

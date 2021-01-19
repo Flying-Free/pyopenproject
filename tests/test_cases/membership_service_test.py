@@ -9,7 +9,7 @@ class MembershipServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.membershipSer = MembershipService()
-        with open('./data/membership.json') as f:
+        with open('../data/membership.json') as f:
             self.membership = Membership(json.load(f))
 
     def test_find_all(self):

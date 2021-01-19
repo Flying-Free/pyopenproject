@@ -2,7 +2,6 @@ import json
 import unittest
 
 from business.service_factory import ServiceFactory
-from business.services.grid_service import GridService
 from model.grid import Grid
 
 
@@ -10,7 +9,7 @@ class GridServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.gridSer = ServiceFactory.get_grid_service()
-        with open('./data/grid.json') as f:
+        with open('../data/grid.json') as f:
             self.grid = Grid(json.load(f))
 
     def test_find(self):

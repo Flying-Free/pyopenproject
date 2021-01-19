@@ -9,7 +9,7 @@ class GroupServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.groupSer = ServiceFactory.get_group_service()
-        with open('./data/group.json') as f:
+        with open('../data/group.json') as f:
             self.group = Group(json.load(f))
 
     def find(self):

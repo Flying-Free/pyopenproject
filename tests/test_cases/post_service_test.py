@@ -9,7 +9,7 @@ class PostServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.postSer = PostService()
-        with open('./data/post.json') as f:
+        with open('../data/post.json') as f:
             self.post = Post(json.load(f))
 
     def list_attachments(self):

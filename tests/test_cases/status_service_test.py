@@ -9,7 +9,7 @@ class StatusServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.statusSer = StatusService()
-        with open('./data/status.json') as f:
+        with open('../data/status.json') as f:
             self.status = Status(json.load(f))
 
     def test_find(self):

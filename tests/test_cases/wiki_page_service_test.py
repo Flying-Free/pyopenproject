@@ -9,9 +9,9 @@ class WikiPageServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.wikiPageSer = WikiPageService()
-        with open('./data/work_package.json') as f:
+        with open('../data/work_package.json') as f:
             self.wiki = WikiPage(json.load(f))
-        with open('./data/attachment.json') as f:
+        with open('../data/attachment.json') as f:
             self.attachment = WikiPage(json.load(f))
 
     def test_find(self):

@@ -5,6 +5,7 @@ from business.services.impl.category_service_impl import CategoryServiceImpl
 from business.services.impl.configuration_service_impl import ConfigurationServiceImpl
 from business.services.impl.custom_action_service_impl import CustomActionServiceImpl
 from business.services.impl.custom_object_service_impl import CustomObjectServiceImpl
+from business.services.impl.document_service_impl import DocumentServiceImpl
 from business.services.impl.grid_service_impl import GridServiceImpl
 from business.services.impl.group_service_impl import GroupServiceImpl
 from business.services.impl.help_texts_service_impl import HelpTextsServiceImpl
@@ -51,6 +52,9 @@ class ServiceFactory:
 
     def get_custom_object_service(self):
         return CustomObjectServiceImpl(self.conn)
+
+    def get_document_service(self):
+        return DocumentServiceImpl(self.conn)
 
     def get_grid_service(self):
         return GridServiceImpl(self.conn)

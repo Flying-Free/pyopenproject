@@ -1,16 +1,16 @@
 import json
-import unittest
 
 from business.exception.business_error import BusinessError
-from business.service_factory import ServiceFactory
 from model.budget import Budget
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class BudgetServiceTestCase(unittest.TestCase):
+class BudgetServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.budSer = ServiceFactory.get_budget_service()
-        with open('./data/budget.json') as f:
+        super().setUp()
+        self.budSer = self.factory.get_budget_service()
+        with open('../data/budget.json') as f:
             self.budget = Budget(json.load(f))
 
     def test_find(self):

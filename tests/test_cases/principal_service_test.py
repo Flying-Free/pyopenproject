@@ -9,7 +9,7 @@ class PrincipalServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.principalSer = PrincipalService()
-        with open('./data/principal.json') as f:
+        with open('../data/principal.json') as f:
             self.principal = Principal(json.load(f))
 
     def test_find_all(self):

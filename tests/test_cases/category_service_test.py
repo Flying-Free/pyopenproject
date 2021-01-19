@@ -1,16 +1,16 @@
 import json
-import unittest
 
 from business.exception.business_error import BusinessError
-from business.service_factory import ServiceFactory
 from model.category import Category
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class CategoryServiceTestCase(unittest.TestCase):
+class CategoryServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.catSer = ServiceFactory.get_category_service()
-        with open('./data/category.json') as f:
+        super().setUp()
+        self.catSer = self.factory.get_category_service()
+        with open('../data/category.json') as f:
             self.category = Category(json.load(f))
 
     # TODO: We need to create categories to test them

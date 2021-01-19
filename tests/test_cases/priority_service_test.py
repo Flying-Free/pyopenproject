@@ -9,7 +9,7 @@ class PriorityServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.prioritySer = PriorityService()
-        with open('./data/priority.json') as f:
+        with open('../data/priority.json') as f:
             self.priority = Priority(json.load(f))
 
     def test_find_all(self):

@@ -9,7 +9,7 @@ class RevisionServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.revisionSer = RevisionService()
-        with open('./data/type.json') as f:
+        with open('../data/type.json') as f:
             self.revision = Revision(json.load(f))
 
     def test_find(self):

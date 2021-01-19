@@ -1,16 +1,16 @@
 import json
-import unittest
 
 from business.exception.business_error import BusinessError
-from business.service_factory import ServiceFactory
 from model.custom_action import CustomAction
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class CustomActionServiceTestCase(unittest.TestCase):
+class CustomActionServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
-        self.caSer = ServiceFactory.get_custom_action_service()
-        with open('./data/custom_action.json') as f:
+        super().setUp()
+        self.caSer = self.factory.get_custom_action_service()
+        with open('../data/custom_action.json') as f:
             self.custom_action = CustomAction(json.load(f))
 
     # TODO: We need to create custom actions to test them

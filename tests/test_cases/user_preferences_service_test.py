@@ -9,7 +9,7 @@ class UserPreferencesServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.userPrefSer = UserPreferencesService()
-        with open('./data/user_preferences.json') as f:
+        with open('../data/user_preferences.json') as f:
             self.user_preferences = UserPreferences(json.load(f))
 
     def find(self):

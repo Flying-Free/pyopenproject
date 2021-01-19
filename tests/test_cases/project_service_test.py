@@ -9,7 +9,7 @@ class ProjectServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.proSer = ProjectService()
-        with open('./data/project.json') as f:
+        with open('../data/project.json') as f:
             self.project = Project(json.load(f))
 
     def test_find(self):

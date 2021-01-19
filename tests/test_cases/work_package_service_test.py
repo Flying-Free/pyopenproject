@@ -10,17 +10,17 @@ class WorkPackageServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.wpSer = ServiceFactory.get_work_package_service()
-        with open('./data/work_package.json') as f:
+        with open('../data/work_package.json') as f:
             self.work_package = WorkPackage(json.load(f))
-        with open('./data/relation.json') as f:
+        with open('../data/relation.json') as f:
             self.relation = WorkPackage(json.load(f))
-        with open('./data/user.json') as f:
+        with open('../data/user.json') as f:
             self.watcher = WorkPackage(json.load(f))
-        with open('./data/activity.json') as f:
+        with open('../data/activity.json') as f:
             self.activity = WorkPackage(json.load(f))
         with open('./data/schema.json') as f:
             self.schema = WorkPackage(json.load(f))
-        with open('./data/attachment.json') as f:
+        with open('../data/attachment.json') as f:
             self.attachment = WorkPackage(json.load(f))
 
     # TODO

@@ -9,7 +9,7 @@ class RelationServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.relationSer = RelationService()
-        with open('./data/relation.json') as f:
+        with open('../data/relation.json') as f:
             self.relation = Relation(json.load(f))
 
     def test_find(self):

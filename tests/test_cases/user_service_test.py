@@ -9,7 +9,7 @@ class UserServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.usrSer = UserService()
-        with open('./data/user.json') as f:
+        with open('../data/user.json') as f:
             self.user = User(json.load(f))
 
     def find_all(self):
