@@ -2,13 +2,15 @@ import json
 import unittest
 
 from business.services.status_service import StatusService
+from model.status import Status
 
 
 class StatusServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.statusSer = StatusService()
-        self.status = json.loads('/data/status.json')
+        with open('./data/status.json') as f:
+            self.status = Status(json.load(f))
 
     def test_find(self):
         self.assertNotNull(self.statusSer.find(self.status))

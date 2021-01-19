@@ -2,6 +2,7 @@ import json
 import unittest
 
 from business.services.query_service import QueryService
+from model.query import Query
 
 
 class QueryServiceTestCase(unittest.TestCase):
@@ -9,7 +10,8 @@ class QueryServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.querySer = QueryService()
-        self.query = json.loads('/data/query.json')
+        with open('./data/query.json') as f:
+            self.query = Query(json.load(f))
 
     def test_update(self):
         self.assertNotNull(self.querySer.update(self.query))

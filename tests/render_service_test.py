@@ -8,7 +8,8 @@ class RenderServiceTestCase(unittest.TestCase):
 
     def setUp(self):
         self.renderSer = RenderService()
-        self.render = json.loads('/data/render.json')
-
+        with open('./data/render.json') as f:
+            self.render = Render(json.load(f))
+    # TODO
     def render_request(self):
         self.assertNotNull(self.renderSer.request(1))
