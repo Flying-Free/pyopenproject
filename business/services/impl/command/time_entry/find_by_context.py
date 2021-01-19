@@ -7,9 +7,10 @@ from model.time_entry import TimeEntry
 
 class FindByContext(TimeEntryCommand):
 
-    def __init__(self, connection, context):        super().__init__(connection)
+    def __init__(self, connection, context):
+        super().__init__(connection)
+        self.context = context
 
-    self.context = context
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.context}").execute()

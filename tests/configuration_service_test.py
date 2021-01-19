@@ -28,4 +28,3 @@ class ConfigurationServiceTestCase(unittest.TestCase):
         current = self.confSer.find()
         expected = self.configuration
         self.assertEqual(expected.__dict__, current.__dict__)
-

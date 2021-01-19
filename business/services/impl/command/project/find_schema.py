@@ -1,5 +1,3 @@
-super().__init__(connection)
-
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
