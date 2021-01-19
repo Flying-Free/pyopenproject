@@ -11,9 +11,10 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
         self.attSer = self.factory.get_attachment_service()
         with open('../data/attachment.json') as f:
             self.attachment = Attachment(json.load(f))
-
+    # TODO: review json error
     def test_create(self):
-        self.assertIsNotNone(self.attSer.create(self.attachment))
+        create=self.attSer.create(self.attachment)
+        self.assertIsNotNone(create)
 
     def test_delete(self):
         self.assertIsNotNone(self.attSer.delete(self.attachment))
