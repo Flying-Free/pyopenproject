@@ -7,7 +7,7 @@ from api_connection.request import Request
 class DeleteRequest(Request):
 
     def __init__(self, connection, context):
-        super(connection, context)
+        super().__init__(connection, context)
 
     def _execute_request(self):
         return requests.delete(

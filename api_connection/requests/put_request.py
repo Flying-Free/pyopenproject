@@ -6,7 +6,7 @@ from api_connection.request import Request
 
 class PutRequest(Request):
     def __init__(self, connection, context, json):
-        super(connection, context, json)
+        super().__init__(connection, context, json)
 
     def _execute_request(self):
         return requests.put(
