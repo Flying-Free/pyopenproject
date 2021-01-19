@@ -8,10 +8,11 @@ from api_connection.exceptions.request_exception import RequestError
 
 class Request(Command):
 
-    def __init__(self, connection, context, json=None):
+    def __init__(self, connection, context, json=None, files=None):
         self.connection = connection
         self.context = context
         self.json = json
+        self.files = files
 
     def execute(self):
         try:

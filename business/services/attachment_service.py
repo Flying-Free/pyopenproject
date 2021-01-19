@@ -10,7 +10,7 @@ class AttachmentService(AbstractService):
         super().__init__(connection)
 
     @abstractmethod
-    def create(self, attachment): raise NotImplementedError
+    def create(self, filename, description, file_path): raise NotImplementedError
 
     @abstractmethod
     def delete(self, attachment): raise NotImplementedError

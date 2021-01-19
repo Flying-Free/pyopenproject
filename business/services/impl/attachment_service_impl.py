@@ -11,8 +11,8 @@ class AttachmentServiceImpl(AttachmentService):
     def __init__(self, connection):
         super().__init__(connection)
 
-    def create(self, attachment):
-        return Create(self.connection, attachment).execute()
+    def create(self, filename, description, file_path):
+        return Create(self.connection, filename, description, file_path).execute()
 
     def delete(self, attachment):
         return Delete(self.connection, attachment).execute()

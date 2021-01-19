@@ -16,4 +16,4 @@ class NewsServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.newsSer.find(self.new))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.newsSer.find_all(self, offset, pageSize, filters, sortBy))
+        self.assertIsNotNone(self.newsSer.find_all(self, offset=None, page_size=None, filters=None, sort_by=None))

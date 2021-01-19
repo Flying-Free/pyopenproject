@@ -14,4 +14,4 @@ class Delete(AttachmentCommand):
         try:
             DeleteRequest(self.connection, f"{self.CONTEXT}/{self.attachment.id}").execute()
         except RequestError as re:
-            raise BusinessError(f"Error deleting attachment: {self.attachment.title}") from re
+            raise BusinessError(f"Error deleting attachment: {self.attachment.fileName}") from re

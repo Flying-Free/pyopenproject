@@ -1,35 +1,34 @@
 {
-    "_type": "News",
-    "id": 1,
-    "title": "asperiores possimus nam doloribus ab",
-    "summary": "Celebrer spiculum colo viscus claustrum atque. Id nulla culpa sumptus. Comparo crapula depopulo demonstro.",
-    "description": {
-        "format": "markdown",
-        "raw": "Videlicet deserunt aequitas cognatus. Concedo quia est quia pariatur vorago vallum. Calco autem atavus accusamus conscendo cornu ulterius. Tam patria ago consectetur ventito sustineo nihil caecus. Supra officiis eos velociter somniculosus tonsor qui. Suffragium aduro arguo angustus cogito quia tolero vulnus. Supplanto sortitus cresco apud vestrum qui.",
-        "html": "<p>Videlicet deserunt aequitas cognatus. Concedo quia est quia pariatur vorago vallum. Calco autem atavus accusamus conscendo cornu ulterius. Tam patria ago consectetur ventito sustineo nihil caecus. Supra officiis eos velociter somniculosus tonsor qui. Suffragium aduro arguo angustus cogito quia tolero vulnus. Supplanto sortitus cresco apud vestrum qui.</p>"
+  "_type": "News",
+  "id": 1,
+  "title": "asperiores possimus nam doloribus ab",
+  "summary": "Celebrer spiculum colo viscus claustrum atque. Id nulla culpa sumptus. Comparo crapula depopulo demonstro.",
+  "description": {
+    "format": "markdown",
+    "raw": "Videlicet deserunt aequitas cognatus. Concedo quia est quia pariatur vorago vallum. Calco autem atavus accusamus conscendo cornu ulterius. Tam patria ago consectetur ventito sustineo nihil caecus. Supra officiis eos velociter somniculosus tonsor qui. Suffragium aduro arguo angustus cogito quia tolero vulnus. Supplanto sortitus cresco apud vestrum qui.",
+    "html": "<p>Videlicet deserunt aequitas cognatus. Concedo quia est quia pariatur vorago vallum. Calco autem atavus accusamus conscendo cornu ulterius. Tam patria ago consectetur ventito sustineo nihil caecus. Supra officiis eos velociter somniculosus tonsor qui. Suffragium aduro arguo angustus cogito quia tolero vulnus. Supplanto sortitus cresco apud vestrum qui.</p>"
+  },
+  "createdAt": "2015-03-20T12:57:01Z",
+  "_links": {
+    "self": {
+      "href": "/api/v3/news/1",
+      "title": "asperiores possimus nam doloribus ab"
     },
-    "createdAt": "2015-03-20T12:57:01Z",
-    "_links": {
-        "self": {
-            "href": "/api/v3/news/1",
-            "title": "asperiores possimus nam doloribus ab"
-        },
-        "project": {
-            "href": "/api/v3/projects/1",
-            "title": "A project"
-        },
-        "author": {
-            "href": "/api/v3/users/2",
-            "title": "Peggie Feeney"
-        }
+    "project": {
+      "href": "/api/v3/projects/1",
+      "title": "A project"
     },
-    "_embedded": {
-        "project": {
-            "_type": "Project"
-            }
-        },
-        "author": {
-            "_type": "User"
-        }
+    "author": {
+      "href": "/api/v3/users/2",
+      "title": "Peggie Feeney"
     }
+  },
+  "_embedded": {
+    "project": {
+      "_type": "Project"
+    }
+  },
+  "author": {
+    "_type": "User"
+  }
 }
