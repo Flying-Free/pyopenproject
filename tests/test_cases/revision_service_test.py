@@ -1,14 +1,14 @@
 import json
 
-from business.services.revision_service import RevisionService
 from model.revision import Revision
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class RevisionServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.revisionSer = RevisionService()
+        self.revisionSer = self.factory.get_revision_service()
         with open('../data/type.json') as f:
             self.revision = Revision(json.load(f))
 

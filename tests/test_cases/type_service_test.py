@@ -1,14 +1,14 @@
 import json
 
-from business.services.type_service import TypeService
 from model.type import Type
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class TypeServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.typeSer = TypeService()
+        self.typeSer = self.factory.get_type_service()
         with open('../data/type.json') as f:
             self.type = Type(json.load(f))
 

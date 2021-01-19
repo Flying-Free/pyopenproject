@@ -1,14 +1,14 @@
 import json
 
-from business.services.wiki_page_service import WikiPageService
 from model.wiki_page import WikiPage
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class WikiPageServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.wikiPageSer = WikiPageService()
+        self.wikiPageSer = self.factory.get_wiki_page_service()
         with open('../data/work_package.json') as f:
             self.wiki = WikiPage(json.load(f))
         with open('../data/attachment.json') as f:

@@ -1,15 +1,15 @@
 import json
 
 from business.exception.business_error import BusinessError
-from business.service_factory import ServiceFactory
 from model.work_package import WorkPackage
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class WorkPackageServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.wpSer = ServiceFactory.get_work_package_service()
+        self.wpSer = self.factory.get_work_package_service()
         with open('../data/work_package.json') as f:
             self.work_package = WorkPackage(json.load(f))
         with open('../data/relation.json') as f:

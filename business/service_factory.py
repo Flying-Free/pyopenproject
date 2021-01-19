@@ -19,12 +19,15 @@ from business.services.impl.query_service_impl import QueryServiceImpl
 from business.services.impl.relation_service_impl import RelationServiceImpl
 from business.services.impl.revision_service_impl import RevisionServiceImpl
 from business.services.impl.role_service_impl import RoleServiceImpl
+from business.services.impl.root_service_impl import RootServiceImpl
 from business.services.impl.schema_service_impl import SchemaServiceImpl
 from business.services.impl.status_service_impl import StatusServiceImpl
 from business.services.impl.time_entry_service_impl import TimeEntryServiceImpl
 from business.services.impl.type_service_impl import TypeServiceImpl
+from business.services.impl.user_preferences_service_impl import UserPreferencesServiceImpl
 from business.services.impl.user_service_impl import UserServiceImpl
 from business.services.impl.version_service_impl import VersionServiceImpl
+from business.services.impl.wiki_page_service_impl import WikiPageServiceImpl
 from business.services.impl.work_package_service_impl import WorkPackageServiceImpl
 from model.connection import Connection
 
@@ -102,6 +105,9 @@ class ServiceFactory:
     def get_role_service(self):
         return RoleServiceImpl(self.conn)
 
+    def get_root_service(self):
+        return RootServiceImpl(self.conn)
+
     def get_schema_service(self):
         return SchemaServiceImpl(self.conn)
 
@@ -114,11 +120,17 @@ class ServiceFactory:
     def get_type_service(self):
         return TypeServiceImpl(self.conn)
 
+    def get_user_preferences_service(self):
+        return UserPreferencesServiceImpl(self.conn)
+
     def get_user_service(self):
         return UserServiceImpl(self.conn)
 
     def get_version_service(self):
         return VersionServiceImpl(self.conn)
+
+    def get_wiki_page_service(self):
+        return WikiPageServiceImpl(self.conn)
 
     def get_work_package_service(self):
         return WorkPackageServiceImpl(self.conn)

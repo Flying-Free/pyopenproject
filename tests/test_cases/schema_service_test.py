@@ -1,8 +1,8 @@
-from business.services.schema_service import SchemaService
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class SchemaServiceTestCase(OpenProjectTestCase):
-    # OpenProject organization hasn't develop it yet
+    # TODO: OpenProject organization hasn't develop it yet
     def setUp(self):
         super().setUp()
-        self.schemaSer = SchemaService()
+        self.schemaSer = self.factory.get_schema_service()

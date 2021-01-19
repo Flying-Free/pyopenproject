@@ -1,14 +1,14 @@
 import json
 
-from business.services.user_preferences_service import UserPreferencesService
 from model.user_preferences import UserPreferences
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class UserPreferencesServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.userPrefSer = UserPreferencesService()
+        self.userPrefSer = self.factory.get_user_preferences_service()
         with open('../data/user_preferences.json') as f:
             self.user_preferences = UserPreferences(json.load(f))
 

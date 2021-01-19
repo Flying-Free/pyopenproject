@@ -1,14 +1,14 @@
 import json
 
-from business.services.version_service import VersionService
 from model.version import Version
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class VersionServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.versionSer = VersionService()
+        self.versionSer = self.factory.get_version_service()
         with open('../data/version.json') as f:
             self.version = Version(json.load(f))
 
