@@ -1,14 +1,14 @@
 import json
 
-from business.services.root_service import RootService
 from model.root import Root
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class RootServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.rootSer = RootService()
+        self.rootSer = self.factory.get_root_service()
         with open('../data/root.json') as f:
             self.root = Root(json.load(f))
 

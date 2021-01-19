@@ -1,14 +1,14 @@
 import json
 
-from business.services.role_service import RoleService
 from model.role import Role
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class RoleServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.roleSer = RoleService()
+        self.roleSer = self.factory.get_role_service()
         with open('../data/role.json') as f:
             self.role = Role(json.load(f))
 

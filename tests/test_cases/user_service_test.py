@@ -1,14 +1,14 @@
 import json
 
-from business.services.user_service import UserService
 from model.user import User
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class UserServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.usrSer = UserService()
+        self.usrSer = self.factory.get_user_service()
         with open('../data/user.json') as f:
             self.user = User(json.load(f))
 

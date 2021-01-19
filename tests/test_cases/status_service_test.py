@@ -1,14 +1,14 @@
 import json
 
-from business.services.status_service import StatusService
 from model.status import Status
+from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
 class StatusServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.statusSer = StatusService()
+        self.statusSer = self.factory.get_status_service()
         with open('../data/status.json') as f:
             self.status = Status(json.load(f))
 
