@@ -1,3 +1,6 @@
+import json
+
+
 class CustomAction:
 
     def __init__(self, json_obj):
@@ -11,4 +14,4 @@ class CustomAction:
     #     }
 
     def __str__(self):
-        return self.__dict__
+        return json.dumps(self.__dict__)

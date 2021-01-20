@@ -1,3 +1,5 @@
+import json
+
 import business.service_factory as service_factory
 
 
@@ -23,4 +25,4 @@ class Version:
     #         "updateImmediately": { "href": "/api/v3/versions/11", "method": "PATCH" }
 
     def __str__(self):
-        return self.__dict__
+        return json.dumps(self.__dict__)

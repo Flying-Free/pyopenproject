@@ -12,4 +12,4 @@ class HelpTextsServiceImpl(HelpTextsService):
         return Find(self.connection, help_text).execute()
 
     def find_all(self):
-        return FindAll(self.connection).execute()
+        return list(FindAll(self.connection).execute())

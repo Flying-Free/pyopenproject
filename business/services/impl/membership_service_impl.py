@@ -16,7 +16,7 @@ class MembershipServiceImpl(MembershipService):
         super().__init__(connection)
 
     def find_all(self, filters):
-        return FindAll(self.connection, filters).execute()
+        return list(FindAll(self.connection, filters).execute())
 
     def find(self, membership):
         return Find(self.connection, membership).execute()

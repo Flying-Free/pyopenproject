@@ -13,7 +13,10 @@ class NewsServiceTestCase(OpenProjectTestCase):
             self.new = New(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.newsSer.find(self.new))
+        new = self.newsSer.find(self.new)
+        self.assertEqual(new.__dict__, self.new.__dict__)
 
     def test_find_all(self):
-        self.assertIsNotNone(self.newsSer.find_all(self, offset=None, page_size=None, filters=None, sort_by=None))
+        news_list = self.newsSer.find_all(offset=None, page_size=None, filters=None, sort_by=None)
+        # 2 news: One for each project
+        self.assertEqual(2, len(news_list))

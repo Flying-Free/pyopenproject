@@ -1,3 +1,5 @@
+import json
+
 import business.service_factory as service_factory
 
 
@@ -19,5 +21,4 @@ class Category:
         return None
 
     def __str__(self):
-        return self.__dict__
-
+        return json.dumps(self.__dict__)

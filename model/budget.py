@@ -1,3 +1,5 @@
+import json
+
 
 class Budget:
 
@@ -5,4 +7,4 @@ class Budget:
         self.__dict__ = json_obj
 
     def __str__(self):
-        return self.__dict__
+        return json.dumps(self.__dict__)

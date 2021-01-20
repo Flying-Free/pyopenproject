@@ -13,10 +13,16 @@ class HelpTextsServiceTestCase(OpenProjectTestCase):
         with open('../data/help_text.json') as f:
             self.help_text = HelpText(json.load(f))
 
-    def test_find(self):
+    def test_not_found(self):
         # There's no help text --> Exception
         with self.assertRaises(BusinessError):
-            self.assertIsNotNone(self.helpSer.find(self.help_text))
+            self.helpSer.find(self.help_text)
+
+    def test_find(self):
+        # TODO: We need to create Help Texts using the API
+        pass
 
     def test_find_all(self):
-        self.assertIsNotNone(self.helpSer.find_all())
+        help_texts = self.helpSer.find_all()
+        # There's not any help text in the basic installation
+        self.assertEqual(0, len(help_texts))

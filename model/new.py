@@ -1,3 +1,5 @@
+import json
+
 
 class New:
 
@@ -5,4 +7,4 @@ class New:
         self.__dict__ = json_obj
 
     def __str__(self):
-        return self.__dict__
+        return json.dumps(self.__dict__)

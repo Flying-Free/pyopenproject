@@ -7,19 +7,19 @@ from model.new import New
 
 class FindAll(NewsCommand):
 
-    def __init__(self, connection, offset, pageSize, filters, sortBy):
+    def __init__(self, connection, offset, page_size, filters, sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.pageSize = pageSize
+        self.page_size = page_size
         self.filters = filters
-        self.sortBy = sortBy
+        self.sort_by = sort_by
 
     def execute(self):
         try:
             json_obj = GetRequest(connection=self.connection,
-                                  context=f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}")\
-                .execute()
-            for news in json_obj._embedded.elements:
+                                  context=f"{self.CONTEXT}?{self.offset},{self.page_size},"
+                                          f"{self.filters},{self.sort_by}").execute()
+            for news in json_obj['_embedded']['elements']:
                 yield New(news)
         except RequestError as re:
             raise BusinessError(f"Error finding all news") from re

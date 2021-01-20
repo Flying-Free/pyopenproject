@@ -1,3 +1,5 @@
+import json
+
 import business.service_factory as service_factory
 
 
@@ -276,4 +278,4 @@ class WorkPackage:
                     .find_by_context(custom_action.href)
 
     def __str__(self):
-        return self.__dict__
+        return json.dumps(self.__dict__)

@@ -1,3 +1,5 @@
+import json
+
 
 class Connection:
 
@@ -7,4 +9,4 @@ class Connection:
         self.api_key = apikey
 
     def __str__(self):
-        return self.__dict__
+        return json.dumps(self.__dict__)
