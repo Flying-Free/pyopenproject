@@ -20,7 +20,7 @@
         "delete": {
             "href": "/api/v3/users/1",
             "method": "DELETE"
-        },
+        }
     },
     "id": 1,
     "login": "j.sheppard",

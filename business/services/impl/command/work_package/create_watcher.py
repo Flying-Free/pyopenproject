@@ -1,10 +1,10 @@
 import json
 
+import model.user as usr
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.work_package.work_package_command import WorkPackageCommand
-from model.user import User
 
 
 class CreateWatcher(WorkPackageCommand):
@@ -19,6 +19,6 @@ class CreateWatcher(WorkPackageCommand):
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}/{self.work_package.id}/watchers",
                                    json=json.dumps(self.watcher.__dict__)).execute()
-            return User(json_obj)
+            return usr.User(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating watcher for the work package {self.work_package.id}") from re

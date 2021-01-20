@@ -1,6 +1,7 @@
 import json
 
 from business.exception.business_error import BusinessError
+from model.user import User
 from model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -15,10 +16,10 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         with open('../data/relation.json') as f:
             self.relation = WorkPackage(json.load(f))
         with open('../data/user.json') as f:
-            self.watcher = WorkPackage(json.load(f))
+            self.watcher = User(json.load(f))
         with open('../data/activity.json') as f:
             self.activity = WorkPackage(json.load(f))
-        with open('./data/schema.json') as f:
+        with open('../data/schema.json') as f:
             self.schema = WorkPackage(json.load(f))
         with open('../data/attachment.json') as f:
             self.attachment = WorkPackage(json.load(f))
@@ -42,9 +43,8 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         # TODO: We need a way to create a work package in order to change it
-        # current = self.wpSer.find(self.work_package)
-        # self.assertIsNotNone(current)
-        pass
+        current = self.wpSer.create(self.work_package)
+        self.assertIsNotNone(self.wpSer.find(current))
 
     def test_update(self):
         # Without notify
