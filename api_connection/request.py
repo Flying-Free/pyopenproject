@@ -18,14 +18,14 @@ class Request(Command):
         try:
             response = self._execute_request()
             response.raise_for_status()
-            if 'application/hal+json' in response.headers['content-type']:
-                if response.json()["_type"] == "Error":
-                    raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
-                                       f"Message: {response.json()['message']}")
-                return response.json()
-            elif 'image' in response.headers['content-type']:
-                return response.content
-
+            if response.content is not bytes():
+                if 'application/hal+json' in response.headers['content-type']:
+                    if response.json()["_type"] == "Error":
+                        raise RequestError(f"Error Identifier: {response.json()['errorIdentifier']}\n"
+                                           f"Message: {response.json()['message']}")
+                    return response.json()
+                elif 'image' in response.headers['content-type']:
+                    return response.content
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running request with the URL: '{self.connection.url_base + self.context}'." +
