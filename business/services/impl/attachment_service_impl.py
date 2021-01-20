@@ -19,5 +19,5 @@ class AttachmentServiceImpl(AttachmentService):
     def find(self, attachment):
         return Find(self.connection, attachment).execute()
 
-    def download_by_context(self, attachment):
-        return DownloadByContext(self.connection, attachment).execute()
+    def download_by_context(self, attachment, folder):
+        return DownloadByContext(self.connection, attachment, folder).execute()

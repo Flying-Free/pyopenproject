@@ -18,7 +18,10 @@ class ActivityServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             self.actSer.find(self.activity)
 
-    # TODO: Test to find an Activity
+    def test_find_activity(self):
+        # TODO: Test to find an Activity
+        pass
+
     def test_update_activity(self):
         # TODO: We need a way to create activity in order to change it
         # There's no activity to update --> Exception

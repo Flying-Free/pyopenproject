@@ -18,22 +18,6 @@ class Create(AttachmentCommand):
 
     def execute(self):
         try:
-            # TODO: Clients can create attachments without a container first and attach them later on.
-            #  This is useful if the container does not exist at the time the attachment is uploaded.
-            #  After the upload, the client can then claim such containerless attachments for any resource eligible
-            #  (e.g. WorkPackage) on subsequent requests.
-            #  The upload and the claiming must be done for the same user account.
-            #  Attachments uploaded by another user cannot be claimed and once claimed for a resource,
-            #  they cannot be claimed by another.
-            #  The upload request must be of type multipart/form-data with exactly two parts.
-            #  The first part must be called metadata. Its content type is expected to be application/json,
-            #  the body must be a single JSON object, containing at least the fileName and optionally
-            #  the attachments description.
-            #  The second part must be called file, its content type should match the mime type of the file.
-            #  The body must be the raw content of the file.
-            #  Note that a filename must be indicated in the Content-Disposition of this part,
-            #  although it will be ignored.
-            #  Instead the fileName inside the JSON of the metadata part will be used.
             metadata = {"fileName": self.filename, "description": {"raw": self.description}}
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}",

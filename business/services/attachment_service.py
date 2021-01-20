@@ -19,4 +19,4 @@ class AttachmentService(AbstractService):
     def find(self, attachment): raise NotImplementedError
 
     @abstractmethod
-    def download_by_context(self, attachment): raise NotImplementedError
+    def download_by_context(self, attachment, folder): raise NotImplementedError
