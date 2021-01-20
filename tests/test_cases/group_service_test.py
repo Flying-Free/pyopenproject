@@ -13,7 +13,13 @@ class GroupServiceTestCase(OpenProjectTestCase):
         with open('../data/group.json') as f:
             self.group = Group(json.load(f))
 
-    def test_find(self):
+    def test_not_found(self):
         # There's no group to update --> Exception
         with self.assertRaises(BusinessError):
             self.groupSer.find(self.group)
+
+    def test_find(self):
+        # TODO: We need a way to create a group in order to change it
+        # current = self.groupSer.find(self.group)
+        # self.assertIsNotNone(current)
+        pass

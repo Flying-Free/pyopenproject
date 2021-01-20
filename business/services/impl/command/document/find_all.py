@@ -7,17 +7,17 @@ from model.document import Document
 
 class FindAll(DocumentCommand):
 
-    def __init__(self, connection, offset, pageSize, sortBy):
+    def __init__(self, connection, offset, page_size, sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.pageSize = pageSize
-        self.sortBy = sortBy
+        self.page_size = page_size
+        self.sort_by = sort_by
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.sortBy}")\
-                .execute()
-            for document in json_obj._embedded.elements:
+            json_obj = GetRequest(self.connection,
+                                  f"{self.CONTEXT}?{self.offset},{self.page_size},{self.sort_by}").execute()
+            for document in json_obj["_embedded"]["elements"]:
                 yield Document(document)
         except RequestError as re:
             raise BusinessError(f"Error finding all documents") from re

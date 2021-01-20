@@ -17,7 +17,10 @@ class GridServiceTestCase(OpenProjectTestCase):
 
     # TODO: sortBy exist? https://docs.openproject.org/api/endpoints/grids/#grids-grids
     def test_find_all(self):
-        self.assertIsNotNone(self.gridSer.find_all(25, 25, '[{ "page": { "operator": "=", "values": ["/my/page"] } }]', sortBy))
+        self.assertIsNotNone(self.gridSer.find_all(25,
+                                                   25,
+                                                   '[{ "page": { "operator": "=", "values": ["/my/page"] } }]',
+                                                   sort_by))
 
     def test_create(self):
         self.assertIsNotNone(self.gridSer.create(self.grid))

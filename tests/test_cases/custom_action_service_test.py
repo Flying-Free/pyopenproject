@@ -13,13 +13,18 @@ class CustomActionServiceTestCase(OpenProjectTestCase):
         with open('../data/custom_action.json') as f:
             self.custom_action = CustomAction(json.load(f))
 
-    # TODO: We need to create custom actions to test them
+    def test_executed(self):
+        # TODO: We need to create custom actions to test them
+        pass
+
+    def test_find(self):
+        # TODO: We need to create custom actions to test them
+        pass
 
     def test_not_found_executed(self):
         with self.assertRaises(BusinessError):
             self.assertIsNotNone(self.caSer.execute(self.custom_action))
 
-    def test_find(self):
+    def test_not_found(self):
         with self.assertRaises(BusinessError):
             self.assertIsNotNone(self.caSer.find(self.custom_action))
-

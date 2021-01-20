@@ -60,7 +60,7 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
         a = Attachment({'id': 1})
         attachment = self.attSer.find(a)
         self.assertIsNotNone(attachment)
-        self.assertEqual(self.attachment.__dict__, attachment.__dict__)
+        self.assertEqual(self.attachment.fileName, attachment.fileName)
 
     def test_download_by_context(self):
         file_content = self.attSer.download_by_context(

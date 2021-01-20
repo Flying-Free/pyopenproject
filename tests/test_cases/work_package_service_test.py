@@ -25,7 +25,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
 
     # TODO
     def test_find_by_context(self):
-        self.assertIsNotNone(self.wpSer.find_by_context(context))
+        self.assertIsNotNone(self.wpSer.find_by_context(self.work_package["_links"]["self"]["href"]))
 
     # TODO
     def test_find_attachments(self):
@@ -35,10 +35,16 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     def test_add_attachment(self):
         self.assertIsNotNone(self.wpSer.add_attachment(self.work_package, self.attachment))
 
-    def test_find(self):
+    def test_not_found(self):
         # There's no activity --> Exception
         with self.assertRaises(BusinessError):
             self.wpSer.find(self.work_package)
+
+    def test_find(self):
+        # TODO: We need a way to create a work package in order to change it
+        # current = self.wpSer.find(self.work_package)
+        # self.assertIsNotNone(current)
+        pass
 
     def test_update(self):
         # Without notify
