@@ -13,7 +13,8 @@ class ProjectServiceTestCase(OpenProjectTestCase):
             self.project = Project(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.proSer.find(self.project))
+        current = self.proSer.find(self.project)
+        self.assertEqual(self.project.__dict__, current.__dict__)
 
     def test_update(self):
         self.assertIsNotNone(self.proSer.update(self.project))
@@ -22,7 +23,8 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.proSer.delete(self.project))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.proSer.find_all(None, None))
+        projects = self.proSer.find_all()
+        self.assertEqual(2, len(projects))
 
     def test_create(self):
         self.assertIsNotNone(self.proSer.create(self.project))

@@ -32,8 +32,8 @@ class ProjectServiceImpl(ProjectService):
     def delete(self, project):
         return Delete(self.connection, project).execute()
 
-    def find_all(self, filters, sort_by):
-        return FindAll(self.connection, filters, sort_by).execute()
+    def find_all(self, filters=None, sort_by=None):
+        return list(FindAll(self.connection, filters, sort_by).execute())
 
     def create(self, project):
         return Create(self.connection, project).execute()

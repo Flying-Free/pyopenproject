@@ -19,7 +19,7 @@ class ProjectService(AbstractService):
     def delete(self, project): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, filters, sortBy): raise NotImplementedError
+    def find_all(self, filters=None, sort_by=None): raise NotImplementedError
 
     @abstractmethod
     def create(self, project): raise NotImplementedError
