@@ -13,4 +13,14 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
             self.principal = Principal(json.load(f))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.principalSer.find_all(filters))
+        principals = self.principalSer.find_all(filters=None)
+        self.assertEqual(1, len(principals))
+
+    def test_filters(self):
+        # TODO: review filters
+        users = self.principalSer.find_all(filters='[{ "_type": { "operator": "=", "values": ["User"] }" }]')
+        self.assertEqual(1, len(users))
+        self.assertEqual("User", users[0]._type)
+        groups = self.principalSer.find_all(filters='[{ "_type": { "operator": "=", "values": ["Group"] }" }]')
+        self.assertEqual(1, len(groups))
+        self.assertEqual("Group", groups[0]._type)

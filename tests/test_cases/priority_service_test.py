@@ -12,7 +12,7 @@ class PriorityServiceTestCase(OpenProjectTestCase):
         with open('../data/priority.json') as f:
             self.priority = Priority(json.load(f))
 
-    def test_find_all(self):
+    def test_find(self):
         self.assertIsNotNone(self.prioritySer.find(self.priority))
 
     def test_find_all(self):

@@ -1,4 +1,4 @@
-from business.services.impl.command.document.find_all import FindAll
+from business.services.impl.command.principal.find_all import FindAll
 from business.services.principal_service import PrincipalService
 
 
@@ -8,4 +8,4 @@ class PrincipalServiceImpl(PrincipalService):
         super().__init__(connection)
 
     def find_all(self, filters):
-        return FindAll(self.connection, filters).execute()
+        return list(FindAll(self.connection, filters).execute())
