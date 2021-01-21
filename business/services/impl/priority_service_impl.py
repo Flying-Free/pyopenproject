@@ -11,5 +11,5 @@ class PriorityServiceImpl(PriorityService):
     def find(self, priority):
         return Find(self.connection, priority).execute()
 
-    def find_all(self, offset, page_size, filters, sort_by):
-        return FindAll(self.connection, offset, page_size, filters, sort_by).execute()
+    def find_all(self, offset=None, page_size=None, filters=None, sort_by=None):
+        return list(FindAll(self.connection, offset, page_size, filters, sort_by).execute())

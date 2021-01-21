@@ -18,9 +18,9 @@ class FindAll(PriorityCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?{self.offset},{self.pageSize},"
-                                  f"{self.filters},{self.sortBy}").execute()
-            for priority in json_obj._embedded.elements:
+                                  f"{self.CONTEXT}?{self.offset},{self.page_size},"
+                                  f"{self.filters},{self.sort_by}").execute()
+            for priority in json_obj["_embedded"]["elements"]:
                 yield Priority(priority)
         except RequestError as re:
             raise BusinessError(f"Error finding all priorities") from re
