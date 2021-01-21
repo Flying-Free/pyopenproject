@@ -12,6 +12,7 @@ from business.services.impl.help_texts_service_impl import HelpTextsServiceImpl
 from business.services.impl.membership_service_impl import MembershipServiceImpl
 from business.services.impl.news_service_impl import NewsServiceImpl
 from business.services.impl.post_service_impl import PostServiceImpl
+from business.services.impl.previewing_service_impl import PreviewingServiceImpl
 from business.services.impl.principal_service_impl import PrincipalServiceImpl
 from business.services.impl.priority_service_impl import PriorityServiceImpl
 from business.services.impl.project_service_impl import ProjectServiceImpl

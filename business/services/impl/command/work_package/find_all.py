@@ -20,7 +20,7 @@ class FindAll(WorkPackageCommand):
             json_obj = GetRequest(self.connection,
                                   f"{self.CONTEXT}?,{self.offset},{self.pageSize},"
                                   f"{self.filters},{self.sortBy},{self.groupBy},{self.showSums}").execute()
-            for work_package in json_obj._embedded.elements:
+            for work_package in json_obj["_embedded"]["elements"]:
                 yield wp.WorkPackage(work_package)
         except RequestError as re:
             raise BusinessError(f"Error finding all work packages") from re

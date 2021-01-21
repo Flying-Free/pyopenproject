@@ -8,11 +8,15 @@ from api_connection.exceptions.request_exception import RequestError
 
 class Request(Command):
 
-    def __init__(self, connection, context, json=None, files=None):
+    def __init__(self, connection, context, json=None, files=None, headers=None, data=None):
+        if headers is None:
+            headers = {'Content-type': 'application/hal+json'}
         self.connection = connection
+        self.headers = headers
         self.context = context
         self.json = json
         self.files = files
+        self.data = data
 
     def execute(self):
         try:
@@ -26,6 +30,8 @@ class Request(Command):
                     return response.json()
                 elif 'image' in response.headers['content-type']:
                     return response.content
+                elif 'text' in response.headers['content-type']:
+                    return response.content.decode("utf-8")
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running request with the URL: '{self.connection.url_base + self.context}'." +

@@ -4,17 +4,16 @@ from business.exception.business_error import BusinessError
 from business.services.impl.command.previewing.previewing_command import PreviewingCommand
 
 
-class ToMarkdownByContext(PreviewingCommand):
+class FromMarkdownByContext(PreviewingCommand):
 
-    def __init__(self, connection, context, text):
+    def __init__(self, connection, context):
         super().__init__(connection)
         self.context = context
-        self.text = text
 
     def execute(self):
         try:
             return PostRequest(connection=self.connection,
                                context=f"{self.CONTEXT}/markdown?{self.context}",
-                               json=self.text).execute()
+                               headers={'Content-Type': 'text/plain'}).execute()
         except RequestError as re:
             raise BusinessError(f"Error transform text to markdown: {self.text}") from re

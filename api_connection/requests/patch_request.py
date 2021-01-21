@@ -13,5 +13,6 @@ class PatchRequest(Request):
         return requests.patch(
             self.connection.url_base + self.context,
             auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key),
-            json=self.json
+            json=self.json,
+            headers=self.headers
         )

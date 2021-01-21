@@ -10,10 +10,10 @@ class PreviewingService(AbstractService):
         super().__init__(connection)
 
     @abstractmethod
-    def to_markdown(self, text): raise NotImplementedError
+    def from_markdown(self, text): raise NotImplementedError
 
     @abstractmethod
-    def to_markdown_by_context(self, context, text): raise NotImplementedError
+    def from_markdown_by_context(self, context): raise NotImplementedError
 
     @abstractmethod
-    def to_plain(self, context, text): raise NotImplementedError
+    def from_plain(self, text): raise NotImplementedError

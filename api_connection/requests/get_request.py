@@ -12,5 +12,6 @@ class GetRequest(Request):
     def _execute_request(self):
         return requests.get(
             self.connection.url_base + self.context,
-            auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
+            auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key),
+            headers=self.headers
         )

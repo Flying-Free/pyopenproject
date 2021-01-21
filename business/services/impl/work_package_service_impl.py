@@ -61,7 +61,7 @@ class WorkPackageServiceImpl(WorkPackageService):
         return UpdateForm(self.connection, work_package)
 
     def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums):
-        return FindAll(self.connection, offset, page_size, filters, sort_by, group_by, show_sums).execute()
+        return list(FindAll(self.connection, offset, page_size, filters, sort_by, group_by, show_sums).execute())
 
     def create(self, work_package, notify):
         return Create(self.connection, work_package, notify)

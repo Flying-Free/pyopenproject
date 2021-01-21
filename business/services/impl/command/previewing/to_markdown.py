@@ -4,7 +4,7 @@ from business.exception.business_error import BusinessError
 from business.services.impl.command.previewing.previewing_command import PreviewingCommand
 
 
-class ToMarkdown(PreviewingCommand):
+class FromMarkdown(PreviewingCommand):
 
     def __init__(self, connection, text):
         super().__init__(connection)
@@ -14,6 +14,7 @@ class ToMarkdown(PreviewingCommand):
         try:
             return PostRequest(connection=self.connection,
                                context=f"{self.CONTEXT}/markdown",
-                               json=self.text).execute()
+                               data=self.text,
+                               headers={'Content-Type': 'text/plain'}).execute()
         except RequestError as re:
             raise BusinessError(f"Error transform text to markdown: {self.text}") from re
