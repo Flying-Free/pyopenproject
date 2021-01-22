@@ -31,9 +31,9 @@ class RelationServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.relationSer.find_schema())
 
     def test_find_all(self):
-        output=self.relationSer.find_all('[{ "from": { "operator": "=", "values": 42 }" }]',
+        relations=self.relationSer.find_all('[{ "from": { "operator": "=", "values": 42 }" }]',
                                                        '[["type", "asc"]]')
-        print(output)
+        self.assertEqual(7, len(relations))
 
     def test_update_form(self):
         self.assertIsNotNone(self.relationSer.update_form(self.relation))

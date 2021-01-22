@@ -17,7 +17,7 @@ class FindAll(RelationCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters},{self.sortBy}").execute()
-            for tEntry in json.loads(json_obj):
+            for tEntry in json_obj["_embedded"]["elements"]:
                 yield rel.Relation(tEntry)
         except RequestError as re:
             raise BusinessError(f"Error finding all queries with filters: {self.filters}") from re
