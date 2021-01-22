@@ -34,7 +34,7 @@ class ProjectService(AbstractService):
     def update_form(self, project): raise NotImplementedError
 
     @abstractmethod
-    def find_parents(self, filters, of, sortBy): raise NotImplementedError
+    def find_parents(self, filters, of, sort_by): raise NotImplementedError
 
     # Documentation in the page for the Version endpoint
     @abstractmethod

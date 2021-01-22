@@ -7,19 +7,20 @@ from model.grid import Grid
 
 class FindAll(GridCommand):
 
-    def __init__(self, connection, offset, pageSize, filters, sortBy):
+    def __init__(self, connection, offset, page_size, filters,
+                 sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.pageSize = pageSize
+        self.pageSize = page_size
         self.filters = filters
-        self.sortBy = sortBy
+        self.sortBy = sort_by
 
     def execute(self):
         try:
             json_obj = GetRequest(
                 self.connection,
                 f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}").execute()
-            for grid in json_obj._embedded.elements:
+            for grid in json_obj["_embedded"]["elements"]:
                 yield Grid(grid)
         except RequestError as re:
             raise BusinessError(f"Error finding all grids") from re

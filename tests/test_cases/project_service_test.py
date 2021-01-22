@@ -1,6 +1,5 @@
 import json
 
-from business.exception.business_error import BusinessError
 from model.project import Project
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -55,14 +54,15 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(self.project.status, current.status)
 
     def test_delete(self):
-        current = self.proSer.find(self.project)
         with open("../data/scrum_project.json") as f:
             expected = Project(json.load(f))
-        self.assertEqual(expected.__dict__, current.__dict__)
         self.proSer.delete(self.project)
-        # current = self.proSer.find(self.project)
-        with self.assertRaises(BusinessError):
-            self.proSer.find(self.project)
+        expected = self.proSer.find(expected)
+        self.assertEqual(False, expected.active)
+        expected.active = True
+        # TODO: review
+        self.proSer.update(expected)
+        self.assertEqual(True, expected.active)
 
     def test_find_all(self):
         projects = self.proSer.find_all()
@@ -74,40 +74,56 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(projects))
 
     def test_create(self):
-        self.assertIsNotNone(self.proSer.create(self.project))
+        # TODO: Review creation
+        p = Project({"name": "Test Project"})
+        p = self.proSer.create(p)
+        current = self.proSer.find(p)
+        self.assertEqual("Test Project", current.name)
 
     def test_find_schema(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_schema())
 
     def test_create_form(self):
+        # TODO
         self.assertIsNotNone(self.proSer.create_form(self.project))
 
     def test_update_form(self):
+        # TODO
         self.assertIsNotNone(self.proSer.update_form(self.project))
 
     def test_find_parents(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_parents(filters, of, sortBy))
 
     def test_find_versions(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_versions(self.project))
 
     def test_find_types(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_types(self.project))
 
     def test_find_budgets(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_budgets(self.project))
 
     def test_find_work_packages(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_work_packages(self.project))
 
     def test_create_work_package(self):
+        # TODO
         self.assertIsNotNone(self.proSer.create_work_package(self.project, notify, workPackage))
 
     def test_create_work_package_form(self):
+        # TODO
         self.assertIsNotNone(self.proSer.create_work_package_form(self.project, notify, form))
 
     def test_find_available_assignees(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_available_assignees(self.project))
 
     def test_find_available_responsibles(self):
+        # TODO
         self.assertIsNotNone(self.proSer.find_available_responsibles(self.project))

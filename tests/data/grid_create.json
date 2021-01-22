@@ -1,0 +1,32 @@
+{
+  "rowCount": 8,
+  "columnCount": 5,
+  "widgets": [
+    {
+      "identifier": "time_entries_current_user",
+      "startRow": 1,
+      "endRow": 8,
+      "startColumn": 1,
+      "endColumn": 3
+    },
+    {
+      "identifier": "news",
+      "startRow": 3,
+      "endRow": 8,
+      "startColumn": 4,
+      "endColumn": 5
+    },
+    {
+      "identifier": "documents",
+      "startRow": 1,
+      "endRow": 3,
+      "startColumn": 3,
+      "endColumn": 6
+    }
+  ],
+  "_links": {
+    "scope": {
+      "href": "/my/page"
+    }
+  }
+}

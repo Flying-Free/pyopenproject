@@ -14,7 +14,8 @@ class Create(GridCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
-                                   context=f"{self.CONTEXT}").execute()
+                                   context=f"{self.CONTEXT}",
+                                   data=self.grid.__dict__).execute()
             return Grid(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating grid by id: {self.grid.id}") from re
+            raise BusinessError(f"Error creating grid") from re
