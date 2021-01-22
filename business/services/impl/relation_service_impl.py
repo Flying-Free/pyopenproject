@@ -30,7 +30,7 @@ class RelationServiceImpl(RelationService):
         return FindSchemaByType(self.connection, type).execute()
 
     def find_all(self, filters, sort_by):
-        return FindAll(self.connection, filters, sort_by).execute()
+        return list(FindAll(self.connection, filters, sort_by).execute())
 
     def update_form(self, relation, form):
         return UpdateForm(self.connection, relation, form=form).execute()
