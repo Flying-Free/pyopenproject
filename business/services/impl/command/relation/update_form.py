@@ -21,4 +21,4 @@ class UpdateForm(RelationCommand):
                                    json=json.dumps(self.form.__dict__)).execute()
             return rel.Relation(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error updating form: {self.form.name} for relation {self.relation.name}") from re
+            raise BusinessError(f"Error updating form for relation {self.relation.name}") from re

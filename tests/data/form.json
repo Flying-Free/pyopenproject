@@ -1,0 +1,6 @@
+{
+  "_type": "Relation",
+  "type": "follows",
+  "description": "let it rest for 3 days",
+  "delay": 3
+}
