@@ -19,16 +19,21 @@ class RelationServiceTestCase(OpenProjectTestCase):
             self.assertIsNotNone(self.relationSer.find(self.relation))
 
     def test_update(self):
+        #TODO: create relation before
         self.assertIsNotNone(self.relationSer.update(self.relation))
 
     def test_delete(self):
+        #TODO: create relation before
         self.assertIsNotNone(self.relationSer.delete(self.relation))
 
     def test_find_schema(self):
+        #TODO:  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest","message":"Bad request: id is invalid"}
         self.assertIsNotNone(self.relationSer.find_schema())
 
     def test_find_all(self):
-        self.assertIsNotNone(self.relationSer.find_all(filters, sortBy))
+        output=self.relationSer.find_all('[{ "from": { "operator": "=", "values": 42 }" }]',
+                                                       '[["type", "asc"]]')
+        print(output)
 
     def test_update_form(self):
         self.assertIsNotNone(self.relationSer.update_form(self.relation))
