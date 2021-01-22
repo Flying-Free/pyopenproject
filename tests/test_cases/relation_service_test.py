@@ -1,5 +1,6 @@
 import json
 
+from business.exception.business_error import BusinessError
 from model.relation import Relation
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -13,7 +14,9 @@ class RelationServiceTestCase(OpenProjectTestCase):
             self.relation = Relation(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.relationSer.find(self.relation))
+        # There's no relation --> Exception
+        with self.assertRaises(BusinessError):
+            self.assertIsNotNone(self.relationSer.find(self.relation))
 
     def test_update(self):
         self.assertIsNotNone(self.relationSer.update(self.relation))

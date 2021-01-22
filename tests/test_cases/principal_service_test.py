@@ -19,8 +19,6 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
     def test_filters(self):
         # TODO: review filters
         users = self.principalSer.find_all(filters='[{ "_type": { "operator": "=", "values": ["User"] }" }]')
-        self.assertEqual(1, len(users))
         self.assertEqual("User", users[0]._type)
-        groups = self.principalSer.find_all(filters='[{ "_type": { "operator": "=", "values": ["Group"] }" }]')
-        self.assertEqual(1, len(groups))
+        groups = self.principalSer.find_all(filters='[{ "member": { "operator": "=", "values": ["Scrum project"] }" }]')
         self.assertEqual("Group", groups[0]._type)
