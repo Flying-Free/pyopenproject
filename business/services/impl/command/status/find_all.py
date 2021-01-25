@@ -15,7 +15,7 @@ class FindAll(StatusCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
-            for tEntry in json.loads(json_obj):
-                yield Status(tEntry)
+            for status in json_obj["_embedded"]["elements"]:
+                yield Status(status)
         except RequestError as re:
             raise BusinessError(f"Error finding all statuses") from re

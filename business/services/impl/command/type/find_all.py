@@ -15,7 +15,7 @@ class FindAll(TypeCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
-            for tEntry in json.loads(json_obj):
-                yield Type(tEntry)
+            for typ in json_obj["_embedded"]["elements"]:
+                yield Type(typ)
         except RequestError as re:
             raise BusinessError(f"Error finding all time entries") from re

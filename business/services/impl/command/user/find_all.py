@@ -19,7 +19,7 @@ class FindAll(UserCommand):
             json_obj = GetRequest(self.connection,
                                   f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}")\
                 .execute()
-            for tEntry in json_obj._embedded.elements:
-                yield usr.User(tEntry)
+            for user in json_obj["_embedded"]["elements"]:
+                yield usr.User(user)
         except RequestError as re:
             raise BusinessError(f"Error finding all users by context: {self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}") from re

@@ -10,7 +10,7 @@ class StatusServiceImpl(StatusService):
         super().__init__(connection)
 
     def find_all(self):
-        return FindAll(self.connection).execute()
+        return list(FindAll(self.connection).execute())
 
     def find_by_context(self):
         return FindByContext(self.connection).execute()

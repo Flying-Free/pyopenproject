@@ -15,7 +15,7 @@ class FindAll(VersionCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}").execute()
-            for tEntry in json.loads(json_obj):
-                yield Version(tEntry)
+            for version in json_obj["_embedded"]["elements"]:
+                yield Version(version)
         except RequestError as re:
             raise BusinessError(f"Error finding all versions by filters: {self.filters}") from re

@@ -21,7 +21,7 @@ class FindAll(TimeEntryCommand):
             json_obj = GetRequest(self.connection,
                                   f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}")\
                 .execute()
-            for tEntry in json.loads(json_obj):
-                yield TimeEntry(tEntry)
+            for time_entry in json_obj["_embedded"]["elements"]:
+                yield TimeEntry(time_entry)
         except RequestError as re:
             raise BusinessError(f"Error finding all time entries") from re

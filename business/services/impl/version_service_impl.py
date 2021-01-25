@@ -26,7 +26,7 @@ class VersionServiceImpl(VersionService):
         return Delete(self.connection, version).execute()
 
     def find_all(self, filters):
-        return FindAll(self.connection, filters).execute()
+        return list(FindAll(self.connection, filters).execute())
 
     def create(self, version):
         return Create(self.connection, version).execute()
