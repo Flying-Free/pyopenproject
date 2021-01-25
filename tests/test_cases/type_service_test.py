@@ -13,7 +13,8 @@ class TypeServiceTestCase(OpenProjectTestCase):
             self.type = Type(json.load(f))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.typeSer.find_all())
+        types = self.typeSer.find_all()
+        self.assertEqual(7, len(types))
 
     def test_find(self):
         self.assertIsNotNone(self.typeSer.find(self.type))

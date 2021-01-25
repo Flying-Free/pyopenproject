@@ -16,7 +16,8 @@ class StatusServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.statusSer.find(self.status))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.statusSer.find_all())
+        statuses = self.statusSer.find_all()
+        self.assertEqual(14, len(statuses))
 
     def test_find_by_context(self, context):
         self.assertIsNotNone(self.statusSer.find_by_context(context))

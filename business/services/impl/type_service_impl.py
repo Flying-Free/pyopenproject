@@ -12,4 +12,4 @@ class TypeServiceImpl(TypeService):
         return Find(self.connection, type).execute()
 
     def find_all(self):
-        return list(FindAll(self.connection).execute)
+        return list(FindAll(self.connection).execute())

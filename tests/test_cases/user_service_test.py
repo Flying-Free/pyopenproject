@@ -12,26 +12,26 @@ class UserServiceTestCase(OpenProjectTestCase):
         with open('../data/user.json') as f:
             self.user = User(json.load(f))
 
-    def find_all(self):
-        self.assertIsNotNone(self.usrSer.find_all(25, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
-                                                          '{ "group": { "operator": "=", "values": ["1"] } }, '
-                                                          '{ "name": { "operator": "=", "values": '
-                                                          '["h.wurst@openproject.com"] } }]', '[["status", "asc"]]'))
+    def test_find_all(self):
+        usservs = self.usrSer.find_all(25, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
+                                               '{ "name": { "operator": "=", "values": '
+                                               '["OpenProject Admin"] } }]', '[["status", "asc"]]')
+        self.assertEqual(1, len(usservs))
 
-    def find(self):
+    def test_find(self):
         self.assertIsNotNone(self.usrSer.find(self.user))
 
-    def lock_user(self):
+    def test_lock_user(self):
         self.assertIsNotNone(self.usrSer.lock_user(self.user))
 
-    def unlock_user(self):
+    def test_unlock_user(self):
         self.assertIsNotNone(self.usrSer.unlock_user(self.user))
 
-    def update_user(self):
+    def test_update_user(self):
         self.assertIsNotNone(self.usrSer.update_user(self.user))
 
-    def delete_user(self):
+    def test_delete_user(self):
         self.assertIsNotNone(self.usrSer.delete_user(self.user))
 
-    def create_user(self):
+    def test_create_user(self):
         self.assertIsNotNone(self.usrSer.create_user(self.user))
