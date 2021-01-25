@@ -38,7 +38,7 @@ class QueryServiceImpl(QueryService):
         return Unstar(self.connection, query).execute()
 
     def find_all(self, filters):
-        return FindAll(self.connection, filters).execute()
+        return list(FindAll(self.connection, filters).execute())
 
     def create(self, query):
         return Create(self.connection, query).execute()

@@ -13,6 +13,7 @@ class RoleServiceTestCase(OpenProjectTestCase):
         with open('../data/role.json') as f:
             self.role = Role(json.load(f))
 
+    # TODO: Not authorized
     def test_find(self):
         self.assertIsNotNone(self.roleSer.find(self.role))
 
@@ -20,10 +21,10 @@ class RoleServiceTestCase(OpenProjectTestCase):
         roles = self.roleSer.find_all('[{ "unit": { "operator": "=", "values": ["system"] }" }]')
         self.assertEqual(6, len(roles))
 
-    # TODO
+    # TODO: Not authorized
     def test_find_by_context(self):
-        self.assertIsNotNone(self.roleSer.find_by_context(context))
+        self.assertIsNotNone(self.roleSer.find_by_context('/api/v3/roles/6'))
 
     def test_not_found_by_context(self):
         with self.assertRaises(BusinessError):
-            self.roleSer.find_by_context(f"/api/v3/categories/{self.role.id}")
+            self.roleSer.find_by_context(f"/api/v3/roles/{self.role.id}")

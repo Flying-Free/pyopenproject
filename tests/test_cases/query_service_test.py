@@ -32,7 +32,8 @@ class QueryServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.querySer.unstar(self.query))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.querySer.find_all(filters))
+        queries=self.querySer.find_all('[{ "project_id": { "operator": "!*", "values": null }" }]')
+        self.assertEqual(25, len(queries))
 
     def test_create(self):
         self.assertIsNotNone(self.querySer.create(self.query))
