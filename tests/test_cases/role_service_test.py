@@ -1,5 +1,6 @@
 import json
 
+from business.exception.business_error import BusinessError
 from model.role import Role
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -16,8 +17,13 @@ class RoleServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.roleSer.find(self.role))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.roleSer.find_all())
+        roles = self.roleSer.find_all('[{ "unit": { "operator": "=", "values": ["system"] }" }]')
+        self.assertEqual(6, len(roles))
 
     # TODO
     def test_find_by_context(self):
         self.assertIsNotNone(self.roleSer.find_by_context(context))
+
+    def test_not_found_by_context(self):
+        with self.assertRaises(BusinessError):
+            self.roleSer.find_by_context(f"/api/v3/categories/{self.role.id}")

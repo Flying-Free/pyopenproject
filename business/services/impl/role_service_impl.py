@@ -10,7 +10,7 @@ class RoleServiceImpl(RoleService):
         super().__init__(connection)
 
     def find_all(self, filters):
-        return FindAll(self.connection, filters).execute()
+        return list(FindAll(self.connection, filters).execute())
 
     def find(self, role):
         return Find(self.connection, role).execute()
