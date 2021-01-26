@@ -15,7 +15,7 @@ class FindAll(RoleCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}").execute()
             for role in json_obj["_embedded"]["elements"]:
                 yield Role(role)
         except RequestError as re:

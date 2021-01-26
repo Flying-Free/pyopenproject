@@ -13,7 +13,7 @@ class FindAll(PrincipalCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}").execute()
             for principal in json_obj["_embedded"]["elements"]:
                 yield p.Principal(principal)
         except RequestError as re:

@@ -13,7 +13,7 @@ class FindAll(ProjectCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters},{self.sort_by}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}&sortBy={self.sort_by}").execute()
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield p.Project(tEntry)
         except RequestError as re:

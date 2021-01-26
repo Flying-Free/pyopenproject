@@ -9,17 +9,18 @@ from model.time_entry import TimeEntry
 
 class FindAll(TimeEntryCommand):
 
-    def __init__(self, connection, offset, pageSize, filters, sortBy):
+    def __init__(self, connection, offset, page_size, filters, sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.pageSize = pageSize
+        self.page_size = page_size
         self.filters = filters
-        self.sortBy = sortBy
+        self.sort_by = sort_by
 
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}")\
+                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}&filters={self.filters}"
+                                  f"&sortBy={self.sort_by}")\
                 .execute()
             for time_entry in json_obj["_embedded"]["elements"]:
                 yield TimeEntry(time_entry)

@@ -18,8 +18,8 @@ class FindAll(PriorityCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?{self.offset},{self.page_size},"
-                                  f"{self.filters},{self.sort_by}").execute()
+                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}"
+                                  f"&filters={self.filters}&sortBy={self.sort_by}").execute()
             for priority in json_obj["_embedded"]["elements"]:
                 yield Priority(priority)
         except RequestError as re:

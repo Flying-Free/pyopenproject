@@ -14,7 +14,7 @@ class FindAllSchemas(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schemas?{self.filters}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schemas?filters={self.filters}").execute()
             for schema in json_obj["_embedded"]["elements"]:
                 yield Schema(schema)
         except RequestError as re:

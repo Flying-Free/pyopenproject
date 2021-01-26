@@ -17,8 +17,8 @@ class FindAll(NewsCommand):
     def execute(self):
         try:
             json_obj = GetRequest(connection=self.connection,
-                                  context=f"{self.CONTEXT}?{self.offset},{self.page_size},"
-                                          f"{self.filters},{self.sort_by}").execute()
+                                  context=f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}"
+                                          f"&filters={self.filters}&sortBy={self.sort_by}").execute()
             for news in json_obj['_embedded']['elements']:
                 yield New(news)
         except RequestError as re:

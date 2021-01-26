@@ -16,7 +16,7 @@ class FindAll(DocumentCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?{self.offset},{self.page_size},{self.sort_by}").execute()
+                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}&sortBy={self.sort_by}").execute()
             for document in json_obj["_embedded"]["elements"]:
                 yield Document(document)
         except RequestError as re:

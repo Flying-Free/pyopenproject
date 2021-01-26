@@ -15,7 +15,7 @@ class FindAll(QueryCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}").execute()
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield Query(tEntry)
         except RequestError as re:
