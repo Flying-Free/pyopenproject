@@ -10,17 +10,21 @@ class FindAll(UserCommand):
     def __init__(self, connection, offset, page_size, filters, sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.page_size = page_size
-        self.filters = filters
-        self.sort_by = sort_by
+        self.extended_context = ""
+        if page_size:
+            self.extended_context += f"&pageSize={page_size}"
+        if filters:
+            self.extended_context += f"&filters={filters}"
+        if sort_by:
+            self.extended_context += f"&sort_by={sort_by}"
 
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}&filters={self.filters}"
-                                  f"&sortBy={self.sort_by}")\
-                .execute()
+                                  f"{self.CONTEXT}?offset={self.offset}"
+                                  f"{self.extended_context}").execute()
             for user in json_obj["_embedded"]["elements"]:
                 yield usr.User(user)
         except RequestError as re:
-            raise BusinessError(f"Error finding all users: {self.CONTEXT}?{self.offset},{self.page_size},{self.filters},{self.sort_by}") from re
+            raise BusinessError(f"Error finding all users: {self.CONTEXT}?offset={self.offset}"
+                                f"{self.extended_context}") from re
