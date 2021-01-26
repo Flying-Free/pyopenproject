@@ -11,6 +11,8 @@ class UserServiceTestCase(OpenProjectTestCase):
         self.usrSer = self.factory.get_user_service()
         with open('../data/user.json') as f:
             self.user = User(json.load(f))
+        with open('../data/inputs/user.json') as f:
+            self.new_user = User(json.load(f))
 
     def test_find_all(self):
         # Order by status doesnt work
@@ -26,17 +28,21 @@ class UserServiceTestCase(OpenProjectTestCase):
     def test_find(self):
         self.assertIsNotNone(self.usrSer.find(self.user))
 
-    def test_lock_user(self):
-        self.assertIsNotNone(self.usrSer.lock_user(self.user))
+    def test_operations_user(self):
+        # Create TODO: ERROR  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError","message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"}
+        nwusr=self.usrSer.create_user(self.new_user)
+        self.assertIsNotNone(nwusr)
+        self.assertEqual(self.new_user.login, nwusr.login)
+        # Update
+        nwusr.email="h.wut@openproject.com"
+        self.assertEqual(nwusr, self.usrSer.update_user(nwusr))
+        # Lock
+        self.assertEqual(nwusr, self.usrSer.lock_user(nwusr))
+        # Unlock
+        self.assertEqual(nwusr, self.usrSer.unlock_user(nwusr))
+        # Delete
+        self.assertIsNone(self.usrSer.delete_user(nwusr))
 
-    def test_unlock_user(self):
-        self.assertIsNotNone(self.usrSer.unlock_user(self.user))
 
-    def test_update_user(self):
-        self.assertIsNotNone(self.usrSer.update_user(self.user))
 
-    def test_delete_user(self):
-        self.assertIsNotNone(self.usrSer.delete_user(self.user))
 
-    def test_create_user(self):
-        self.assertIsNotNone(self.usrSer.create_user(self.user))

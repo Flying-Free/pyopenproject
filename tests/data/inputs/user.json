@@ -1,0 +1,10 @@
+{
+  "login": "h.wurst",
+  "email": "h.wurst@openproject.com",
+  "firstName": "Hans",
+  "lastName": "Wurst",
+  "admin": false,
+  "language": "en",
+  "status": "active",
+  "password": "hunter5"
+}
