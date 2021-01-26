@@ -13,9 +13,14 @@ class UserServiceTestCase(OpenProjectTestCase):
             self.user = User(json.load(f))
 
     def test_find_all(self):
-        usservs = self.usrSer.find_all(25, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
+        # Order by status doesnt work
+        usservs = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
                                                '{ "name": { "operator": "=", "values": '
-                                               '["OpenProject Admin"] } }]', '[["status", "asc"]]')
+                                               '["OpenProject Admin"] } }]', '[["id", "asc"]]')
+        self.assertEqual(0, len(usservs))
+        usservs = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["active"] } }, '
+                                              '{ "name": { "operator": "=", "values": '
+                                              '["OpenProject Admin"] } }]', '[["id", "asc"]]')
         self.assertEqual(1, len(usservs))
 
     def test_find(self):
