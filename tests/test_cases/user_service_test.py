@@ -18,8 +18,8 @@ class UserServiceTestCase(OpenProjectTestCase):
     def test_find_all(self):
         # Order by status doesnt work
         users = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
-                                            '{ "name": { "operator": "=", "values": '
-                                            '["OpenProject Admin"] } }]', '[["id", "asc"]]')
+                                            '{ "name": { "operator": "=", "values": ["OpenProject Admin"] } }]',
+                                     '[["id", "asc"]]')
         self.assertEqual(0, len(users))
         users = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["active"] } }, '
                                             '{ "name": { "operator": "=", "values": '
@@ -29,7 +29,7 @@ class UserServiceTestCase(OpenProjectTestCase):
             self.assertEqual("active", user.status)
             self.assertEqual("OpenProject Admin", user.name)
         users = self.usrSer.find_all()
-        self.assertEqual(0, len(users))
+        self.assertEqual(1, len(users))
 
     def test_find(self):
         expected = self.usrSer.find(self.user)
