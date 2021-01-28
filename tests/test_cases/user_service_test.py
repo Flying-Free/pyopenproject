@@ -1,5 +1,6 @@
 import json
 
+from business.exception.business_error import BusinessError
 from model.user import User
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -16,33 +17,46 @@ class UserServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         # Order by status doesnt work
-        usservs = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
-                                               '{ "name": { "operator": "=", "values": '
-                                               '["OpenProject Admin"] } }]', '[["id", "asc"]]')
-        self.assertEqual(0, len(usservs))
-        usservs = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["active"] } }, '
-                                              '{ "name": { "operator": "=", "values": '
-                                              '["OpenProject Admin"] } }]', '[["id", "asc"]]')
-        self.assertEqual(1, len(usservs))
+        users = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["invited"] } }, '
+                                            '{ "name": { "operator": "=", "values": '
+                                            '["OpenProject Admin"] } }]', '[["id", "asc"]]')
+        self.assertEqual(0, len(users))
+        users = self.usrSer.find_all(1, 25, ' [{ "status": { "operator": "=", "values": ["active"] } }, '
+                                            '{ "name": { "operator": "=", "values": '
+                                            '["OpenProject Admin"] } }]', '[["id", "asc"]]')
+        self.assertEqual(1, len(users))
+        for user in users:
+            self.assertEqual("active", user.status)
+            self.assertEqual("OpenProject Admin", user.name)
+        users = self.usrSer.find_all()
+        self.assertEqual(0, len(users))
 
     def test_find(self):
-        self.assertIsNotNone(self.usrSer.find(self.user))
+        expected = self.usrSer.find(self.user)
+        self.assertEqual(self.user.__dict__, expected.__dict__)
+
+    def test_not_found(self):
+        user = User({"id": 50})
+        # Result is 404
+        with self.assertRaises(BusinessError):
+            e = self.usrSer.find(user)
 
     def test_operations_user(self):
-        # Create FIXME: ERROR  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError","message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"}
-        nwusr=self.usrSer.create_user(self.new_user)
-        self.assertIsNotNone(nwusr)
-        self.assertEqual(self.new_user.login, nwusr.login)
+        # TODO: ERROR
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
+        #  "message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"
+        #  }
+        user = self.usrSer.create_user(self.new_user)
+        self.assertIsNotNone(user)
+        self.assertEqual(self.new_user.login, user.login)
         # Update
-        nwusr.email="h.wut@openproject.com"
-        self.assertEqual(nwusr, self.usrSer.update_user(nwusr))
+        user.email = "h.wut@openproject.com"
+        self.assertEqual(user, self.usrSer.update_user(user))
         # Lock
-        self.assertEqual(nwusr, self.usrSer.lock_user(nwusr))
+        self.assertEqual(user, self.usrSer.lock_user(user))
         # Unlock
-        self.assertEqual(nwusr, self.usrSer.unlock_user(nwusr))
+        self.assertEqual(user, self.usrSer.unlock_user(user))
         # Delete
-        self.assertIsNone(self.usrSer.delete_user(nwusr))
-
-
-
-
+        self.assertIsNone(self.usrSer.delete_user(user))
