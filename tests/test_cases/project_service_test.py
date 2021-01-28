@@ -1,7 +1,11 @@
 import json
 
+from business.exception.business_error import BusinessError
 from model.project import Project
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
+from util.Filters import Filters
+from util.URLParameter import URLParameter
 
 
 class ProjectServiceTestCase(OpenProjectTestCase):
@@ -69,8 +73,8 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(2, len(projects))
 
     def test_find_projects_with_filters(self):
-        # TODO: Review filters
-        projects = self.proSer.find_all(filters="[{ \"active\": { \"operator\": \"=\", \"values\": [\"false\"] }\" }]")
+        # TODO: Review filters CHANGE TO NEW HANDLE
+        projects = self.proSer.find_all([Filter("active", "=", '["false"]')])
         self.assertEqual(0, len(projects))
 
     def test_create(self):
@@ -93,8 +97,12 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.proSer.update_form(self.project))
 
     def test_find_parents(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.find_parents(filters, of, sortBy))
+        # Not found
+        with self.assertRaises(BusinessError):
+            self.proSer.find_parents([Filter("ancestor", "=", '["1"]')], 123, '[["id", "asc"]]')
+        # Parameters with None
+        parents=self.proSer.find_parents(filters=[Filter("ancestor", "=", '["1"]')])
+        self.assertEqual(0, len(parents))
 
     def test_find_versions(self):
         # TODO
@@ -105,12 +113,13 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.proSer.find_types(self.project))
 
     def test_find_budgets(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.find_budgets(self.project))
+        budgets = self.proSer.find_budgets(self.project)
+        self.assertEqual(0, len(budgets))
 
     def test_find_work_packages(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.find_work_packages(self.project))
+        workpackages=self.proSer.find_work_packages(self.project, 1, 25, [Filter("status_id", "o", "null")],
+            "status", '["status", "asc"]', "status", "true")
+        self.assertEqual(0, len(workpackages))
 
     def test_create_work_package(self):
         # TODO

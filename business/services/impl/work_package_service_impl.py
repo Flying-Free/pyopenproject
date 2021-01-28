@@ -63,7 +63,7 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums):
         return list(FindAll(self.connection, offset, page_size, filters, sort_by, group_by, show_sums).execute())
 
-    def create(self, work_package, notify):
+    def create(self, work_package, notify=None):
         return Create(self.connection, work_package, notify)
 
     def create_form(self, work_package):

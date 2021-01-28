@@ -47,8 +47,8 @@ class ProjectServiceImpl(ProjectService):
     def update_form(self, project):
         return UpdateForm(self.connection, project).execute()
 
-    def find_parents(self, filters, of, sort_by):
-        return FindParents(self.connection, filters, of, sort_by).execute()
+    def find_parents(self, filters, of=None, sort_by=None):
+        return list(FindParents(self.connection, filters, of, sort_by).execute())
 
     def find_versions(self, project):
         return FindVersions(self.connection, project).execute()
@@ -57,17 +57,16 @@ class ProjectServiceImpl(ProjectService):
         return FindTypes(self.connection, project).execute()
 
     def find_budgets(self, project):
-        return FindBudgets(self.connection, project).execute()
+        return list(FindBudgets(self.connection, project).execute())
 
-    def find_work_packages(self, project, offset, page_size, filters, sort_by, group_by, show_sums, notify):
-        return FindWorkPackages(self.connection, project, offset, page_size, filters,
-                                sort_by, group_by, show_sums, notify).execute()
+    def find_work_packages(self, project, parameters):
+        return list(FindWorkPackages(self.connection, project, parameters).execute())
 
-    def create_work_package(self, project, notify, work_package):
-        return CreateWorkPackage(self.connection, project, notify, work_package).execute()
+    def create_work_package(self, project, work_package, notify=None):
+        return CreateWorkPackage(self.connection, project, work_package, notify).execute()
 
-    def create_work_package_form(self, project, notify, form):
-        return CreateWorkPackageForm(self.connection, project, notify, form).execute()
+    def create_work_package_form(self, project, form):
+        return CreateWorkPackageForm(self.connection, project, form).execute()
 
     def find_available_assignees(self, project):
         return FindAvailableAssignees(self.connection, project).execute()

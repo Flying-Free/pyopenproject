@@ -8,12 +8,12 @@ from business.services.impl.command.project.project_command import ProjectComman
 class FindAll(ProjectCommand):
     def __init__(self, connection, filters, sort_by):
         super().__init__(connection)
-        self.filters = filters
-        self.sort_by = sort_by
+        self.filters = f"filters={filters}" if filters else ""
+        self.sort_by = f"&sortBy={sort_by}" if filters and sort_by else f"sortBy={sort_by}" if sort_by else ""
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}&sortBy={self.sort_by}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?{self.filters}{self.sort_by}").execute()
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield p.Project(tEntry)
         except RequestError as re:

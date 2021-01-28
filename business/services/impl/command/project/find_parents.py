@@ -5,6 +5,9 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.project.project_command import ProjectCommand
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindParents(ProjectCommand):
@@ -13,14 +16,20 @@ class FindParents(ProjectCommand):
         super().__init__(connection)
         self.filters = filters
         self.of = of
-        self.sortBy = sort_by
+        self.sort_by = sort_by
 
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}/available_parent_projects?{self.filters},{self.of},{self.sortBy}")\
-                .execute()
-            for tEntry in json.loads(json_obj):
+                                  str(URL(f"{self.CONTEXT}/available_parent_projects",
+                                          [
+                                              Filters("filters", self.filters),
+                                              URLParameter("of", self.of),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ])
+                                      )).execute()
+            for tEntry in json_obj["_embedded"]["elements"]:
                 yield p.Project(tEntry)
+
         except RequestError as re:
-            raise BusinessError(f"Error finding parents of project: {self.project.name}") from re
+            raise BusinessError(f"Error finding parent porject candidates") from re

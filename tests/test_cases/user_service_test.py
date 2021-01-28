@@ -29,7 +29,7 @@ class UserServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.usrSer.find(self.user))
 
     def test_operations_user(self):
-        # Create TODO: ERROR  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError","message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"}
+        # Create FIXME: ERROR  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError","message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"}
         nwusr=self.usrSer.create_user(self.new_user)
         self.assertIsNotNone(nwusr)
         self.assertEqual(self.new_user.login, nwusr.login)

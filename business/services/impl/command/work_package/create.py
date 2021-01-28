@@ -9,7 +9,7 @@ from business.services.impl.command.work_package.work_package_command import Wor
 
 class Create(WorkPackageCommand):
 
-    def __init__(self, connection, work_package, notify):
+    def __init__(self, connection, work_package, notify=None):
         super().__init__(connection)
         self.work_package = work_package
         self.notify = notify
@@ -17,7 +17,7 @@ class Create(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
-                                   context=f"{self.CONTEXT}?{self.notify}",
+                                   context=f"{self.CONTEXT}?notify={self.notify}",
                                    json=json.dumps(self.work_package.__dict__)).execute()
             return wp.WorkPackage(json_obj)
         except RequestError as re:

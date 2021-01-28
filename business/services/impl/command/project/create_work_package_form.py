@@ -9,10 +9,9 @@ from model.form import Form
 
 class CreateWorkPackageForm(ProjectCommand):
 
-    def __init__(self, connection, project, notify, form):
+    def __init__(self, connection, project, form):
         super().__init__(connection)
         self.project = project
-        self.notify = notify
         self.form = form
 
     def execute(self):
