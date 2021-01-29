@@ -29,7 +29,7 @@ class TimeEntryServiceImpl(TimeEntryService):
         return FindByContext(self.connection, context).execute()
 
     def find_between_days(self, start_date, end_date):
-        return FindBetweenDays(self.connection, start_date, end_date).execute()
+        return list(FindBetweenDays(self.connection, start_date, end_date).execute())
 
     def find(self, time_entry):
         return Find(self.connection, time_entry).execute()

@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import json
 
 from dateutil.relativedelta import relativedelta
@@ -15,10 +15,13 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         with open('../data/time_entry.json') as f:
             self.time_entry = TimeEntry(json.load(f))
 
-    def time_entries_request(self):
+    def test_find_between_days(self):
         today = datetime.today()
         end_date = today.strftime("%Y-%m-%d")
-        start_date = datetime.today() + relativedelta(months=-3).strftime("%Y-%m-%d")
-        self.tEntryReq.find_between_days(start_date, end_date)
+        start_date = datetime.today() + relativedelta(months=-3)
+        start_date = start_date.strftime("%Y-%m-%d")
+        time_entries = self.tEntryReq.find_between_days(start_date, end_date)
+        self.assertEqual(0, len(time_entries))
+
 
     #TODO: Complete with methods
