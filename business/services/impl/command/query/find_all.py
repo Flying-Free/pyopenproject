@@ -5,6 +5,8 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.query.query_command import QueryCommand
 from model.query import Query
+from util.Filters import Filters
+from util.URL import URL
 
 
 class FindAll(QueryCommand):
@@ -15,7 +17,11 @@ class FindAll(QueryCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              Filters("filters", self.filters)
+                                          ]))).execute()
+
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield Query(tEntry)
         except RequestError as re:

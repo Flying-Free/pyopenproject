@@ -5,6 +5,9 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.relation.relation_command import RelationCommand
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(RelationCommand):
@@ -16,7 +19,12 @@ class FindAll(RelationCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}&sortBy={self.sortBy}").execute()
+            json_obj = GetRequest(self.connection,  str(URL(f"{self.CONTEXT}",
+                                          [
+                                              Filters("filters", self.filters),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield rel.Relation(tEntry)
         except RequestError as re:

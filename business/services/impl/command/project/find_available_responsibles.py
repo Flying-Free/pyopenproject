@@ -17,7 +17,7 @@ class FindAvailableResponsibles(ProjectCommand):
         try:
             json_obj = GetRequest(self.connection,
                                   f"{self.CONTEXT}/{self.project.id}/work_packages/available_responsibles").execute()
-            for tEntry in json.loads(json_obj):
+            for tEntry in json_obj["_embedded"]["elements"]:
                 yield usr.User(tEntry)
         except RequestError as re:
             raise BusinessError(f"Error finding responsible of project: {self.project.name}") from re

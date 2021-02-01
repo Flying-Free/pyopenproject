@@ -20,7 +20,7 @@ class FindAll(PriorityCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,str(URL(f"{self.CONTEXT}",
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
                                           [
                                               URLParameter("offset", self.offset),
                                               URLParameter("pageSize", self.page_size),

@@ -3,6 +3,8 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.document.document_command import DocumentCommand
 from model.document import Document
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(DocumentCommand):
@@ -15,8 +17,13 @@ class FindAll(DocumentCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}&sortBy={self.sort_by}").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              URLParameter("offset", self.offset),
+                                              URLParameter("pageSize", self.page_size),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for document in json_obj["_embedded"]["elements"]:
                 yield Document(document)
         except RequestError as re:

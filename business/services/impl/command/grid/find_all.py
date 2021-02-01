@@ -3,6 +3,9 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.grid.grid_command import GridCommand
 from model.grid import Grid
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(GridCommand):
@@ -17,9 +20,14 @@ class FindAll(GridCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(
-                self.connection,
-                f"{self.CONTEXT}?{self.offset},{self.pageSize},{self.filters},{self.sortBy}").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              URLParameter("offset", self.offset),
+                                              URLParameter("pageSize", self.page_size),
+                                              Filters("filters", self.filters),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for grid in json_obj["_embedded"]["elements"]:
                 yield Grid(grid)
         except RequestError as re:

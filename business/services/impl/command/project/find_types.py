@@ -16,7 +16,7 @@ class FindTypes(ProjectCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.project.id}/types").execute()
-            for tEntry in json.loads(json_obj):
+            for tEntry in json_obj["_embedded"]["elements"]:
                 yield Type(tEntry)
         except RequestError as re:
             raise BusinessError(f"Error finding all time entries") from re
