@@ -20,4 +20,4 @@ class CreateForm(TimeEntryCommand):
                                    json=json.dumps(self.form.__dict__)).execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating form: {self.form.name}") from re
+            raise BusinessError(f"Error creating form: {self.form}") from re

@@ -3,6 +3,9 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.priority.priority_command import PriorityCommand
 from model.priority import Priority
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(PriorityCommand):
@@ -17,9 +20,14 @@ class FindAll(PriorityCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}"
-                                  f"&filters={self.filters}&sortBy={self.sort_by}").execute()
+            json_obj = GetRequest(self.connection,str(URL(f"{self.CONTEXT}",
+                                          [
+                                              URLParameter("offset", self.offset),
+                                              URLParameter("pageSize", self.page_size),
+                                              Filters("filters", self.filters),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for priority in json_obj["_embedded"]["elements"]:
                 yield Priority(priority)
         except RequestError as re:

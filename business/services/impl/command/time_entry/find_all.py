@@ -5,6 +5,9 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.time_entry.time_entry_command import TimeEntryCommand
 import model.time_entry as te
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(TimeEntryCommand):
@@ -18,10 +21,14 @@ class FindAll(TimeEntryCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}&filters={self.filters}"
-                                  f"&sortBy={self.sort_by}")\
-                .execute()
+            json_obj = GetRequest(self.connection,str(URL(f"{self.CONTEXT}",
+                                          [
+                                              URLParameter("offset", self.offset),
+                                              URLParameter("pageSize", self.page_size),
+                                              Filters("filters", self.filters),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for time_entry in json_obj["_embedded"]["elements"]:
                 yield te.TimeEntry(time_entry)
         except RequestError as re:

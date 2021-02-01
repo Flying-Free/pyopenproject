@@ -7,6 +7,7 @@ from business.services.impl.command.time_entry.find_between_days import FindBetw
 from business.services.impl.command.time_entry.find_by_context import FindByContext
 from business.services.impl.command.time_entry.find_projects import FindAvailableProjects
 from business.services.impl.command.time_entry.find_schema import FindSchema
+from business.services.impl.command.time_entry.update import Update
 from business.services.impl.command.time_entry.update_form import UpdateForm
 from business.services.time_entry_service import TimeEntryService
 
@@ -17,7 +18,7 @@ class TimeEntryServiceImpl(TimeEntryService):
         super().__init__(connection)
 
     def find_projects(self, time_entry):
-        return FindAvailableProjects(self.connection).execute()
+        return list(FindAvailableProjects(self.connection).execute())
 
     def create_form(self, form):
         return CreateForm(self.connection, form).execute()
@@ -40,7 +41,10 @@ class TimeEntryServiceImpl(TimeEntryService):
     def create(self, time_entry):
         return Create(self.connection, time_entry).execute()
 
-    def find_all(self, offset, page_size, filters, sort_by):
+    def update(self, time_entry):
+        return Update(self.connection, time_entry).execute()
+
+    def find_all(self, offset=None, page_size=None, filters=None, sort_by=None):
         return list(FindAll(self.connection, offset, page_size, filters, sort_by).execute())
 
     def find_schema(self):
