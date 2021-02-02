@@ -11,5 +11,5 @@ class DocumentServiceImpl(DocumentService):
     def find(self, document):
         return Find(self.connection, document).execute()
 
-    def find_all(self, offset, page_size, sort_by):
+    def find_all(self, offset=None, page_size=None, sort_by=None):
         return list(FindAll(self.connection, offset, page_size, sort_by).execute())

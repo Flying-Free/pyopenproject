@@ -20,7 +20,6 @@ class FindWorkPackages(ProjectCommand):
         self.group_by = group_by
         self.sort_by = sort_by
         self.show_sums = show_sums
-        self.notify = notify
 
     def execute(self):
         try:
@@ -33,7 +32,6 @@ class FindWorkPackages(ProjectCommand):
                                               URLParameter("groupBy", self.group_by),
                                               URLParameter("sortBy", self.sort_by),
                                               URLParameter("showSums", self.show_sums),
-                                              URLParameter("notify", self.notify)
                                           ])
                                           )).execute()
             for wP in json_obj["_embedded"]["elements"]:

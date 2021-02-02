@@ -22,8 +22,8 @@ class QueryServiceImpl(QueryService):
     def update(self, query):
         return Update(self.connection, query).execute()
 
-    def find(self, query, offset, page_size, filters, columns, sort_by, group_by, show_sums, timeline_visible,
-             timeline_labels, timeline_zoom_level, highlighting_mode, highlighted_attributes, show_hierarchies):
+    def find(self, query, offset=None, page_size=None, filters=None, columns=None, sort_by=None, group_by=None, show_sums=None, timeline_visible=None,
+             timeline_labels=None, timeline_zoom_level=None, highlighting_mode=None, highlighted_attributes=None, show_hierarchies=None):
         return Find(self.connection, query, offset, page_size, filters, columns, sort_by, group_by,
                     show_sums, timeline_visible, timeline_labels, timeline_zoom_level,
                     highlighting_mode, highlighted_attributes, show_hierarchies).execute()
@@ -37,7 +37,7 @@ class QueryServiceImpl(QueryService):
     def unstar(self, query):
         return Unstar(self.connection, query).execute()
 
-    def find_all(self, filters):
+    def find_all(self, filters=None):
         return list(FindAll(self.connection, filters).execute())
 
     def create(self, query):

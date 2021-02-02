@@ -47,7 +47,7 @@ class ProjectServiceImpl(ProjectService):
     def update_form(self, project):
         return UpdateForm(self.connection, project).execute()
 
-    def find_parents(self, filters, of=None, sort_by=None):
+    def find_parents(self, filters=None, of=None, sort_by=None):
         return list(FindParents(self.connection, filters, of, sort_by).execute())
 
     def find_versions(self, project):
@@ -59,8 +59,8 @@ class ProjectServiceImpl(ProjectService):
     def find_budgets(self, project):
         return list(FindBudgets(self.connection, project).execute())
 
-    def find_work_packages(self, project, parameters):
-        return list(FindWorkPackages(self.connection, project, parameters).execute())
+    def find_work_packages(self, project, offset=None, page_size=None, filters=None, group_by=None, sort_by=None, show_sums=None):
+        return list(FindWorkPackages(self.connection, project, offset, page_size, filters, group_by, sort_by, show_sums).execute())
 
     def create_work_package(self, project, work_package, notify=None):
         return CreateWorkPackage(self.connection, project, work_package, notify).execute()

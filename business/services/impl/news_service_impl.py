@@ -11,5 +11,5 @@ class NewsServiceImpl(NewsService):
     def find(self, news):
         return Find(self.connection, news).execute()
 
-    def find_all(self, offset, page_size, filters, sort_by):
+    def find_all(self, offset=None, page_size=None, filters=None, sort_by=None):
         return list(FindAll(self.connection, offset, page_size, filters, sort_by).execute())
