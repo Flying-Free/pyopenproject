@@ -3,6 +3,8 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.role.role_command import RoleCommand
 from model.role import Role
+from util.Filters import Filters
+from util.URL import URL
 
 
 class FindAll(RoleCommand):
@@ -13,7 +15,11 @@ class FindAll(RoleCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}{self.filters}").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              Filters("filters", self.filters)
+                                          ]))).execute()
+
             for role in json_obj["_embedded"]["elements"]:
                 yield Role(role)
         except RequestError as re:

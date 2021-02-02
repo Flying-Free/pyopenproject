@@ -13,7 +13,7 @@ class FindWatchers(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.work_package.id}/watchers").execute()
-            for watcher in json_obj._embedded.elements:
+            for watcher in json_obj["_embedded"]["elements"]:
                 yield usr.User(watcher)
         except RequestError as re:
             raise BusinessError(f"Error finding watchers for work package {self.work_package.id}") from re

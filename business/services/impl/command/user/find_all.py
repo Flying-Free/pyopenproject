@@ -3,6 +3,9 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.user.user_command import UserCommand
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(UserCommand):
@@ -10,21 +13,21 @@ class FindAll(UserCommand):
     def __init__(self, connection, offset, page_size, filters, sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.extended_context = ""
-        if page_size:
-            self.extended_context += f"&pageSize={page_size}"
-        if filters:
-            self.extended_context += f"&filters={filters}"
-        if sort_by:
-            self.extended_context += f"&sort_by={sort_by}"
+        self.page_size = page_size
+        self.filters = filters
+        self.sort_by = self.sort_by
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?offset={self.offset}"
-                                  f"{self.extended_context}").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              URLParameter("offset", self.offset),
+                                              URLParameter("pageSize", self.page_size),
+                                              Filters("filters", self.filters),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for user in json_obj["_embedded"]["elements"]:
                 yield usr.User(user)
         except RequestError as re:
-            raise BusinessError(f"Error finding all users: {self.CONTEXT}?offset={self.offset}"
-                                f"{self.extended_context}") from re
+            raise BusinessError("Error finding all users") from re

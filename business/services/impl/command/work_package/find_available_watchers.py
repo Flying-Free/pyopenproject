@@ -14,7 +14,7 @@ class FindAvailableWatchers(WorkPackageCommand):
         try:
             json_obj = GetRequest(self.connection,
                                   f"{self.CONTEXT}/{self.work_package.id}/available_watchers").execute()
-            for watcher in json_obj._embedded.elements:
+            for watcher in json_obj["_embedded"]["elements"]:
                 yield usr.User(watcher)
         except RequestError as re:
             raise BusinessError(f"Error finding available watchers for work package {self.work_package.id}") from re

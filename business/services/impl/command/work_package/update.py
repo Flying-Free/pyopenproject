@@ -5,6 +5,8 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.work_package.work_package_command import WorkPackageCommand
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class Update(WorkPackageCommand):
@@ -17,7 +19,10 @@ class Update(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = PatchRequest(connection=self.connection,
-                                    context=f"{self.CONTEXT}/{self.work_package.id}?{self.notify}",
+                                    context=  str(URL(f"{self.CONTEXT}/{self.work_package.id}",
+                                          [
+                                              URLParameter("notify", self.notify)
+                                          ])),
                                     json=json.dumps(self.work_package.__dict__)).execute()
             return wp.WorkPackage(json_obj)
         except RequestError as re:

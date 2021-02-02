@@ -5,6 +5,8 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.work_package.work_package_command import WorkPackageCommand
 from model.schema import Schema
+from util.Filters import Filters
+from util.URL import URL
 
 
 class FindAllSchemas(WorkPackageCommand):
@@ -14,7 +16,11 @@ class FindAllSchemas(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schemas?filters={self.filters}").execute()
+            json_obj = GetRequest(self.connection,  str(URL(f"{self.CONTEXT}/schemas",
+                                          [
+                                              Filters("filters", self.filters)
+                                          ]))).execute()
+
             for schema in json_obj["_embedded"]["elements"]:
                 yield Schema(schema)
         except RequestError as re:

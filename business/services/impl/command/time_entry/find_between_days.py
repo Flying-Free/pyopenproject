@@ -3,6 +3,9 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.time_entry.time_entry_command import TimeEntryCommand
 import model.time_entry as te
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindBetweenDays(TimeEntryCommand):
@@ -14,9 +17,13 @@ class FindBetweenDays(TimeEntryCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}?filters=[{{\"spentOn\":{{\"operator\":\"<>d\",\"values\":[\""
-                                  f"{self.start_date},{self.end_date}\"]}}}}]").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              Filters("filters", self.filters),
+                                              URLParameter("startDate", self.start_date),
+                                              URLParameter("endDate", self.end_date)
+                                          ]))).execute()
+
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield te.TimeEntry(tEntry)
         except RequestError as re:

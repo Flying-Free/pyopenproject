@@ -13,7 +13,7 @@ class Find(StatusCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,f"{self.CONTEXT}/{self.status.id}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.status.id}").execute()
             return Status(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding status by id: {self.status}") from re
