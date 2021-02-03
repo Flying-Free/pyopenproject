@@ -11,18 +11,23 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/work_package.json')
+        RELATION = os.path.join(self.TEST_CASES, '../data/relation.json')
+        USER = os.path.join(self.TEST_CASES, '../data/user.json')
+        ACTIVITY = os.path.join(self.TEST_CASES, '../data/activity.json')
+        ATTACHMENT = os.path.join(self.TEST_CASES, '../data/attachment.json')
         self.wpSer = self.factory.get_work_package_service()
-        with open('../data/work_package.json') as f:
+        with open(WORK_PACKAGE) as f:
             self.work_package = WorkPackage(json.load(f))
-        with open('../data/relation.json') as f:
+        with open(RELATION) as f:
             self.relation = WorkPackage(json.load(f))
-        with open('../data/user.json') as f:
+        with open(USER) as f:
             self.watcher = User(json.load(f))
-        with open('../data/activity.json') as f:
+        with open(ACTIVITY) as f:
             #     self.activity = WorkPackage(json.load(f))
             # with open('../data/schema.json') as f:
             self.schema = WorkPackage(json.load(f))
-        with open('../data/attachment.json') as f:
+        with open(ATTACHMENT) as f:
             self.attachment = WorkPackage(json.load(f))
 
     # TODO

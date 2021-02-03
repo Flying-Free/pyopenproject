@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.attachment import Attachment
@@ -10,8 +11,9 @@ class PostServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/post.json')
         self.postSer = self.factory.get_post_service()
-        with open('../data/post.json') as f:
+        with open(DATA) as f:
             self.post = Post(json.load(f))
 
     def test_list_attachments(self):
@@ -21,12 +23,14 @@ class PostServiceTestCase(OpenProjectTestCase):
             self.postSer.list_attachments(self.post)
 
     def test_add_attachment(self):
-        with open('../data/attachment.json') as f:
+        ATTACHMENT = os.path.join(self.TEST_CASES, '../data/attachment.json')
+        with open(ATTACHMENT) as f:
             attachment = Attachment(json.load(f))
         # 404 Client Error: Not Found for url: http://127.0.0.1:8080/api/v3/posts/1
         # There's not any post in the application
         with self.assertRaises(BusinessError):
-            self.postSer.add_attachment(post=self.post, attachment=attachment, file_path='../img/cute-cat.png')
+            IMG = os.path.join(self.TEST_CASES, '../img/cute-cat.png')
+            self.postSer.add_attachment(post=self.post, attachment=attachment, file_path=IMG)
 
     def test_find(self):
         # 404 Client Error: Not Found for url: http://127.0.0.1:8080/api/v3/posts/1

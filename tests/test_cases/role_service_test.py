@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.role import Role
@@ -10,8 +11,9 @@ class RoleServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/role.json')
         self.roleSer = self.factory.get_role_service()
-        with open('../data/role.json') as f:
+        with open(DATA) as f:
             self.role = Role(json.load(f))
 
     # TODO: Not authorized

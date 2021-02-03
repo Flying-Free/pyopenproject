@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.grid import Grid
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -8,8 +9,9 @@ class GridServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/grid.json')
         self.gridSer = self.factory.get_grid_service()
-        with open('../data/grid.json') as f:
+        with open(DATA) as f:
             self.grid = Grid(json.load(f))
 
     def test_find(self):
@@ -27,7 +29,8 @@ class GridServiceTestCase(OpenProjectTestCase):
     def test_create(self):
         # TODO: b'{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
         #  "message":"An internal error has occured. string not matched"}'
-        with open('../data/grid_create.json') as f:
+        DATA = os.path.join(self.TEST_CASES, '../data/grid_create.json')
+        with open(DATA) as f:
             g = Grid(json.load(f))
         g = self.gridSer.create(g)
         self.assertEqual(g.widgets[0].identifier, self.gridSer.find(g).widgets[0].identifier)

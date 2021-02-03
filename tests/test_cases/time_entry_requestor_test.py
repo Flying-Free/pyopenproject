@@ -1,5 +1,6 @@
-from datetime import datetime
 import json
+import os
+from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 
@@ -12,10 +13,12 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        TIME_ENTRY = os.path.join(self.TEST_CASES, '../data/time_entry.json')
+        TIME_ENTRY_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/time_entry_form.json')
         self.tEntryReq = self.factory.get_time_entry_service()
-        with open('../data/time_entry.json') as f:
+        with open(TIME_ENTRY) as f:
             self.time_entry = TimeEntry(json.load(f))
-        with open('../data/inputs/time_entry_form.json') as f:
+        with open(TIME_ENTRY_INPUT) as f:
             self.time_entry_form = Form(json.load(f))
 
     def test_find_between_days(self):
@@ -45,7 +48,7 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         # Create
         time_entry = self.tEntryReq.create(self.time_entry)
         # Update
-        time_entry.hours = "PT5h30m"
+        time_entry.hours = "PT5H30M"
         time_entry = self.tEntryReq.update(self.time_entry)
         self.assertNotEqual(self.time_entry, time_entry)
         # Find
@@ -59,6 +62,6 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         # Create with form
         time_entry = self.tEntryReq.create_form(self.time_entry_form)
         # Update with form
-        time_entry.hours = "PT8h"
+        time_entry.hours = "PT8H"
         time_entry = self.tEntryReq.update_form(time_entry)
         self.assertNotEqual(self.time_entry, time_entry)

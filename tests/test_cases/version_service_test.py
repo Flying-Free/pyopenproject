@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.version import Version
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -9,8 +10,9 @@ class VersionServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/version.json')
         self.versionSer = self.factory.get_version_service()
-        with open('../data/version.json') as f:
+        with open(DATA) as f:
             self.version = Version(json.load(f))
 
     def test_find(self, ):

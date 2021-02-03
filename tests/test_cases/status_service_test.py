@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.status import Status
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -8,8 +9,9 @@ class StatusServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/status.json')
         self.statusSer = self.factory.get_status_service()
-        with open('../data/status.json') as f:
+        with open(DATA) as f:
             self.status = Status(json.load(f))
 
     def test_find(self):

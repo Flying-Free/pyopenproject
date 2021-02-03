@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.query import Query
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -8,8 +9,9 @@ class QueryServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/query.json')
         self.querySer = self.factory.get_query_service()
-        with open('../data/query.json') as f:
+        with open(DATA) as f:
             self.query = Query(json.load(f))
 
     def test_update(self):
@@ -32,7 +34,7 @@ class QueryServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.querySer.unstar(self.query))
 
     def test_find_all(self):
-        queries=self.querySer.find_all('[{ "project_id": { "operator": "!*", "values": null }" }]')
+        queries = self.querySer.find_all('[{ "project_id": { "operator": "!*", "values": null }" }]')
         self.assertEqual(25, len(queries))
 
     def test_create(self):
