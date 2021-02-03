@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.form import Form
@@ -10,10 +11,12 @@ class RelationServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        RELATION = os.path.join(self.TEST_CASES, '../data/relation.json')
         self.relationSer = self.factory.get_relation_service()
-        with open('../data/relation.json') as f:
+        with open(RELATION) as f:
             self.relation = Relation(json.load(f))
-        with open('../data/form.json') as f:
+        FORM = os.path.join(self.TEST_CASES, '../data/form.json')
+        with open(FORM) as f:
             self.form = Form(json.load(f))
 
     def test_find(self):

@@ -11,23 +11,26 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        ATTACHMENT = os.path.join(self.TEST_CASES, '../data/attachment.json')
+        ATTACHMENT_TO_CREATE = os.path.join(self.TEST_CASES, '../data/attachment-created.json')
+        self.IMAGE = os.path.join(self.TEST_CASES, '../img/cute-cat.png')
         self.attSer = self.factory.get_attachment_service()
-        with open('../data/attachment.json') as f:
+        with open(ATTACHMENT) as f:
             self.attachment = Attachment(json.load(f))
-        with open('../data/attachment-created.json') as f:
+        with open(ATTACHMENT_TO_CREATE) as f:
             self.created_attachment = Attachment(json.load(f))
 
     def test_create(self):
         created_attachment = self.attSer.create(filename="cute-cat.png",
                                                 description="A cute kitty, cuddling with its friends!",
-                                                file_path='../img/cute-cat.png')
+                                                file_path=self.IMAGE)
         self.assertIsNotNone(created_attachment)
         self.assertEqual(created_attachment.id, self.attSer.find(created_attachment).id)
 
     def test_delete(self):
         created_attachment = self.attSer.create(filename="cute-cat.png",
                                                 description="A cute kitty, cuddling with its friends!",
-                                                file_path='../img/cute-cat.png')
+                                                file_path=self.IMAGE)
         created_attachment = self.attSer.find(created_attachment)
         self.attSer.delete(created_attachment)
         # Can't find a deleted attached: 404 Client Error: Not Found for url

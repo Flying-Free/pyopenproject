@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.membership import Membership
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -8,8 +9,9 @@ class MembershipServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/membership.json')
         self.membershipSer = self.factory.get_membership_service()
-        with open('../data/membership.json') as f:
+        with open(DATA) as f:
             self.membership = Membership(json.load(f))
 
     def test_find_all(self):

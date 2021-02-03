@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.activity import Activity
@@ -9,8 +10,9 @@ class ActivityServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/activity.json')
         self.actSer = self.factory.get_activity_service()
-        with open('../data/activity.json') as f:
+        with open(DATA) as f:
             self.activity = Activity(json.load(f))
 
     def test_activity_not_found(self):

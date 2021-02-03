@@ -1,7 +1,7 @@
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
-class RenderServiceTestCase(OpenProjectTestCase):
+class PreviewingServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()

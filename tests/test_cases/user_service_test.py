@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.user import User
@@ -9,10 +10,12 @@ class UserServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        USER = os.path.join(self.TEST_CASES, '../data/user.json')
+        USER_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/user.json')
         self.usrSer = self.factory.get_user_service()
-        with open('../data/user.json') as f:
+        with open(USER) as f:
             self.user = User(json.load(f))
-        with open('../data/inputs/user.json') as f:
+        with open(USER_INPUT) as f:
             self.new_user = User(json.load(f))
 
     def test_find_all(self):

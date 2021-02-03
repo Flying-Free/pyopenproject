@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.category import Category
@@ -9,8 +10,9 @@ class CategoryServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        CATEGORY = os.path.join(self.TEST_CASES, '../data/category.json')
         self.catSer = self.factory.get_category_service()
-        with open('../data/category.json') as f:
+        with open(CATEGORY) as f:
             self.category = Category(json.load(f))
 
     def test_find(self):

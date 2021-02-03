@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.budget import Budget
@@ -9,8 +10,9 @@ class BudgetServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        BUDGET = os.path.join(self.TEST_CASES, '../data/budget.json')
         self.budSer = self.factory.get_budget_service()
-        with open('../data/budget.json') as f:
+        with open(BUDGET) as f:
             self.budget = Budget(json.load(f))
 
     def test_find(self):

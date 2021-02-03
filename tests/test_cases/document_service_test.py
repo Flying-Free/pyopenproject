@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.document import Document
@@ -9,8 +10,9 @@ class DocumentServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/document.json')
         self.docSer = self.factory.get_document_service()
-        with open('../data/document.json') as f:
+        with open(DATA) as f:
             self.document = Document(json.load(f))
 
     def test_find(self):

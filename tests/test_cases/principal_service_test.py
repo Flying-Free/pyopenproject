@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.principal import Principal
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -8,8 +9,9 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/principal.json')
         self.principalSer = self.factory.get_principal_service()
-        with open('../data/principal.json') as f:
+        with open(DATA) as f:
             self.principal = Principal(json.load(f))
 
     def test_find_all(self):

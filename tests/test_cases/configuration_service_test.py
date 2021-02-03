@@ -1,4 +1,5 @@
 import json
+import os
 
 from model.configuration import Configuration
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -8,8 +9,9 @@ class ConfigurationServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        CONFIGURATION = os.path.join(self.TEST_CASES, '../data/configuration.json')
         self.confSer = self.factory.get_configuration_service()
-        with open('../data/configuration.json') as f:
+        with open(CONFIGURATION) as f:
             self.configuration = Configuration(json.load(f))
 
     def test_find(self):

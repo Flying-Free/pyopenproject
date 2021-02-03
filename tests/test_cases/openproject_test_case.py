@@ -1,3 +1,4 @@
+import os
 import unittest
 
 import yaml
@@ -6,9 +7,11 @@ from business.service_factory import ServiceFactory
 
 
 class OpenProjectTestCase(unittest.TestCase):
+    TEST_CASES = os.path.dirname(os.path.abspath(__file__))
+    CONFIG = os.path.join(TEST_CASES, '../conf/config.yml')
 
     def setUp(self):
-        with open("../conf/config.yml", "r") as ymlfile:
+        with open(self.CONFIG, "r") as ymlfile:
             cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
         url_base = cfg["api_conn"]["host"] + ":" + str(cfg["api_conn"]["port"])
         api_user = cfg["api_conn"]["user"]

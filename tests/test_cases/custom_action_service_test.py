@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.custom_action import CustomAction
@@ -9,8 +10,9 @@ class CustomActionServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/custom_action.json')
         self.caSer = self.factory.get_custom_action_service()
-        with open('../data/custom_action.json') as f:
+        with open(DATA) as f:
             self.custom_action = CustomAction(json.load(f))
 
     def test_executed(self):

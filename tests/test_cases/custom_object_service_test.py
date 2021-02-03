@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.custom_object import CustomObject
@@ -9,8 +10,9 @@ class CustomObjectServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/custom_object.json')
         self.coSer = self.factory.get_custom_object_service()
-        with open('../data/custom_object.json') as f:
+        with open(DATA) as f:
             self.custom_object = CustomObject(json.load(f))
 
     def test_not_found(self):

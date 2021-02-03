@@ -1,19 +1,19 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.project import Project
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 from util.Filter import Filter
-from util.Filters import Filters
-from util.URLParameter import URLParameter
 
 
 class ProjectServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/project.json')
         self.proSer = self.factory.get_project_service()
-        with open("../data/project.json") as f:
+        with open(DATA) as f:
             self.project = Project(json.load(f))
 
     def test_find(self):
@@ -58,7 +58,8 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(self.project.status, current.status)
 
     def test_delete(self):
-        with open("../data/scrum_project.json") as f:
+        DATA = os.path.join(self.TEST_CASES, '../data/scrum_project.json')
+        with open(DATA) as f:
             expected = Project(json.load(f))
         self.proSer.delete(self.project)
         expected = self.proSer.find(expected)

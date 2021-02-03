@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.group import Group
@@ -9,8 +10,9 @@ class GroupServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
+        DATA = os.path.join(self.TEST_CASES, '../data/group.json')
         self.groupSer = self.factory.get_group_service()
-        with open('../data/group.json') as f:
+        with open(DATA) as f:
             self.group = Group(json.load(f))
 
     def test_not_found(self):
