@@ -3,6 +3,7 @@ import json
 from business.exception.business_error import BusinessError
 from model.role import Role
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
 
 
 class RoleServiceTestCase(OpenProjectTestCase):
@@ -18,7 +19,7 @@ class RoleServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.roleSer.find(self.role))
 
     def test_find_all(self):
-        roles = self.roleSer.find_all('[{"unit": { "operator": "=", "values": ["system"]}}]')
+        roles = self.roleSer.find_all(Filter("unit", "=", "system"))
         self.assertEqual(1, len(roles))
         roles = self.roleSer.find_all()
         self.assertEqual(6, len(roles))

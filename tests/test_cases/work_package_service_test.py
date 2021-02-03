@@ -4,6 +4,7 @@ from business.exception.business_error import BusinessError
 from model.user import User
 from model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
 
 
 class WorkPackageServiceTestCase(OpenProjectTestCase):
@@ -100,8 +101,9 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.wpSer.delete_watcher(self.work_package, self.watcher))
 
     def test_find_relation_candidates(self):
-        self.assertIsNotNone(self.wpSer.find_relation_candidates(self.work_package,
-                            '[{ "status_id": { "operator": "o", "values": null } }]', "rollout", "follows", 25))
+        relations=self.wpSer.find_relation_candidates(self.work_package,
+                            [Filter("status_id", "o", "null")], "rollout", "follows", 25)
+        self.assertEqual(0, len(relations))
 
     def test_find_available_watchers(self):
         self.assertIsNotNone(self.wpSer.find_available_watchers(self.work_package))

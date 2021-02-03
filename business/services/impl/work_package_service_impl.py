@@ -88,19 +88,19 @@ class WorkPackageServiceImpl(WorkPackageService):
         DeleteWatcher(self.connection, work_package, watcher).execute()
 
     def find_relation_candidates(self, work_package, filters=None, query=None, type=None, page_size=None):
-        return FindRelationCandidates(self.connection, work_package, filters, query, type, page_size).execute()
+        return list(FindRelationCandidates(self.connection, work_package, filters, query, type, page_size).execute())
 
     def find_available_watchers(self, work_package):
-        return FindAvailableWatchers(self.connection, work_package).execute()
+        return list(FindAvailableWatchers(self.connection, work_package).execute())
 
     def find_available_projects(self, work_package):
-        return FindAvailableProjects(self.connection, work_package).execute()
+        return list(FindAvailableProjects(self.connection, work_package).execute())
 
     def find_revisions(self, work_package):
-        return FindRevisions(self.connection, work_package).execute()
+        return list(FindRevisions(self.connection, work_package).execute())
 
     def find_activities(self, work_package):
-        return FindActivities(self.connection, work_package).execute()
+        return list(FindActivities(self.connection, work_package).execute())
 
     def create_activity(self, work_package, activity, notify=None):
         return CreateActivity(self.connection, work_package, activity, notify).execute()

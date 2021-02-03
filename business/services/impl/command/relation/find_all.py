@@ -1,4 +1,3 @@
-import json
 
 import model.relation as rel
 from api_connection.exceptions.request_exception import RequestError
@@ -12,10 +11,10 @@ from util.URLParameter import URLParameter
 
 class FindAll(RelationCommand):
 
-    def __init__(self, connection, filters, sortBy):
+    def __init__(self, connection, filters, sort_by):
         super().__init__(connection)
         self.filters = filters
-        self.sortBy = sortBy
+        self.sort_by = sort_by
 
     def execute(self):
         try:

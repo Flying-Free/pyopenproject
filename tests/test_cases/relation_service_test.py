@@ -4,6 +4,7 @@ from business.exception.business_error import BusinessError
 from model.form import Form
 from model.relation import Relation
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
 
 
 class RelationServiceTestCase(OpenProjectTestCase):
@@ -35,7 +36,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         # With filters
-        relations=self.relationSer.find_all('[{ "from": { "operator": "=", "values": 42 }" }]',
+        relations=self.relationSer.find_all([Filter("from", "=", "42")],
                                                        '[["type", "asc"]]')
         self.assertEqual(7, len(relations))
 
