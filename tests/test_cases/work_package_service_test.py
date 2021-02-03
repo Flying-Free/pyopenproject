@@ -1,4 +1,5 @@
 import json
+import os
 
 from business.exception.business_error import BusinessError
 from model.user import User
@@ -66,14 +67,16 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     #     self.assertIsNotNone(self.wpSer.find_schema(self.schema))
 
     def test_find_all_schemas(self):
-        self.assertIsNotNone(self.wpSer.find_all_schemas('[{ "id": { "operator": "=", "values": ["12-1", "14-2"] } }]'))
+        self.assertIsNotNone(self.wpSer.find_all_schemas([Filter("id", "=", '"12-1", "14-2"')]))
 
     def test_update_work_package_form(self):
         self.assertIsNotNone(self.wpSer.update_work_package(self.work_package))
 
     def test_find_all(self):
-        work_packages = self.wpSer.find_all(25, 25, '[{ "type_id": { "operator": "=", "values": ["1", "2"] }}]',
+        # TODO: Improve how pass two or more values to a filter
+        work_packages = self.wpSer.find_all(25, 25, [Filter("type_id", "=", '"1", "2"')],
                                             '[["status", "asc"]]', "status", True)
+        self.assertEqual(0, len(work_packages))
 
     def test_create(self):
         # Without notify

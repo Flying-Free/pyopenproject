@@ -15,7 +15,7 @@ class FindAll(UserCommand):
         self.offset = offset
         self.page_size = page_size
         self.filters = filters
-        self.sort_by = self.sort_by
+        self.sort_by = sort_by
 
     def execute(self):
         try:

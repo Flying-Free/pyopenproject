@@ -4,7 +4,7 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.version.version_command import VersionCommand
-from model.version import Version
+import model.version as v
 
 
 class Update(VersionCommand):
@@ -18,6 +18,6 @@ class Update(VersionCommand):
             json_obj = PatchRequest(connection=self.connection,
                                     context=f"{self.CONTEXT}/{self.version.id}",
                                     json=json.dumps(self.version.__dict__)).execute()
-            return Version(json_obj)
+            return v.Version(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating version: {self.version.id}") from re

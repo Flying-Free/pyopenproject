@@ -12,8 +12,8 @@ class Filters(URLParameter):
             output += "{"
             output += f"\"{self.value[i].name}\":"
             output += "{"
-            output += f"\"operator\":\"{self.value[i].operator}\",\"values\":{self.value[i].values}"
+            output += f"\"operator\":\"{self.value[i].operator}\",\"values\":[\"{self.value[i].values}\"]"
             output += "}}"
-            output += "," if len(self.value)!=1 and i!= len(self.value) else ""
+            output += "," if len(self.value)!=1 and i!= len(self.value)-1 else ""
         output += "]"
         return output

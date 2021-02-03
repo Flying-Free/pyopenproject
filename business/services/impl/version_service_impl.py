@@ -44,4 +44,4 @@ class VersionServiceImpl(VersionService):
         return UpdateForm(self.connection, version).execute()
 
     def find_projects(self):
-        return FindProjects(self.connection).execute()
+        return list(FindProjects(self.connection).execute())

@@ -14,8 +14,8 @@ class UserPreferencesServiceTestCase(OpenProjectTestCase):
         with open(DATA) as f:
             self.user_preferences = UserPreferences(json.load(f))
 
-    def find(self):
+    def test_find(self):
         self.assertIsNotNone(self.userPrefSer.find())
 
-    def update(self):
+    def test_update(self):
         self.assertIsNotNone(self.userPrefSer.update(self.user_preferences))
