@@ -18,10 +18,12 @@ class PreviewingServiceTestCase(OpenProjectTestCase):
         # Supported contexts:
         #
         # /api/v3/work_packages/{id} - an existing work package
-        # TODO: We need to review this request. It returns an empty string
-        current = self.previewingSer.from_markdown_by_context(context="/api/v3/work_packages/3")
-        print(current)
-        self.assertIsNotNone(current)
+        # TODO We don't know what is the difference between this and with no additional context
+
+        r = self.previewingSer.from_markdown(
+            text='Hello world! "This":http://example.com **is** markdown',
+            context="/api/v3/work_packages/3")
+        print(r)
 
     def test_to_plain(self):
         current = self.previewingSer.from_plain(text="Hello world! This *is* plain text!")
