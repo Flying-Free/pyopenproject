@@ -18,10 +18,10 @@ class ProjectServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         current = self.proSer.find(self.project)
-        self.assertEqual(self.project.__dict__, current.__dict__)
+        self.assertEqual(self.project.identifier, current.identifier)
 
     def test_update(self):
-        # TODO:Error Traceback (most recent call last): File 
+        # FIXME: Error Traceback (most recent call last): File
         #  "($HOME)\Documents\GitHub\python-openproject-api\api_connection\request.py", line 24, 
         #  in execute response.raise_for_status() File "C:\Python39\lib\site-packages\requests\models.py", line 943, 
         #  in raise_for_status raise HTTPError(http_error_msg, response=self) requests.exceptions.HTTPError: 500 
