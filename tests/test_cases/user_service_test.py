@@ -36,7 +36,7 @@ class UserServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         expected = self.usrSer.find(self.user)
-        self.assertEqual(self.user.__dict__, expected.__dict__)
+        self.assertEqual(self.user.name, expected.name)
 
     def test_not_found(self):
         user = User({"id": 50})
