@@ -25,10 +25,10 @@ class MembershipService(AbstractService):
     def create(self, membership): raise NotImplementedError
 
     @abstractmethod
-    def membership_schema(self, membership): raise NotImplementedError
+    def membership_schema(self): raise NotImplementedError
 
     @abstractmethod
-    def available_memberships(self, membership): raise NotImplementedError
+    def available_projects(self): raise NotImplementedError
 
     @abstractmethod
     def create_form(self, membership): raise NotImplementedError

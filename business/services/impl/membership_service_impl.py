@@ -30,11 +30,11 @@ class MembershipServiceImpl(MembershipService):
     def create(self, membership):
         return Create(self.connection, membership).execute()
 
-    def membership_schema(self, membership):
-        return FindSchema(self.connection, membership).execute()
+    def membership_schema(self):
+        return FindSchema(self.connection).execute()
 
-    def available_memberships(self, membership):
-        return FindAvailable(self.connection, membership).execute
+    def available_projects(self):
+        return list(FindAvailable(self.connection).execute())
 
     def create_form(self, membership):
         return CreateForm(self.connection, membership).execute()
