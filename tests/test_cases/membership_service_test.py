@@ -10,9 +10,13 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/membership.json')
+        TO_CREATE = os.path.join(self.TEST_CASES, '../data/membership-to-create.json')
+
         self.membershipSer = self.factory.get_membership_service()
         with open(DATA) as f:
             self.membership = Membership(json.load(f))
+        with open(TO_CREATE) as f:
+            self.membership_to_create = Membership(json.load(f))
 
     def test_find_all(self):
         memberships = self.membershipSer.find_all(filters=None)
@@ -21,7 +25,9 @@ class MembershipServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         membership = self.membershipSer.find(self.membership)
-        self.assertEqual(self.membership.__dict__, membership.__dict__)
+        self.assertEqual(
+            self.membership.__dict__["_links"]["self"]["title"],
+            membership.__dict__["_links"]["self"]["title"])
 
     # TODO
     def test_update(self):
@@ -29,7 +35,12 @@ class MembershipServiceTestCase(OpenProjectTestCase):
 
     # TODO
     def test_delete(self):
-        self.assertIsNotNone(self.membershipSer.delete(self.membership))
+        membership = self.membershipSer.create(self.membership_to_create)
+        membership = self.membershipSer.find(membership)
+        self.assertIsNotNone(membership)
+        self.assertIsNotNone(self.membershipSer.delete(membership))
+        membership = self.membershipSer.find(membership)
+        self.assertIsNone(membership)
 
     # TODO
     def test_create(self):
