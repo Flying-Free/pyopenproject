@@ -16,7 +16,7 @@ class FindVersions(TypeCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.project.id}/versions").execute()
-            for tEntry in json.loads(json_obj):
+            for tEntry in json_obj["_embedded"]["elements"]:
                 yield Version(tEntry)
         except RequestError as re:
             raise BusinessError(f"Error finding all time entries") from re
