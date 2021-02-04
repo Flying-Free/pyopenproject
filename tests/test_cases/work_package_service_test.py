@@ -128,4 +128,3 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     def test_create_activity(self):
         self.assertIsNotNone(self.wpSer.create_activity(self.work_package, self.activity))
         self.assertIsNotNone(self.wpSer.create_activity(self.work_package, self.activity, False))
-

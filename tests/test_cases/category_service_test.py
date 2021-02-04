@@ -15,14 +15,6 @@ class CategoryServiceTestCase(OpenProjectTestCase):
         with open(CATEGORY) as f:
             self.category = Category(json.load(f))
 
-    def test_find(self):
-        # TODO: We need to create categories to test them
-        pass
-
-    def test_execute(self):
-        # TODO: We need to create custom actions to test them
-        pass
-
     def test_not_found(self):
         with self.assertRaises(BusinessError):
             self.catSer.find(self.category)

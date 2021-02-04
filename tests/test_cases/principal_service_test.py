@@ -3,6 +3,7 @@ import os
 
 from model.principal import Principal
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
 
 
 class PrincipalServiceTestCase(OpenProjectTestCase):
@@ -20,7 +21,7 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
 
     def test_filters(self):
         # TODO: review filters
-        users = self.principalSer.find_all(filters='[{ "_type": { "operator": "=", "values": ["User"] }" }]')
+        users = self.principalSer.find_all([Filter("_type", "=", "User")])
         self.assertEqual("User", users[0]._type)
-        groups = self.principalSer.find_all(filters='[{ "member": { "operator": "=", "values": ["Scrum project"] }" }]')
+        groups = self.principalSer.find_all([Filter("member", "=", "Scrum project")])
         self.assertEqual("Group", groups[0]._type)

@@ -3,6 +3,7 @@ import os
 
 from model.query import Query
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
 
 
 class QueryServiceTestCase(OpenProjectTestCase):
@@ -34,8 +35,8 @@ class QueryServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.querySer.unstar(self.query))
 
     def test_find_all(self):
-        queries = self.querySer.find_all('[{ "project_id": { "operator": "!*", "values": null }" }]')
-        self.assertEqual(25, len(queries))
+        queries = self.querySer.find_all([Filter("project_id", "!*", "null")])
+        self.assertEqual(0, len(queries))
 
     def test_create(self):
         self.assertIsNotNone(self.querySer.create(self.query))
