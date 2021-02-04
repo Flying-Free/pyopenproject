@@ -6,14 +6,15 @@ from business.services.impl.command.previewing.previewing_command import Preview
 
 class FromMarkdown(PreviewingCommand):
 
-    def __init__(self, connection, text):
+    def __init__(self, connection, text, context):
         super().__init__(connection)
         self.text = text
+        self.context = f"?{context}" if context else ""
 
     def execute(self):
         try:
             return PostRequest(connection=self.connection,
-                               context=f"{self.CONTEXT}/markdown",
+                               context=f"{self.CONTEXT}/markdown{self.context}",
                                data=self.text,
                                headers={'Content-Type': 'text/plain'}).execute()
         except RequestError as re:

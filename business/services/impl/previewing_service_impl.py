@@ -9,8 +9,8 @@ class PreviewingServiceImpl(PreviewingService):
     def __init__(self, connection):
         super().__init__(connection)
 
-    def from_markdown(self, text):
-        return FromMarkdown(self.connection, text).execute()
+    def from_markdown(self, text, context=None):
+        return FromMarkdown(self.connection, text, context).execute()
 
     def from_markdown_by_context(self, context):
         return FromMarkdownByContext(self.connection, context).execute()
