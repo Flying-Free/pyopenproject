@@ -25,7 +25,7 @@ class VersionServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.versionSer.delete(self.version))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", "system")]))
+        self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
 
     def test_create(self):
         self.assertIsNotNone(self.versionSer.create(self.version))

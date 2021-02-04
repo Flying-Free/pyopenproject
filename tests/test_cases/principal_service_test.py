@@ -21,7 +21,7 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
 
     def test_filters(self):
         # TODO: review filters
-        users = self.principalSer.find_all([Filter("_type", "=", "User")])
+        users = self.principalSer.find_all([Filter("_type", "=", ["User"])])
         self.assertEqual("User", users[0]._type)
-        groups = self.principalSer.find_all([Filter("member", "=", "Scrum project")])
+        groups = self.principalSer.find_all([Filter("member", "=", ["Scrum project"])])
         self.assertEqual("Group", groups[0]._type)

@@ -39,7 +39,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         # With filters
-        relations=self.relationSer.find_all([Filter("from", "=", "42")],
+        relations=self.relationSer.find_all([Filter("from", "=", ["42"])],
                                                        '[["type", "asc"]]')
         self.assertEqual(7, len(relations))
 

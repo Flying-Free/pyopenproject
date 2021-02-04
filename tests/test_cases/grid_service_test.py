@@ -3,6 +3,7 @@ import os
 
 from model.grid import Grid
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
+from util.Filter import Filter
 
 
 class GridServiceTestCase(OpenProjectTestCase):
@@ -19,7 +20,7 @@ class GridServiceTestCase(OpenProjectTestCase):
 
     # TODO: Filters are running well?
     def test_find_all_with_filters(self):
-        grids = self.gridSer.find_all(25, 25, [Filter("page", "=", "/my/page")], sort_by=None)
+        grids = self.gridSer.find_all(25, 25, [Filter("page", "=", ["/my/page"])], sort_by=None)
         self.assertEqual(0, len(grids))
 
     def test_find_all(self):

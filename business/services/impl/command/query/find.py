@@ -10,23 +10,23 @@ from util.URLParameter import URLParameter
 
 class Find(QueryCommand):
 
-    def __init__(self, connection, activity, offset, pageSize, filters, columns, sortBy, groupBy, showSums,
-                 timelineVisible, timelineLabels, timelineZoomLevel, highlightingMode,
-                 highlightedAttributes, showHierarchies):
+    def __init__(self, connection, activity, offset, page_size, filters, columns, sort_by, group_by, show_sums,
+                 timeline_visible, timeline_labels, timeline_zoom_level, highlighting_mode,
+                 highlighted_attributes, show_hierarchies):
         super().__init__(connection)
         self.offset = offset
-        self.pageSize = pageSize
+        self.page_size = page_size
         self.filters = filters
         self.columns = columns
-        self.sortBy = sortBy
-        self.groupBy = groupBy
-        self.showSums = showSums
-        self.timelineVisible = timelineVisible
-        self.timelineLabels = timelineLabels
-        self.timelineZoomLevel = timelineZoomLevel
-        self.highlightingMode = highlightingMode
-        self.highlightedAttributes = highlightedAttributes
-        self.showHierarchies = showHierarchies
+        self.sort_by = sort_by
+        self.group_by = group_by
+        self.show_sums = show_sums
+        self.timeline_visible = timeline_visible
+        self.timeline_labels = timeline_labels
+        self.timeline_zoom_level = timeline_zoom_level
+        self.highlighting_mode = highlighting_mode
+        self.highlighted_attributes = highlighted_attributes
+        self.show_hierarchies = show_hierarchies
         self.activity = activity
 
     def execute(self):
@@ -38,14 +38,14 @@ class Find(QueryCommand):
                                               Filters("filters", self.filters),
                                               URLParameter("columns", self.columns),
                                               URLParameter("sortBy", self.sort_by),
-                                              URLParameter("groupBy", self.groupBy),
-                                              URLParameter("showSums", self.showSums),
-                                              URLParameter("timelineVisible", self.timelineVisible),
-                                              URLParameter("timelineLabels", self.timelineLabels),
-                                              URLParameter("timelineZoomLevel", self.timelineZoomLevel),
-                                              URLParameter("highlightingMode", self.highlightingMode),
-                                              URLParameter("highlightedAttributes", self.highlightedAttributes),
-                                              URLParameter("showHierarchies", self.showHierarchies)
+                                              URLParameter("groupBy", self.group_by),
+                                              URLParameter("showSums", self.show_sums),
+                                              URLParameter("timelineVisible", self.timeline_visible),
+                                              URLParameter("timelineLabels", self.timeline_labels),
+                                              URLParameter("timelineZoomLevel", self.timeline_zoom_level),
+                                              URLParameter("highlightingMode", self.highlighting_mode),
+                                              URLParameter("highlightedAttributes", self.highlighted_attributes),
+                                              URLParameter("showHierarchies", self.show_hierarchies)
 
                                           ]))).execute()
 

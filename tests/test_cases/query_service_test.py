@@ -20,10 +20,7 @@ class QueryServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         self.assertIsNotNone(
-            self.querySer.find(self.query, offset, pageSize, filters, columns, sortBy, groupBy, showSums,
-                               timelineVisible,
-                               timelineLabels, timelineZoomLevel, highlightingMode, highlightedAttributes,
-                               showHierarchies))
+            self.querySer.find(self.query))
 
     def test_delete(self):
         self.assertIsNotNone(self.querySer.delete(self.query))
@@ -35,7 +32,7 @@ class QueryServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.querySer.unstar(self.query))
 
     def test_find_all(self):
-        queries = self.querySer.find_all([Filter("project_id", "!*", "null")])
+        queries = self.querySer.find_all([Filter("project_id", "!*", ["null"])])
         self.assertEqual(0, len(queries))
 
     def test_create(self):

@@ -67,14 +67,14 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     #     self.assertIsNotNone(self.wpSer.find_schema(self.schema))
 
     def test_find_all_schemas(self):
-        self.assertIsNotNone(self.wpSer.find_all_schemas([Filter("id", "=", '"12-1", "14-2"')]))
+        self.assertIsNotNone(self.wpSer.find_all_schemas([Filter("id", "=", ["12-1", "14-2"])]))
 
     def test_update_work_package_form(self):
         self.assertIsNotNone(self.wpSer.update_work_package(self.work_package))
 
     def test_find_all(self):
         # TODO: Improve how pass two or more values to a filter
-        work_packages = self.wpSer.find_all(25, 25, [Filter("type_id", "=", '"1", "2"')],
+        work_packages = self.wpSer.find_all(25, 25, [Filter("type_id", "=", ["1", "2"])],
                                             '[["status", "asc"]]', "status", True)
         self.assertEqual(0, len(work_packages))
 
@@ -110,7 +110,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
 
     def test_find_relation_candidates(self):
         relations=self.wpSer.find_relation_candidates(self.work_package,
-                            [Filter("status_id", "o", "null")], "rollout", "follows", 25)
+                            [Filter("status_id", "o", ["null"])], "rollout", "follows", 25)
         self.assertEqual(0, len(relations))
 
     def test_find_available_watchers(self):

@@ -75,7 +75,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
 
     def test_find_projects_with_filters(self):
         # TODO: Review filters CHANGE TO NEW HANDLE
-        projects = self.proSer.find_all([Filter("active", "=", '["false"]')])
+        projects = self.proSer.find_all([Filter("active", "=", ["false"])])
         self.assertEqual(0, len(projects))
 
     def test_create(self):
@@ -100,9 +100,9 @@ class ProjectServiceTestCase(OpenProjectTestCase):
     def test_find_parents(self):
         # Not found
         with self.assertRaises(BusinessError):
-            self.proSer.find_parents([Filter("ancestor", "=", '["1"]')], 123, '[["id", "asc"]]')
+            self.proSer.find_parents([Filter("ancestor", "=", ["1"])], 123, '[["id", "asc"]]')
         # Parameters with None
-        parents=self.proSer.find_parents(filters=[Filter("ancestor", "=", '["1"]')])
+        parents=self.proSer.find_parents(filters=[Filter("ancestor", "=", ["1"])])
         self.assertEqual(0, len(parents))
 
     def test_find_versions(self):
@@ -118,7 +118,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(budgets))
 
     def test_find_work_packages(self):
-        workpackages=self.proSer.find_work_packages(self.project, 1, 25, [Filter("status_id", "o", "null")],
+        workpackages=self.proSer.find_work_packages(self.project, 1, 25, [Filter("status_id", "o", ["null"])],
             "status", '["status", "asc"]', "status", "true")
         self.assertEqual(0, len(workpackages))
 

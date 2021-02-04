@@ -13,7 +13,7 @@ class WikiPageServiceImpl(WikiPageService):
         return Find(self.connection, wiki_page).execute()
 
     def find_attachments(self, wiki):
-        return FindAttachments(self.connection, wiki).execute()
+        return list(FindAttachments(self.connection, wiki).execute())
 
     def add_attachment(self, wiki, attachment):
         return AddAttachment(self.connection, wiki, attachment).execute()

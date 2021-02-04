@@ -1,6 +1,7 @@
 import json
 import os
 
+from business.exception.business_error import BusinessError
 from model.wiki_page import WikiPage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -18,10 +19,13 @@ class WikiPageServiceTestCase(OpenProjectTestCase):
             self.attachment = WikiPage(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.wikiPageSer.find(self.wiki))
+        # There's no wiki page --> Exception
+        with self.assertRaises(BusinessError):
+            self.wikiPageSer.find(self.wiki)
 
     def test_find_attachments(self):
-        self.assertIsNotNone(self.wikiPageSer.find_attachments(self.wiki))
+        attachments = self.wikiPageSer.find_attachments(self.wiki)
+        self.assertEqual(0, len(attachments))
 
     def test_add_attachment(self):
         self.assertIsNotNone(self.wikiPageSer.add_attachment(self.wiki, self.attachment))

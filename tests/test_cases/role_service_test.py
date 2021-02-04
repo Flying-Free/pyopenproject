@@ -21,7 +21,7 @@ class RoleServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.roleSer.find(self.role))
 
     def test_find_all(self):
-        roles = self.roleSer.find_all(Filter("unit", "=", "system"))
+        roles = self.roleSer.find_all(Filter("unit", "=", ["system"]))
         self.assertEqual(1, len(roles))
         roles = self.roleSer.find_all()
         self.assertEqual(6, len(roles))
