@@ -1,8 +1,10 @@
 from business.services.grid_service import GridService
 from business.services.impl.command.grid.create import Create
+from business.services.impl.command.grid.create_form import CreateForm
 from business.services.impl.command.grid.find import Find
 from business.services.impl.command.grid.find_all import FindAll
 from business.services.impl.command.grid.update import Update
+from business.services.impl.command.grid.update_form import UpdateForm
 
 
 class GridServiceImpl(GridService):
@@ -22,4 +24,7 @@ class GridServiceImpl(GridService):
         return Update(self.connection, grid).execute()
 
     def create_form(self, grid):
-        return Create(self.connection, grid).execute()
+        return CreateForm(self.connection, grid).execute()
+
+    def update_form(self, grid, grid_form):
+        return UpdateForm(self.connection, grid, grid_form).execute()

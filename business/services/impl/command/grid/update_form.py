@@ -7,14 +7,16 @@ from model.grid import Grid
 
 class UpdateForm(GridCommand):
 
-    def __init__(self, connection, grid):
+    def __init__(self, connection, grid, grid_form):
         super().__init__(connection)
         self.grid = grid
+        self.grid_form = grid_form
 
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
-                                   context=f"{self.CONTEXT}/{self.grid.id}/form").execute()
+                                   context=f"{self.CONTEXT}/{self.grid.id}/form",
+                                   json=self.grid_form).execute()
             return Grid(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating grid by id: {self.grid.id}") from re

@@ -1,6 +1,7 @@
 import json
 import os
 
+from model.form import Form
 from model.grid import Grid
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 from util.Filter import Filter
@@ -30,7 +31,7 @@ class GridServiceTestCase(OpenProjectTestCase):
     def test_create(self):
         # TODO: b'{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
         #  "message":"An internal error has occured. string not matched"}'
-        DATA = os.path.join(self.TEST_CASES, '../data/grid_create.json')
+        DATA = os.path.join(self.TEST_CASES, '../data/inputs/grid.json')
         with open(DATA) as f:
             g = Grid(json.load(f))
         g = self.gridSer.create(g)
@@ -42,4 +43,12 @@ class GridServiceTestCase(OpenProjectTestCase):
 
     def test_create_form(self):
         # TODO: To test
-        self.assertIsNotNone(self.gridSer.create_form(self.grid))
+        with open(os.path.join(self.TEST_CASES, '../data/inputs/grid.json')) as f:
+            grid_form = Form(json.load(f))
+        self.assertIsNotNone(self.gridSer.create_form(grid_form))
+
+    def test_update_form(self):
+        # TODO: To test
+        with open(os.path.join(self.TEST_CASES, '../data/inputs/grid.json')) as f:
+            grid_form = Form(json.load(f))
+        self.assertIsNotNone(self.gridSer.update_form(self.grid, grid_form))
