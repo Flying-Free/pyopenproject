@@ -34,23 +34,25 @@ class Request(Command):
                     return response.content.decode("utf-8")
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
-            raise RequestError(f"Timeout running request with the URL: '{self.connection.url_base + self.context}'." +
+            raise RequestError(f"Timeout running request with the URL (Timeout):"
+                               f" '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except requests.exceptions.TooManyRedirects as err:
             # Tell the user their URL was bad and try a different one
-            raise RequestError(f"Error running request with the URL: '{self.connection.url_base + self.context}'." +
+            raise RequestError(f"Error running request with the URL (TooManyRedirects):"
+                               f" '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except JSONDecodeError as err:
-            raise RequestError(f"Error running request with the URL: '{self.connection.url_base + self.context}'." +
+            raise RequestError(f"Error running request with the URL (JSONDecodeError):"
+                               f" '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except requests.exceptions.HTTPError as err:
-            raise RequestError(f"Error running request with the URL: '{self.connection.url_base + self.context}'." +
+            # The response was an http error.
+            raise RequestError(f"Error running request with the URL (HTTPError):"
+                               f" '{self.connection.url_base + self.context}'." +
                                f"\n {response.text}") from err
         except requests.exceptions.RequestException as err:
             # catastrophic error. bail.
-            raise SystemExit(err) from err
-        except requests.exceptions.HTTPError as err:
-            # The response was an http error.
             raise SystemExit(err) from err
 
     @abstractmethod

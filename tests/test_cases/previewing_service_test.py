@@ -23,7 +23,7 @@ class PreviewingServiceTestCase(OpenProjectTestCase):
         r = self.previewingSer.from_markdown(
             text='Hello world! "This":http://example.com **is** markdown',
             context="/api/v3/work_packages/3")
-        print(r)
+        self.assertIsNot('Hello world! "This":http://example.com **is** markdown', r)
 
     def test_to_plain(self):
         current = self.previewingSer.from_plain(text="Hello world! This *is* plain text!")

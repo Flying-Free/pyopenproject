@@ -49,7 +49,7 @@ class WorkPackageServiceImpl(WorkPackageService):
         return Update(self.connection, work_package, notify)
 
     def delete(self, work_package):
-        Delete(self.connection, work_package).execute()
+        return Delete(self.connection, work_package).execute()
 
     def find_schema(self, schema):
         return FindSchema(self.connection, schema)
@@ -58,16 +58,16 @@ class WorkPackageServiceImpl(WorkPackageService):
         return FindAllSchemas(self.connection, filters)
 
     def update_form(self, work_package):
-        return UpdateForm(self.connection, work_package)
+        return UpdateForm(self.connection)
 
     def find_all(self, offset=None, page_size=None, filters=None, sort_by=None, group_by=None, show_sums=None):
         return list(FindAll(self.connection, offset, page_size, filters, sort_by, group_by, show_sums).execute())
 
     def create(self, work_package, notify=None):
-        return Create(self.connection, work_package, notify)
+        return Create(self.connection, work_package, notify).execute()
 
-    def create_form(self, work_package):
-        return CreateForm(self.connection, work_package).execute()
+    def create_form(self):
+        return CreateForm(self.connection).execute()
 
     def create_relation(self, work_package, relation):
         return CreateRelation(self.connection, work_package, relation).execute
@@ -93,7 +93,7 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_available_watchers(self, work_package):
         return list(FindAvailableWatchers(self.connection, work_package).execute())
 
-    def find_available_projects(self, work_package):
+    def find_available_projects(self, work_package=None):
         return list(FindAvailableProjects(self.connection, work_package).execute())
 
     def find_revisions(self, work_package):

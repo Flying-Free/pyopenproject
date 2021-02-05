@@ -2,6 +2,7 @@ import json
 import os
 
 from business.exception.business_error import BusinessError
+from model.form import Form
 from model.user import User
 from model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
@@ -13,6 +14,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/work_package.json')
+        WORK_PACKAGE_FORM = os.path.join(self.TEST_CASES, '../data/work_package_form.json')
         RELATION = os.path.join(self.TEST_CASES, '../data/relation.json')
         USER = os.path.join(self.TEST_CASES, '../data/user.json')
         ACTIVITY = os.path.join(self.TEST_CASES, '../data/activity.json')
@@ -20,6 +22,8 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.wpSer = self.factory.get_work_package_service()
         with open(WORK_PACKAGE) as f:
             self.work_package = WorkPackage(json.load(f))
+        with open(WORK_PACKAGE_FORM) as f:
+            self.work_package_form = Form(json.load(f))
         with open(RELATION) as f:
             self.relation = WorkPackage(json.load(f))
         with open(USER) as f:
@@ -60,7 +64,8 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.wpSer.update(self.work_package, False))
 
     def test_delete(self):
-        self.assertIsNotNone(self.wpSer.delete(self.work_package))
+        s = self.wpSer.delete(self.work_package)
+        print(s)
 
     # TODO
     # def test_find_schema(self):
@@ -79,14 +84,27 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(work_packages))
 
     def test_create(self):
+        # TODO:
+        wP = WorkPackage(self.wpSer.create_form()._embedded["payload"])
+        wP.subject = "Demo task created by the API"
+        project = self.wpSer.find_available_projects()[0].__dict__['_links']['self']
+        wP._links["project"]["href"] = project['href']
+        wP._links["project"]["title"] = project['title']
+        work_package_type = list(filter(
+            lambda x: x.name == 'Task',
+            self.factory.get_type_service().find_all()
+        ))[0].__dict__['_links']['self']
+        wP._links["type"]["href"] = work_package_type['href']
+        wP._links["type"]["href"] = work_package_type['title']
         # Without notify
-        self.assertIsNotNone(self.wpSer.create(self.work_package))
+        wP = self.wpSer.create(wP)
+        wP = self.wpSer.find(wP)
         # With notify to false
         self.assertIsNotNone(self.wpSer.create(self.work_package, False))
 
-    # TODO
     def test_create_form(self):
-        self.assertIsNotNone(self.wpSer.create_form(self.work_package))
+        form = self.wpSer.create_form()
+        self.assertEqual(self.work_package_form.__dict__, form.__dict__)
 
     # TODO
     def test_create_relation(self):
@@ -116,6 +134,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     def test_find_available_watchers(self):
         self.assertIsNotNone(self.wpSer.find_available_watchers(self.work_package))
 
+    # TODO with parameter and without it
     def test_find_available_projects(self):
         self.assertIsNotNone(self.wpSer.find_available_projects(self.work_package))
 

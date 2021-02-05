@@ -34,7 +34,7 @@ class WorkPackageService(AbstractService):
     def find_all_schemas(self, filters): raise NotImplementedError
 
     @abstractmethod
-    def update_form(self, work_package): raise NotImplementedError
+    def update_form(self): raise NotImplementedError
 
     @abstractmethod
     def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums): raise NotImplementedError
@@ -43,7 +43,7 @@ class WorkPackageService(AbstractService):
     def create(self, work_package, notify): raise NotImplementedError
 
     @abstractmethod
-    def create_form(self, work_package): raise NotImplementedError
+    def create_form(self): raise NotImplementedError
 
     @abstractmethod
     def create_relation(self, work_package, relation): raise NotImplementedError

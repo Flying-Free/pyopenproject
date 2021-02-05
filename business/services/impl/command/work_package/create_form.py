@@ -1,5 +1,3 @@
-import json
-
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
 from business.exception.business_error import BusinessError
@@ -9,15 +7,13 @@ from model.form import Form
 
 class CreateForm(WorkPackageCommand):
 
-    def __init__(self, connection, work_package):
+    def __init__(self, connection):
         super().__init__(connection)
-        self.work_package = work_package
 
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
-                                   context=f"{self.CONTEXT}/form",
-                                   json=json.dumps(self.work_package.__dict__)).execute()
+                                   context=f"{self.CONTEXT}form").execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating work package") from re
+            raise BusinessError(f"Error creating work package form") from re

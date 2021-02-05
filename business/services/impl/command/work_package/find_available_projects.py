@@ -6,14 +6,15 @@ from business.services.impl.command.work_package.work_package_command import Wor
 
 
 class FindAvailableProjects(WorkPackageCommand):
-    def __init__(self, connection, work_package):
+    def __init__(self, connection, work_package=None):
         super().__init__(connection)
+        self.context = f"{work_package.id}/available_projects" if work_package else "available_projects"
         self.work_package = work_package
 
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}/{self.work_package.id}/available_projects").execute()
+                                  f"{self.CONTEXT}/{self.context}").execute()
             for project in json_obj["_embedded"]["elements"]:
                 yield p.Project(project)
         except RequestError as re:
