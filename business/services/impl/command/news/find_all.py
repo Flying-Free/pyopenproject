@@ -3,6 +3,9 @@ from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.news.news_command import NewsCommand
 from model.new import New
+from util.Filters import Filters
+from util.URL import URL
+from util.URLParameter import URLParameter
 
 
 class FindAll(NewsCommand):
@@ -17,8 +20,14 @@ class FindAll(NewsCommand):
     def execute(self):
         try:
             json_obj = GetRequest(connection=self.connection,
-                                  context=f"{self.CONTEXT}?offset={self.offset}&pageSize={self.page_size}"
-                                          f"&filters={self.filters}&sortBy={self.sort_by}").execute()
+                                  context=str(URL(f"{self.CONTEXT}",
+                                          [
+                                              URLParameter("offset", self.offset),
+                                              URLParameter("pageSize", self.page_size),
+                                              Filters("filters", self.filters),
+                                              URLParameter("sortBy", self.sort_by)
+                                          ]))).execute()
+
             for news in json_obj['_embedded']['elements']:
                 yield New(news)
         except RequestError as re:
