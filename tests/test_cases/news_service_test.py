@@ -17,7 +17,6 @@ class NewsServiceTestCase(OpenProjectTestCase):
     def test_find(self):
         new = self.newsSer.find(self.new)
         self.assertEqual(new.title, self.new.title)
-        self.assertEqual(new.summary, self.new.summary)
 
     def test_find_all(self):
         news_list = self.newsSer.find_all(offset=None, page_size=None, filters=None, sort_by=None)
