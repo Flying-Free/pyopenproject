@@ -12,6 +12,7 @@ class PreviewingServiceImpl(PreviewingService):
     def from_markdown(self, text, context=None):
         return FromMarkdown(self.connection, text, context).execute()
 
+    # TODO Remove it
     def from_markdown_by_context(self, context):
         return FromMarkdownByContext(self.connection, context).execute()
 
