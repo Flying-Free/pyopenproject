@@ -17,6 +17,7 @@ class Create(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=str(URL(f"{self.CONTEXT}",
                                                    [
                                                        URLParameter("notify", self.notify)

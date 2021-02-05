@@ -84,19 +84,81 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(work_packages))
 
     def test_create(self):
-        # TODO:
+        # FIXME api_connection.exceptions.request_exception.RequestError: Error running request with the URL (HTTPError): 'http://127.0.0.1:8080/api/v3/work_packages/?notify=False'.
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MultipleErrors",
+        #  "message":"Multiple field constraints have been violated.",
+        #  "_embedded":{
+        #  "errors":[
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Assignee The chosen user is not allowed to be 'Assignee' for this work package.",
+        #  "_embedded":{
+        #  "details":{
+        #  "attribute":"assignee"
+        #  }
+        #  }
+        #  },
+        #  {"_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Accountable The chosen user is not allowed to be 'Accountable' for this work package.",
+        #  "_embedded":{
+        #  "details":{
+        #  "attribute":"responsible"
+        #  }
+        #  }
+        #  },
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Parent does not exist.",
+        #  "_embedded":{
+        #  "details":{
+        #  "attribute":"parent"
+        #  }
+        #  }
+        #  },
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Category The specified category does not exist.",
+        #  "_embedded":{
+        #  "details":{
+        #  "attribute":"category"
+        #  }
+        #  }
+        #  },
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Author is invalid.",
+        #  "_embedded":
+        #  {
+        #  "details":{
+        #         "attribute":"author"}}},{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":"Author was attempted to be written but is not writable.","_embedded":{
+        #         "details":{
+        #         "attribute":"author"}}},{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":"ID was attempted to be written but is not writable.","_embedded":{
+        #         "details":{
+        #         "attribute":"id"}}},{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":"Created on was attempted to be written but is not writable.","_embedded":{
+        #         "details":{
+        #         "attribute":"createdAt"}}},{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":"Updated on was attempted to be written but is not writable.","_embedded":{
+        #         "details":{
+        #         "attribute":"updatedAt"}}},{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":"Derived estimated hours was attempted to be written but is not writable.","_embedded":{
+        #         "details":{
+        #         "attribute":"derivedEstimatedHours"}}}]}}
         wP = WorkPackage(self.wpSer.create_form()._embedded["payload"])
         wP.subject = "Demo task created by the API"
         project = self.wpSer.find_available_projects()[0].__dict__['_links']['self']
         wP._links["project"]["href"] = project['href']
-        wP._links["project"]["title"] = project['title']
         work_package_type = list(filter(
             lambda x: x.name == 'Task',
             self.factory.get_type_service().find_all()
-        ))[0].__dict__['_links']['self']
-        wP._links["type"]["href"] = work_package_type['href']
-        wP._links["type"]["href"] = work_package_type['title']
+        ))[0].__dict__['_links']['self']['href']
+        wP.__dict__["_links"]["type"]["href"] = work_package_type
         # Without notify
+        print(wP.__dict__)
         wP = self.wpSer.create(wP)
         wP = self.wpSer.find(wP)
         # With notify to false
