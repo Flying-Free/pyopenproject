@@ -1,3 +1,5 @@
+import json
+
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
 from business.exception.business_error import BusinessError
@@ -16,7 +18,7 @@ class UpdateForm(GridCommand):
         try:
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}/{self.grid.id}/form",
-                                   json=self.grid_form).execute()
+                                   json=json.dumps(self.grid_form.__dict__)).execute()
             return Grid(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating grid by id: {self.grid.id}") from re

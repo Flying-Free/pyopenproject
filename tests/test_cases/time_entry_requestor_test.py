@@ -33,9 +33,6 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         projects = self.tEntryReq.find_projects(self.time_entry)
         self.assertEqual(0, len(projects))
 
-    def test_find_by_context(self):
-        self.assertIsNotNone(self.tEntryReq.find_by_context(self.time_entry["_links"]["self"]["href"]))
-
     def test_find_all(self):
         time_entries = self.tEntryReq.find_all()
         self.assertEqual(0, len(time_entries))
