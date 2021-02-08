@@ -14,6 +14,7 @@ class Create(GridCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}",
                                    data=self.grid.__dict__).execute()
             return Grid(json_obj)

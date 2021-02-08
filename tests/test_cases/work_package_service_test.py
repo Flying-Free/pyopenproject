@@ -30,8 +30,8 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
             self.watcher = User(json.load(f))
         with open(ACTIVITY) as f:
             self.activity = WorkPackage(json.load(f))
-        # with open('../data/schema.json') as f:
-        #     self.schema = WorkPackage(json.load(f))
+       #with open('../data/schema.json') as f:
+       #     self.schema = WorkPackage(json.load(f))
         with open(ATTACHMENT) as f:
             self.attachment = WorkPackage(json.load(f))
 
@@ -86,8 +86,8 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     def test_find_all_schemas(self):
         self.assertIsNotNone(self.wpSer.find_all_schemas([Filter("id", "=", ["12-1", "14-2"])]))
 
-    def test_update_work_package_form(self):
-        self.assertIsNotNone(self.wpSer.update_work_package(self.work_package))
+    def test_update_form(self):
+        self.assertIsNotNone(self.wpSer.update_form(self.work_package))
 
     def test_find_all(self):
         work_packages = self.wpSer.find_all(25, 25, [Filter("type_id", "=", ["1", "2"])],

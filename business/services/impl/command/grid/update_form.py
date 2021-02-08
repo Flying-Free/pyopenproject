@@ -17,8 +17,9 @@ class UpdateForm(GridCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/{self.grid.id}/form",
-                                   json=json.dumps(self.grid_form.__dict__)).execute()
+                                   json=self.grid_form.__dict__).execute()
             return Grid(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating grid by id: {self.grid.id}") from re

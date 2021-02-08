@@ -14,9 +14,9 @@ class FindAll(GridCommand):
                  sort_by):
         super().__init__(connection)
         self.offset = offset
-        self.pageSize = page_size
+        self.page_size = page_size
         self.filters = filters
-        self.sortBy = sort_by
+        self.sort_by = sort_by
 
     def execute(self):
         try:

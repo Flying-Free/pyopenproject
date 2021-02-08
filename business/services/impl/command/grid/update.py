@@ -16,6 +16,7 @@ class Update(GridCommand):
     def execute(self):
         try:
             json_obj = PatchRequest(connection=self.connection,
+                                    headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}",
                                     json=json.dumps(self.grid.__dict__)).execute()
             return Grid(json_obj)
