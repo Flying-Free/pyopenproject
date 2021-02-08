@@ -11,7 +11,7 @@ from util.URLParameter import URLParameter
 
 class FindWorkPackages(ProjectCommand):
 
-    def __init__(self, connection, project, offset, page_size, filters, group_by, sort_by, show_sums, notify):
+    def __init__(self, connection, project, offset, page_size, filters, group_by, sort_by, show_sums):
         super().__init__(connection)
         self.project = project
         self.offset = offset

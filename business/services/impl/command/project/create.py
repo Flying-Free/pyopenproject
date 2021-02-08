@@ -1,4 +1,3 @@
-import json
 
 import model.project as p
 from api_connection.exceptions.request_exception import RequestError
@@ -16,8 +15,9 @@ class Create(ProjectCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}",
-                                   json=json.dumps(self.project.__dict__)).execute()
+                                   json=self.project.__dict__).execute()
             return p.Project(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating project: {self.project.name}") from re

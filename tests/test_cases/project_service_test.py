@@ -3,6 +3,7 @@ import os
 
 from business.exception.business_error import BusinessError
 from model.project import Project
+from model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 from util.Filter import Filter
 
@@ -118,22 +119,30 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(budgets))
 
     def test_find_work_packages(self):
+        #TODO: FIX ME: v3:errors:MissingPermission","message":"You are not authorized to access this resource."
         workpackages=self.proSer.find_work_packages(self.project, 1, 25, [Filter("status_id", "o", ["null"])],
-            "status", '["status", "asc"]', "status", "true")
+            "status", '["status", "asc"]', "true")
         self.assertEqual(0, len(workpackages))
 
     def test_create_work_package(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.create_work_package(self.project, notify, workPackage))
+        # TODO: FIX ME: An internal error has occured. can't convert String into Hash
+        WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/work_package.json')
+        with open(WORK_PACKAGE) as f:
+            work_package = WorkPackage(json.load(f))
+        self.assertIsNotNone(self.proSer.create_work_package(self.project, work_package))
 
     def test_create_work_package_form(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.create_work_package_form(self.project, notify, form))
+        # TODO: FIX ME: "You are not authorized to access this resource."
+        WP_FORM = os.path.join(self.TEST_CASES, '../data/work_package_form.json')
+        with open(WP_FORM) as f:
+            work_package_form = WorkPackage(json.load(f))
+        self.assertIsNotNone(self.proSer.create_work_package_form(self.project, work_package_form))
 
     def test_find_available_assignees(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.find_available_assignees(self.project))
+        # TODO: FIX ME 404
+        assignees=self.proSer.find_available_assignees(self.project)
+        self.assertEqual(0, len(assignees))
 
     def test_find_available_responsibles(self):
-        # TODO
+        # TODO:
         self.assertIsNotNone(self.proSer.find_available_responsibles(self.project))

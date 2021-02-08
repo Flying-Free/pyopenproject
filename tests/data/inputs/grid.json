@@ -23,5 +23,10 @@
       "startColumn": 3,
       "endColumn": 6
     }
-  ]
+  ],
+  "_links": {
+    "scope": {
+      "href": "/my/page"
+    }
+  }
 }

@@ -69,7 +69,7 @@ class ProjectServiceImpl(ProjectService):
         return CreateWorkPackageForm(self.connection, project, form).execute()
 
     def find_available_assignees(self, project):
-        return FindAvailableAssignees(self.connection, project).execute()
+        return list(FindAvailableAssignees(self.connection, project).execute())
 
     def find_available_responsibles(self, project):
         return FindAvailableResponsibles(self.connection, project).execute()

@@ -17,8 +17,9 @@ class CreateWorkPackageForm(ProjectCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/{self.project.id}/work_packages/form",
-                                   json=json.dumps(self.form.__dict__)).execute()
+                                   json=self.form.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding work package by id: {self.project.name}") from re

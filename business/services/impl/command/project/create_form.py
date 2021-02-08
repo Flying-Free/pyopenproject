@@ -16,8 +16,9 @@ class CreateForm(ProjectCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/form",
-                                   json=json.dumps(self.project.__dict__)).execute()
+                                   json=self.project.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating project: {self.project.name}") from re
