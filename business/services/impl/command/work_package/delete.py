@@ -12,6 +12,6 @@ class Delete(WorkPackageCommand):
 
     def execute(self):
         try:
-            return DeleteRequest(self.connection, f"{self.CONTEXT}/{self.work_package.id}").execute()
+            return DeleteRequest(self.connection, f"{self.CONTEXT}{self.work_package.id}").execute()
         except RequestError as re:
             raise BusinessError(f"Error deleting work package: {self.work_package.id}") from re

@@ -1,5 +1,3 @@
-import json
-
 import model.work_package as wp
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
@@ -19,11 +17,12 @@ class Update(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = PatchRequest(connection=self.connection,
-                                    context=  str(URL(f"{self.CONTEXT}/{self.work_package.id}",
-                                          [
-                                              URLParameter("notify", self.notify)
-                                          ])),
-                                    json=json.dumps(self.work_package.__dict__)).execute()
+                                    headers={"Content-Type": "application/json"},
+                                    context=str(URL(f"{self.CONTEXT}{self.work_package.id}",
+                                                    [
+                                                        URLParameter("notify", self.notify)
+                                                    ])),
+                                    json=self.work_package.__dict__).execute()
             return wp.WorkPackage(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating work package: {self.work_package.id}") from re

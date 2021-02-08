@@ -46,16 +46,16 @@ class WorkPackageServiceImpl(WorkPackageService):
         return Find(self.connection, work_package).execute()
 
     def update(self, work_package, notify=None):
-        return Update(self.connection, work_package, notify)
+        return Update(self.connection, work_package, notify).execute()
 
     def delete(self, work_package):
         return Delete(self.connection, work_package).execute()
 
     def find_schema(self, schema):
-        return FindSchema(self.connection, schema)
+        return FindSchema(self.connection, schema).execute()
 
     def find_all_schemas(self, filters):
-        return FindAllSchemas(self.connection, filters)
+        return FindAllSchemas(self.connection, filters).execute()
 
     def update_form(self, work_package):
         return UpdateForm(self.connection)
@@ -69,8 +69,8 @@ class WorkPackageServiceImpl(WorkPackageService):
     def create_form(self):
         return CreateForm(self.connection).execute()
 
-    def create_relation(self, work_package, relation):
-        return CreateRelation(self.connection, work_package, relation).execute
+    def create_relation(self, type, work_package_from, work_package_to, description):
+        return CreateRelation(self.connection, type, work_package_from, work_package_to, description).execute()
 
     def find_relations(self, work_package):
         return FindRelations(self.connection, work_package).execute()

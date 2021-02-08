@@ -1,5 +1,3 @@
-import json
-
 import model.relation as rel
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
@@ -9,16 +7,30 @@ from business.services.impl.command.work_package.work_package_command import Wor
 
 class CreateRelation(WorkPackageCommand):
 
-    def __init__(self, connection, work_package, relation):
+    def __init__(self, connection, type, work_package_from, work_package_to, description):
         super().__init__(connection)
-        self.work_package = work_package
-        self.relation = relation
+        self.work_package_from = work_package_from
+        self.relation = rel.Relation(
+            {
+                "_type": "Relation",
+                "type": f"{type}",
+                "from": {
+                    "href": f"{work_package_from.__dict__['_links']['self']['href']}"
+                },
+                "to": {
+                    "href": f"{work_package_to.__dict__['_links']['self']['href']}"
+                },
+                "description": f"{description}"
+            })
 
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
-                                   context=f"{self.CONTEXT}/{self.work_package.id}/relations",
-                                   json=json.dumps(self.relation.__dict__)).execute()
+                                   headers={"Content-Type": "application/json"},
+                                   context=f"{self.CONTEXT}{self.work_package_from.id}/relations",
+                                   json=self.relation.__dict__).execute()
             return rel.Relation(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating relation for the work package {self.work_package.id}") from re
+            raise BusinessError(f"Error creating relation for the work packages"
+                                f" [From: {self.relation.__dict__['from']['href']}]"
+                                f" [To: {self.relation.__dict__['to']['href']}]") from re
