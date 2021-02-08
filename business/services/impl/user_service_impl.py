@@ -13,10 +13,10 @@ class UserServiceImpl(UserService):
     def __init__(self, connection):
         super().__init__(connection)
 
-    def lock_user(self, user):
+    def lock(self, user):
         return Lock(self.connection, user).execute()
 
-    def unlock_user(self, user):
+    def unlock(self, user):
         return Unlock(self.connection, user).execute()
 
     def find_all(self, offset=None, page_size=None, filters=None, sort_by=None):
@@ -25,11 +25,11 @@ class UserServiceImpl(UserService):
     def find(self, user):
         return Find(self.connection, user).execute()
 
-    def update_user(self, user):
+    def update(self, user):
         return Update(self.connection, user).execute()
 
-    def delete_user(self, user):
+    def delete(self, user):
         Delete(self.connection, user).execute()
 
-    def create_user(self, user):
+    def create(self, user):
         return Create(self.connection, user).execute()

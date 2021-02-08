@@ -16,8 +16,9 @@ class Create(VersionCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}",
-                                   json=json.dumps(self.version.__dict__)).execute()
+                                   json=self.version.__dict__).execute()
             return v.Version(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating version") from re

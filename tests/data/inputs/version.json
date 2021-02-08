@@ -1,0 +1,17 @@
+{
+    "_links": {
+        "definingProject": { "href": "/api/v3/projects/11" },
+        "customField4": {
+            "href": "/api/v3/custom_options/5",
+            "title": "Custom field option"
+        }
+    },
+    "name": "v3.0 Alpha",
+    "description": {
+        "raw": "This version has a description"
+    },
+    "startDate": "2014-11-20",
+    "endDate": null,
+    "status": "open",
+    "customField14": "1234567890"
+}

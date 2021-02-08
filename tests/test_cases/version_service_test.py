@@ -25,14 +25,17 @@ class VersionServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.versionSer.delete(self.version))
 
     def test_find_all(self):
-        self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
+        versions=self.versionSer.find_all()
+        self.assertEqual(0, len(versions))
+        #TODO: FIXME: Sharing filter not exist...
+        #self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
 
+    # TODO: FIXME:  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation","message":"Project can't be blank.","_embedded":{"details":{"attribute":"project"}}}
     def test_create(self):
-        self.assertIsNotNone(self.versionSer.create(self.version))
-
-    # TODO
-    def test_find_by_context(self):
-        self.assertIsNotNone(self.versionSer.find_by_context(context))
+        DATA = os.path.join(self.TEST_CASES, '../data/inputs/version.json')
+        with open(DATA) as f:
+            version = Version(json.load(f))
+        self.assertIsNotNone(self.versionSer.create(version))
 
     def test_find_schema(self):
         self.assertIsNotNone(self.versionSer.find_schema())

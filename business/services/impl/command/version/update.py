@@ -17,7 +17,8 @@ class Update(VersionCommand):
         try:
             json_obj = PatchRequest(connection=self.connection,
                                     context=f"{self.CONTEXT}/{self.version.id}",
-                                    json=json.dumps(self.version.__dict__)).execute()
+                                    json=self.version.__dict__,
+                                    headers={"Content-Type": "application/json"}).execute()
             return v.Version(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating version: {self.version.id}") from re

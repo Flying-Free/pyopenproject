@@ -16,8 +16,9 @@ class Create(UserCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}",
-                                   json=json.dumps(self.user.__dict__)).execute()
+                                   json=self.user.__dict__).execute()
             return usr.User(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating new user") from re

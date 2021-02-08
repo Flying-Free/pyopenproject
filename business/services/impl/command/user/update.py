@@ -17,7 +17,9 @@ class Update(UserCommand):
         try:
             json_obj = PatchRequest(connection=self.connection,
                                     context=f"{self.CONTEXT}/{self.user.id}",
-                                    json=json.dumps(self.user.__dict__)).execute()
+                                    json=self.user.__dict__,
+                                    headers={"Content-Type": "application/json"}
+                                    ).execute()
             return usr.User(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating user by id: {self.user.id}") from re

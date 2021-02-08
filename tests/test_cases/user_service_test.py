@@ -50,16 +50,16 @@ class UserServiceTestCase(OpenProjectTestCase):
     #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
     #  "message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"
     #  }
-    # def test_operations_user(self):
-    #     user = self.usrSer.create_user(self.new_user)
-    #     self.assertIsNotNone(user)
-    #     self.assertEqual(self.new_user.login, user.login)
-    #     # Update
-    #     user.email = "h.wut@openproject.com"
-    #     self.assertEqual(user, self.usrSer.update_user(user))
-    #     # Lock
-    #     self.assertEqual(user, self.usrSer.lock_user(user))
-    #     # Unlock
-    #     self.assertEqual(user, self.usrSer.unlock_user(user))
-    #     # Delete
-    #     self.assertIsNone(self.usrSer.delete_user(user))
+    def test_operations_user(self):
+        user = self.usrSer.create(self.new_user)
+        self.assertIsNotNone(user)
+        self.assertEqual(self.new_user.login, user.login)
+        # Update TODO: FIXME: "An internal error has occured. undefined method `name=' for #<User:0x0000564680bc92c0>\nDid you mean?  name"
+        user.email = "h.wut@openproject.com"
+        self.assertEqual(user, self.usrSer.update(user))
+        # Lock
+        self.assertEqual(user, self.usrSer.lock(user))
+        # Unlock
+        self.assertEqual(user, self.usrSer.unlock(user))
+        # Delete
+        self.assertIsNone(self.usrSer.delete(user))
