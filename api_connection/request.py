@@ -10,7 +10,7 @@ class Request(Command):
 
     def __init__(self, connection, context, json=None, files=None, headers=None, data=None):
         if headers is None:
-            headers = {'Content-type': 'application/hal+json'}
+            headers = {'Content-Type': 'application/hal+json'}
         self.connection = connection
         self.headers = headers
         self.context = context

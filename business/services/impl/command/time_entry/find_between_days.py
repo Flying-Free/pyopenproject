@@ -19,7 +19,6 @@ class FindBetweenDays(TimeEntryCommand):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
                                           [
-                                              Filters("filters", self.filters),
                                               URLParameter("startDate", self.start_date),
                                               URLParameter("endDate", self.end_date)
                                           ]))).execute()

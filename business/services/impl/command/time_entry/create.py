@@ -1,4 +1,3 @@
-import json
 
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
@@ -16,8 +15,9 @@ class Create(TimeEntryCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}",
-                                   json=json.dumps(self.time_entry.__dict__)).execute()
+                                   json=self.time_entry.__dict__).execute()
             return te.TimeEntry(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error deleting a time entry with ID: {self.time_entry.id}") from re
+            raise BusinessError(f"Error creating a time entry with ID: {self.time_entry.id}") from re
