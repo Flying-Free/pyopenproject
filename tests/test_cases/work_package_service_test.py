@@ -30,10 +30,22 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
             self.watcher = User(json.load(f))
         with open(ACTIVITY) as f:
             self.activity = WorkPackage(json.load(f))
-       #with open('../data/schema.json') as f:
-       #     self.schema = WorkPackage(json.load(f))
+        # with open('../data/schema.json') as f:
+        #     self.schema = WorkPackage(json.load(f))
         with open(ATTACHMENT) as f:
             self.attachment = WorkPackage(json.load(f))
+
+    def new_work_package(self):
+        wP = WorkPackage(self.wpSer.create_form()._embedded["payload"])
+        wP.subject = "Demo task created by the API"
+        project = self.wpSer.find_available_projects()[0].__dict__['_links']['self']
+        wP._links["project"]["href"] = project['href']
+        work_package_type = list(filter(
+            lambda x: x.name == 'Task',
+            self.factory.get_type_service().find_all()
+        ))[0].__dict__['_links']['self']['href']
+        wP.__dict__["_links"]["type"]["href"] = work_package_type
+        return wP
 
     # TODO
     def test_attachments(self):
@@ -80,8 +92,8 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
             self.wpSer.find(wP)
 
     # TODO
-    def test_find_schema(self):
-        self.assertIsNotNone(self.wpSer.find_schema(self.schema))
+    # def test_find_schema(self):
+    #     self.assertIsNotNone(self.wpSer.find_schema(self.schema))
 
     def test_find_all_schemas(self):
         self.assertIsNotNone(self.wpSer.find_all_schemas([Filter("id", "=", ["12-1", "14-2"])]))
@@ -102,18 +114,6 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual(wP.subject, new_wP.subject)
         self.wpSer.delete(wP)
 
-    def new_work_package(self):
-        wP = WorkPackage(self.wpSer.create_form()._embedded["payload"])
-        wP.subject = "Demo task created by the API"
-        project = self.wpSer.find_available_projects()[0].__dict__['_links']['self']
-        wP._links["project"]["href"] = project['href']
-        work_package_type = list(filter(
-            lambda x: x.name == 'Task',
-            self.factory.get_type_service().find_all()
-        ))[0].__dict__['_links']['self']['href']
-        wP.__dict__["_links"]["type"]["href"] = work_package_type
-        return wP
-
     def test_create_form(self):
         form = self.wpSer.create_form()
         self.assertEqual(self.work_package_form.__dict__, form.__dict__)
@@ -133,16 +133,21 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual("precedes", relation.reverseType)
         self.factory.get_relation_service().delete(relation)
 
-    # TODO
     def test_find_relations(self):
-        self.assertIsNotNone(self.wpSer.find_relations(self.work_package))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        relations = self.wpSer.find_relations(work_package)
+        self.assertEqual(1, len(relations))
 
-    def test_create_relation_form(self):
-        form = self.wpSer.create_relation_form()
+    # TODO: Not description enough to develop an easy gateway for this endpoint
+    # def test_create_relation_form(self):
+    #     form = self.wpSer.create_relation_form()
 
-    # TODO
     def test_find_watchers(self):
-        self.assertIsNotNone(self.wpSer.find_watchers(self.work_package))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        watchers = self.wpSer.find_watchers(work_package)
+        self.assertEqual(0, len(watchers))
 
     # TODO
     def test_create_watcher(self):
@@ -158,23 +163,33 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
                             [Filter("status_id", "o", ["null"])], "rollout", "follows", 25)
         self.assertEqual(0, len(relations))
 
-    # TODO
     def test_find_available_watchers(self):
-        self.assertIsNotNone(self.wpSer.find_available_watchers(self.work_package))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        watchers = self.wpSer.find_available_watchers(work_package)
+        self.assertEqual(1, len(watchers))
 
-    # TODO with parameter and without it
     def test_find_available_projects(self):
-        self.assertIsNotNone(self.wpSer.find_available_projects(self.work_package))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        projects = self.wpSer.find_available_projects(work_package)
+        self.assertEqual(1, len(projects))
 
-    # TODO
     def test_find_revisions(self):
-        self.assertIsNotNone(self.wpSer.find_revisions(self.work_package))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        revisions = self.wpSer.find_revisions(work_package)
+        self.assertEqual(0, len(revisions))
 
-    # TODO
     def test_find_activities(self):
-        self.assertIsNotNone(self.wpSer.find_activities(self.work_package))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        activities = self.wpSer.find_activities(work_package)
+        self.assertEqual(2, len(activities))
 
     # TODO
     def test_create_activity(self):
-        self.assertIsNotNone(self.wpSer.create_activity(self.work_package, self.activity))
-        self.assertIsNotNone(self.wpSer.create_activity(self.work_package, self.activity, False))
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        self.assertIsNotNone(self.wpSer.create_activity(work_package, self.activity))
+        self.assertIsNotNone(self.wpSer.create_activity(work_package, self.activity, False))

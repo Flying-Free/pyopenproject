@@ -14,8 +14,8 @@ class FindActivities(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}/{self.work_package.id}/activities").execute()
-            for activity in json_obj._embedded.elements:
+                                  f"{self.CONTEXT}{self.work_package.id}/activities").execute()
+            for activity in json_obj["_embedded"]["elements"]:
                 yield act.Activity(activity)
         except RequestError as re:
             raise BusinessError(f"Error finding activities for work package {self.work_package.id}") from re

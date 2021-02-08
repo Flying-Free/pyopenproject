@@ -73,13 +73,13 @@ class WorkPackageServiceImpl(WorkPackageService):
         return CreateRelation(self.connection, type, work_package_from, work_package_to, description).execute()
 
     def find_relations(self, work_package):
-        return FindRelations(self.connection, work_package).execute()
+        return list(FindRelations(self.connection, work_package).execute())
 
     def create_relation_form(self, work_package, relation):
         return CreateRelationForm(self.connection, work_package, relation).execute()
 
     def find_watchers(self, work_package):
-        return FindWatchers(self.connection, work_package).execute()
+        return list(FindWatchers(self.connection, work_package).execute())
 
     def create_watcher(self, work_package, watcher):
         return CreateWatcher(self.connection, work_package, watcher).execute()

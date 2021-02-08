@@ -12,7 +12,7 @@ class FindRelations(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.work_package.id}/relations").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}{self.work_package.id}/relations").execute()
             for relation in json_obj["_embedded"]["elements"]:
                 yield rel.Relation(relation)
         except RequestError as re:
