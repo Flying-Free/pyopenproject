@@ -19,7 +19,7 @@ class TestInfrastructure:
         response_code = self.__check_response()
         retries = 1
         while response_code != 200:
-            print(f"---------------> BRINGING UP (Number of retries: {retries}")
+            print(f"---------------> BRINGING UP (Number of retries: {retries})")
             time.sleep(5)
             response_code = self.__check_response()
             retries += 1

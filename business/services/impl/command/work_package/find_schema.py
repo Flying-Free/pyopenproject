@@ -14,7 +14,7 @@ class FindSchema(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = GetRequest(connection=self.connection,
-                                  context=f"{self.CONTEXT}work_packages/schemas/{self.work_package.id}").execute()
+                                  context=f"{self.CONTEXT}schemas/{self.work_package.id}").execute()
             return Schema(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding the work package schema") from re
