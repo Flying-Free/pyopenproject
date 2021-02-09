@@ -230,7 +230,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         projects = self.wpSer.find_available_projects(work_package)
-        self.assertEqual(1, len(projects))
+        self.assertEqual(2, len(projects))
 
     def test_find_revisions(self):
         work_packages = self.wpSer.find_all()

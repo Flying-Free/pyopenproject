@@ -1,5 +1,6 @@
 import unittest
 
+from tests.infra.reset_infra import TestInfrastructure
 from tests.test_cases.activity_service_test import ActivityServiceTestCase
 from tests.test_cases.attachment_service_test import AttachmentServiceTestCase
 from tests.test_cases.budget_service_test import BudgetServiceTestCase
@@ -73,6 +74,7 @@ def suite():
 
 
 if __name__ == '__main__':
+    TestInfrastructure().reset()
     mySuit = suite()
 
     runner = unittest.TextTestRunner()
