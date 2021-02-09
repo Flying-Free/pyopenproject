@@ -24,8 +24,10 @@ class WikiPageServiceTestCase(OpenProjectTestCase):
             self.wikiPageSer.find(self.wiki)
 
     def test_find_attachments(self):
-        attachments = self.wikiPageSer.find_attachments(self.wiki)
-        self.assertEqual(0, len(attachments))
+        # There's no wiki page --> Exception
+        with self.assertRaises(BusinessError):
+            attachments = self.wikiPageSer.find_attachments(self.wiki)
+            self.assertEqual(0, len(attachments))
 
     def test_add_attachment(self):
         self.assertIsNotNone(self.wikiPageSer.add_attachment(self.wiki, self.attachment))
