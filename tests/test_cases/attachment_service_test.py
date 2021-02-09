@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 
+from business.exception.business_error import BusinessError
 from model.attachment import Attachment
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -19,24 +20,18 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
         with open(ATTACHMENT_TO_CREATE) as f:
             self.created_attachment = Attachment(json.load(f))
 
-    # FIXME
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
-    #  "message":"An internal error has occured. invalid %-encoding (\u0000\u0000��\u0000\u0000�\u0000\u0000\u0000��\u0000\u0000u0\u0000\u0000�`\u0000\u0000:�\u0000\u0000\u0017p��Q<\u0000\u0000\u0000\u0006bKGD\u0000�\u0000�\u0000�����\u0000\u0000\u0000\tpHYs\u0000\u0000\u000e�\u0000\u0000\u000e�\u0001�o�d\u0000\u0000�\u0000IDATxڬ�I�$I����Y6]m�%\"<\"2#�������\u0010n�\u0000\u0000�2�\n���\u0004�\u0001繀\b\u0018\u0002�\b�\u0001��\u0006�U�U�DFdl�ت����,��j��McI��n��*�\"������)"
-    #  }
-    def test_create(self):
+    # FIXME { "_type":"Error", "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
+    #  "message":"An internal error has occured. invalid %-encoding (
+    #  \u0000\u0000��\u0000\u0000�\u0000\u0000\u0000��\u0000\u0000u0\u0000\u0000�`\u0000\u0000:�\u0000\u0000\u0017p
+    #  ��Q<\u0000\u0000\u0000\u0006bKGD\u0000�\u0000�\u0000�����\u0000\u0000\u0000\tpHYs\u0000\u0000\u000e�\u0000
+    #  \u0000\u000e�\u0001�o�d\u0000\u0000�\u0000IDATxڬ�I�$I����Y6]m�%\"<\"2#�������\u0010n�\u0000\u0000�2�\n
+    #  ���\u0004�\u0001繀\b\u0018\u0002�\b�\u0001��\u0006�U�U�DFdl�ت����,��j��McI��n��*�\"������)" }
+    def test_create_and_delete(self):
         created_attachment = self.attSer.create(filename="cute-cat.png",
                                                 description="A cute kitty, cuddling with its friends!",
                                                 file_path=self.IMAGE)
         self.assertIsNotNone(created_attachment)
         self.assertEqual(created_attachment.id, self.attSer.find(created_attachment).id)
-
-    def test_delete(self):
-        created_attachment = self.attSer.create(filename="cute-cat.png",
-                                                description="A cute kitty, cuddling with its friends!",
-                                                file_path=self.IMAGE)
-        created_attachment = self.attSer.find(created_attachment)
         self.attSer.delete(created_attachment)
         # Can't find a deleted attached: 404 Client Error: Not Found for url
         with self.assertRaises(BusinessError):
