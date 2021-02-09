@@ -25,7 +25,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         memberships = self.membershipSer.find_all()
-        self.assertEqual(1, len(memberships))
+        self.assertEqual(2, len(memberships))
 
     def test_find(self):
         membership = self.membershipSer.find(self.membership)
@@ -68,7 +68,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
 
     def test_available_projects(self):
         available_projects = self.membershipSer.available_projects()
-        self.assertEqual(1, len(available_projects))
+        self.assertEqual(2, len(available_projects))
         self.assertIn(available_projects[0].__dict__, self.membership_available_projects)
 
     # FIXME

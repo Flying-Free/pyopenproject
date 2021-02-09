@@ -26,7 +26,7 @@ class GridServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         grids = self.gridSer.find_all()
-        self.assertEqual(4, len(grids))
+        self.assertEqual(7, len(grids))
 
     def test_create(self):
         #  TODO: FIXME:{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InvalidRequestBody",

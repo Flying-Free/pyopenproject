@@ -22,7 +22,7 @@ class NewsServiceTestCase(OpenProjectTestCase):
     def test_find_all(self):
         # Without filters
         news_list = self.newsSer.find_all(offset=None, page_size=None, filters=None, sort_by=None)
-        self.assertEqual(1, len(news_list))
+        self.assertEqual(2, len(news_list))
         # With filters
         news_list = self.newsSer.find_all(offset=1, page_size=2, filters=[Filter("project_id","=", "1")], sort_by='[["created_at", "asc"]]')
         self.assertEqual(1, len(news_list))

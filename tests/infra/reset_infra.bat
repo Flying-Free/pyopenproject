@@ -1,3 +1,3 @@
 docker-compose down
-docker system prune -af --volumes
+docker system prune -f --volumes
 docker-compose up -d
