@@ -54,7 +54,7 @@ class ProjectServiceImpl(ProjectService):
         return FindVersions(self.connection, project).execute()
 
     def find_types(self, project):
-        return FindTypes(self.connection, project).execute()
+        return list(FindTypes(self.connection, project).execute())
 
     def find_budgets(self, project):
         return list(FindBudgets(self.connection, project).execute())
@@ -72,4 +72,4 @@ class ProjectServiceImpl(ProjectService):
         return list(FindAvailableAssignees(self.connection, project).execute())
 
     def find_available_responsibles(self, project):
-        return FindAvailableResponsibles(self.connection, project).execute()
+        return list(FindAvailableResponsibles(self.connection, project).execute())

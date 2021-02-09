@@ -1,0 +1,16 @@
+{
+  "identifier": "new_project_identifier",
+  "name": "New project name",
+  "customField35": "Text custom field value",
+  "status": "on track",
+  "statusExplanation": {
+    "format": "markdown",
+    "raw": "Everything **fine**",
+    "html": "<p>Everything <strong>fine</strong></p>"
+  },
+  "_links": {
+    "parent": {
+      "href": "/api/v3/projects/1"
+    }
+  }
+}

@@ -11,8 +11,8 @@ from util.URLParameter import URLParameter
 class FindAll(ProjectCommand):
     def __init__(self, connection, filters, sort_by):
         super().__init__(connection)
-        self.filters = f"filters={filters}" if filters else ""
-        self.sort_by = f"&sortBy={sort_by}" if filters and sort_by else f"sortBy={sort_by}" if sort_by else ""
+        self.filters = filters
+        self.sort_by = sort_by
 
     def execute(self):
         try:

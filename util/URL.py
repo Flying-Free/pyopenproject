@@ -11,11 +11,13 @@ class URL:
             are_parameters = False
             content = ""
             for i in range(len(self.parameters)):
-                if self.parameters[i].value is not None:
+                if self.parameters[i].value:
                     if not are_parameters:
                         are_parameters = True
+                    if i != 0:
+                        content += "&"
                     content += f"{str(self.parameters[i])}"
-                    content += "&" if len(self.parameters) != 1 and i != len(self.parameters) - 1 else ""
+
             if are_parameters:
                 output += "?" + content
 
