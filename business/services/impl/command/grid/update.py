@@ -1,5 +1,3 @@
-import json
-
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
 from business.exception.business_error import BusinessError
@@ -18,7 +16,7 @@ class Update(GridCommand):
             json_obj = PatchRequest(connection=self.connection,
                                     headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}",
-                                    json=json.dumps(self.grid.__dict__)).execute()
+                                    json=self.grid.__dict__).execute()
             return Grid(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding grid by id: {self.grid.id}") from re
