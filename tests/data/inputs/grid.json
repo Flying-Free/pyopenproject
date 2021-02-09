@@ -1,32 +1,26 @@
 {
-  "rowCount": 8,
+  "rowCount": 4,
   "columnCount": 5,
+  "options": {},
   "widgets": [
     {
-      "identifier": "time_entries_current_user",
-      "startRow": 1,
-      "endRow": 8,
+      "_type": "GridWidget",
+      "id": 20,
+      "identifier": "custom_text",
+      "startRow": 2,
+      "endRow": 5,
       "startColumn": 1,
-      "endColumn": 3
-    },
-    {
-      "identifier": "news",
-      "startRow": 3,
-      "endRow": 8,
-      "startColumn": 4,
-      "endColumn": 5
-    },
-    {
-      "identifier": "documents",
-      "startRow": 1,
-      "endRow": 3,
-      "startColumn": 3,
-      "endColumn": 6
+      "endColumn": 2,
+      "options": {
+        "name": "Demo Grid",
+        "text": {
+          "format": "markdown",
+          "raw": "This is a Demo grid to test the creation functionality available in the API"
+        }
+      }
     }
   ],
   "_links": {
-    "scope": {
-      "href": "/my/page"
-    }
+    "attachments": []
   }
 }

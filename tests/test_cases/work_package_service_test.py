@@ -63,21 +63,16 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual(wP.subject, new_wP.subject)
         self.wpSer.delete(wP)
 
-    # FIXME
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:UpdateConflict",
-    #  "message":"Could not update the resource because of conflicting modifications."
-    #  }
     def test_update(self):
         work_packages = self.wpSer.find_all()
-        work_packages = list(filter(lambda x: x.subject == "Set date and location of conference", work_packages))
-        work_package = WorkPackage({"id": work_packages[0].id})
+        work_packages = list(filter(lambda x: x.lockVersion > 1, work_packages))
+        work_package = WorkPackage({"id": work_packages[0].id, "lockVersion": work_packages[0].lockVersion})
         work_package.subject = "Changed subject"
         changed_wP = self.wpSer.update(work_package)
         self.assertEqual(work_package.id, changed_wP.id)
         self.assertEqual(work_package.subject, changed_wP.subject)
         work_package.subject = work_packages[0].subject
+        work_package.lockVersion = changed_wP.lockVersion
         changed_wP = self.wpSer.update(work_package)
         self.assertEqual(work_package.id, changed_wP.id)
         self.assertEqual(work_package.subject, changed_wP.subject)

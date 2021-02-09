@@ -13,7 +13,7 @@ class GridService(AbstractService):
     def find(self, grid): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset, pageSize, filters, sortBy): raise NotImplementedError
+    def find_all(self, offset, page_size, filters, sort_by): raise NotImplementedError
 
     @abstractmethod
     def create(self, grid): raise NotImplementedError
@@ -22,4 +22,4 @@ class GridService(AbstractService):
     def update(self, grid): raise NotImplementedError
 
     @abstractmethod
-    def create_form(self, grid): raise NotImplementedError
+    def create_form(self): raise NotImplementedError

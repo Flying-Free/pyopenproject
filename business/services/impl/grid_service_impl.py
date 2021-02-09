@@ -23,8 +23,8 @@ class GridServiceImpl(GridService):
     def update(self, grid):
         return Update(self.connection, grid).execute()
 
-    def create_form(self, grid):
-        return CreateForm(self.connection, grid).execute()
+    def create_form(self):
+        return CreateForm(self.connection).execute()
 
     def update_form(self, grid, grid_form):
         return UpdateForm(self.connection, grid, grid_form).execute()
