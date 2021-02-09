@@ -19,13 +19,14 @@ class FindAll(UserCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              URLParameter("offset", self.offset),
-                                              URLParameter("pageSize", self.page_size),
-                                              Filters("filters", self.filters),
-                                              URLParameter("sortBy", self.sort_by)
-                                          ]))).execute()
+            json_obj = GetRequest(connection=self.connection,
+                                  context=str(URL(f"{self.CONTEXT}",
+                                                  [
+                                                      URLParameter("offset", self.offset),
+                                                      URLParameter("pageSize", self.page_size),
+                                                      Filters("filters", self.filters),
+                                                      URLParameter("sortBy", self.sort_by)
+                                                  ]))).execute()
 
             for user in json_obj["_embedded"]["elements"]:
                 yield usr.User(user)

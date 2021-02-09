@@ -9,9 +9,9 @@ class Membership:
         self.__dict__ = json_obj
 
     def get_schema(self):
-        if self._links.schema.href is not None:
-            return service_factory.ServiceFactory.get_schema_service()\
-                .find_by_context(self._links.schema.href)
+        if self._links.work_package.href is not None:
+            return service_factory.ServiceFactory.get_schema_service() \
+                .find_by_context(self._links.work_package.href)
         return None
 
     def get_project(self):

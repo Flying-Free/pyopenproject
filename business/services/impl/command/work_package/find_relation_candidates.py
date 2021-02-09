@@ -19,13 +19,15 @@ class FindRelationCandidates(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,   str(URL(f"{self.CONTEXT}/{self.work_package.id}/available_relation_candidates",
-                                          [
-                                              Filters("filters", self.filters),
-                                              URLParameter("query", self.query),
-                                              URLParameter("type", self.type),
-                                              URLParameter("pageSize", self.pageSize)
-                                          ]))).execute()
+            json_obj = GetRequest(connection=self.connection,
+                                  context=str(URL(f"{self.CONTEXT}"
+                                                  f"{self.work_package.id}/available_relation_candidates",
+                                                  [
+                                                      Filters("filters", self.filters),
+                                                      URLParameter("query", self.query),
+                                                      URLParameter("type", self.type),
+                                                      URLParameter("pageSize", self.pageSize)
+                                                  ]))).execute()
 
             for relation in json_obj["_embedded"]["elements"]:
                 yield rel.Relation(relation)

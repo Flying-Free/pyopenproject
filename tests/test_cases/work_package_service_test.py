@@ -30,8 +30,6 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
             self.watcher = User(json.load(f))
         with open(ACTIVITY) as f:
             self.activity = WorkPackage(json.load(f))
-        # with open('../data/schema.json') as f:
-        #     self.schema = WorkPackage(json.load(f))
         with open(ATTACHMENT) as f:
             self.attachment = WorkPackage(json.load(f))
 
@@ -48,9 +46,9 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         return wP
 
     # TODO
-    def test_attachments(self):
-        self.wpSer.add_attachment(self.work_package, self.attachment)
-        self.assertIsNotNone(self.wpSer.find_attachments(self.work_package))
+    # def test_attachments(self):
+    #     self.wpSer.add_attachment(self.work_package, self.attachment)
+    #     self.assertIsNotNone(self.wpSer.find_attachments(self.work_package))
 
     def test_not_found(self):
         # There's no activity --> Exception
@@ -91,9 +89,58 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             self.wpSer.find(wP)
 
-    # TODO
-    # def test_find_schema(self):
-    #     self.assertIsNotNone(self.wpSer.find_schema(self.schema))
+    # FIXME
+    #  Error running request with the URL (HTTPError): 'http://127.0.0.1:8080/api/v3/work_packages/work_packages/schemas/4'.
+    #  <!---- copyright
+    #  OpenProject is a project management system.
+    #  Copyright (C) 2012-2017 the OpenProject Foundation (OPF)
+    #  This program is free software; you can redistribute it and/or
+    #  modify it under the terms of the GNU General Public License version 3.
+    #  OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+    #  Copyright (C) 2006-2017 Jean-Philippe Lang
+    #  Copyright (C) 2010-2013 the ChiliProject Team
+    #  This program is free software; you can redistribute it and/or
+    #  modify it under the terms of the GNU General Public License
+    #  as published by the Free Software Foundation; either version 2
+    #  of the License, or (at your option) any later version.
+    #  This program is distributed in the hope that it will be useful,
+    #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+    #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    #  GNU General Public License for more details.
+    #  You should have received a copy of the GNU General Public License
+    #  along with this program; if not, write to the Free Software
+    #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+    #  See doc/COPYRIGHT.rdoc for more details.
+    #  ++-->
+    #  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    #     "http://www.w3.org/TR/html4/loose.dtd">
+    #  <html>
+    #  <title>OpenProject 404 error</title>
+    #  <style>
+    #  body{
+    #  font-family: Trebuchet MS,Georgia,"Times New Roman",serif;
+    #  color:#303030;
+    #  margin:10px;
+    #  }
+    #  h1{
+    #  font-size:1.5em;
+    #  }
+    #  p{
+    #  font-size:0.8em;
+    #  }
+    #  </style>
+    #  <body>
+    #    <h1>Page not found</h1>
+    #    <p>The page you were trying to access doesn't exist or has been removed.</p>
+    #    <p><a href="javascript:history.back()">Back</a></p>
+    #  </body>
+    #  </html>
+    def test_find_schema(self):
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        schema = self.wpSer.find_schema(work_package)
+        schemas = list(map(lambda x: x.__dict__, self.wpSer.find_all_schemas()))
+        self.assertIn(schema.__dict__, schemas)
 
     def test_find_all_schemas(self):
         self.assertIsNotNone(self.wpSer.find_all_schemas([Filter("id", "=", ["12-1", "14-2"])]))
@@ -149,25 +196,40 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         watchers = self.wpSer.find_watchers(work_package)
         self.assertEqual(0, len(watchers))
 
-    # TODO
     def test_create_watcher(self):
-        self.assertIsNotNone(self.wpSer.create_watcher(self.work_package, self.watcher))
+        user = self.factory.get_user_service().find_all()[0]
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        watcher = self.wpSer.create_watcher(work_package, user)
+        watchers = list(map(lambda x: x.__dict__, self.wpSer.find_watchers(work_package)))
+        self.assertIn(watcher.__dict__, watchers)
+        self.wpSer.delete_watcher(work_package, watcher)
+        watchers = list(map(lambda x: x.__dict__, self.wpSer.find_watchers(work_package)))
+        self.assertNotIn(watcher.__dict__, watchers)
 
-    # TODO
-    def test_delete_watcher(self):
-        self.assertIsNotNone(self.wpSer.delete_watcher(self.work_package, self.watcher))
-
-    # TODO
+    # FIXME
+    #  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InvalidQuery",
+    #  "message":"Status filter has invalid values."
+    #  }
     def test_find_relation_candidates(self):
-        relations=self.wpSer.find_relation_candidates(self.work_package,
-                            [Filter("status_id", "o", ["null"])], "rollout", "follows", 25)
+        work_packages = self.wpSer.find_all()
+        work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
+        relations = self.wpSer.find_relation_candidates(work_package, query="rollout")
+        self.assertEqual(0, len(relations))
+        relations = self.wpSer.find_relation_candidates(work_package,
+                                                        query="rollout",
+                                                        # filters=[Filter("status_id", "o", ["null"])],
+                                                        type="follows",
+                                                        page_size=25)
         self.assertEqual(0, len(relations))
 
     def test_find_available_watchers(self):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         watchers = self.wpSer.find_available_watchers(work_package)
-        self.assertEqual(1, len(watchers))
+        self.assertEqual(2, len(watchers))
 
     def test_find_available_projects(self):
         work_packages = self.wpSer.find_all()
@@ -187,9 +249,9 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         activities = self.wpSer.find_activities(work_package)
         self.assertEqual(2, len(activities))
 
-    # TODO
     def test_create_activity(self):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
-        self.assertIsNotNone(self.wpSer.create_activity(work_package, self.activity))
-        self.assertIsNotNone(self.wpSer.create_activity(work_package, self.activity, False))
+        activity = self.wpSer.create_activity(work_package, "Comment added to the Work package")
+        activities = list(map(lambda x: x.__dict__, self.wpSer.find_activities(work_package)))
+        self.assertIn(activity.__dict__, activities)

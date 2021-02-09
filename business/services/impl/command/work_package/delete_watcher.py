@@ -1,4 +1,3 @@
-import model.user as usr
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.delete_request import DeleteRequest
 from business.exception.business_error import BusinessError
@@ -14,9 +13,8 @@ class DeleteWatcher(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = DeleteRequest(self.connection,
-                                     f"{self.CONTEXT}/{self.work_package.id}/watchers/{self.watcher.id}").execute()
-            return usr.User(json_obj)
+            DeleteRequest(self.connection,
+                          f"{self.CONTEXT}/{self.work_package.id}/watchers/{self.watcher.id}").execute()
         except RequestError as re:
             raise BusinessError(f"Error deleting watcher {self.watcher.id} "
                                 f"for the work package {self.work_package.id}") from re

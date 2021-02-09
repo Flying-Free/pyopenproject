@@ -9,9 +9,9 @@ class TimeEntry:
         self.__dict__ = json_obj
 
     def get_schema(self):
-        if self._links.schema.href is not None:
-            return service_factory.ServiceFactory.get_schema_service()\
-                .find_by_context(self._links.schema.href)
+        if self._links.work_package.href is not None:
+            return service_factory.ServiceFactory.get_schema_service() \
+                .find_by_context(self._links.work_package.href)
         return None
 
     def get_project(self):
@@ -33,9 +33,9 @@ class TimeEntry:
         return None
 
     def get_activity(self):
-        if self._links.activity.href is not None:
-            return service_factory.ServiceFactory.get_activity_service()\
-                .find_by_context(self._link.activity.href)
+        if self._links.comment.href is not None:
+            return service_factory.ServiceFactory.get_activity_service() \
+                .find_by_context(self._link.comment.href)
         return None
 
     # TODO: Study how to perform this actions associated to the project

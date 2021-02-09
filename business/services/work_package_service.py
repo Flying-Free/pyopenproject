@@ -28,13 +28,13 @@ class WorkPackageService(AbstractService):
     def delete(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_schema(self, schema): raise NotImplementedError
+    def find_schema(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def find_all_schemas(self, filters): raise NotImplementedError
 
     @abstractmethod
-    def update_form(self): raise NotImplementedError
+    def update_form(self, work_package): raise NotImplementedError
 
     @abstractmethod
     def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums): raise NotImplementedError
@@ -64,7 +64,7 @@ class WorkPackageService(AbstractService):
     def delete_watcher(self, work_package, watcher): raise NotImplementedError
 
     @abstractmethod
-    def find_relation_candidates(self, work_package, filters, query, type, pageSize): raise NotImplementedError
+    def find_relation_candidates(self, work_package, filters, query, type, page_size): raise NotImplementedError
 
     @abstractmethod
     def find_available_watchers(self, work_package): raise NotImplementedError
@@ -79,4 +79,4 @@ class WorkPackageService(AbstractService):
     def find_activities(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def create_activity(self, work_package, activity, notify): raise NotImplementedError
+    def create_activity(self, work_package, comment, notify): raise NotImplementedError

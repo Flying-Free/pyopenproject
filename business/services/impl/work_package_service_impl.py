@@ -51,8 +51,8 @@ class WorkPackageServiceImpl(WorkPackageService):
     def delete(self, work_package):
         return Delete(self.connection, work_package).execute()
 
-    def find_schema(self, schema):
-        return FindSchema(self.connection, schema).execute()
+    def find_schema(self, work_package):
+        return FindSchema(self.connection, work_package).execute()
 
     def find_all_schemas(self, filters):
         return FindAllSchemas(self.connection, filters).execute()
@@ -81,13 +81,13 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_watchers(self, work_package):
         return list(FindWatchers(self.connection, work_package).execute())
 
-    def create_watcher(self, work_package, watcher):
-        return CreateWatcher(self.connection, work_package, watcher).execute()
+    def create_watcher(self, work_package, user):
+        return CreateWatcher(self.connection, work_package, user).execute()
 
     def delete_watcher(self, work_package, watcher):
         DeleteWatcher(self.connection, work_package, watcher).execute()
 
-    def find_relation_candidates(self, work_package, filters=None, query=None, type=None, page_size=None):
+    def find_relation_candidates(self, work_package, query, filters=None, type=None, page_size=None):
         return list(FindRelationCandidates(self.connection, work_package, filters, query, type, page_size).execute())
 
     def find_available_watchers(self, work_package):
@@ -102,5 +102,5 @@ class WorkPackageServiceImpl(WorkPackageService):
     def find_activities(self, work_package):
         return list(FindActivities(self.connection, work_package).execute())
 
-    def create_activity(self, work_package, activity, notify=None):
-        return CreateActivity(self.connection, work_package, activity, notify).execute()
+    def create_activity(self, work_package, comment, notify=None):
+        return CreateActivity(self.connection, work_package, comment, notify).execute()

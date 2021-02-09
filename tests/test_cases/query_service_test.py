@@ -42,4 +42,4 @@ class QueryServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.querySer.create_form(form))
 
     def test_schema(self):
-        self.assertIsNotNone(self.querySer.schema())
+        self.assertIsNotNone(self.querySer.work_package())
