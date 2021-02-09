@@ -62,13 +62,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         DATA = os.path.join(self.TEST_CASES, '../data/scrum_project.json')
         with open(DATA) as f:
             expected = Project(json.load(f))
-        self.proSer.delete(self.project)
-        expected = self.proSer.find(expected)
-        self.assertEqual(False, expected.active)
-        expected.active = True
-        # TODO: review
-        self.proSer.update(expected)
-        self.assertEqual(True, expected.active)
+        self.proSer.delete(expected)
 
     def test_find_all(self):
         projects = self.proSer.find_all()
