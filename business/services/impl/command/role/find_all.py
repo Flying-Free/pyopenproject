@@ -11,7 +11,7 @@ class FindAll(RoleCommand):
 
     def __init__(self, connection, filters):
         super().__init__(connection)
-        self.filters = f"?filters={filters}" if filters else ""
+        self.filters = filters
 
     def execute(self):
         try:

@@ -3,6 +3,8 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.membership.membership_command import MembershipCommand
+from util.Filters import Filters
+from util.URL import URL
 
 
 class FindAll(MembershipCommand):
@@ -13,7 +15,10 @@ class FindAll(MembershipCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}?filters={self.filters}").execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                          [
+                                              Filters("filters", self.filters)
+                                          ]))).execute()
             for membership in json_obj['_embedded']['elements']:
                 yield mem.Membership(membership)
         except RequestError as re:

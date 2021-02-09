@@ -24,9 +24,8 @@ class MembershipServiceTestCase(OpenProjectTestCase):
             self.membership_available_projects = json.load(f)
 
     def test_find_all(self):
-        memberships = self.membershipSer.find_all(filters=None)
-        # 2 memberships: One for each demo project
-        self.assertEqual(2, len(memberships))
+        memberships = self.membershipSer.find_all()
+        self.assertEqual(1, len(memberships))
 
     def test_find(self):
         membership = self.membershipSer.find(self.membership)
