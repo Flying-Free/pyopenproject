@@ -116,7 +116,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         new_wP = self.wpSer.create(wP)
         new_wP = self.wpSer.find(new_wP)
         self.assertEqual(wP.subject, new_wP.subject)
-        self.wpSer.delete(wP)
+        self.wpSer.delete(new_wP)
 
     def test_create_form(self):
         form = self.wpSer.create_form()
