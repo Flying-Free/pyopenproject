@@ -163,7 +163,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
 
     def test_create_form(self):
         form = self.wpSer.create_form()
-        self.assertEqual(self.work_package_form.__dict__, form.__dict__)
+        self.assertEqual(self.work_package_form.__dict__["_embedded"]["payload"], form.__dict__["_embedded"]["payload"])
 
     def test_create_relation(self):
         work_packages = self.wpSer.find_all()
