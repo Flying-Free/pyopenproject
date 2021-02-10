@@ -25,8 +25,8 @@ class UserServiceImpl(UserService):
     def find(self, user):
         return Find(self.connection, user).execute()
 
-    def update(self, user):
-        return Update(self.connection, user).execute()
+    def update(self, user_id, user):
+        return Update(self.connection, user_id, user).execute()
 
     def delete(self, user):
         Delete(self.connection, user).execute()

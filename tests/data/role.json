@@ -1,11 +1,11 @@
 {
-  "_type": "Role",
-  "id": 3,
-  "name": "Manager",
-  "_links": {
-    "self": {
-      "href": "/api/v3/roles/3",
-      "title": "Manager"
+    "_type": "Role",
+    "id": 6,
+    "name": "Project creator",
+    "_links": {
+        "self": {
+            "href": "/api/v3/roles/6",
+            "title": "Project creator"
+        }
     }
-  }
 }

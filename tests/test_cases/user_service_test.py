@@ -51,13 +51,15 @@ class UserServiceTestCase(OpenProjectTestCase):
     #  "message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"
     #  }
     def test_operations_user(self):
+        # Create
         user = self.usrSer.create(self.new_user)
         self.assertIsNotNone(user)
         self.assertEqual(self.new_user.login, user.login)
-        # FIXME: "An internal error has occured. undefined method `name=' for #<User:0x0000564680bc92c0>\nDid you mean?  name"
-        user.email = "h.wut@openproject.com"
-        self.assertEqual(user, self.usrSer.update(user))
-        # Lock
+        # Update
+        self.new_user.email = "h.wut@openproject.com"
+        user_update = self.usrSer.update(user.id, self.new_user)
+        self.assertEqual(user_update.email, "h.wut@openproject.com")
+        # Lock TODO:FIX ME: header?  406 Client Error: Not Acceptable for url
         self.assertEqual(user, self.usrSer.lock(user))
         # Unlock
         self.assertEqual(user, self.usrSer.unlock(user))
