@@ -3,7 +3,6 @@ import os
 
 from model.version import Version
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class VersionServiceTestCase(OpenProjectTestCase):

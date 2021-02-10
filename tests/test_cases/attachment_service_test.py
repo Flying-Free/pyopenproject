@@ -20,12 +20,6 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
         with open(ATTACHMENT_TO_CREATE) as f:
             self.created_attachment = Attachment(json.load(f))
 
-    # FIXME { "_type":"Error", "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
-    #  "message":"An internal error has occured. invalid %-encoding (
-    #  \u0000\u0000��\u0000\u0000�\u0000\u0000\u0000��\u0000\u0000u0\u0000\u0000�`\u0000\u0000:�\u0000\u0000\u0017p
-    #  ��Q<\u0000\u0000\u0000\u0006bKGD\u0000�\u0000�\u0000�����\u0000\u0000\u0000\tpHYs\u0000\u0000\u000e�\u0000
-    #  \u0000\u000e�\u0001�o�d\u0000\u0000�\u0000IDATxڬ�I�$I����Y6]m�%\"<\"2#�������\u0010n�\u0000\u0000�2�\n
-    #  ���\u0004�\u0001繀\b\u0018\u0002�\b�\u0001��\u0006�U�U�DFdl�ت����,��j��McI��n��*�\"������)" }
     def test_create_and_delete(self):
         created_attachment = self.attSer.create(filename="cute-cat.png",
                                                 description="A cute kitty, cuddling with its friends!",

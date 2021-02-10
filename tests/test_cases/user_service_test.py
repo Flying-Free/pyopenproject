@@ -54,7 +54,7 @@ class UserServiceTestCase(OpenProjectTestCase):
         user = self.usrSer.create(self.new_user)
         self.assertIsNotNone(user)
         self.assertEqual(self.new_user.login, user.login)
-        # Update TODO: FIXME: "An internal error has occured. undefined method `name=' for #<User:0x0000564680bc92c0>\nDid you mean?  name"
+        # FIXME: "An internal error has occured. undefined method `name=' for #<User:0x0000564680bc92c0>\nDid you mean?  name"
         user.email = "h.wut@openproject.com"
         self.assertEqual(user, self.usrSer.update(user))
         # Lock

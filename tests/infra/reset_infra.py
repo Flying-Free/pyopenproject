@@ -34,3 +34,7 @@ class TestInfrastructure:
             return requests.get(self.TEST_URL).status_code
         except:
             return 0
+
+
+if __name__ == '__main__':
+    TestInfrastructure().reset()

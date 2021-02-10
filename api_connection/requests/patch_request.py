@@ -10,9 +10,8 @@ class PatchRequest(Request):
         super().__init__(connection=connection, headers=headers, context=context, json=json)
 
     def _execute_request(self):
-        return requests.patch(
-            self.connection.url_base + self.context,
-            auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key),
-            json=self.json,
-            headers=self.headers
-        )
+        with requests.Session() as s:
+            s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
+            s.headers.update({"Content-Type": "application/json"})
+            response = s.patch(self.connection.url_base + self.context, json=self.json)
+        return response
