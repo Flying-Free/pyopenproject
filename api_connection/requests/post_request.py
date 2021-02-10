@@ -9,11 +9,11 @@ class PostRequest(Request):
         super().__init__(connection, context, json, files, headers, data)
 
     def _execute_request(self):
-        return requests.post(
-            self.connection.url_base + self.context,
-            auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key),
-            json=self.json,
-            files=self.files,
-            headers=self.headers,
-            data=self.data
-        )
+        with requests.Session() as s:
+            s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
+            response = s.post(
+                url=self.connection.url_base + self.context,
+                json=self.json,
+                files=self.files,
+                data=self.data)
+        return response

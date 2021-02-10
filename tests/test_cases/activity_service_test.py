@@ -21,11 +21,12 @@ class ActivityServiceTestCase(OpenProjectTestCase):
             self.actSer.find(self.activity)
 
     def test_find_activity(self):
-        # TODO: Test to find an Activity
-        self.actSer.find(Activity({"id": "1"}))
+        activity = self.actSer.find(Activity({"id": "2"}))
+        self.assertEqual(12, len(activity.details))
 
     def test_update_activity(self):
-        # TODO: We need a way to create activity in order to change it
+        # TODO what can we change in an activity
+        activity = self.actSer.find(Activity({"id": "2"}))
         # There's no activity to update --> Exception
         with self.assertRaises(BusinessError):
             self.actSer.update(self.activity)

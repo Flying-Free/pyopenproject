@@ -10,9 +10,8 @@ class DeleteRequest(Request):
         super().__init__(connection, context)
 
     def _execute_request(self):
-
-        return requests.delete(
-            self.connection.url_base + self.context,
-            auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key),
-            headers=self.headers
-        )
+        with requests.Session() as s:
+            s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
+            s.headers.update({'Content-Type': 'application/json;charset=utf-8'})
+            response = s.delete(url=self.connection.url_base + self.context)
+        return response

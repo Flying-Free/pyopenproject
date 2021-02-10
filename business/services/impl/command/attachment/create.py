@@ -14,7 +14,7 @@ class Create(AttachmentCommand):
         super().__init__(connection)
         self.filename = filename
         self.description = description
-        with open(file_path, 'rb') as f:
+        with open(file=file_path, mode='rb') as f:
             self.file_content = f.read()
             self.file_path = os.path.abspath(f.name)
 
@@ -23,11 +23,11 @@ class Create(AttachmentCommand):
             metadata = {"fileName": self.filename, "description": {"raw": self.description}}
             # TODO: Review exception
             json_obj = PostRequest(connection=self.connection,
-                                   headers={'Content-type': 'multipart/form-data'},
                                    context=f"{self.CONTEXT}",
-                                   files={'file': ('attachment', self.file_content),
-                                          'metadata': (None, json.dumps(metadata))
-                                          }
+                                   files={
+                                       'file': ('attachment', self.file_content),
+                                       'metadata': (None, json.dumps(metadata))
+                                   }
                                    ).execute()
             return att.Attachment(json_obj)
         except RequestError as re:
