@@ -11,6 +11,8 @@ class PostRequest(Request):
     def _execute_request(self):
         with requests.Session() as s:
             s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
+            if self.headers is not None:
+                s.headers.update(self.headers)
             response = s.post(
                 url=self.connection.url_base + self.context,
                 json=self.json,

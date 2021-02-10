@@ -13,6 +13,7 @@ class CreateForm(WorkPackageCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/hal+json"},
                                    context=f"{self.CONTEXT}form").execute()
             return Form(json_obj)
         except RequestError as re:

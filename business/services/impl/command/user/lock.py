@@ -12,6 +12,8 @@ class Lock(UserCommand):
 
     def execute(self):
         try:
-            PostRequest(self.connection, f"{self.CONTEXT}/{self.user.id}/lock").execute()
+            PostRequest(connection=self.connection,
+                        context=f"{self.CONTEXT}/{self.user.id}/lock",
+                        headers={"Content-Type": "application/hal+json"}).execute()
         except RequestError as re:
             raise BusinessError(f"Error locking user by id: {self.user.id}") from re

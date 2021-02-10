@@ -1,5 +1,3 @@
-import json
-
 import model.user as usr
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
@@ -15,8 +13,9 @@ class FindAvailableAssignees(ProjectCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}/{self.project.id}/work_packages/available_assignees").execute()
+            json_obj = GetRequest(connection=self.connection,
+                                  context=f"{self.CONTEXT}/{self.project.id}/work_packages/available_assignees") \
+                .execute()
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield usr.User(tEntry)
         except RequestError as re:
