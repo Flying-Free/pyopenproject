@@ -22,7 +22,7 @@ class ActivityServiceTestCase(OpenProjectTestCase):
 
     def test_find_activity(self):
         # TODO: Test to find an Activity
-        pass
+        self.actSer.find(Activity({"id": "1"}))
 
     def test_update_activity(self):
         # TODO: We need a way to create activity in order to change it

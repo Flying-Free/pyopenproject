@@ -44,7 +44,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         current.name = "New project name changed"
         project = self.proSer.update(current)
         self.assertEqual("New project name changed", project.name)
-        # Delete
+        # Delete TODO: FIX ME Permision denied
         self.proSer.delete(project)
 
     def test_find_schema(self):
@@ -88,7 +88,30 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(workpackages))
 
     def test_create_work_package(self):
-        # TODO: FIX ME: An internal error has occured. can't convert String into Hash
+        # TODO: FIX ME: "Multiple field constraints have been violated.","_embedded":{"errors":[{"_type":"Error","errorIdentifier":
+        #  "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Assignee The chosen user is not allowed to be 'Assignee' for this work package.",
+        #  "_embedded":{"details":{"attribute":"assignee"}}},{"_type":"Error","errorIdentifier":
+        #  "urn:openproject-org:api:v3:errors:PropertyConstraintViolation","message":"Accountable The chosen user is not
+        #  allowed to be 'Accountable' for this work package.","_embedded":{"details":{"attribute":"responsible"}}},
+        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Parent does not exist.","_embedded":{"details":{"attribute":"parent"}}},{"_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation","message":
+        #  "Category The specified category does not exist.","_embedded":{"details":{"attribute":"category"}}},
+        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+        #  "message":"Author is invalid.","_embedded":{"details":{"attribute":"author"}}},{"_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":
+        #  "Author was attempted to be written but is not writable.","_embedded":{"details":{"attribute":"author"}}},
+        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
+        #  "message":"ID was attempted to be written but is not writable.","_embedded":{"details":{"attribute":"id"}}},
+        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":
+        #  "Created on was attempted to be written but is not writable.","_embedded":{"details":{"attribute":"createdAt"}}},
+        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
+        #  "message":"Updated on was attempted to be written but is not writable.",
+        #  "_embedded":{"details":{"attribute":"updatedAt"}}},{"_type":"Error","errorIdentifier":"
+        #  urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
+        #  "message":"Derived estimated hours was attempted to be written but is not writable.","_embedded":
+        #  {"details":{"attribute":"derivedEstimatedHours"
         WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/work_package.json')
         with open(WORK_PACKAGE) as f:
             work_package = WorkPackage(json.load(f))
