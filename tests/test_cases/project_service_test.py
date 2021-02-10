@@ -3,6 +3,7 @@ import os
 
 from business.exception.business_error import BusinessError
 from model.project import Project
+from model.user import User
 from model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 from util.Filter import Filter
@@ -16,6 +17,16 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.proSer = self.factory.get_project_service()
         with open(DATA) as f:
             self.project = Project(json.load(f))
+
+        USER_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/user.json')
+        self.usrSer = self.factory.get_user_service()
+        with open(USER_INPUT) as f:
+            self.new_user = User(json.load(f))
+
+        PROJECT_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/project.json')
+        with open(DATA) as f:
+            self.new_project = Project(json.load(f))
+        self.wpSer = self.factory.get_work_package_service()
 
     def test_find(self):
         current = self.proSer.find(self.project)
@@ -31,12 +42,8 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(1, len(projects))
 
     def test_operations(self):
-        # Data input
-        DATA = os.path.join(self.TEST_CASES, '../data/inputs/project.json')
-        with open(DATA) as f:
-            project = Project(json.load(f))
         # Create
-        project = self.proSer.create(project)
+        project = self.proSer.create(self.new_project)
         # Find
         current = self.proSer.find(project)
         self.assertEqual("New project name", current.name)
@@ -88,34 +95,13 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(workpackages))
 
     def test_create_work_package(self):
-        # TODO: FIX ME: "Multiple field constraints have been violated.","_embedded":{"errors":[{"_type":"Error","errorIdentifier":
-        #  "urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
-        #  "message":"Assignee The chosen user is not allowed to be 'Assignee' for this work package.",
-        #  "_embedded":{"details":{"attribute":"assignee"}}},{"_type":"Error","errorIdentifier":
-        #  "urn:openproject-org:api:v3:errors:PropertyConstraintViolation","message":"Accountable The chosen user is not
-        #  allowed to be 'Accountable' for this work package.","_embedded":{"details":{"attribute":"responsible"}}},
-        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
-        #  "message":"Parent does not exist.","_embedded":{"details":{"attribute":"parent"}}},{"_type":"Error",
-        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation","message":
-        #  "Category The specified category does not exist.","_embedded":{"details":{"attribute":"category"}}},
-        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
-        #  "message":"Author is invalid.","_embedded":{"details":{"attribute":"author"}}},{"_type":"Error",
-        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":
-        #  "Author was attempted to be written but is not writable.","_embedded":{"details":{"attribute":"author"}}},
-        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
-        #  "message":"ID was attempted to be written but is not writable.","_embedded":{"details":{"attribute":"id"}}},
-        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly","message":
-        #  "Created on was attempted to be written but is not writable.","_embedded":{"details":{"attribute":"createdAt"}}},
-        #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
-        #  "message":"Updated on was attempted to be written but is not writable.",
-        #  "_embedded":{"details":{"attribute":"updatedAt"}}},{"_type":"Error","errorIdentifier":"
-        #  urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
-        #  "message":"Derived estimated hours was attempted to be written but is not writable.","_embedded":
-        #  {"details":{"attribute":"derivedEstimatedHours"
-        WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/work_package.json')
+        WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/inputs/work_package.json')
         with open(WORK_PACKAGE) as f:
             work_package = WorkPackage(json.load(f))
-        self.assertIsNotNone(self.proSer.create_work_package(self.project, work_package))
+        wp=self.proSer.create_work_package(self.project, work_package)
+        self.assertIsNotNone(wp)
+        self.assertEqual(wp.subject, 'Lorem')
+        self.assertIsNone(self.wpSer.delete(wp))
 
     def test_create_work_package_form(self):
         # TODO: FIX ME: "You are not authorized to access this resource."
@@ -126,8 +112,10 @@ class ProjectServiceTestCase(OpenProjectTestCase):
 
     def test_find_available_assignees(self):
         # TODO: FIX ME 404
+        user = self.usrSer.create(self.new_user)
         assignees = self.proSer.find_available_assignees(self.project)
-        self.assertEqual(0, len(assignees))
+        self.assertEqual(1, len(assignees))
+        self.assertIsNone(self.usrSer.delete(user))
 
     def test_find_available_responsibles(self):
         # TODO: FIX ME 404

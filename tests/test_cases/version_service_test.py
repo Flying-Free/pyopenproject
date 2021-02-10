@@ -25,8 +25,8 @@ class VersionServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.versionSer.delete(self.version))
 
     def test_find_all(self):
-        versions=self.versionSer.find_all()
-        self.assertEqual(0, len(versions))
+        versions = self.versionSer.find_all()
+        self.assertEqual(4, len(versions))
         #TODO: FIXME: Sharing filter not exist...
         #self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
 
