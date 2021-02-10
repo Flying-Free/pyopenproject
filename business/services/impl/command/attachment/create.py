@@ -21,7 +21,6 @@ class Create(AttachmentCommand):
     def execute(self):
         try:
             metadata = {"fileName": self.filename, "description": {"raw": self.description}}
-            # TODO: Review exception
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}",
                                    files={

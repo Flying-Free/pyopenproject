@@ -3,7 +3,6 @@ import os
 
 from model.version import Version
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class VersionServiceTestCase(OpenProjectTestCase):
@@ -25,12 +24,17 @@ class VersionServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.versionSer.delete(self.version))
 
     def test_find_all(self):
-        versions=self.versionSer.find_all()
+        versions = self.versionSer.find_all()
         self.assertEqual(0, len(versions))
-        #TODO: FIXME: Sharing filter not exist...
-        #self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
+        # TODO: FIXME: Sharing filter not exist...
+        # self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
 
-    # TODO: FIXME:  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation","message":"Project can't be blank.","_embedded":{"details":{"attribute":"project"}}}
+    # FIXME:
+    #  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+    #  "message":"Project can't be blank.","_embedded":{"details":{"attribute":"project"}}
+    #  }
     def test_create(self):
         DATA = os.path.join(self.TEST_CASES, '../data/inputs/version.json')
         with open(DATA) as f:

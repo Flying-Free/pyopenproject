@@ -37,7 +37,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     # def test_update(self):
     #     self.assertIsNotNone(self.membershipSer.update(self.membership))
 
-    # TODO
+    # FIXME
     #  {
     #  "_type":"Error",
     #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
@@ -51,7 +51,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     #     membership = self.membershipSer.find(membership)
     #     self.assertIsNone(membership)
 
-    # FIXME
+    # TODO
     # def test_create(self):
     #     m = self.membershipSer.create(self.membership_to_create)
     #     print(m)

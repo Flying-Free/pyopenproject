@@ -16,7 +16,3 @@ class RevisionServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         self.assertIsNotNone(self.revisionSer.find(self.revision))
-
-    # TODO
-    def test_find_by_context(self):
-        self.assertIsNotNone(self.revisionSer.find_by_context(context))
