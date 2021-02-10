@@ -34,8 +34,8 @@ class MembershipServiceTestCase(OpenProjectTestCase):
             membership.__dict__["_links"]["self"]["title"])
 
     # TODO
-    # def test_update(self):
-    #     self.assertIsNotNone(self.membershipSer.update(self.membership))
+    def test_update(self):
+        self.assertIsNotNone(self.membershipSer.update(self.membership))
 
     # FIXME
     #  {
@@ -43,18 +43,18 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
     #  "message":"An internal error has occured. undefined method `fetch' for #<String:0x000055a4180c0758>"
     #  }
-    # def test_delete(self):
-    #     membership = self.membershipSer.create(self.membership_to_create)
-    #     membership = self.membershipSer.find(membership)
-    #     self.assertIsNotNone(membership)
-    #     self.assertIsNotNone(self.membershipSer.delete(membership))
-    #     membership = self.membershipSer.find(membership)
-    #     self.assertIsNone(membership)
+    def test_delete(self):
+        membership = self.membershipSer.create(self.membership_to_create)
+        membership = self.membershipSer.find(membership)
+        self.assertIsNotNone(membership)
+        self.assertIsNotNone(self.membershipSer.delete(membership))
+        membership = self.membershipSer.find(membership)
+        self.assertIsNone(membership)
 
     # TODO
-    # def test_create(self):
-    #     m = self.membershipSer.create(self.membership_to_create)
-    #     print(m)
+    def test_create(self):
+        m = self.membershipSer.create(self.membership_to_create)
+        print(m)
 
     # FIXME
     #  {
@@ -62,14 +62,15 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     #  "errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest",
     #  "message":"Bad request: id is invalid"
     #  }
-    # def test_membership_schema(self):
-    #     schema = self.membershipSer.membership_schema()
-    #     print(schema)
+    def test_membership_schema(self):
+        schema = self.membershipSer.membership_schema()
+        print(schema)
 
     def test_available_projects(self):
         available_projects = self.membershipSer.available_projects()
         self.assertEqual(2, len(available_projects))
-        m = filter(lambda x: x.identifier == available_projects[0].identifier, self.membership_available_projects)
+        m = list(filter(lambda x: x["identifier"] in list(map(lambda y: y.identifier, available_projects)),
+                        self.membership_available_projects))
         self.assertEqual(1, len(m))
 
     # FIXME
@@ -78,10 +79,10 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     #  "errorIdentifier": "urn:openproject-org:api:v3:errors:InternalServerError",
     #  "message": "An internal error has occured. undefined method `fetch' for #<String:0x000055a4175e7ef8>"
     #  }
-    # def test_create_form(self):
-    #     form = self.membershipSer.create_form(self.membership_form)
-    #     print(form)
+    def test_create_form(self):
+        form = self.membershipSer.create_form(self.membership_form)
+        print(form)
 
     # TODO: First, we need to solve the creation form request
-    # def test_update_form(self):
-    #     self.assertIsNotNone(self.membershipSer.update_form(self.membership))
+    def test_update_form(self):
+        self.assertIsNotNone(self.membershipSer.update_form(self.membership))

@@ -20,34 +20,81 @@ class RelationServiceTestCase(OpenProjectTestCase):
         with open(FORM) as f:
             self.form = Form(json.load(f))
 
-    def test_find(self):
+    def test_not_found(self):
         # There's no relation --> Exception
+        s = self.relationSer.find(self.relation)
+        self.assertEqual(self.relation.type, s.type)
+        self.assertEqual(self.relation.reverseType, s.reverseType)
+
+    def test_operations(self):
+        work_packages = self.factory.get_work_package_service().find_all()
+        work_packages = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))
+        f = work_packages[0]
+        t = work_packages[1]
+        relation = self.factory.get_work_package_service().create_relation(
+            type="follows",
+            work_package_from=f,
+            work_package_to=t,
+            description="Demo relation created using the API")
+        self.assertEqual("Demo relation created using the API", relation.description)
+        self.assertEqual("follows", relation.type)
+        self.assertEqual("precedes", relation.reverseType)
+        relation = self.factory.get_relation_service().update(Relation({
+            "type": "blocks",
+            "description": "Actually the supplier has to bend the steel before they can deliver it.",
+            "delay": 3
+        }))
+        self.assertEqual("blocks", relation.type)
+        self.assertEqual("Another description to test the update", relation.description)
+        found_relation = self.relationSer.find(self.relation)
+        self.assertEqual(relation.type, found_relation.type)
+        self.factory.get_relation_service().delete(relation)
         with self.assertRaises(BusinessError):
-            self.assertIsNotNone(self.relationSer.find(self.relation))
-
-    def test_update(self):
-        # TODO: create relation before
-        self.assertIsNotNone(self.relationSer.update(self.relation))
-
-    def test_delete(self):
-        # TODO: create relation before
-        self.assertIsNotNone(self.relationSer.delete(self.relation))
+            self.relationSer.find(self.relation)
 
     # FIXME:
-    # {
-    # "_type":"Error",
-    # "errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest",
-    # "message":"Bad request: id is invalid"
-    # }
+    #  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest",
+    #  "message":"Bad request: id is invalid"
+    #  }
     def test_find_schema(self):
-        self.assertIsNotNone(self.relationSer.find_schema())
+        with self.assertRaises(BusinessError):
+            self.relationSer.find_schema()
+        s = self.relationSer.find_schema_by_type("follows")
+        self.assertIsNotNone(s)
+
+    # FIXME
+    #  {
+    #  "_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
+    #  "message":"An internal error has occured.
+    #  PG::UndefinedColumn: ERROR:  column \"type\" does not exist
+    #  \nLINE 1: ...TRUE WHERE \"projects\".\"active\" = TRUE))) ORDER BY \"type\" ASC...\n
+    #  ^\n"}
 
     def test_find_all(self):
         # With filters
+        relations = self.relationSer.find_all()
+        self.assertEqual(7, len(relations))
         relations = self.relationSer.find_all([Filter("from", "=", ["42"])],
                                               '[["type", "asc"]]')
         self.assertEqual(7, len(relations))
 
     def test_update_form(self):
-        # TODO: 404 not found
-        self.assertIsNotNone(self.relationSer.update_form(self.relation, self.form))
+        work_packages = self.factory.get_work_package_service().find_all()
+        work_packages = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))
+        f = work_packages[0]
+        t = work_packages[1]
+        relation = self.factory.get_work_package_service().create_relation(
+            type="follows",
+            work_package_from=f,
+            work_package_to=t,
+            description="Demo relation created using the API")
+        form = {
+            "_type": "Relation",
+            "type": "follows",
+            "description": "let it rest for 3 days",
+            "delay": 3
+        }
+        self.assertIsNotNone(self.relationSer.update_form(relation, form))
+        self.factory.get_relation_service().delete(relation)
