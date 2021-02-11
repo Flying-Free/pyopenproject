@@ -16,7 +16,7 @@ class UpdateForm(RelationCommand):
         try:
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}/{self.relation.id}/form",
-                                   json=self.form.__dict__).execute()
+                                   json=self.form).execute()
             return rel.Relation(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating form for relation {self.relation.name}") from re

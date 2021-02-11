@@ -40,17 +40,19 @@ class RelationServiceTestCase(OpenProjectTestCase):
         self.assertEqual("follows", relation.type)
         self.assertEqual("precedes", relation.reverseType)
         relation = self.factory.get_relation_service().update(Relation({
+            "id": relation.id,
             "type": "blocks",
             "description": "Actually the supplier has to bend the steel before they can deliver it.",
             "delay": 3
         }))
         self.assertEqual("blocks", relation.type)
-        self.assertEqual("Another description to test the update", relation.description)
-        found_relation = self.relationSer.find(self.relation)
+        self.assertEqual("Actually the supplier has to bend the steel before they can deliver it.",
+                         relation.description)
+        found_relation = self.relationSer.find(relation)
         self.assertEqual(relation.type, found_relation.type)
         self.factory.get_relation_service().delete(relation)
         with self.assertRaises(BusinessError):
-            self.relationSer.find(self.relation)
+            self.relationSer.find(relation)
 
     # FIXME:
     #  {
@@ -64,19 +66,18 @@ class RelationServiceTestCase(OpenProjectTestCase):
         s = self.relationSer.find_schema_by_type("follows")
         self.assertIsNotNone(s)
 
-    # FIXME
-    #  {
-    #  "_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
+    # FIXME  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
     #  "message":"An internal error has occured.
-    #  PG::UndefinedColumn: ERROR:  column \"type\" does not exist
-    #  \nLINE 1: ...TRUE WHERE \"projects\".\"active\" = TRUE))) ORDER BY \"type\" ASC...\n
-    #  ^\n"}
-
+    #  PG::UndefinedColumn: ERROR:
+    #  column \"type\" does not exist\nLINE 1: ...TRUE WHERE \"projects\".\"active\" = TRUE)))
+    #  ORDER BY \"type\" ASC...\n                                                             ^\n"}
     def test_find_all(self):
-        # With filters
         relations = self.relationSer.find_all()
         self.assertEqual(7, len(relations))
-        relations = self.relationSer.find_all([Filter("from", "=", ["42"])],
+        # With filters
+        relations = self.relationSer.find_all([Filter("involved", "=", ["42"])],
                                               '[["type", "asc"]]')
         self.assertEqual(7, len(relations))
 

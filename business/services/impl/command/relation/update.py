@@ -1,5 +1,3 @@
-import json
-
 import model.relation as rel
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
@@ -16,8 +14,9 @@ class Update(RelationCommand):
     def execute(self):
         try:
             json_obj = PatchRequest(connection=self.connection,
+                                    headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}/{self.relation.id}",
-                                    json=json.dumps(self.relation.__dict__)).execute()
+                                    json=self.relation.__dict__).execute()
             return rel.Relation(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating relation by id: {self.relation.id}") from re

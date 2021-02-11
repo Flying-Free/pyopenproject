@@ -1,4 +1,3 @@
-
 import model.relation as rel
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
@@ -18,11 +17,11 @@ class FindAll(RelationCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,  str(URL(f"{self.CONTEXT}",
-                                          [
-                                              Filters("filters", self.filters),
-                                              URLParameter("sortBy", self.sort_by)
-                                          ]))).execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                                           [
+                                                               Filters("filters", self.filters),
+                                                               URLParameter("sortBy", self.sort_by)
+                                                           ]))).execute()
 
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield rel.Relation(tEntry)
