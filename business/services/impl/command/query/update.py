@@ -1,4 +1,3 @@
-import json
 
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
@@ -16,8 +15,9 @@ class Update(QueryCommand):
     def execute(self):
         try:
             json_obj = PatchRequest(connection=self.connection,
+                                    headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}/{self.query.id}",
-                                    json=json.dumps(self.query.__dict__)).execute()
+                                    json=self.query.__dict__).execute()
             return Query(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating query by id: {self.query.id}") from re
