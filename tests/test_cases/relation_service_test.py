@@ -54,12 +54,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             self.relationSer.find(relation)
 
-    # FIXME:
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest",
-    #  "message":"Bad request: id is invalid"
-    #  }
+    # FIXME: 404 Client Error: Not Found for url
     def test_find_schema(self):
         with self.assertRaises(BusinessError):
             self.relationSer.find_schema()

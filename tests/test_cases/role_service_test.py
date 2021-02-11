@@ -16,9 +16,15 @@ class RoleServiceTestCase(OpenProjectTestCase):
         with open(DATA) as f:
             self.role = Role(json.load(f))
 
-    # TODO: Not authorized
+    # FIXME: {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+    #  "message":"You are not authorized to access this resource."
+    #  }
     def test_find(self):
-        self.assertIsNotNone(self.roleSer.find(self.role))
+        roles = list(filter(lambda x: x.name == "Anonymous", self.roleSer.find_all()))
+        self.assertEqual(1, len(roles))
+        self.assertIsNotNone(self.roleSer.find(roles[0]))
 
     def test_find_all(self):
         roles = self.roleSer.find_all([Filter("unit", "=", ["system"])])
