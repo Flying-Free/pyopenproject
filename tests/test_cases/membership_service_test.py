@@ -10,7 +10,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/membership.json')
-        TO_CREATE = os.path.join(self.TEST_CASES, '../data/membership-to-create.json')
+        TO_CREATE = os.path.join(self.TEST_CASES, '../data/inputs/membership.json')
         FORM = os.path.join(self.TEST_CASES, '../data/membership-form.json')
         AVAILABLE_PROJECTS = os.path.join(self.TEST_CASES, '../data/memberships-available-projects.json')
         self.membershipSer = self.factory.get_membership_service()
@@ -37,24 +37,18 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     def test_update(self):
         self.assertIsNotNone(self.membershipSer.update(self.membership))
 
-    # FIXME
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
-    #  "message":"An internal error has occured. undefined method `fetch' for #<String:0x000055a4180c0758>"
-    #  }
-    def test_delete(self):
+    # FIXME: 'Form' object has no attribute 'id'
+    def test_operations(self):
+        form=self.membershipSer.create_form(self.membership_form)
+        self.assertIsNotNone(form)
+        form._embedded['payload']['_links']['principal'] =  {'href': '/api/v3/users/1'}
+        self.assertIsNotNone(self.membershipSer.update_form(form))
         membership = self.membershipSer.create(self.membership_to_create)
         membership = self.membershipSer.find(membership)
         self.assertIsNotNone(membership)
         self.assertIsNotNone(self.membershipSer.delete(membership))
         membership = self.membershipSer.find(membership)
         self.assertIsNone(membership)
-
-    # TODO
-    def test_create(self):
-        m = self.membershipSer.create(self.membership_to_create)
-        print(m)
 
     # FIXME
     #  {
@@ -73,16 +67,4 @@ class MembershipServiceTestCase(OpenProjectTestCase):
                         self.membership_available_projects))
         self.assertEqual(1, len(m))
 
-    # FIXME
-    #  {
-    #  "_type": "Error",
-    #  "errorIdentifier": "urn:openproject-org:api:v3:errors:InternalServerError",
-    #  "message": "An internal error has occured. undefined method `fetch' for #<String:0x000055a4175e7ef8>"
-    #  }
-    def test_create_form(self):
-        form = self.membershipSer.create_form(self.membership_form)
-        print(form)
 
-    # TODO: First, we need to solve the creation form request
-    def test_update_form(self):
-        self.assertIsNotNone(self.membershipSer.update_form(self.membership))

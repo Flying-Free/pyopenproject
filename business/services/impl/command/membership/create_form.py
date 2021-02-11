@@ -16,8 +16,9 @@ class CreateForm(MembershipCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/form",
-                                   json=json.dumps(self.membership.__dict__)).execute()
+                                   json=self.membership.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating membership") from re
