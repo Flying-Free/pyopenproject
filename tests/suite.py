@@ -74,8 +74,8 @@ def suite():
 
 
 if __name__ == '__main__':
-    TestInfrastructure().reset()
+    TestInfrastructure().up()
     mySuit = suite()
-
     runner = unittest.TextTestRunner()
     runner.run(mySuit)
+    TestInfrastructure().down()

@@ -10,12 +10,8 @@ class TestInfrastructure:
     TEST_URL = "http://localhost:8080"
 
     def reset(self):
-        print(f"$ docker-compose down -v")
-        p = subprocess.Popen(["docker-compose", "down", "-v"], cwd=self.INFRA)
-        p.wait()
-        print(f"$ docker-compose up -d")
-        p = subprocess.Popen(["docker-compose", "up", "-d"], cwd=self.INFRA)
-        p.wait()
+        self.down()
+        self.up()
         response_code = self.__check_response()
         retries = 1
         while response_code != 200:
@@ -28,6 +24,16 @@ class TestInfrastructure:
         print("################# UP & RUNNING #################")
         print("################################################")
         print("################################################")
+
+    def down(self):
+        print(f"$ docker-compose down -v")
+        p = subprocess.Popen(["docker-compose", "down", "-v"], cwd=self.INFRA)
+        p.wait()
+
+    def up(self):
+        print(f"$ docker-compose up -d")
+        p = subprocess.Popen(["docker-compose", "up", "-d"], cwd=self.INFRA)
+        p.wait()
 
     def __check_response(self):
         try:
