@@ -122,11 +122,24 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         form = self.wpSer.create_form()
         self.assertEqual(self.work_package_form.__dict__["_embedded"]["payload"], form.__dict__["_embedded"]["payload"])
 
+    # FIXME
+    #  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MultipleErrors",
+    #  "message":"Multiple field constraints have been violated.",
+    #  "_embedded":{
+    #  "errors":[{"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+    #  "message":"To is invalid.","_embedded":{"details":{"attribute":"to"}}},
+    #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+    #  "message":"Work package has already been taken.","_embedded":{"details":{"attribute":"from"}}},
+    #  {"_type":"Error","errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
+    #  "message":"The relationship creates a circle of relationships.","_embedded":{"details":{"attribute":"base"}}}]}
+    #  }
     def test_create_relation(self):
         work_packages = self.wpSer.find_all()
         work_packages = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))
-        f = work_packages[0]
-        t = work_packages[1]
+        f = work_packages[2]
+        t = work_packages[2]
         relation = self.wpSer.create_relation(
             type="follows",
             work_package_from=f,

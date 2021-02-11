@@ -66,13 +66,15 @@ class RelationServiceTestCase(OpenProjectTestCase):
         s = self.relationSer.find_schema_by_type("follows")
         self.assertIsNotNone(s)
 
-    # FIXME  {
+    # FIXME:
+    #  {
     #  "_type":"Error",
     #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
     #  "message":"An internal error has occured.
     #  PG::UndefinedColumn: ERROR:
     #  column \"type\" does not exist\nLINE 1: ...TRUE WHERE \"projects\".\"active\" = TRUE)))
-    #  ORDER BY \"type\" ASC...\n                                                             ^\n"}
+    #  ORDER BY \"type\" ASC...\n                                                             ^\n"
+    #  }
     def test_find_all(self):
         relations = self.relationSer.find_all()
         self.assertEqual(7, len(relations))
@@ -81,6 +83,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
                                               '[["type", "asc"]]')
         self.assertEqual(7, len(relations))
 
+    # FIXME: 404 Client Error: Not Found for url
     def test_update_form(self):
         work_packages = self.factory.get_work_package_service().find_all()
         work_packages = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))
