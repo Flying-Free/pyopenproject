@@ -12,6 +12,7 @@ class CreateForm(GridCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/form").execute()
             return json_obj
         except RequestError as re:

@@ -37,4 +37,4 @@ class FindWorkPackages(ProjectCommand):
             for wP in json_obj["_embedded"]["elements"]:
                 yield wp.WorkPackage(wP)
         except RequestError as re:
-            raise BusinessError(f"Error finding workpackage by id: {self.project.name}") from re
+            raise BusinessError(f"Error finding workpackages for project: {self.project.name}") from re
