@@ -2,7 +2,7 @@
     "_type" : "UserPreferences",
     "_links" : {
         "self" : {
-            "href" : "/api/v3/my_preferences",
+            "href": "/api/v3/my_preferences"
         },
         "user": {
             "href": "/api/v3/users/1",
