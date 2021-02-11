@@ -13,7 +13,7 @@ class Find(TypeCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.type.id}")
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.type.id}").execute()
             return Type(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding type by ID: {self.type.id}") from re
