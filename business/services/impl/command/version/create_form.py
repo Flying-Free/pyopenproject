@@ -1,5 +1,3 @@
-import json
-
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
 from business.exception.business_error import BusinessError
@@ -17,7 +15,7 @@ class CreateForm(VersionCommand):
         try:
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}/form",
-                                   json=json.dumps(self.version.__dict__)).execute()
+                                   json=self.version.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error creating version") from re

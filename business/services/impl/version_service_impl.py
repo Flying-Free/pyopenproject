@@ -38,7 +38,7 @@ class VersionServiceImpl(VersionService):
         return FindSchema(self.connection).execute()
 
     def create_form(self, version):
-        return CreateForm(self.connection, version).execute
+        return CreateForm(self.connection, version).execute()
 
     def update_form(self, version):
         return UpdateForm(self.connection, version).execute()
