@@ -1,6 +1,7 @@
 import json
 import os
 
+from business.exception.business_error import BusinessError
 from model.revision import Revision
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -15,4 +16,8 @@ class RevisionServiceTestCase(OpenProjectTestCase):
             self.revision = Revision(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.revisionSer.find(self.revision))
+        for i in range(1, 100):
+            r = Revision({"id": i})
+            # There's nt revisions available
+            with self.assertRaises(BusinessError):
+                r = self.revisionSer.find(r)
