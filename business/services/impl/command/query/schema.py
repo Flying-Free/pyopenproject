@@ -13,6 +13,6 @@ class Schema(QueryCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema").execute()
-            return Query(json_obj)
+            return Schema(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding schema: {self.schema}") from re
