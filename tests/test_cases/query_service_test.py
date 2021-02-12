@@ -49,4 +49,6 @@ class QueryServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(queries))
 
     def test_schema(self):
-        self.assertIsNotNone(self.querySer.work_package())
+        schema = self.querySer.schema()
+        self.assertIsNotNone(schema)
+        self.assertEqual(schema.connection['_type'], 'Schema')
