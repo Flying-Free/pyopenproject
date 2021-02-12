@@ -51,7 +51,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
     #     self.assertIsNotNone(self.wpSer.find_attachments(self.work_package))
 
     def test_not_found(self):
-        # There's no activity --> Exception
+        # Not Found Work Package --> Exception
         with self.assertRaises(BusinessError):
             self.wpSer.find(self.work_package)
 

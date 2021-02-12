@@ -1,4 +1,3 @@
-import model.version as v
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.delete_request import DeleteRequest
 from business.exception.business_error import BusinessError
@@ -13,7 +12,6 @@ class Delete(VersionCommand):
 
     def execute(self):
         try:
-            json_obj = DeleteRequest(self.connection, f"{self.CONTEXT}/{self.version.id}").execute()
-            return v.Version(json_obj)
+            DeleteRequest(self.connection, f"{self.CONTEXT}/{self.version.id}").execute()
         except RequestError as re:
             raise BusinessError(f"Error deleting version: {self.version.id}") from re
