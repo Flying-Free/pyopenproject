@@ -40,8 +40,8 @@ class VersionServiceImpl(VersionService):
     def create_form(self, version):
         return CreateForm(self.connection, version).execute()
 
-    def update_form(self, version):
-        return UpdateForm(self.connection, version).execute()
+    def update_form(self, form):
+        return UpdateForm(self.connection, form).execute()
 
     def find_projects(self):
         return list(FindProjects(self.connection).execute())

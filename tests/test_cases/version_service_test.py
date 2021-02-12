@@ -67,9 +67,9 @@ class VersionServiceTestCase(OpenProjectTestCase):
                           'html': '<p>This version has a description</p>'
                           }, form._embedded["payload"]["description"])
 
-    # FIXME
     def test_update_form(self):
         form = self.versionSer.create_form(self.version)
+        legacy_form = form
         form.name = ""
         form.endDate = "2018-01-10"
         form.startDate = "2018-01-01"
@@ -79,8 +79,9 @@ class VersionServiceTestCase(OpenProjectTestCase):
         self.assertEqual("", form._embedded["payload"]["name"])
         self.assertEqual("2018-01-10", form._embedded["payload"]["endDate"])
         self.assertEqual("2018-01-01", form._embedded["payload"]["startDate"])
-        self.assertEqual("closed", form._embedded["payload"]["status"])
+        self.assertEqual('["closed"]', form._embedded["payload"]["status"])
         self.assertEqual("system", form._embedded["payload"]["sharing"])
+        form = self.versionSer.update_form(legacy_form)
 
     def test_find_projects(self):
         projects = self.versionSer.find_projects()
