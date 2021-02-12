@@ -42,8 +42,8 @@ class MembershipServiceTestCase(OpenProjectTestCase):
         form=self.membershipSer.create_form(self.membership_form)
         self.assertIsNotNone(form)
         form._embedded['payload']['_links']['principal'] =  {'href': '/api/v3/users/1'}
-        self.assertIsNotNone(self.membershipSer.update_form(form))
         membership = self.membershipSer.create(self.membership_to_create)
+        self.assertIsNotNone(self.membershipSer.update_form(membership, form))
         membership = self.membershipSer.find(membership)
         self.assertIsNotNone(membership)
         self.assertIsNotNone(self.membershipSer.delete(membership))

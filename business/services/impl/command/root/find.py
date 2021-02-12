@@ -7,9 +7,9 @@ from model.root import Root
 
 class Find(RootCommand):
 
-    def __init__(self, connection, root):
+    def __init__(self, connection):
         super().__init__(connection)
-        self.root = root
+        self.connection = connection
 
     def execute(self):
         try:

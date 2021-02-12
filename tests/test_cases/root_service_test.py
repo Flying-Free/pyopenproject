@@ -9,10 +9,9 @@ class RootServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        DATA = os.path.join(self.TEST_CASES, '../data/root.json')
         self.rootSer = self.factory.get_root_service()
-        with open(DATA) as f:
-            self.root = Root(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.rootSer.find(self.root))
+        root=self.rootSer.find()
+        self.assertIsNotNone(root)
+        self.assertEqual(root.instanceName, 'OpenProject')
