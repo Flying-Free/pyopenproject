@@ -2,6 +2,7 @@ from business.services.impl.command.user.create import Create
 from business.services.impl.command.user.delete import Delete
 from business.services.impl.command.user.find import Find
 from business.services.impl.command.user.find_all import FindAll
+from business.services.impl.command.user.invite import Invite
 from business.services.impl.command.user.lock import Lock
 from business.services.impl.command.user.unlock import Unlock
 from business.services.impl.command.user.update import Update
@@ -25,11 +26,14 @@ class UserServiceImpl(UserService):
     def find(self, user):
         return Find(self.connection, user).execute()
 
-    def update(self, user_id, user):
-        return Update(self.connection, user_id, user).execute()
+    def update(self, user):
+        return Update(self.connection, user).execute()
 
     def delete(self, user):
         Delete(self.connection, user).execute()
 
-    def create(self, user):
-        return Create(self.connection, user).execute()
+    def create(self, login, email, first_name, last_name, admin, language, status, password):
+        return Create(self.connection, login, email, first_name, last_name, admin, language, status, password).execute()
+
+    def invite(self, first_name, email):
+        return Invite(self.connection, first_name, email).execute()

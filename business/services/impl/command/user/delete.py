@@ -12,6 +12,6 @@ class Delete(UserCommand):
 
     def execute(self):
         try:
-            DeleteRequest(self.connection, f"{self.CONTEXT}/{self.user.id}").execute()
+            DeleteRequest(connection=self.connection, context=f"{self.CONTEXT}/{self.user.id}").execute()
         except RequestError as re:
             raise BusinessError(f"Error deleting user by ID: {self.user.id}") from re

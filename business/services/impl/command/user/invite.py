@@ -5,19 +5,14 @@ from business.exception.business_error import BusinessError
 from business.services.impl.command.user.user_command import UserCommand
 
 
-class Create(UserCommand):
+class Invite(UserCommand):
 
-    def __init__(self, connection, login, email, first_name, last_name, admin, language, status, password):
+    def __init__(self, connection, first_name, email):
         super().__init__(connection)
         self.user = {
-            "login": login,
             "email": email,
             "firstName": first_name,
-            "lastName": last_name,
-            "admin": admin,
-            "language": language,
-            "status": status,
-            "password": password
+            "status": "invited"
         }
 
     def execute(self):

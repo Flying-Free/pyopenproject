@@ -50,24 +50,49 @@ class UserServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             e = self.usrSer.find(user)
 
+    def test_invite_user(self):
+        user = self.usrSer.invite(
+            email="h.wurst@openproject.com",
+            first_name="Hanz"
+        )
+        self.assertEqual("h.wurst@openproject.com", user.email)
+        self.assertEqual("Hanz", user.firstName)
+        #  FIXME:
+        #   {
+        #   "_type":"Error",
+        #   "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+        #   "message":"You are not authorized to access this resource."
+        #   }
+        self.usrSer.delete(user)
+
     # FIXME:
     #  {
     #  "_type":"Error",
     #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
-    #  "message":"An internal error has occured. undefined method `fetch' for #<String:0x0000556bedbebb68>"
+    #  "message":"An internal error has occured.
+    #  undefined method `identity_url=' for #<API::V3::Users::UserRepresenter:0x00005642a7e34190>"
     #  }
     def test_operations_user(self):
         # Create
-        user = self.usrSer.create(self.new_user)
+        user = self.usrSer.create(
+            login="h.wurst",
+            email="h.wurst@openproject.com",
+            first_name="Hans",
+            last_name="Wurst",
+            admin=False,
+            language="de",
+            status="active",
+            # Password minimum is 10 characters)
+            password="h.wurst1234567890"
+        )
         self.assertIsNotNone(user)
-        self.assertEqual(self.new_user.login, user.login)
+        self.assertEqual("h.wurst", user.login)
         # Update
-        self.new_user.email = "h.wut@openproject.com"
-        user_update = self.usrSer.update(user.id, self.new_user)
+        user.email = "h.wut@openproject.com"
+        user_update = self.usrSer.update(user)
         self.assertEqual(user_update.email, "h.wut@openproject.com")
-        # Lock TODO:FIX ME: header?  406 Client Error: Not Acceptable for url
         self.assertEqual(user, self.usrSer.lock(user))
         # Unlock
         self.assertEqual(user, self.usrSer.unlock(user))
         # Delete
-        self.assertIsNone(self.usrSer.delete(user))
+        self.usrSer.delete(user)
