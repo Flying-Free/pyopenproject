@@ -34,23 +34,7 @@ class VersionServiceTestCase(OpenProjectTestCase):
         # TODO: FIXME: Sharing filter not exist...
         # self.assertIsNotNone(self.versionSer.find_all([Filter("sharing", "*", ["system"])]))
 
-    # TODO: FIXME:
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyConstraintViolation",
-    #  "message":"Project can't be blank.",
-    #  "_embedded":
-    #      {
-    #      "details":
-    #             {
-    #             "attribute":"project"
-    #             }
-    #      }
-    #  }
     def test_operations(self):
-        # DATA = os.path.join(self.TEST_CASES, '../data/inputs/version.json')
-        # with open(DATA) as f:
-        #     version = Version(json.load(f))
         version = Version(self.versionSer.create_form(self.version)._embedded["payload"])
         version.name = "v4.0 Alpha"
         version._links = {
