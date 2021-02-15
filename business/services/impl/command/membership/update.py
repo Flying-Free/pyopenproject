@@ -1,5 +1,3 @@
-import json
-
 import model.membership as mem
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
@@ -18,7 +16,7 @@ class Update(MembershipCommand):
             json_obj = PatchRequest(connection=self.connection,
                                     headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}/{self.membership.id}",
-                                    json=json.dumps(self.membership.__dict__)).execute()
+                                    json=self.membership.__dict__).execute()
             return mem.Membership(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating membership by id: {self.membership.id}") from re

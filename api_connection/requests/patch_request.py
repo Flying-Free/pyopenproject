@@ -6,7 +6,7 @@ from api_connection.request import Request
 
 class PatchRequest(Request):
 
-    def __init__(self, connection, context, json, headers=None):
+    def __init__(self, connection, context, json=None, headers=None):
         super().__init__(connection=connection, headers=headers, context=context, json=json)
 
     def _execute_request(self):
