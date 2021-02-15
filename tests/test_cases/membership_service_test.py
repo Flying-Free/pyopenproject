@@ -39,6 +39,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
 
     # FIXME: 'Form' object has no attribute 'id'
     def test_operations(self):
+        # Create form
         form=self.membershipSer.create_form(self.membership_form)
         self.assertIsNotNone(form)
         form._embedded['payload']['_links']['principal'] =  {'href': '/api/v3/users/1'}
@@ -58,7 +59,8 @@ class MembershipServiceTestCase(OpenProjectTestCase):
     #  }
     def test_membership_schema(self):
         schema = self.membershipSer.membership_schema()
-        print(schema)
+        self.assertIsNotNone(schema)
+        self.assertEqual(schema.id['name'], 'ID')
 
     def test_available_projects(self):
         available_projects = self.membershipSer.available_projects()

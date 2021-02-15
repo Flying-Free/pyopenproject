@@ -55,8 +55,9 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.proSer.delete(project)
 
     def test_find_schema(self):
-        # TODO
-        self.assertIsNotNone(self.proSer.find_schema())
+        schema = self.proSer.find_schema()
+        self.assertIsNotNone(schema)
+        self.assertEqual(schema.id['name'], 'ID')
 
     def test_create_form(self):
         # TODO

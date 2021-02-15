@@ -15,6 +15,7 @@ class UpdateForm(RelationCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
+                                   headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/{self.relation.id}/form",
                                    json=self.form).execute()
             return rel.Relation(json_obj)

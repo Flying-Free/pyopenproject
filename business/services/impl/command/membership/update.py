@@ -16,6 +16,7 @@ class Update(MembershipCommand):
     def execute(self):
         try:
             json_obj = PatchRequest(connection=self.connection,
+                                    headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}/{self.membership.id}",
                                     json=json.dumps(self.membership.__dict__)).execute()
             return mem.Membership(json_obj)

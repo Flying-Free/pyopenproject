@@ -57,7 +57,9 @@ class VersionServiceTestCase(OpenProjectTestCase):
     #   "message":"Bad request: id is invalid"
     #   }
     def test_find_schema(self):
-        s = self.versionSer.find_schema()
+        schema = self.versionSer.find_schema()
+        self.assertIsNotNone(schema)
+        self.assertEqual(schema.id['name'], 'ID')
 
     def test_create_form(self):
         form = self.versionSer.create_form(self.version)

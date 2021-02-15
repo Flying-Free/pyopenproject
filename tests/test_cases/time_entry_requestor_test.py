@@ -31,7 +31,7 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
 
     def test_find_projects(self):
         projects = self.tEntryReq.find_projects(self.time_entry)
-        self.assertEqual(1, len(projects))
+        self.assertEqual(0, len(projects))
 
     def test_find_all(self):
         time_entries = self.tEntryReq.find_all()

@@ -12,7 +12,7 @@ class FindSchema(ProjectCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schemas").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema").execute()
             return Schema(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding the version schema") from re
