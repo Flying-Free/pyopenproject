@@ -15,7 +15,23 @@ class UserPreferencesServiceTestCase(OpenProjectTestCase):
             self.user_preferences = UserPreferences(json.load(f))
 
     def test_find(self):
-        self.assertIsNotNone(self.userPrefSer.find())
+        user_preferences = self.userPrefSer.find()
+        self.assertEqual(self.user_preferences.__dict__, user_preferences.__dict__)
 
+    # FIXME: We need an application user to update its preferences
+    #  Actual user => {'href': '/api/v3/users/3', 'title': 'System'}
+    #  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:Unauthenticated",
+    #  "message":"You need to be authenticated to access this resource."
+    #  }
     def test_update(self):
-        self.assertIsNotNone(self.userPrefSer.update(self.user_preferences))
+        user_preferences = self.userPrefSer.find()
+        user_preferences.timeZone = "Europe/London"
+        user_preferences.hideMail = False
+        updated_user_preferences = self.userPrefSer.update(user_preferences)
+        self.assertEqual(user_preferences.timeZone, updated_user_preferences.timeZone)
+        self.assertEqual(user_preferences.hideMail, updated_user_preferences.hideMail)
+        updated_user_preferences = self.userPrefSer.update(self.user_preferences)
+        self.assertNotEqual(user_preferences.timeZone, updated_user_preferences.timeZone)
+        self.assertNotEqual(user_preferences.hideMail, updated_user_preferences.hideMail)

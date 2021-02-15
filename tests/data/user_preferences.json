@@ -1,17 +1,21 @@
 {
-    "_type" : "UserPreferences",
-    "_links" : {
-        "self" : {
-            "href": "/api/v3/my_preferences"
-        },
-        "user": {
-            "href": "/api/v3/users/1",
-            "title": "John Sheppard"
-        }
+  "_type": "UserPreferences",
+  "hideMail": true,
+  "timeZone": null,
+  "warnOnLeavingUnsaved": true,
+  "commentSortDescending": false,
+  "autoHidePopups": true,
+  "_links": {
+    "self": {
+      "href": "/api/v3/my_preferences"
     },
-    "hideMail" : false,
-    "timeZone" : "Europe/Berlin",
-    "commentSortDescending" : true,
-    "warnOnLeavingUnsaved" : true,
-    "accessibilityMode" : false
+    "user": {
+      "href": "/api/v3/users/3",
+      "title": "System"
+    },
+    "updateImmediately": {
+      "href": "/api/v3/my_preferences",
+      "method": "patch"
+    }
+  }
 }
