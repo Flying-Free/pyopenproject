@@ -35,4 +35,4 @@ class Update(UserCommand):
         with suppress(KeyError): del self.user.__dict__["name"]
         with suppress(KeyError): del self.user.__dict__["avatar"]
         with suppress(KeyError): del self.user.__dict__["status"]
-        with suppress(KeyError): del self.user.__dict__["identity_url"]
+        with suppress(KeyError): del self.user.__dict__["identityUrl"]

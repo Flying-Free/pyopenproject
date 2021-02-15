@@ -48,30 +48,28 @@ class UserServiceTestCase(OpenProjectTestCase):
         user = User({"id": 50})
         # Result is 404
         with self.assertRaises(BusinessError):
-            e = self.usrSer.find(user)
+            self.usrSer.find(user)
 
     def test_invite_user(self):
         user = self.usrSer.invite(
-            email="h.wurst@openproject.com",
-            first_name="Hanz"
+            email="example@openproject.com",
+            first_name="Example"
         )
-        self.assertEqual("h.wurst@openproject.com", user.email)
-        self.assertEqual("Hanz", user.firstName)
-        #  FIXME:
-        #   {
-        #   "_type":"Error",
-        #   "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
-        #   "message":"You are not authorized to access this resource."
-        #   }
-        self.usrSer.delete(user)
+        self.assertEqual("example@openproject.com", user.email)
+        self.assertEqual("Example", user.firstName)
+        new_usr = self.usrSer.find(user)
+        self.assertEqual(new_usr.email, user.email)
+        self.assertEqual(new_usr.firstName, user.firstName)
+        self.assertEqual('invited', new_usr.status)
+        self.assertEqual(user.status, new_usr.status)
+        # FIXME: Delete User
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+        #  "message":"You are not authorized to access this resource."
+        #  }
+        self.usrSer.delete(new_usr)
 
-    # FIXME:
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
-    #  "message":"An internal error has occured.
-    #  undefined method `identity_url=' for #<API::V3::Users::UserRepresenter:0x00005642a7e34190>"
-    #  }
     def test_operations_user(self):
         # Create
         user = self.usrSer.create(
@@ -88,11 +86,24 @@ class UserServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(user)
         self.assertEqual("h.wurst", user.login)
         # Update
+        self.usrSer.unlock(user)
+        user = self.usrSer.find(user)
         user.email = "h.wut@openproject.com"
         user_update = self.usrSer.update(user)
-        self.assertEqual(user_update.email, "h.wut@openproject.com")
-        self.assertEqual(user, self.usrSer.lock(user))
+        user_update = self.usrSer.find(user_update)
+        self.assertEqual(user.email, user_update.email)
+        # Lock
+        self.usrSer.lock(user_update)
+        user_update = self.usrSer.find(user_update)
+        self.assertEqual('locked', user_update.status)
         # Unlock
-        self.assertEqual(user, self.usrSer.unlock(user))
-        # Delete
+        self.usrSer.unlock(user_update)
+        user = self.usrSer.find(user_update)
+        self.assertNotEqual(user.status, user_update.status)
+        # FIXME: Delete User
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+        #  "message":"You are not authorized to access this resource."
+        #  }
         self.usrSer.delete(user)

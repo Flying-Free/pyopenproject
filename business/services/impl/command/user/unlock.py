@@ -1,3 +1,4 @@
+import model.user as u
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.delete_request import DeleteRequest
 from business.exception.business_error import BusinessError
@@ -12,6 +13,7 @@ class Unlock(UserCommand):
 
     def execute(self):
         try:
-            DeleteRequest(self.connection, f"{self.CONTEXT}/{self.user.id}/lock").execute()
+            json_obj = DeleteRequest(self.connection, f"{self.CONTEXT}/{self.user.id}/lock").execute()
+            return u.User(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error unlocking user with id: {self.user.id}") from re
