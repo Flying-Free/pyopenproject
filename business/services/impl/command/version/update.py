@@ -1,3 +1,5 @@
+from contextlib import suppress
+
 import model.version as v
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
@@ -24,7 +26,11 @@ class Update(VersionCommand):
             raise BusinessError(f"Error updating version: {self.version.id}") from re
 
     def __remove_readonly_attributes(self):
-        del self.version.__dict__["_links"]
-        del self.version.__dict__["id"]
-        del self.version.__dict__["createdAt"]
-        del self.version.__dict__["updatedAt"]
+        with suppress(KeyError):
+            del self.version.__dict__["_links"]
+        with suppress(KeyError):
+            del self.version.__dict__["id"]
+        with suppress(KeyError):
+            del self.version.__dict__["createdAt"]
+        with suppress(KeyError):
+            del self.version.__dict__["updatedAt"]

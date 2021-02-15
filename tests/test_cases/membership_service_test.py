@@ -33,30 +33,41 @@ class MembershipServiceTestCase(OpenProjectTestCase):
             self.membership.__dict__["_links"]["self"]["title"],
             membership.__dict__["_links"]["self"]["title"])
 
-    # TODO
-    def test_update(self):
-        self.assertIsNotNone(self.membershipSer.update(self.membership))
-
-    # FIXME: 'Form' object has no attribute 'id'
     def test_operations(self):
         # Create form
-        form=self.membershipSer.create_form(self.membership_form)
+        form = self.membershipSer.create_form(self.membership_form)
         self.assertIsNotNone(form)
-        form._embedded['payload']['_links']['principal'] =  {'href': '/api/v3/users/1'}
-        membership = self.membershipSer.create(self.membership_to_create)
-        self.assertIsNotNone(self.membershipSer.update_form(membership, form))
+        membership_to_create = Membership(form._embedded['payload'])
+        user = self.factory.get_user_service().create(login="member",
+                                                      email="member@openproject.com",
+                                                      first_name="Member",
+                                                      last_name="Member",
+                                                      admin=False,
+                                                      language="es",
+                                                      status="active",
+                                                      password="SomePasswordForAMember1234567890")
+        projects = self.membershipSer.available_projects()
+        membership_to_create.__dict__['_links']['project'] = {"href": projects[-1].__dict__["_links"]["self"]["href"]}
+        membership_to_create.__dict__['_links']['principal'] = {'href': user.__dict__["_links"]["self"]["href"]}
+        membership_to_create.__dict__['_links']['roles'] = [{"href": '/api/v3/roles/5'}]
+        membership = self.membershipSer.create(membership_to_create)
+        self.assertEqual(
+            membership.__dict__['_links']['principal']["href"],
+            membership_to_create.__dict__['_links']['principal']["href"])
+        # FIXME
+        #  {
+        #  "_type":"Error",
+        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
+        #  "message":"An internal error has occured. 405 Not Allowed"
+        #  }
+        updated_form = self.membershipSer.update_form(membership)
         membership = self.membershipSer.find(membership)
+        updated_membership = self.membershipSer.update(membership)
         self.assertIsNotNone(membership)
         self.assertIsNotNone(self.membershipSer.delete(membership))
         membership = self.membershipSer.find(membership)
         self.assertIsNone(membership)
 
-    # FIXME
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest",
-    #  "message":"Bad request: id is invalid"
-    #  }
     def test_membership_schema(self):
         schema = self.membershipSer.membership_schema()
         self.assertIsNotNone(schema)
@@ -68,5 +79,3 @@ class MembershipServiceTestCase(OpenProjectTestCase):
         m = list(filter(lambda x: x["identifier"] in list(map(lambda y: y.identifier, available_projects)),
                         self.membership_available_projects))
         self.assertEqual(1, len(m))
-
-
