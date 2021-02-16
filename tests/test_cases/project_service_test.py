@@ -80,7 +80,6 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.proSer.find_versions(self.project))
 
     def test_find_types(self):
-        #TODO: FIX ME: v3:errors:MissingPermission","message":"You are not authorized to access this resource."
         types = self.proSer.find_types(self.project)
         self.assertEqual(6, len(types))
 

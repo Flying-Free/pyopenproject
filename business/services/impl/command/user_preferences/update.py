@@ -1,4 +1,3 @@
-import json
 from contextlib import suppress
 
 from api_connection.exceptions.request_exception import RequestError
@@ -19,7 +18,7 @@ class Update(UserPreferencesCommand):
             json_obj = PatchRequest(connection=self.connection,
                                     headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}",
-                                    json=json.dumps(self.userPreferences.__dict__)).execute()
+                                    json=self.userPreferences.__dict__).execute()
             return UserPreferences(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating user preferences") from re
