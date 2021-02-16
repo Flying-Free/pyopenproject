@@ -186,7 +186,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         watchers = self.wpSer.find_available_watchers(work_package)
-        self.assertEqual(2, len(watchers))
+        self.assertEqual(4, len(watchers))
 
     def test_find_available_projects(self):
         work_packages = self.wpSer.find_all()

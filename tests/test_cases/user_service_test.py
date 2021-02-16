@@ -38,7 +38,7 @@ class UserServiceTestCase(OpenProjectTestCase):
             self.assertEqual("active", user.status)
             self.assertEqual("OpenProject Admin", user.name)
         users = self.usrSer.find_all()
-        self.assertEqual(1, len(users))
+        self.assertEqual(2, len(users))
 
     def test_find(self):
         expected = self.usrSer.find(self.user)
