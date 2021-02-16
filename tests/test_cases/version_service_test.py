@@ -50,12 +50,6 @@ class VersionServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             self.versionSer.find(updated_version)
 
-    #  FIXME:
-    #   {
-    #   "_type":"Error",
-    #   "errorIdentifier":"urn:openproject-org:api:v3:errors:BadRequest",
-    #   "message":"Bad request: id is invalid"
-    #   }
     def test_find_schema(self):
         schema = self.versionSer.find_schema()
         self.assertIsNotNone(schema)

@@ -84,12 +84,6 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             self.wpSer.find(wP)
 
-    # FIXME
-    #  {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:NotFound",
-    #  "message":"The requested resource could not be found."
-    #  }
     def test_find_schema(self):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
