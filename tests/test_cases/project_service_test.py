@@ -93,7 +93,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         # TODO: NOTE: status_id filter ([{ "status_id": { "operator": "o", "values": null }}]) dont works
         workpackages = self.proSer.find_work_packages(self.project, 1, 25, [Filter("type_id", "=", ["1", "2"])],
                                                       "status", '[["status", "asc"]]', "true")
-        self.assertEqual(7, len(workpackages))
+        self.assertEqual(6, len(workpackages))
 
     def test_create_work_package(self):
         WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/inputs/work_package.json')

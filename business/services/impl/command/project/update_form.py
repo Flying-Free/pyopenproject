@@ -1,4 +1,3 @@
-import json
 
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
@@ -18,7 +17,7 @@ class UpdateForm(ProjectCommand):
             json_obj = PostRequest(connection=self.connection,
                                    headers={"Content-Type": "application/json"},
                                    context=f"{self.CONTEXT}/{self.project.id}/form",
-                                   json=json.dumps(self.project.__dict__)).execute()
+                                   json=self.project.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating project form {self.project.name}") from re
