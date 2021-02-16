@@ -25,7 +25,7 @@ class MembershipServiceImpl(MembershipService):
         return Update(self.connection, membership).execute()
 
     def delete(self, membership):
-        Delete(self.connection, membership)
+        Delete(self.connection, membership).execute()
 
     def create(self, membership):
         return Create(self.connection, membership).execute()

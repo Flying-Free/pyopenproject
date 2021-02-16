@@ -1,6 +1,7 @@
 import json
 import os
 
+from business.exception.business_error import BusinessError
 from model.membership import Membership
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
@@ -54,8 +55,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
         self.assertEqual(
             membership.__dict__['_links']['principal']["href"],
             membership_to_create.__dict__['_links']['principal']["href"])
-        # TODO AttributeError: 'Membership' object has no attribute 'id'
-        membership_aux = membership
+        membership_aux = Membership(membership.__dict__.copy())
         updated_form = self.membershipSer.update_form(membership_aux)
         self.assertEqual({'_links': {'roles': [{'href': '/api/v3/roles/5', 'title': 'Reader'}]}},
                          updated_form._embedded['payload'])
@@ -65,14 +65,14 @@ class MembershipServiceTestCase(OpenProjectTestCase):
         membership.__dict__['_links']['roles'] = [{"href": '/api/v3/roles/4'}]
         updated_membership = self.membershipSer.update(membership)
         self.assertEqual(
-            membership.__dict__['_links']['project']["href"],
-            updated_membership.__dict__['_links']['project']["href"])
+            membership.__dict__['_embedded']['project'],
+            updated_membership.__dict__['_embedded']['project'])
         self.assertEqual(
-            list(filter(lambda x: x["href"], membership.__dict__['_links']['roles'])),
-            list(filter(lambda x: x["href"], updated_membership.__dict__['_links']['roles'])))
+            membership.__dict__['_embedded']['roles'],
+            updated_membership.__dict__['_embedded']['roles'])
         self.membershipSer.delete(updated_membership)
-        # TODO: Exception
-        self.membershipSer.find(updated_membership)
+        with self.assertRaises(BusinessError):
+            self.membershipSer.find(updated_membership)
 
     def test_membership_schema(self):
         schema = self.membershipSer.membership_schema()
