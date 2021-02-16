@@ -112,13 +112,9 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.proSer.create_work_package_form(self.project, work_package_form))
 
     def test_find_available_assignees(self):
-        # TODO: FIX ME 404
-        user = self.usrSer.create(self.new_user)
         assignees = self.proSer.find_available_assignees(self.project)
         self.assertEqual(1, len(assignees))
-        self.assertIsNone(self.usrSer.delete(user))
 
     def test_find_available_responsibles(self):
-        # TODO: FIX ME 404
         responsibles = self.proSer.find_available_responsibles(self.project)
-        self.assertEqual(0, len(responsibles))
+        self.assertEqual(1, len(responsibles))

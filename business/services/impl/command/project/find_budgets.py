@@ -17,4 +17,4 @@ class FindBudgets(ProjectCommand):
             for budget in json_obj["_embedded"]["elements"]:
                 yield Budget(budget)
         except RequestError as re:
-            raise BusinessError(f"Error finding budget by id: {self.project.name}") from re
+            raise BusinessError(f"Error finding budgets by id: {self.project.name}") from re

@@ -19,4 +19,4 @@ class Update(GridCommand):
                                     json=self.grid.__dict__).execute()
             return Grid(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding grid by id: {self.grid.id}") from re
+            raise BusinessError(f"Error updating grid with id: {self.grid.id}") from re

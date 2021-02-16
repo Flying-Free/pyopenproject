@@ -16,7 +16,7 @@ class FindAvailableResponsibles(ProjectCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection,
-                                  f"{self.CONTEXT}/{self.project.id}/work_packages/available_responsibles").execute()
+                                  f"{self.CONTEXT}/{self.project.id}/available_responsibles").execute()
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield usr.User(tEntry)
         except RequestError as re:

@@ -14,7 +14,7 @@ class FindAvailableAssignees(ProjectCommand):
     def execute(self):
         try:
             json_obj = GetRequest(connection=self.connection,
-                                  context=f"{self.CONTEXT}/{self.project.id}/work_packages/available_assignees") \
+                                  context=f"{self.CONTEXT}/{self.project.id}/available_assignees") \
                 .execute()
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield usr.User(tEntry)
