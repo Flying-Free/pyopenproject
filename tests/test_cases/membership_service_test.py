@@ -54,19 +54,25 @@ class MembershipServiceTestCase(OpenProjectTestCase):
         self.assertEqual(
             membership.__dict__['_links']['principal']["href"],
             membership_to_create.__dict__['_links']['principal']["href"])
-        # FIXME
-        #  {
-        #  "_type":"Error",
-        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:InternalServerError",
-        #  "message":"An internal error has occured. 405 Not Allowed"
-        #  }
-        updated_form = self.membershipSer.update_form(membership)
+        # TODO AttributeError: 'Membership' object has no attribute 'id'
+        membership_aux = membership
+        updated_form = self.membershipSer.update_form(membership_aux)
+        self.assertEqual({'_links': {'roles': [{'href': '/api/v3/roles/5', 'title': 'Reader'}]}},
+                         updated_form._embedded['payload'])
         membership = self.membershipSer.find(membership)
-        updated_membership = self.membershipSer.update(membership)
         self.assertIsNotNone(membership)
-        self.assertIsNotNone(self.membershipSer.delete(membership))
-        membership = self.membershipSer.find(membership)
-        self.assertIsNone(membership)
+        membership.__dict__['_links']['project'] = {"href": projects[0].__dict__["_links"]["self"]["href"]}
+        membership.__dict__['_links']['roles'] = [{"href": '/api/v3/roles/4'}]
+        updated_membership = self.membershipSer.update(membership)
+        self.assertEqual(
+            membership.__dict__['_links']['project']["href"],
+            updated_membership.__dict__['_links']['project']["href"])
+        self.assertEqual(
+            list(filter(lambda x: x["href"], membership.__dict__['_links']['roles'])),
+            list(filter(lambda x: x["href"], updated_membership.__dict__['_links']['roles'])))
+        self.membershipSer.delete(updated_membership)
+        # TODO: Exception
+        self.membershipSer.find(updated_membership)
 
     def test_membership_schema(self):
         schema = self.membershipSer.membership_schema()
