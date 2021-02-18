@@ -1,7 +1,8 @@
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
+import isodate
 from dateutil.relativedelta import relativedelta
 
 from model.form import Form
@@ -42,23 +43,49 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(schema)
 
     def test_operations(self):
-        # Create
+        # project = self.factory.get_project_service().find_all()[-1]
+        # work_package = list(filter(lambda x: x._links["type"]["title"] == "Task",
+        #                            self.factory.get_project_service().find_work_packages(project=project)))[-1]
+        # # TODO Find Activity by Name
+        # # Create with form
+        # form = self.tEntryReq.create_form(
+        #     project=project,
+        #     work_package=work_package,
+        #     activity=1,  # Management
+        #     comment="Test comment",
+        #     spent_on=datetime.now(),
+        #     hours=timedelta(hours=4, minutes=35, seconds=30))        # Create
         time_entry = self.tEntryReq.create(self.time_entry)
         # Update
-        time_entry.hours = "PT5H30M"
+        time_entry.hours = isodate.duration_isoformat(timedelta(hours=5, minutes=30))
         time_entry = self.tEntryReq.update(self.time_entry)
         self.assertNotEqual(self.time_entry, time_entry)
         # Find
-        time_entry_find=self.tEntryReq.find(time_entry)
+        time_entry_find = self.tEntryReq.find(time_entry)
         self.assertEqual(time_entry, time_entry_find)
         # Delete
         time_entry = self.tEntryReq.delete(time_entry)
         self.assertNotEqual(self.time_entry, time_entry)
 
+    # FIXME: Error running request with the URL (HTTPError): 'http://127.0.0.1:8080/api/v3/time_entries/form'.
+    #  {
+    #  "_type":"Error",
+    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+    #  "message":"You are not authorized to access this resource."
+    #  }
     def test_operations_form(self):
+        project = self.factory.get_project_service().find_all()[-1]
+        work_package = list(filter(lambda x: x._links["type"]["title"] == "Task",
+                                   self.factory.get_project_service().find_work_packages(project=project)))[
+            -1]  # TODO Find Activity by Name
         # Create with form
-        time_entry = self.tEntryReq.create_form(self.time_entry_form)
+        form = self.tEntryReq.create_form(
+            project=project,
+            work_package=work_package,
+            activity=1,  # Management
+            comment="Test comment",
+            spent_on=datetime.now(),
+            hours=timedelta(hours=4, minutes=35, seconds=30))
         # Update with form
-        time_entry.hours = "PT8H"
-        time_entry = self.tEntryReq.update_form(time_entry)
-        self.assertNotEqual(self.time_entry, time_entry)
+        form.hours = isodate.duration_isoformat(timedelta(hours=8))  # "PT8H"
+        form = self.tEntryReq.update_form(form)

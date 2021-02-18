@@ -20,11 +20,11 @@ class TimeEntryServiceImpl(TimeEntryService):
     def find_projects(self, time_entry):
         return list(FindAvailableProjects(self.connection).execute())
 
-    def create_form(self, form):
-        return CreateForm(self.connection, form).execute()
+    def create_form(self, project=None, work_package=None, activity=None, comment=None, spent_on=None, hours=None):
+        return CreateForm(self.connection, project, work_package, activity, comment, spent_on, hours).execute()
 
-    def update_form(self, time_entry, form):
-        return UpdateForm(self.connection, time_entry, form).execute()
+    def update_form(self, form):
+        return UpdateForm(self.connection, form).execute()
 
     def find_by_context(self, context):
         return FindByContext(self.connection, context).execute()

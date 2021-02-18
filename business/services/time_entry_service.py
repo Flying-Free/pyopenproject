@@ -31,10 +31,10 @@ class TimeEntryService(AbstractService):
     def find_schema(self): raise NotImplementedError
 
     @abstractmethod
-    def create_form(self, form): raise NotImplementedError
+    def create_form(self, project, work_package, activity, comment, spent_on, hours): raise NotImplementedError
 
     @abstractmethod
-    def update_form(self, time_entry, form): raise NotImplementedError
+    def update_form(self, form): raise NotImplementedError
 
     @abstractmethod
     def find_projects(self, time_entry): raise NotImplementedError
