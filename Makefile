@@ -1,56 +1,33 @@
-VENV_NAME?=venv
-VENV_ACTIVATE=. $(VENV_NAME)\Scripts\activate
-PYTHON=${VENV_NAME}\Scripts\python
+VENV_NAME=venv
+VENV_ACTIVATE=. ./$(VENV_NAME)/Scripts/activate
+PYTHON=./${VENV_NAME}/Scripts/python.exe
 
 .DEFAULT_GOAL=help
 
 environment: requirements.txt
-	
-	python -m venv .\venv
-
-	.\venv\Scripts\activate && \
-	pip install -U setuptools \
-	pypiwin32 \
-	pywin32 && \
+	python -m ${VENV_NAME} ./${VENV_NAME} && \
+	${VENV_ACTIVATE} && \
 	pip install -Ur requirements.txt
 
-compile: clean environment
-	
-clean: clean-pyc clean-build
-	- if exist ".idea\" rmdir /q /s .idea
-	- if exist "venv" rmdir /Q /S venv
+test: environment
+	- cd ./tests/infra && \
+	 docker-compose up -d && printf 'WAITING FOR APIv3' && \
+	 until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do \
+	 	printf '.'; \
+	 	sleep 5; \
+	 done && printf '\n'
 
-clean-pyc:
-	- del /s /q *.pyc
-	- del /s /q *.pyo
-	- powershell.exe "get-childitem -Include __pycache__ -Recurse -force | Remove-Item -Force -Recurse"
+	- ${PYTHON} -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
 
-clean-build:
-	- if exist "build" rmdir /s /q "build"
-	- if exist "dist" rmdir /s / q "dist"
-	- del *.egg-info
-	- del *.spec
+	- cd ./tests/infra && \
+	  docker-compose down --volumes
 
-test:
-	- .\venv\Scripts\python.exe ./tests/infra/reset_infra.py
-	- .\venv\Scripts\python.exe -m unittest discover -s ./tests/test_cases -t tests\test_cases -p *_test.py
-
-delivery: clean environment
-    #pip install of test required dependencies
-    - pip install -U
-    #Generate lib
 help:
-	@echo "    clean-pyc"
-	@echo "        Remove python artifacts."
-	@echo "    clean-build"
-	@echo "        Remove build artifacts."
 	@echo "    clean"
 	@echo "        Remove all artifacts."	
-	@echo '    compile'
-	@echo '        Compile the project to perform a new setup'
-	@echo '    venv'
-	@echo '        Build the project virtual environment using python environments'
+	@echo '    build'
+	@echo '        Build the project package'
 	@echo '    test'
 	@echo '        Run tests '
 
-.PHONY: clean venv help compile
+.PHONY: clean help test
