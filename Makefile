@@ -9,18 +9,24 @@ environment: requirements.txt
 	${VENV_ACTIVATE} && \
 	pip install -Ur requirements.txt
 
-test: environment
-	- cd ./tests/infra && \
-	 docker-compose up -d && printf 'WAITING FOR APIv3' && \
-	 until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do \
-	 	printf '.'; \
-	 	sleep 5; \
-	 done && printf '\n'
 
-	- ${PYTHON} -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+test_env_up:
+	cd ./tests/infra && \
+	docker-compose up -d && printf 'WAITING FOR APIv3' && \
+	until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do \
+		printf '.'; \
+		sleep 5; \
+	done && printf '\n'
 
-	- cd ./tests/infra && \
-	  docker-compose down --volumes
+
+pytest:
+	${PYTHON} -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+
+test_env_down:
+	cd ./tests/infra && \
+	docker-compose down --volumes
+
+test: environment test_env_up pytest test_env_down
 
 help:
 	@echo "    clean"
