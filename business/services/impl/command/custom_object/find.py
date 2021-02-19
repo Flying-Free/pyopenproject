@@ -13,7 +13,8 @@ class Find(CustomObjectCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.custom_object._links['self']['href']}").execute()
+            json_obj = GetRequest(self.connection, f"{self.custom_object.__dict__['_links']['self']['href']}").execute()
             return CustomObject(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding custom_object: {self.custom_object._links['self']['href']}") from re
+            raise BusinessError(f"Error finding custom_object:"
+                                f" {self.custom_object.__dict__['_links']['self']['href']}") from re

@@ -28,6 +28,7 @@ env_down:
 	docker-compose down --volumes
 
 test: environment env_up pytest env_down
+	rm -rf ./venv
 
 build: test
 	docker build .

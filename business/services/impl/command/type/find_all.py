@@ -9,7 +9,7 @@ from model.type import Type
 class FindAll(TypeCommand):
 
     def __init__(self, connection):
-        self.connection = connection
+        super().__init__(connection)
 
     def execute(self):
         try:

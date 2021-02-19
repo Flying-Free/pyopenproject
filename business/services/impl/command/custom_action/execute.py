@@ -14,9 +14,9 @@ class Execute(CustomActionCommand):
     def execute(self):
         try:
             json_obj = PostRequest(connection=self.connection,
-                                   context=f"{self.custom_action._links['self']['href']}/execute",
+                                   context=f"{self.custom_action.__dict__['_links']['self']['href']}/execute",
                                    json=self.custom_action.__dict__).execute()
             return CustomAction(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error executing custom_action:"
-                                f" {self.custom_action._links['self']['href']}/execute") from re
+                                f" {self.custom_action.__dict__['_links']['self']['href']}/execute") from re

@@ -13,7 +13,4 @@ class PreviewingService(AbstractService):
     def from_markdown(self, text, context=None): raise NotImplementedError
 
     @abstractmethod
-    def from_markdown_by_context(self, context): raise NotImplementedError
-
-    @abstractmethod
     def from_plain(self, text): raise NotImplementedError

@@ -13,7 +13,8 @@ class Find(CustomActionCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, self.custom_action._links["self"]["href"]).execute()
+            json_obj = GetRequest(self.connection, self.custom_action.__dict__['_links']["self"]["href"]).execute()
             return CustomAction(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding custom_action: {self.custom_action._links['self']['href']}") from re
+            raise BusinessError(f"Error finding custom_action: "
+                                f"{self.custom_action.__dict__['_links']['self']['href']}") from re

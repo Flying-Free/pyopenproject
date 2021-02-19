@@ -13,7 +13,7 @@ class FindAll(AttachmentCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
-            for attachment in json_obj._embedded.elements:
+            for attachment in json_obj["_embedded"]["elements"]:
                 yield att.Attachment(attachment)
         except RequestError as re:
             raise BusinessError(f"Error finding all attachments") from re
