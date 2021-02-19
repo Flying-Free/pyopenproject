@@ -4,7 +4,6 @@ import unittest
 import yaml
 
 from business.service_factory import ServiceFactory
-from tests.infra.reset_infra import TestInfrastructure
 
 
 class OpenProjectTestCase(unittest.TestCase):
