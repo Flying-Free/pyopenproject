@@ -18,7 +18,7 @@ class Request(Command):
         self.data = data
 
     def execute(self):
-        global response, response, response, response
+        global response
         try:
             response = self._execute_request()
             response.raise_for_status()
