@@ -13,7 +13,8 @@ class Star(QueryCommand):
 
     def execute(self):
         try:
-            json_obj = PatchRequest(self.connection, f"{self.CONTEXT}/{self.query.id}/star").execute()
+            json_obj = PatchRequest(connection=self.connection,
+                                    context=f"{self.CONTEXT}/{self.query.id}/star").execute()
             return Query(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error to star: {self.query.id}") from re

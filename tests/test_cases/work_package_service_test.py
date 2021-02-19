@@ -89,7 +89,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         #  Not found schema for this work package
         with self.assertRaises(BusinessError):
-            schema = self.wpSer.find_schema(work_package)
+            self.wpSer.find_schema(work_package)
         # schemas = list(map(lambda x: x.__dict__, self.wpSer.find_all_schemas()))
         # self.assertIn(schema.__dict__, schemas)
 
