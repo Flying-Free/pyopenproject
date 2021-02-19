@@ -16,4 +16,4 @@ class FindAvailableProjects(TimeEntryCommand):
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield p.Project(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding all projects by context: {self.context}") from re
+            raise BusinessError(f"Error finding all available projects") from re

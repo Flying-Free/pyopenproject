@@ -16,4 +16,4 @@ class FromMarkdownByContext(PreviewingCommand):
                                context=f"{self.CONTEXT}/markdown?{self.context}",
                                headers={'Content-Type': 'text/plain'}).execute()
         except RequestError as re:
-            raise BusinessError(f"Error transform text to markdown: {self.text}") from re
+            raise BusinessError(f"Error transform text to markdown: {self.CONTEXT}/markdown?{self.context}") from re

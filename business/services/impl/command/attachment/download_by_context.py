@@ -25,4 +25,4 @@ class DownloadByContext(AttachmentCommand):
 
             return file_content
         except RequestError as re:
-            raise BusinessError(f"Error downloading attachment by context: {self.context}") from re
+            raise BusinessError(f"Error downloading attachment by context: {self.CONTEXT}") from re

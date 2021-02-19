@@ -16,4 +16,4 @@ class Find(RootCommand):
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
             return Root(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding root: {self.root}") from re
+            raise BusinessError(f"Error finding root") from re

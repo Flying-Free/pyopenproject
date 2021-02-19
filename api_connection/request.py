@@ -2,6 +2,7 @@ from abc import abstractmethod
 from json.decoder import JSONDecodeError
 
 import requests
+
 from api_connection.command import Command
 from api_connection.exceptions.request_exception import RequestError
 
@@ -17,6 +18,7 @@ class Request(Command):
         self.data = data
 
     def execute(self):
+        global response, response, response, response
         try:
             response = self._execute_request()
             response.raise_for_status()

@@ -14,4 +14,4 @@ class Schema(QueryCommand):
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema").execute()
             return Schema(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding schema: {self.schema}") from re
+            raise BusinessError(f"Error finding schema") from re
