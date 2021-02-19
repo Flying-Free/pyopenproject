@@ -32,9 +32,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install flake8 unittest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+               python -m pip install --upgrade pip
+          #         unittest is a standard module, which you don't need to install
+               pip install flake8
+               if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
