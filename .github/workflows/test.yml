@@ -19,21 +19,38 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: [ 2.7, 3.5, 3.6, 3.7, 3.8, 3.9 ]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
-
-      #     Install Make
-      - name: Install Make
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
         run: |
-          sudo apt install build-essential
-          sudo apt -y install make
-
-      #     Run make test
-      - name: Run tests
-        run: make test
+          python -m pip install --upgrade pip
+          pip install flake8 unittest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Lint with flake8
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Bring test environment up
+        run: |
+          docker-compose up -d
+          printf 'WAITING FOR APIv3'
+          until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do
+              printf '.';
+              sleep 5;
+          done
+          printf '\n'
+      - name: Test with unittest
+        run: python -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+      - name: Bring test environment down
+        run: docker-compose down --volumes
