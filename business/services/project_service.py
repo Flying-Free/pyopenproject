@@ -28,10 +28,10 @@ class ProjectService(AbstractService):
     def find_schema(self): raise NotImplementedError
 
     @abstractmethod
-    def create_form(self, project): raise NotImplementedError
+    def create_form(self, form): raise NotImplementedError
 
     @abstractmethod
-    def update_form(self, project): raise NotImplementedError
+    def update_form(self, form): raise NotImplementedError
 
     @abstractmethod
     def find_parents(self, filters, of, sort_by): raise NotImplementedError
@@ -50,8 +50,8 @@ class ProjectService(AbstractService):
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def find_work_packages(self, project, offset=None, page_size=None, filters=None, group_by=None, sort_by=None,
-                           show_sums=None): raise NotImplementedError
+    def find_work_packages(self, project, offset, page_size, filters, group_by, sort_by, show_sums):
+        raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod

@@ -44,8 +44,8 @@ class ProjectServiceImpl(ProjectService):
     def create_form(self, form):
         return CreateForm(self.connection, form).execute()
 
-    def update_form(self, project):
-        return UpdateForm(self.connection, project).execute()
+    def update_form(self, form):
+        return UpdateForm(self.connection, form).execute()
 
     def find_parents(self, filters=None, of=None, sort_by=None):
         return list(FindParents(self.connection, filters, of, sort_by).execute())

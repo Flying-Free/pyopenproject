@@ -19,7 +19,7 @@ class TimeEntryService(AbstractService):
     def find(self, time_entry): raise NotImplementedError
 
     @abstractmethod
-    def delete(self, identifier): raise NotImplementedError
+    def delete(self, time_entry): raise NotImplementedError
 
     @abstractmethod
     def create(self, time_entry): raise NotImplementedError

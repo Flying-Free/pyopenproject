@@ -16,4 +16,4 @@ class RoleService(AbstractService):
     def find(self, role): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, role): raise NotImplementedError
+    def find_all(self, filters): raise NotImplementedError
