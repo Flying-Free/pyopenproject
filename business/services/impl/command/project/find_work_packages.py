@@ -32,7 +32,7 @@ class FindWorkPackages(ProjectCommand):
                                               URLParameter("sortBy", self.sort_by),
                                               URLParameter("showSums", self.show_sums),
                                           ])
-                                          )).execute()
+                                      )).execute()
             for wP in json_obj["_embedded"]["elements"]:
                 yield wp.WorkPackage(wP)
         except RequestError as re:

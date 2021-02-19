@@ -1,4 +1,3 @@
-
 import model.work_package as wp
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
@@ -21,8 +20,8 @@ class CreateWorkPackage(ProjectCommand):
             json_obj = PostRequest(connection=self.connection,
                                    headers={"Content-Type": "application/json"},
                                    context=str(URL(f"{self.CONTEXT}/{self.project.id}/work_packages",
-                                          [URLParameter("notify", self.notify)])
-                                          ),
+                                                   [URLParameter("notify", self.notify)])
+                                               ),
                                    json=self.work_package.__dict__).execute()
             return wp.WorkPackage(json_obj)
         except RequestError as re:

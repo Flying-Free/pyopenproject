@@ -116,6 +116,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         form = self.wpSer.create_form()
         self.assertEqual(self.work_package_form.__dict__["_embedded"]["payload"], form.__dict__["_embedded"]["payload"])
 
+
     def test_create_relation(self):
         work_packages = self.wpSer.find_all()
         work_packages = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))
@@ -138,8 +139,9 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual(2, len(relations))
 
     # TODO: Not description enough to develop an easy gateway for this endpoint
-    # def test_create_relation_form(self):
-    #     form = self.wpSer.create_relation_form()
+    def test_create_relation_form(self):
+        # form = self.wpSer.create_relation_form()
+        raise NotImplementedError
 
     def test_find_watchers(self):
         work_packages = self.wpSer.find_all()

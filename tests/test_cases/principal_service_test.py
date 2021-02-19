@@ -23,5 +23,5 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
         # Filter member cant be tested with default user
         users = self.principalSer.find_all([Filter("type", "=", ["User"])])
         self.assertEqual("User", users[0]._type)
-        #groups = self.principalSer.find_all([Filter("member", "=", ["Scrum project"])])
-        #self.assertEqual("Group", groups[0]._type)
+        # groups = self.principalSer.find_all([Filter("member", "=", ["Scrum project"])])
+        # self.assertEqual("Group", groups[0]._type)

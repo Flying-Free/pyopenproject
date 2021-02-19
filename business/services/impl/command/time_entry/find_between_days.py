@@ -17,10 +17,10 @@ class FindBetweenDays(TimeEntryCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              URLParameter("startDate", self.start_date),
-                                              URLParameter("endDate", self.end_date)
-                                          ]))).execute()
+                                                           [
+                                                               URLParameter("startDate", self.start_date),
+                                                               URLParameter("endDate", self.end_date)
+                                                           ]))).execute()
 
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield te.TimeEntry(tEntry)

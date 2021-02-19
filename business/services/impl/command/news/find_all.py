@@ -21,12 +21,12 @@ class FindAll(NewsCommand):
         try:
             json_obj = GetRequest(connection=self.connection,
                                   context=str(URL(f"{self.CONTEXT}",
-                                          [
-                                              URLParameter("offset", self.offset),
-                                              URLParameter("pageSize", self.page_size),
-                                              Filters("filters", self.filters),
-                                              URLParameter("sortBy", self.sort_by)
-                                          ]))).execute()
+                                                  [
+                                                      URLParameter("offset", self.offset),
+                                                      URLParameter("pageSize", self.page_size),
+                                                      Filters("filters", self.filters),
+                                                      URLParameter("sortBy", self.sort_by)
+                                                  ]))).execute()
 
             for news in json_obj['_embedded']['elements']:
                 yield New(news)

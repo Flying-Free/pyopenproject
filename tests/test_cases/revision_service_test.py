@@ -20,4 +20,4 @@ class RevisionServiceTestCase(OpenProjectTestCase):
             r = Revision({"id": i})
             # There's nt revisions available
             with self.assertRaises(BusinessError):
-                r = self.revisionSer.find(r)
+                self.revisionSer.find(r)

@@ -13,4 +13,4 @@ class NewsService(AbstractService):
     def find(self, news): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset, pageSize, filters, sortBy): raise NotImplementedError
+    def find_all(self, offset, page_size, filters, sort_by): raise NotImplementedError
