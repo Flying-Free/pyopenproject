@@ -1,4 +1,3 @@
-import json
 
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
@@ -18,7 +17,7 @@ class CreateRelationForm(WorkPackageCommand):
         try:
             json_obj = PostRequest(connection=self.connection,
                                    context=f"{self.CONTEXT}/{self.work_package.id}/form",
-                                   json=json.dumps(self.relation.__dict__)).execute()
+                                   json=self.relation.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating relation for work package {self.work_package.id}") from re
+            raise BusinessError(f"Error creating relation form for work package {self.work_package.id}") from re

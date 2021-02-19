@@ -1,10 +1,9 @@
-import json
 
+import model.time_entry as te
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.patch_request import PatchRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.time_entry.time_entry_command import TimeEntryCommand
-import model.time_entry as te
 
 
 class Update(TimeEntryCommand):
@@ -17,7 +16,7 @@ class Update(TimeEntryCommand):
         try:
             json_obj = PatchRequest(connection=self.connection,
                                     context=f"{self.CONTEXT}/{self.time_entry.id}",
-                                    json=json.dumps(self.time_entry.__dict__)).execute()
+                                    json=self.time_entry.__dict__).execute()
             return te.TimeEntry(json_obj)
 
         except RequestError as re:

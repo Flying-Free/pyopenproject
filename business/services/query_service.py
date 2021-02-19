@@ -36,9 +36,6 @@ class QueryService(AbstractService):
     def create(self, query): raise NotImplementedError
 
     @abstractmethod
-    def update(self, query): raise NotImplementedError
-
-    @abstractmethod
     def create_form(self, form): raise NotImplementedError
 
     @abstractmethod
