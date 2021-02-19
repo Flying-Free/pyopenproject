@@ -10,7 +10,7 @@ class VersionServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        DATA = os.path.join(self.TEST_CASES, '../data/version.json')
+        DATA = os.path.join(self.TEST_CASES, '../data/version_openproject.json')
         self.versionSer = self.factory.get_version_service()
         with open(DATA) as f:
             self.version = Version(json.load(f))

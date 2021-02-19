@@ -27,7 +27,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
         self.assertEqual(self.relation.reverseType, s.reverseType)
 
     def test_operations(self):
-        # Find workpackages
+        # Find work packages
         work_packages = self.factory.get_work_package_service().find_all()
         work_packages = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))
         f = work_packages[0]
@@ -60,7 +60,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
         # Find all relations without filters after create
         relations = self.relationSer.find_all()
         self.assertEqual(8, len(relations))
-        # Find all with filters TODO:NOTE: type, name sortBy dont work
+        # Find all with filters TODO: type, name sortBy don't work
         relations = self.relationSer.find_all([Filter("involved", "=", ["42"])],
                                               '[["id", "asc"]]')
         self.assertEqual(0, len(relations))

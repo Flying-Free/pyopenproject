@@ -3,7 +3,6 @@ from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.project.project_command import ProjectCommand
-from util.Filter import Filter
 from util.Filters import Filters
 from util.URL import URL
 from util.URLParameter import URLParameter
@@ -37,4 +36,4 @@ class FindWorkPackages(ProjectCommand):
             for wP in json_obj["_embedded"]["elements"]:
                 yield wp.WorkPackage(wP)
         except RequestError as re:
-            raise BusinessError(f"Error finding workpackages for project: {self.project.name}") from re
+            raise BusinessError(f"Error finding work packages for project: {self.project.name}") from re

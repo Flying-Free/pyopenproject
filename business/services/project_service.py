@@ -50,8 +50,8 @@ class ProjectService(AbstractService):
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def find_work_packages(self, project, offset, page_size, filters,
-                           sort_by, group_by, show_sums, notify): raise NotImplementedError
+    def find_work_packages(self, project, offset=None, page_size=None, filters=None, group_by=None, sort_by=None,
+                           show_sums=None): raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
@@ -59,7 +59,7 @@ class ProjectService(AbstractService):
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def create_work_package_form(self, project, notify, form): raise NotImplementedError
+    def create_work_package_form(self, project, form): raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod

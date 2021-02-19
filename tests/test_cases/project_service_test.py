@@ -51,7 +51,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         current.name = "New project name changed"
         project = self.proSer.update(current)
         self.assertEqual("New project name changed", project.name)
-        # Delete TODO: FIX ME Permision denied
+        # FIXME Permission denied
         self.proSer.delete(project)
 
     def test_find_schema(self):
@@ -72,7 +72,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         with self.assertRaises(BusinessError):
             self.proSer.find_parents([Filter("ancestor", "=", ["1"])], 123, '[["id", "asc"]]')
         # Parameters with None
-        parents=self.proSer.find_parents(filters=[Filter("ancestor", "=", ["1"])])
+        parents = self.proSer.find_parents(filters=[Filter("ancestor", "=", ["1"])])
         self.assertEqual(0, len(parents))
 
     def test_find_versions(self):
@@ -84,21 +84,21 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual(6, len(types))
 
     def test_find_budgets(self):
-        #TODO: FIX ME: v3:errors:MissingPermission","message":"You are not authorized to access this resource."
+        # TODO: FIX ME: v3:errors:MissingPermission","message":"You are not authorized to access this resource."
         budgets = self.proSer.find_budgets(self.project)
         self.assertEqual(0, len(budgets))
 
     def test_find_work_packages(self):
-        # TODO: NOTE: status_id filter ([{ "status_id": { "operator": "o", "values": null }}]) dont works
-        workpackages = self.proSer.find_work_packages(self.project, 1, 25, [Filter("type_id", "=", ["1", "2"])],
-                                                      "status", '[["status", "asc"]]', "true")
-        self.assertEqual(6, len(workpackages))
+        # TODO: NOTE: status_id filter ([{ "status_id": { "operator": "o", "values": null }}]) don't works
+        work_packages = self.proSer.find_work_packages(self.project, 1, 25, [Filter("type_id", "=", ["1", "2"])],
+                                                       "status", '[["status", "asc"]]', "true")
+        self.assertEqual(6, len(work_packages))
 
     def test_create_work_package(self):
         WORK_PACKAGE = os.path.join(self.TEST_CASES, '../data/inputs/work_package.json')
         with open(WORK_PACKAGE) as f:
             work_package = WorkPackage(json.load(f))
-        wp=self.proSer.create_work_package(self.project, work_package)
+        wp = self.proSer.create_work_package(self.project, work_package)
         self.assertIsNotNone(wp)
         self.assertEqual(wp.subject, 'Lorem')
         self.assertIsNone(self.wpSer.delete(wp))

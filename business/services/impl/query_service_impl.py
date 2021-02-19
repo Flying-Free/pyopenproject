@@ -13,11 +13,11 @@ from business.services.query_service import QueryService
 
 class QueryServiceImpl(QueryService):
 
-    def find_by_context(self, context):
-        raise FindByContext(context).execute()
-
     def __init__(self, connection):
         super().__init__(connection)
+
+    def find_by_context(self, context):
+        return FindByContext(connection=self.connection, context=context).execute()
 
     def update(self, query):
         return Update(self.connection, query).execute()

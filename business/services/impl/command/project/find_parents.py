@@ -1,5 +1,3 @@
-import json
-
 import model.project as p
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
@@ -32,4 +30,4 @@ class FindParents(ProjectCommand):
                 yield p.Project(tEntry)
 
         except RequestError as re:
-            raise BusinessError(f"Error finding parent porject candidates") from re
+            raise BusinessError(f"Error finding parent project candidates") from re

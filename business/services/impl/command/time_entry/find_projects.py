@@ -8,7 +8,7 @@ from business.services.impl.command.time_entry.time_entry_command import TimeEnt
 class FindAvailableProjects(TimeEntryCommand):
 
     def __init__(self, connection):
-        self.connection = connection
+        super().__init__(connection)
 
     def execute(self):
         try:
