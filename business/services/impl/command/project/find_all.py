@@ -17,10 +17,10 @@ class FindAll(ProjectCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              Filters("filters", self.filters),
-                                              URLParameter("sortBy", self.sort_by)
-                                          ]))).execute()
+                                                           [
+                                                               Filters("filters", self.filters),
+                                                               URLParameter("sortBy", self.sort_by)
+                                                           ]))).execute()
 
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield p.Project(tEntry)

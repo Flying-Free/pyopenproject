@@ -8,7 +8,7 @@ from model.configuration import Configuration
 class Find(ConfigurationCommand):
 
     def __init__(self, connection):
-                super().__init__(connection)
+        super().__init__(connection)
 
     def execute(self):
         try:

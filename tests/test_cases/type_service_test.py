@@ -19,6 +19,6 @@ class TypeServiceTestCase(OpenProjectTestCase):
         self.assertEqual(7, len(types))
 
     def test_find(self):
-       t=self.typeSer.find(self.type)
-       self.assertIsNotNone(t)
-       self.assertEqual(t.name, 'Task')
+        t = self.typeSer.find(self.type)
+        self.assertIsNotNone(t)
+        self.assertEqual(t.name, 'Task')

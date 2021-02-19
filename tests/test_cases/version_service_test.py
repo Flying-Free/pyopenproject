@@ -77,7 +77,7 @@ class VersionServiceTestCase(OpenProjectTestCase):
         self.assertEqual("2018-01-01", form._embedded["payload"]["startDate"])
         self.assertEqual('["closed"]', form._embedded["payload"]["status"])
         self.assertEqual("system", form._embedded["payload"]["sharing"])
-        form = self.versionSer.update_form(legacy_form)
+        self.versionSer.update_form(legacy_form)
 
     def test_find_projects(self):
         projects = self.versionSer.find_projects()

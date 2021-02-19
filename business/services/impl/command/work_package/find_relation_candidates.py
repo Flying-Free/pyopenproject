@@ -9,13 +9,13 @@ from util.URLParameter import URLParameter
 
 
 class FindRelationCandidates(WorkPackageCommand):
-    def __init__(self, connection, work_package, filters, query, type, pageSize):
+    def __init__(self, connection, work_package, filters, query, type, page_size):
         super().__init__(connection)
         self.work_package = work_package
         self.filters = filters
         self.query = query
         self.type = type
-        self.pageSize = pageSize
+        self.pageSize = page_size
 
     def execute(self):
         try:

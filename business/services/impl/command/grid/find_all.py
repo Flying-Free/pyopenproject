@@ -21,12 +21,12 @@ class FindAll(GridCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              URLParameter("offset", self.offset),
-                                              URLParameter("pageSize", self.page_size),
-                                              Filters("filters", self.filters),
-                                              URLParameter("sortBy", self.sort_by)
-                                          ]))).execute()
+                                                           [
+                                                               URLParameter("offset", self.offset),
+                                                               URLParameter("pageSize", self.page_size),
+                                                               Filters("filters", self.filters),
+                                                               URLParameter("sortBy", self.sort_by)
+                                                           ]))).execute()
 
             for grid in json_obj["_embedded"]["elements"]:
                 yield Grid(grid)

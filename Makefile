@@ -7,7 +7,8 @@ PYTHON=./${VENV_NAME}/Scripts/python.exe
 environment: requirements.txt
 	python -m ${VENV_NAME} ./${VENV_NAME} && \
 	${VENV_ACTIVATE} && \
-	pip install -Ur requirements.txt
+    ${PYTHON} -m pip install --upgrade pip && \
+	${PYTHON} -m pip install -Ur requirements.txt
 
 env_reset: env_down env_up
 

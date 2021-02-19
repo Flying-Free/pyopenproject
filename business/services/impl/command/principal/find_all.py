@@ -16,9 +16,9 @@ class FindAll(PrincipalCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              Filters("filters", self.filters)
-                                          ]))).execute()
+                                                           [
+                                                               Filters("filters", self.filters)
+                                                           ]))).execute()
 
             for principal in json_obj["_embedded"]["elements"]:
                 yield p.Principal(principal)

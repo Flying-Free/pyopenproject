@@ -1,9 +1,8 @@
-
+import model.version as v
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.version.version_command import VersionCommand
-import model.version as v
 from util.Filters import Filters
 from util.URL import URL
 
@@ -15,10 +14,10 @@ class FindAll(VersionCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,  str(URL(f"{self.CONTEXT}",
-                                          [
-                                              Filters("filters", self.filters)
-                                          ]))).execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                                           [
+                                                               Filters("filters", self.filters)
+                                                           ]))).execute()
 
             for version in json_obj["_embedded"]["elements"]:
                 yield v.Version(version)

@@ -16,9 +16,9 @@ class FindAll(MembershipCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              Filters("filters", self.filters)
-                                          ]))).execute()
+                                                           [
+                                                               Filters("filters", self.filters)
+                                                           ]))).execute()
             for membership in json_obj['_embedded']['elements']:
                 yield mem.Membership(membership)
         except RequestError as re:

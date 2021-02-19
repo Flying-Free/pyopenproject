@@ -31,23 +31,25 @@ class Find(QueryCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,  str(URL(f"{self.CONTEXT}/{self.activity.id}",
-                                          [
-                                              URLParameter("offset", self.offset),
-                                              URLParameter("pageSize", self.page_size),
-                                              Filters("filters", self.filters),
-                                              URLParameter("columns", self.columns),
-                                              URLParameter("sortBy", self.sort_by),
-                                              URLParameter("groupBy", self.group_by),
-                                              URLParameter("showSums", self.show_sums),
-                                              URLParameter("timelineVisible", self.timeline_visible),
-                                              URLParameter("timelineLabels", self.timeline_labels),
-                                              URLParameter("timelineZoomLevel", self.timeline_zoom_level),
-                                              URLParameter("highlightingMode", self.highlighting_mode),
-                                              URLParameter("highlightedAttributes", self.highlighted_attributes),
-                                              URLParameter("showHierarchies", self.show_hierarchies)
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}/{self.activity.id}",
+                                                           [
+                                                               URLParameter("offset", self.offset),
+                                                               URLParameter("pageSize", self.page_size),
+                                                               Filters("filters", self.filters),
+                                                               URLParameter("columns", self.columns),
+                                                               URLParameter("sortBy", self.sort_by),
+                                                               URLParameter("groupBy", self.group_by),
+                                                               URLParameter("showSums", self.show_sums),
+                                                               URLParameter("timelineVisible", self.timeline_visible),
+                                                               URLParameter("timelineLabels", self.timeline_labels),
+                                                               URLParameter("timelineZoomLevel",
+                                                                            self.timeline_zoom_level),
+                                                               URLParameter("highlightingMode", self.highlighting_mode),
+                                                               URLParameter("highlightedAttributes",
+                                                                            self.highlighted_attributes),
+                                                               URLParameter("showHierarchies", self.show_hierarchies)
 
-                                          ]))).execute()
+                                                           ]))).execute()
 
             return Query(json_obj)
         except RequestError as re:

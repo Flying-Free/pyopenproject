@@ -20,15 +20,15 @@ class FindAll(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection,  str(URL(f"{self.CONTEXT}",
-                                          [
-                                              URLParameter("offset", self.offset),
-                                              URLParameter("pageSize", self.page_size),
-                                              Filters("filters", self.filters),
-                                              URLParameter("sortBy", self.sort_by),
-                                              URLParameter("groupBy", self.group_by),
-                                              URLParameter("showSums", self.show_sums)
-                                          ]))).execute()
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                                           [
+                                                               URLParameter("offset", self.offset),
+                                                               URLParameter("pageSize", self.page_size),
+                                                               Filters("filters", self.filters),
+                                                               URLParameter("sortBy", self.sort_by),
+                                                               URLParameter("groupBy", self.group_by),
+                                                               URLParameter("showSums", self.show_sums)
+                                                           ]))).execute()
 
             for work_package in json_obj["_embedded"]["elements"]:
                 yield wp.WorkPackage(work_package)

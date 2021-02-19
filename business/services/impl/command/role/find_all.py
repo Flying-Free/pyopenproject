@@ -16,9 +16,9 @@ class FindAll(RoleCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
-                                          [
-                                              Filters("filters", self.filters)
-                                          ]))).execute()
+                                                           [
+                                                               Filters("filters", self.filters)
+                                                           ]))).execute()
 
             for role in json_obj["_embedded"]["elements"]:
                 yield Role(role)
