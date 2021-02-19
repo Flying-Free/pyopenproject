@@ -12,7 +12,7 @@ class OpenProjectTestCase(unittest.TestCase):
 
     def setUp(self):
         with open(self.CONFIG, "r") as ymlfile:
-            cfg = yaml.safe_load(ymlfile, Loader=yaml.FullLoader)
+            cfg = yaml.safe_load(ymlfile)
         url_base = cfg["api_conn"]["host"] + ":" + str(cfg["api_conn"]["port"])
         api_user = cfg["api_conn"]["user"]
         api_key = cfg["api_conn"]["password"]
