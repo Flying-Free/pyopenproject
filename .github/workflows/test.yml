@@ -30,8 +30,8 @@ jobs:
         run: |
           sudo apt-get install build-essential
           sudo apt-get -y install make
-          pwd
-          ls -lsa
+          echo $(pwd)
+          echo $(ls -lsa)
 
       # Runs a set of commands using the runners shell
       - name: Run tests
