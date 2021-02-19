@@ -2,15 +2,16 @@ VENV_NAME=venv
 VENV_ACTIVATE=. ./$(VENV_NAME)/Scripts/activate
 PYTHON=./${VENV_NAME}/Scripts/python.exe
 
-.DEFAULT_GOAL=help
+.DEFAULT_GOAL=build
 
 environment: requirements.txt
 	python -m ${VENV_NAME} ./${VENV_NAME} && \
 	${VENV_ACTIVATE} && \
 	pip install -Ur requirements.txt
 
+env_reset: env_down env_up
 
-test_env_up:
+env_up:
 	cd ./tests/infra && \
 	docker-compose up -d && printf 'WAITING FOR APIv3' && \
 	until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do \
@@ -22,11 +23,15 @@ test_env_up:
 pytest:
 	${PYTHON} -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
 
-test_env_down:
+env_down:
 	cd ./tests/infra && \
 	docker-compose down --volumes
 
-test: environment test_env_up pytest test_env_down
+test: environment env_up pytest env_down
+
+build: test
+	docker build .
+
 
 help:
 	@echo "    clean"
@@ -36,4 +41,4 @@ help:
 	@echo '    test'
 	@echo '        Run tests '
 
-.PHONY: clean help test
+.PHONY: clean help test test
