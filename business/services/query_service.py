@@ -13,9 +13,9 @@ class QueryService(AbstractService):
     def find_by_context(self, context): raise NotImplementedError
 
     @abstractmethod
-    def find(self, query, offset, pageSize, filters, columns, sortBy, groupBy, showSums, timelineVisible,
-             timelineLabels, timelineZoomLevel, highlightingMode,
-             highlightedAttributes, showHierarchies): raise NotImplementedError
+    def find(self, query, offset, page_size, filters, columns, sort_by, group_by,
+             show_sums, timeline_visible, timeline_labels, timeline_zoom_level,
+             highlighting_mode, highlighted_attributes, show_hierarchies): raise NotImplementedError
 
     @abstractmethod
     def update(self, query): raise NotImplementedError
@@ -39,7 +39,7 @@ class QueryService(AbstractService):
     def update(self, query): raise NotImplementedError
 
     @abstractmethod
-    def create_form(self, query): raise NotImplementedError
+    def create_form(self, form): raise NotImplementedError
 
     @abstractmethod
     def schema(self): raise NotImplementedError

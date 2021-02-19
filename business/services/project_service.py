@@ -55,7 +55,7 @@ class ProjectService(AbstractService):
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def create_work_package(self, project, notify, work_package): raise NotImplementedError
+    def create_work_package(self, project, work_package, notify): raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
