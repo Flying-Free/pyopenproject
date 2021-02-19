@@ -1,4 +1,3 @@
-import json
 
 import model.user as usr
 from api_connection.exceptions.request_exception import RequestError

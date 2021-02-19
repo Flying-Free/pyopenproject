@@ -1,4 +1,3 @@
-import json
 
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
@@ -17,6 +16,6 @@ class AddAttachment(WikiPageCommand):
         try:
             PostRequest(connection=self.connection,
                         context=f"{self.CONTEXT}/{self.work_package.id}/attachments",
-                        json=json.dumps(self.attachment.__dict__)).execute()
+                        json=self.attachment.__dict__).execute()
         except RequestError as re:
             raise BusinessError(f"Error adding new attachment: {self.attachment.title}") from re

@@ -1,10 +1,9 @@
-import json
 
+import model.version as v
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.post_request import PostRequest
 from business.exception.business_error import BusinessError
 from business.services.impl.command.version.version_command import VersionCommand
-import model.version as v
 
 
 class Create(VersionCommand):
