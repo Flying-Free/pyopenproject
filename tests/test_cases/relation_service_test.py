@@ -37,7 +37,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
         self.assertEqual(7, len(relations))
         # Create relation
         relation = self.factory.get_work_package_service().create_relation(
-            type="follows",
+            relation_type="follows",
             work_package_from=f,
             work_package_to=t,
             description="Demo relation created using the API")
@@ -86,7 +86,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
         f = work_packages[0]
         t = work_packages[1]
         relation = self.factory.get_work_package_service().create_relation(
-            type="follows",
+            relation_type="follows",
             work_package_from=f,
             work_package_to=t,
             description="Demo relation created using the API")

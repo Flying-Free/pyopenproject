@@ -123,7 +123,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         f = work_packages[0]
         t = work_packages[2]
         relation = self.wpSer.create_relation(
-            type="follows",
+            relation_type="follows",
             work_package_from=f,
             work_package_to=t,
             description="Demo relation created using the API")
@@ -174,7 +174,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         relations = self.wpSer.find_relation_candidates(work_package,
                                                         query="rollout",
                                                         # filters=[Filter("status_id", "o", ["null"])],
-                                                        type="follows",
+                                                        relation_type="follows",
                                                         page_size=25)
         self.assertEqual(0, len(relations))
 

@@ -69,8 +69,8 @@ class WorkPackageServiceImpl(WorkPackageService):
     def create_form(self):
         return CreateForm(self.connection).execute()
 
-    def create_relation(self, type, work_package_from, work_package_to, description):
-        return CreateRelation(self.connection, type, work_package_from, work_package_to, description).execute()
+    def create_relation(self, relation_type, work_package_from, work_package_to, description):
+        return CreateRelation(self.connection, relation_type, work_package_from, work_package_to, description).execute()
 
     def find_relations(self, work_package):
         return list(FindRelations(self.connection, work_package).execute())
@@ -87,8 +87,9 @@ class WorkPackageServiceImpl(WorkPackageService):
     def delete_watcher(self, work_package, watcher):
         DeleteWatcher(self.connection, work_package, watcher).execute()
 
-    def find_relation_candidates(self, work_package, query, filters=None, type=None, page_size=None):
-        return list(FindRelationCandidates(self.connection, work_package, filters, query, type, page_size).execute())
+    def find_relation_candidates(self, work_package, query, filters=None, relation_type=None, page_size=None):
+        return list(FindRelationCandidates(self.connection, work_package, filters, query, relation_type, page_size)
+                    .execute())
 
     def find_available_watchers(self, work_package):
         return list(FindAvailableWatchers(self.connection, work_package).execute())

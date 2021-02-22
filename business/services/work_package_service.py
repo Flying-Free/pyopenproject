@@ -58,13 +58,18 @@ class WorkPackageService(AbstractService):
     def find_watchers(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def create_watcher(self, work_package, watcher): raise NotImplementedError
+    def create_watcher(self, work_package, user): raise NotImplementedError
 
     @abstractmethod
     def delete_watcher(self, work_package, watcher): raise NotImplementedError
 
     @abstractmethod
-    def find_relation_candidates(self, work_package, filters, query, type, page_size): raise NotImplementedError
+    def find_relation_candidates(self,
+                                 work_package,
+                                 query,
+                                 filters=None,
+                                 relation_type=None,
+                                 page_size=None): raise NotImplementedError
 
     @abstractmethod
     def find_available_watchers(self, work_package): raise NotImplementedError
