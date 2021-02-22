@@ -8,6 +8,11 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class Find(AttachmentCommand):
 
     def __init__(self, connection, attachment):
+        """
+        Constructor for class Find, from AttachmentCommand
+        :param connection: The connection data
+        :param attachment: The attachment to find
+        """
         super().__init__(connection)
         self.attachment = attachment
 

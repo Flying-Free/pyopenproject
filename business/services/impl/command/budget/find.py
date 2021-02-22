@@ -8,6 +8,11 @@ from model.budget import Budget
 class Find(BudgetCommand):
 
     def __init__(self, connection, budget):
+        """
+        Constructor for class Find, from BudgetCommand
+        :param connection: The connection data
+        :param budget: The budget to find
+        """
         super().__init__(connection)
         self.budget = budget
 
