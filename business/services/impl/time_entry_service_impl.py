@@ -15,6 +15,10 @@ from business.services.time_entry_service import TimeEntryService
 class TimeEntryServiceImpl(TimeEntryService):
 
     def __init__(self, connection):
+        """
+        Constructor for class TimeEntryServiceImpl, from TimeEntryService
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def find_projects(self, time_entry):

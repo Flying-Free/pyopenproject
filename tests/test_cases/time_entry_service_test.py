@@ -74,10 +74,10 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
     #  "message":"You are not authorized to access this resource."
     #  }
     def test_operations_form(self):
-        project = self.factory.get_project_service().find_all()[-1]
-        work_package = list(filter(lambda x: x._links["type"]["title"] == "Task",
-                                   self.factory.get_project_service().find_work_packages(project=project)))[
-            -1]
+        # project = self.factory.get_project_service().find_all()[-1]
+        # work_package = list(filter(lambda x: x._links["type"]["title"] == "Task",
+        #                            self.factory.get_project_service().find_work_packages(project=project)))[
+        #     -1]
         # TODO Find Activity by Name
         # Create with form
         # form = self.tEntryReq.create_form(
