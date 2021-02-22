@@ -10,6 +10,10 @@ from model.form import Form
 class UpdateForm(MembershipCommand):
 
     def __init__(self, connection, membership):
+        """Constructor for class TypeServiceImpl, from TypeService
+        :param connection: The connection data
+        :param membership: The membership to update its form
+        """
         super().__init__(connection)
         self.membership = membership
 
@@ -23,7 +27,7 @@ class UpdateForm(MembershipCommand):
                                    json=self.membership.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error updating membership form") from re
+            raise BusinessError("Error updating membership form") from re
 
     def __remove_readonly_attributes(self):
         with suppress(KeyError):
@@ -34,13 +38,3 @@ class UpdateForm(MembershipCommand):
             del self.membership.__dict__["createdAt"]
         with suppress(KeyError):
             del self.membership.__dict__["updatedAt"]
-        # with suppress(KeyError):
-        #     del self.membership.__dict__["_embedded"]
-        # with suppress(KeyError):
-        #     del self.membership.__dict__["_links"]["self"]
-        # with suppress(KeyError):
-        #     del self.membership.__dict__["_links"]["schema"]
-        # with suppress(KeyError):
-        #     del self.membership.__dict__["_links"]["update"]
-        # with suppress(KeyError):
-        #     del self.membership.__dict__["_links"]["updateImmediately"]
