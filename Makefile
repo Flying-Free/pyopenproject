@@ -4,13 +4,16 @@ PYTHON=./${VENV_NAME}/Scripts/python.exe
 
 .DEFAULT_GOAL=build
 
-environment: requirements.txt
+pyenv: requirements.txt
 	python -m ${VENV_NAME} ./${VENV_NAME} && \
 	${VENV_ACTIVATE} && \
     ${PYTHON} -m pip install --upgrade pip && \
 	${PYTHON} -m pip install -Ur requirements.txt
 
-env_reset: env_down env_up
+clean_pyenv:
+	rf -rf ./${VENV_NAME}
+
+env_reset: clean_pyenv env_down pyenv env_up
 
 env_up:
 	cd ./tests/infra && \

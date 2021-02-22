@@ -23,7 +23,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
     def test_not_found(self):
         # There's no relation --> Exception
         s = self.relationSer.find(self.relation)
-        self.assertEqual(self.relation.type, s.relation_type)
+        self.assertEqual(self.relation.type, s.type)
         self.assertEqual(self.relation.reverseType, s.reverseType)
 
     def test_operations(self):
@@ -42,7 +42,7 @@ class RelationServiceTestCase(OpenProjectTestCase):
             work_package_to=t,
             description="Demo relation created using the API")
         self.assertEqual("Demo relation created using the API", relation.description)
-        self.assertEqual("follows", relation.relation_type)
+        self.assertEqual("follows", relation.type)
         self.assertEqual("precedes", relation.reverseType)
         # Update relation
         relation = self.factory.get_relation_service().update(Relation({
@@ -51,12 +51,12 @@ class RelationServiceTestCase(OpenProjectTestCase):
             "description": "Actually the supplier has to bend the steel before they can deliver it.",
             "delay": 3
         }))
-        self.assertEqual("blocks", relation.relation_type)
+        self.assertEqual("blocks", relation.type)
         self.assertEqual("Actually the supplier has to bend the steel before they can deliver it.",
                          relation.description)
         # Find relation
         found_relation = self.relationSer.find(relation)
-        self.assertEqual(relation.relation_type, found_relation.relation_type)
+        self.assertEqual(relation.type, found_relation.type)
         # Find all relations without filters after create
         relations = self.relationSer.find_all()
         self.assertEqual(8, len(relations))

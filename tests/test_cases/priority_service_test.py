@@ -21,10 +21,7 @@ class PriorityServiceTestCase(OpenProjectTestCase):
             self.prioritySer.find(self.priority)
 
     def test_find(self):
-        json_obj = json.loads('{"_type": "Priority", "id": 7, "name": "Low", "position": 1, "color": "#C5F6FA",'
-                              ' "isDefault": false, "isActive": true, "_links":'
-                              ' {"self": {"href": "/api/v3/priorities/7", "title": "Low"}}}')
-        expected = Priority(json_obj)
+        expected = self.prioritySer.find_all()[-1]
         current = self.prioritySer.find(expected)
         self.assertEqual(expected.__dict__, current.__dict__)
 

@@ -81,4 +81,4 @@ class VersionServiceTestCase(OpenProjectTestCase):
 
     def test_find_projects(self):
         projects = self.versionSer.find_projects()
-        self.assertEqual(2, len(projects))
+        self.assertEqual(3, len(projects))
