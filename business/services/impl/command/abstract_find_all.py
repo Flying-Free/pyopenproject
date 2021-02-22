@@ -10,9 +10,7 @@ class AbstractFindAll(Command):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        """
-        Abtract class instance action handling
-        """
+        """ Abtract class instance action handling """
         if self.__class__ is AbstractFindAll:
             raise TypeError('Abstract class cannot be instantiated')
 
