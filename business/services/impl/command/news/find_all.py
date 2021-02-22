@@ -1,14 +1,11 @@
-from api_connection.exceptions.request_exception import RequestError
-from api_connection.requests.get_request import GetRequest
-from business.exception.business_error import BusinessError
-from business.services.impl.command.news.news_command import NewsCommand
+from business.services.impl.command.abstract_find_all import AbstractFindAll
 from model.new import New
 from util.Filters import Filters
 from util.URL import URL
 from util.URLParameter import URLParameter
 
 
-class FindAll(NewsCommand):
+class FindAll(AbstractFindAll):
 
     def __init__(self, connection, offset, page_size, filters, sort_by):
         super().__init__(connection)
@@ -17,18 +14,13 @@ class FindAll(NewsCommand):
         self.filters = filters
         self.sort_by = sort_by
 
-    def execute(self):
-        try:
-            json_obj = GetRequest(connection=self.connection,
-                                  context=str(URL(f"{self.CONTEXT}",
-                                                  [
-                                                      URLParameter("offset", self.offset),
-                                                      URLParameter("pageSize", self.page_size),
-                                                      Filters("filters", self.filters),
-                                                      URLParameter("sortBy", self.sort_by)
-                                                  ]))).execute()
+    def cast(self, endpoint):
+        return New(endpoint)
 
-            for news in json_obj['_embedded']['elements']:
-                yield New(news)
-        except RequestError as re:
-            raise BusinessError(f"Error finding all news") from re
+    def request_url(self):
+        return str(URL(f"{self.CONTEXT}", [
+          URLParameter("offset", self.offset),
+          URLParameter("pageSize", self.page_size),
+          Filters("filters", self.filters),
+          URLParameter("sortBy", self.sort_by)
+        ]))
