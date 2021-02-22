@@ -9,6 +9,11 @@ from model.type import Type
 class FindTypes(ProjectCommand):
 
     def __init__(self, connection, project):
+        """Constructor for class FindTypes, from ProjectCommand
+
+        :param connection: The connection data
+        :param project: The project to get its types
+        """
         super().__init__(connection)
         self.project = project
 
@@ -18,4 +23,4 @@ class FindTypes(ProjectCommand):
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield Type(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding all time entries") from re
+            raise BusinessError("Error finding work package types") from re

@@ -6,8 +6,6 @@ class Activity:
     def __init__(self, json_obj):
         """Constructor for class Activity
 
-
-
         :param json_obj: The dict with the object data
         """
         self.__dict__ = json_obj
