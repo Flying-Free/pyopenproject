@@ -14,6 +14,11 @@ from business.services.version_service import VersionService
 class VersionServiceImpl(VersionService):
 
     def __init__(self, connection):
+        """
+        Constructor for class VersionServiceImpl, from VersionService
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def find(self, version):

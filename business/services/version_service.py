@@ -34,7 +34,7 @@ class VersionService(AbstractService):
     def create_form(self, version): raise NotImplementedError
 
     @abstractmethod
-    def update_form(self, version): raise NotImplementedError
+    def update_form(self, form): raise NotImplementedError
 
     @abstractmethod
     def find_projects(self): raise NotImplementedError
