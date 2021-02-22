@@ -10,6 +10,7 @@ class Find(ConfigurationCommand):
     def __init__(self, connection):
         """
         Constructor for class Find, from ConfigurationCommand
+
         :param connection: The connection data
         """
         super().__init__(connection)

@@ -10,6 +10,7 @@ class FindByContext(CategoryCommand):
     def __init__(self, connection, context):
         """
         Constructor for class FindByContext, from CategoryCommand
+
         :param connection: The connection data
         :param context: The URL context
         """

@@ -13,6 +13,7 @@ class FindAll(GridCommand):
     def __init__(self, connection, offset, page_size, filters, sort_by):
         """
         Constructor for class FindAll, from GridCommand
+
         :param connection: The connection data
         :param offset: The offset parameter
         :param page_size: The page size parameter

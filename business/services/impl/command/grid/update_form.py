@@ -10,6 +10,7 @@ class UpdateForm(GridCommand):
     def __init__(self, connection, grid, grid_form):
         """
         Constructor for class UpdateForm, from GridCommand
+
         :param connection: The connection data
         :param grid: The grid
         :param grid_form: The grid form to update

@@ -10,6 +10,7 @@ class Find(CustomObjectCommand):
     def __init__(self, connection, custom_object):
         """
         Constructor for class Find, from CustomObjectCommand
+
         :param connection: The connection data
         :param custom_object: The custom object to find
         """

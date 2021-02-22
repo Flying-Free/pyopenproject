@@ -10,6 +10,7 @@ class Find(DocumentCommand):
     def __init__(self, connection, document):
         """
         Constructor for class Find, from DocumentCommand
+
         :param connection: The connection data
         :param document: The document to find
         """

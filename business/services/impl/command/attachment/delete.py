@@ -9,6 +9,7 @@ class Delete(AttachmentCommand):
     def __init__(self, connection, attachment):
         """
         Constructor for class Delete, from AttachmentCommand
+
         :param connection: The connection data
         :param attachment:The attachment to delete
         """

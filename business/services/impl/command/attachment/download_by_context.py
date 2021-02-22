@@ -11,6 +11,7 @@ class DownloadByContext(AttachmentCommand):
     def __init__(self, connection, attachment, folder):
         """
         Constructor for class DownloadByContext, from AttachmentCommand
+
         :param connection: The connection data
         :param attachment: The attachment to download
         :param folder: The destination folder

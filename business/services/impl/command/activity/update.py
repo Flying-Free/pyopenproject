@@ -12,6 +12,7 @@ class Update(ActivityCommand):
     def __init__(self, connection, activity):
         """
         Constructor for class Update, from ActivityCommand
+
         :param connection: The connection data
         :param activity: The activity we want to update
         """

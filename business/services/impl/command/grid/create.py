@@ -10,6 +10,7 @@ class Create(GridCommand):
     def __init__(self, connection, grid):
         """
         Constructor for class Create, from GridCommand
+
         :param connection: The connection data
         :param grid: The grid to create
         """

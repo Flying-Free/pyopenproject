@@ -9,6 +9,7 @@ class CreateForm(GridCommand):
     def __init__(self, connection):
         """
         Constructor for class CreateForm, from GridCommand
+
         :param connection: The connection data
         """
         super().__init__(connection)

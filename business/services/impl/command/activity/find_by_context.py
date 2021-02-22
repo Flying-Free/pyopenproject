@@ -10,6 +10,7 @@ class FindByContext(ActivityCommand):
     def __init__(self, connection, context):
         """
         Constructor for class FindByContext, from ActivityCommand
+
         :param connection: The connection data
         :param context: The context of the URL we need to search for
         """

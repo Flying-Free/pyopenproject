@@ -10,6 +10,7 @@ class Find(ActivityCommand):
     def __init__(self, connection, activity):
         """
         Constructor for class Find, from ActivityCommand
+
         :param connection: The connection data
         :param activity: The activity to find
         """

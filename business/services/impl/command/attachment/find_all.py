@@ -10,6 +10,7 @@ class FindAll(AttachmentCommand):
     def __init__(self, connection):
         """
         Constructor for class DownloadByContext, from AttachmentCommand
+
         :param connection: The connection data
         """
         super().__init__(connection)

@@ -12,6 +12,7 @@ class Request(Command):
     def __init__(self, connection, context, json=None, files=None, headers=None, data=None):
         """
         Constructor for class Request, from Command
+
         :param connection: The connection data
         :param context: The URL context for the request
         :param json: The JSON data
