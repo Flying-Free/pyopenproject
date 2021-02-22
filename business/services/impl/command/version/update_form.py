@@ -8,6 +8,11 @@ from model.form import Form
 class UpdateForm(VersionCommand):
 
     def __init__(self, connection, form):
+        """Constructor for class UpdatedForm, from VersionCommand
+
+        :param connection: The connection data
+        :param form: The form to update
+        """
         super().__init__(connection)
         self.form = form
 
@@ -18,4 +23,4 @@ class UpdateForm(VersionCommand):
                                    json=self.form.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error updating version form") from re
+            raise BusinessError("Error updating version form") from re

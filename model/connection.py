@@ -14,7 +14,8 @@ class Connection:
         self.api_key = apikey
 
     def __str__(self):
-        """ Returns the object as a string JSON
+        """Returns the object as a string JSON
+
         :return: JSON as a string
         """
         return json.dumps(self.__dict__)
