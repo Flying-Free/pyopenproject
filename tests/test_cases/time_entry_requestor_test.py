@@ -79,6 +79,7 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
                                    self.factory.get_project_service().find_work_packages(project=project)))[
             -1]
         # TODO Find Activity by Name
+        print(work_package)
         # Create with form
         # form = self.tEntryReq.create_form(
         #     project=project,
