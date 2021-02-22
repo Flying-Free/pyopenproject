@@ -10,6 +10,9 @@ class AbstractFindAll(Command):
     __metaclass__ = ABCMeta
 
     def __init__(self):
+        """
+        Abtract class instance action handling
+        """
         if self.__class__ is AbstractFindAll:
             raise TypeError('Abstract class cannot be instantiated')
 
@@ -19,7 +22,7 @@ class AbstractFindAll(Command):
             for endpoint in json_obj["_embedded"]["elements"]:
                 yield self.cast(endpoint)
         except RequestError as re:
-            raise BusinessError(f"Error finding all attachments") from re
+            raise BusinessError("Error finding all the concerned endpoints") from re
 
     @abstractmethod
     def cast(self, endpoint):
