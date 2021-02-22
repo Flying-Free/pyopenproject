@@ -38,6 +38,7 @@ jobs:
       - name: Bring test environment up
         working-directory: ./tests-infra
         run: |
+          echo "----- PATH: $(pwd)"
           docker-compose up -d
           printf 'WAITING FOR APIv3'
           until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do
@@ -50,5 +51,5 @@ jobs:
       - name: Bring test environment down
         working-directory: ./tests-infra
         run: |
-          cd ./test/infra
+          echo "----- PATH: $(pwd)"
           docker-compose down --volumes
