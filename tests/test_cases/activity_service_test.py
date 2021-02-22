@@ -26,7 +26,7 @@ class ActivityServiceTestCase(OpenProjectTestCase):
 
     def test_update_activity(self):
         # TODO what can we change in an activity
-        self.actSer.find(Activity({"id": "2"}))
-        pass
-        # with self.assertRaises(BusinessError):
-        #     self.actSer.update(activity)
+        activity = self.actSer.find(Activity({"id": "2"}))
+        activity.comment['raw'] = "The updated comment"
+        activity_updated = self.actSer.update(activity)
+        self.assertEqual(activity.comment, activity_updated.comment)
