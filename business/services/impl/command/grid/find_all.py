@@ -10,8 +10,15 @@ from util.URLParameter import URLParameter
 
 class FindAll(GridCommand):
 
-    def __init__(self, connection, offset, page_size, filters,
-                 sort_by):
+    def __init__(self, connection, offset, page_size, filters, sort_by):
+        """
+        Constructor for class FindAll, from GridCommand
+        :param connection: The connection data
+        :param offset: The offset parameter
+        :param page_size: The page size parameter
+        :param filters: The filter parameter
+        :param sort_by: The sort by parameter
+        """
         super().__init__(connection)
         self.offset = offset
         self.page_size = page_size

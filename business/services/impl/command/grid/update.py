@@ -8,6 +8,11 @@ from model.grid import Grid
 class Update(GridCommand):
 
     def __init__(self, connection, grid):
+        """
+        Constructor for class Update, from GridCommand
+        :param connection: The connection data
+        :param grid: The grid to update
+        """
         super().__init__(connection)
         self.grid = grid
 

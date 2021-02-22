@@ -10,6 +10,15 @@ from api_connection.exceptions.request_exception import RequestError
 class Request(Command):
 
     def __init__(self, connection, context, json=None, files=None, headers=None, data=None):
+        """
+        Constructor for class Request, from Command
+        :param connection: The connection data
+        :param context: The URL context for the request
+        :param json: The JSON data
+        :param files: The file/s to upload
+        :param headers: The request headers
+        :param data: The text/plain data
+        """
         self.connection = connection
         self.headers = headers
         self.context = context

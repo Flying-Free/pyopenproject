@@ -8,6 +8,11 @@ from model.custom_object import CustomObject
 class Find(CustomObjectCommand):
 
     def __init__(self, connection, custom_object):
+        """
+        Constructor for class Find, from CustomObjectCommand
+        :param connection: The connection data
+        :param custom_object: The custom object to find
+        """
         super().__init__(connection)
         self.custom_object = custom_object
 

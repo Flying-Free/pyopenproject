@@ -10,6 +10,13 @@ from util.URLParameter import URLParameter
 class FindAll(DocumentCommand):
 
     def __init__(self, connection, offset, page_size, sort_by):
+        """
+        Constructor for class FindAll, from DocumentCommand
+        :param connection: The connection data
+        :param offset: The offset parameter chosen
+        :param page_size: The page size parameter of the request
+        :param sort_by: The sort by parameter
+        """
         super().__init__(connection)
         self.offset = offset
         self.page_size = page_size

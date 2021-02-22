@@ -8,6 +8,11 @@ from model.custom_action import CustomAction
 class Find(CustomActionCommand):
 
     def __init__(self, connection, custom_action):
+        """
+        Constructor for class Find, from CustomActionCommand
+        :param connection: The connection data
+        :param custom_action: The custom action to find
+        """
         super().__init__(connection)
         self.custom_action = custom_action
 
