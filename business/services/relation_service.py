@@ -25,7 +25,7 @@ class RelationService(AbstractService):
     def find_schema(self): raise NotImplementedError
 
     @abstractmethod
-    def find_schema_by_type(self, type): raise NotImplementedError
+    def find_schema_by_type(self, relation_type): raise NotImplementedError
 
     @abstractmethod
     def find_all(self, filters, sort_by): raise NotImplementedError
