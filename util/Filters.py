@@ -12,8 +12,7 @@ class Filters(URLParameter):
         super().__init__(name, value)
 
     def __str__(self) -> str:
-        """
-        Return the Filters as a string
+        """ Return the Filters as a string
 
         :return: The filters as a string
         """
