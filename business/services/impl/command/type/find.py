@@ -7,13 +7,13 @@ from model.type import Type
 
 class Find(TypeCommand):
 
-    def __init__(self, connection, type):
+    def __init__(self, connection, project_type):
         super().__init__(connection)
-        self.type = type
+        self.project_type = project_type
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.type.id}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.project_type.id}").execute()
             return Type(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding type by ID: {self.type.id}") from re
+            raise BusinessError(f"Error finding type by ID: {self.project_type.id}") from re

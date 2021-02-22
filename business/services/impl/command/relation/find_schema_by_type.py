@@ -7,13 +7,13 @@ from model.schema import Schema
 
 class FindSchemaByType(RelationCommand):
 
-    def __init__(self, connection, type):
+    def __init__(self, connection, relation_type):
         super().__init__(connection)
-        self.type = type
+        self.relation_type = relation_type
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema/{self.type}").execute()
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema/{self.relation_type}").execute()
             return Schema(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding schema ") from re

@@ -14,7 +14,6 @@ class Update(UserCommand):
         self.user = user
 
     def execute(self):
-        global user_id
         try:
             user_id = self.user.id
             self.__remove_readonly_attributes()

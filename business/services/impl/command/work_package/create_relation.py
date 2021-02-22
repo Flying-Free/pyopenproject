@@ -7,13 +7,13 @@ from business.services.impl.command.work_package.work_package_command import Wor
 
 class CreateRelation(WorkPackageCommand):
 
-    def __init__(self, connection, type, work_package_from, work_package_to, description):
+    def __init__(self, connection, relation_type, work_package_from, work_package_to, description):
         super().__init__(connection)
         self.work_package_from = work_package_from
         self.relation = rel.Relation(
             {
                 "_type": "Relation",
-                "type": f"{type}",
+                "type": f"{relation_type}",
                 "from": {
                     "href": f"{work_package_from.__dict__['_links']['self']['href']}"
                 },

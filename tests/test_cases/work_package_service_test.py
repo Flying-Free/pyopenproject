@@ -128,7 +128,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
             work_package_to=t,
             description="Demo relation created using the API")
         self.assertEqual("Demo relation created using the API", relation.description)
-        self.assertEqual("follows", relation.type)
+        self.assertEqual("follows", relation.relation_type)
         self.assertEqual("precedes", relation.reverseType)
         self.factory.get_relation_service().delete(relation)
 

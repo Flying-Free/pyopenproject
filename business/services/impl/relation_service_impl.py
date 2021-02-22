@@ -26,8 +26,8 @@ class RelationServiceImpl(RelationService):
     def find_schema(self):
         return FindSchema(self.connection).execute()
 
-    def find_schema_by_type(self, type):
-        return FindSchemaByType(self.connection, type).execute()
+    def find_schema_by_type(self, relation_type):
+        return FindSchemaByType(self.connection, relation_type).execute()
 
     def find_all(self, filters=None, sort_by=None):
         return list(FindAll(self.connection, filters, sort_by).execute())
