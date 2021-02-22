@@ -9,7 +9,6 @@ class Find(RootCommand):
 
     def __init__(self, connection):
         super().__init__(connection)
-        self.connection = connection
 
     def execute(self):
         try:

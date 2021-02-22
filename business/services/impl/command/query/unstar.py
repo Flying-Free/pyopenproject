@@ -13,7 +13,8 @@ class Unstar(QueryCommand):
 
     def execute(self):
         try:
-            json_obj = PatchRequest(self.connection, f"{self.CONTEXT}/{self.query.id}/unstar").execute()
+            json_obj = PatchRequest(connection=self.connection,
+                                    context=f"{self.CONTEXT}/{self.query.id}/unstar").execute()
             return Query(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error to unstar: {self.query.id}") from re
