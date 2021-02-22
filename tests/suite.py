@@ -25,7 +25,7 @@ from tests.test_cases.role_service_test import RoleServiceTestCase
 from tests.test_cases.root_service_test import RootServiceTestCase
 from tests.test_cases.schema_service_test import SchemaServiceTestCase
 from tests.test_cases.status_service_test import StatusServiceTestCase
-from tests.test_cases.time_entry_requestor_test import TimeEntryServiceTestCase
+from tests.test_cases.time_entry_service_test import TimeEntryServiceTestCase
 from tests.test_cases.type_service_test import TypeServiceTestCase
 from tests.test_cases.user_service_test import UserServiceTestCase
 from tests.test_cases.version_service_test import VersionServiceTestCase
