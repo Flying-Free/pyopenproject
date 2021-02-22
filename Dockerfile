@@ -3,7 +3,7 @@ FROM python:3
 ENV Version="v0.0.1"
 
 # Install dependences
-RUN apt-get install --no-install-recommends -y xz-utils=5.2.2 \
+RUN apt-get install -y --no-install-recommends xz-utils=5.2.2 \
     tar -C /tmp/ -xf /tmp/glib-2.52.1.tar.xz \
     python -m pip install --user --upgrade setuptools wheel
 
