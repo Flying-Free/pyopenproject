@@ -10,6 +10,12 @@ from business.services.impl.command.user.user_command import UserCommand
 class Update(UserCommand):
 
     def __init__(self, connection, user):
+        """
+        Constructor for class Update, from UserCommand
+
+        :param connection: The connection data
+        :param user: The user to update
+        """
         super().__init__(connection)
         self.user = user
 

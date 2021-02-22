@@ -8,6 +8,13 @@ from model.grid import Grid
 class UpdateForm(GridCommand):
 
     def __init__(self, connection, grid, grid_form):
+        """
+        Constructor for class UpdateForm, from GridCommand
+
+        :param connection: The connection data
+        :param grid: The grid
+        :param grid_form: The grid form to update
+        """
         super().__init__(connection)
         self.grid = grid
         self.grid_form = grid_form

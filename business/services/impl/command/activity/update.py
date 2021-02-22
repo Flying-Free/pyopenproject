@@ -10,6 +10,12 @@ from business.services.impl.command.activity.activity_command import ActivityCom
 class Update(ActivityCommand):
 
     def __init__(self, connection, activity):
+        """
+        Constructor for class Update, from ActivityCommand
+
+        :param connection: The connection data
+        :param activity: The activity we want to update
+        """
         super().__init__(connection)
         self.activity = activity
 

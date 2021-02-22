@@ -8,6 +8,12 @@ from model.grid import Grid
 class Find(GridCommand):
 
     def __init__(self, connection, grid):
+        """
+        Constructor for class Find, from GridCommand
+
+        :param connection: The connection data
+        :param grid: The grid to find
+        """
         super().__init__(connection)
         self.grid = grid
 

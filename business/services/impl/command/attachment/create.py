@@ -11,6 +11,14 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class Create(AttachmentCommand):
 
     def __init__(self, connection, filename, description, file_path):
+        """
+        Constructor for class Create, from AttachmentCommand
+
+        :param connection: The connection data
+        :param filename: The name of the file
+        :param description: The attachment description
+        :param file_path: The path to the file
+        """
         super().__init__(connection)
         self.filename = filename
         self.description = description

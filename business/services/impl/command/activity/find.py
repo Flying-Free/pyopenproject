@@ -8,6 +8,12 @@ from business.services.impl.command.activity.activity_command import ActivityCom
 class Find(ActivityCommand):
 
     def __init__(self, connection, activity):
+        """
+        Constructor for class Find, from ActivityCommand
+
+        :param connection: The connection data
+        :param activity: The activity to find
+        """
         super().__init__(connection)
         self.activity = activity
 

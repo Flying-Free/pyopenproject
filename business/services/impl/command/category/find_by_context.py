@@ -8,6 +8,12 @@ from business.services.impl.command.category.category_command import CategoryCom
 class FindByContext(CategoryCommand):
 
     def __init__(self, connection, context):
+        """
+        Constructor for class FindByContext, from CategoryCommand
+
+        :param connection: The connection data
+        :param context: The URL context
+        """
         super().__init__(connection)
         self.context = context
 
