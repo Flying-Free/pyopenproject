@@ -9,12 +9,20 @@ from util.URLParameter import URLParameter
 
 
 class FindRelationCandidates(WorkPackageCommand):
-    def __init__(self, connection, work_package, filters, query, type, page_size):
+    def __init__(self, connection, work_package, filters, query, work_package_type, page_size):
+        """Constructor for class FindRelationCandidates, from WorkPackageCommand
+        :param connection: The connection data
+        :param work_package: The work package
+        :param filters: The filters parameter
+        :param query: The query parameter
+        :param work_package_type: The work_package type as parameter
+        :param page_size: The page size parameter
+        """
         super().__init__(connection)
         self.work_package = work_package
         self.filters = filters
         self.query = query
-        self.type = type
+        self.type = work_package_type
         self.pageSize = page_size
 
     def execute(self):

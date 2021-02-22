@@ -8,6 +8,10 @@ from model.schema import Schema
 class FindSchemaByType(RelationCommand):
 
     def __init__(self, connection, relation_type):
+        """Constructor for class FindSchemaByType, from RelationCommand
+        :param connection:
+        :param relation_type:
+        """
         super().__init__(connection)
         self.relation_type = relation_type
 
@@ -16,4 +20,4 @@ class FindSchemaByType(RelationCommand):
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema/{self.relation_type}").execute()
             return Schema(json_obj)
         except RequestError as re:
-            raise BusinessError("Error finding schema")(re)
+            raise BusinessError("Error finding relation schema") from re
