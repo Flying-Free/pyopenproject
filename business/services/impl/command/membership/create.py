@@ -8,7 +8,7 @@ from business.services.impl.command.membership.membership_command import Members
 class Create(MembershipCommand):
 
     def __init__(self, connection, membership):
-        """Constructor for class Create, from MembershipCommand
+        """ Constructor for class Create, from MembershipCommand
         :param connection: The connection data
         :param membership: The membership to create
         """

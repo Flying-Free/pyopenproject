@@ -6,7 +6,7 @@ from business.services.news_service import NewsService
 class NewsServiceImpl(NewsService):
 
     def __init__(self, connection):
-        """Constructor for class NewsServiceImpl, from NewsService
+        """ Constructor for class NewsServiceImpl, from NewsService
         :param connection: The connection data
         """
         super().__init__(connection)
