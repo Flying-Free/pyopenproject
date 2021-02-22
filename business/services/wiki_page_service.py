@@ -7,6 +7,11 @@ class WikiPageService(AbstractService):
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):
+        """
+        Constructor for class WikiPageService, from AbstractService
+        
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     @abstractmethod

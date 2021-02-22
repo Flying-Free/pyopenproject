@@ -53,7 +53,8 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         #     activity=1,  # Management
         #     comment="Test comment",
         #     spent_on=datetime.now(),
-        #     hours=timedelta(hours=4, minutes=35, seconds=30))        # Create
+        #     hours=timedelta(hours=4, minutes=35, seconds=30))
+        # Create
         # time_entry = self.tEntryReq.create(self.time_entry)
         # # Update
         # time_entry.hours = isodate.duration_isoformat(timedelta(hours=5, minutes=30))

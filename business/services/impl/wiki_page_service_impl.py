@@ -1,4 +1,4 @@
-from business.services.impl.command.post.add_attachment import AddAttachment
+from business.services.impl.command.wiki_page.add_attachment import AddAttachment
 from business.services.impl.command.wiki_page.find import Find
 from business.services.impl.command.wiki_page.find_attachments import FindAttachments
 from business.services.wiki_page_service import WikiPageService
@@ -7,6 +7,11 @@ from business.services.wiki_page_service import WikiPageService
 class WikiPageServiceImpl(WikiPageService):
 
     def __init__(self, connection):
+        """
+        Constructor for class WikiPageServiceImpl, from WikiPageService
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def find(self, wiki_page):

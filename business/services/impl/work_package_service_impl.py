@@ -31,6 +31,11 @@ from business.services.work_package_service import WorkPackageService
 class WorkPackageServiceImpl(WorkPackageService):
 
     def __init__(self, connection):
+        """
+        Constructor for class WorkPackageServiceImpl, from WorkPackageService
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def find_by_context(self, context):

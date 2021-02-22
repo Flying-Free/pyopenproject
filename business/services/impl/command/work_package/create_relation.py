@@ -8,6 +8,15 @@ from business.services.impl.command.work_package.work_package_command import Wor
 class CreateRelation(WorkPackageCommand):
 
     def __init__(self, connection, relation_type, work_package_from, work_package_to, description):
+        """
+        Constructor for class CreateRelation, from WorkPackageCommand
+
+        :param connection: The connection data
+        :param relation_type: The type of the relation
+        :param work_package_from: The "from" work package in the relation
+        :param work_package_to: The "to" work package in the relation
+        :param description: The relation description
+        """
         super().__init__(connection)
         self.work_package_from = work_package_from
         self.relation = rel.Relation(
@@ -31,6 +40,6 @@ class CreateRelation(WorkPackageCommand):
                                    json=self.relation.__dict__).execute()
             return rel.Relation(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating relation for the work packages"
+            raise BusinessError("Error creating relation for the work packages"
                                 f" [From: {self.relation.__dict__['from']['href']}]"
                                 f" [To: {self.relation.__dict__['to']['href']}]") from re
