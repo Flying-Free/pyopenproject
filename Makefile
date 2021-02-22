@@ -11,7 +11,7 @@ pyenv: requirements.txt
 	${PYTHON} -m pip install -Ur requirements.txt
 
 clean_pyenv:
-	rf -rf ./${VENV_NAME}
+	rm -rf ./${VENV_NAME}
 
 env_reset: clean_pyenv env_down pyenv env_up
 
@@ -31,12 +31,10 @@ env_down:
 	cd ./tests/infra && \
 	docker-compose down --volumes
 
-test: environment env_up pytest env_down
-	rm -rf ./venv
+test: pyenv env_up pytest env_down clean_pyenv
 
 build: test
 	docker build .
-
 
 help:
 	@echo "    clean"
