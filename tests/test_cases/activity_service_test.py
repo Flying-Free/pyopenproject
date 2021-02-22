@@ -25,7 +25,7 @@ class ActivityServiceTestCase(OpenProjectTestCase):
         self.assertEqual(12, len(activity.details))
 
     def test_update_activity(self):
-        # TODO what can we change in an activity
+        # TODO FIXME: Bug "message":"Bad request: comment is invalid"
         activity = self.actSer.find(Activity({"id": "2"}))
         activity.comment['raw'] = "The updated comment"
         activity_updated = self.actSer.update(activity)

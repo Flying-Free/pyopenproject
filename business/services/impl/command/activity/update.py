@@ -24,7 +24,7 @@ class Update(ActivityCommand):
             activity_id = self.activity.id
             self.__remove_readonly_attributes()
             json_obj = PatchRequest(connection=self.connection,
-                                    headers={"Content-Type": "application/hal+json"},
+                                    headers={"Content-Type": "application/json"},
                                     context=f"{self.CONTEXT}/{activity_id}",
                                     json=self.activity.__dict__).execute()
 
