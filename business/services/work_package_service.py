@@ -46,7 +46,7 @@ class WorkPackageService(AbstractService):
     def create_form(self): raise NotImplementedError
 
     @abstractmethod
-    def create_relation(self, type, work_package_from, work_package_to, description): raise NotImplementedError
+    def create_relation(self, relation_type, work_package_from, work_package_to, description): raise NotImplementedError
 
     @abstractmethod
     def find_relations(self, work_package): raise NotImplementedError
