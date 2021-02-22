@@ -8,6 +8,11 @@ from business.services.impl.command.project.project_command import ProjectComman
 class FindVersions(ProjectCommand):
 
     def __init__(self, connection, project):
+        """ Constructor for class FindVersions, from ProjectCommand
+
+        :param connection: The connection data
+        :param project: The project to find its versions
+        """
         super().__init__(connection)
         self.project = project
 
@@ -17,4 +22,4 @@ class FindVersions(ProjectCommand):
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield v.Version(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding all time entries") from re
+            raise BusinessError("Error finding all time entries") from re
