@@ -4,7 +4,8 @@ import json
 class Connection:
 
     def __init__(self, url, apikey, user=None):
-        """ Constructor for class Connection
+        """
+        Constructor for class Connection
         :param url: The application url
         :param apikey: The apikey
         :param user: The user (optional)
@@ -14,7 +15,8 @@ class Connection:
         self.api_key = apikey
 
     def __str__(self):
-        """ Returns the object as a string JSON
+        """
+        Returns the object as a string JSON
 
         :return: JSON as a string
         """

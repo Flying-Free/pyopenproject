@@ -6,7 +6,8 @@ from business.services.impl.command.document.find_all import FindAll
 class DocumentServiceImpl(DocumentService):
 
     def __init__(self, connection):
-        """ Constructor for class DocumentServiceImpl, from DocumentService
+        """
+        Constructor for class DocumentServiceImpl, from DocumentService
 
         :param connection: The connection data
         """

@@ -8,7 +8,8 @@ from model.form import Form
 class UpdateForm(VersionCommand):
 
     def __init__(self, connection, form):
-        """ Constructor for class UpdatedForm, from VersionCommand
+        """
+        Constructor for class UpdatedForm, from VersionCommand
 
         :param connection: The connection data
         :param form: The form to update

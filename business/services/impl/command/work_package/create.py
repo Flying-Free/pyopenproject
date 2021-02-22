@@ -10,7 +10,8 @@ from util.URLParameter import URLParameter
 class Create(WorkPackageCommand):
 
     def __init__(self, connection, work_package, notify):
-        """ Constructor for class Create, from WorkPackageCommand
+        """
+        Constructor for class Create, from WorkPackageCommand
 
         :param connection: The connection data
         :param work_package: The work package to create

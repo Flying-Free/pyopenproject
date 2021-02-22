@@ -8,7 +8,8 @@ from business.services.impl.command.membership.membership_command import Members
 class FindAvailable(MembershipCommand):
 
     def __init__(self, connection):
-        """ Constructor for class FindAvailable, from MembershipCommand
+        """
+        Constructor for class FindAvailable, from MembershipCommand
 
         :param connection: The connection data
         """

@@ -7,7 +7,8 @@ from business.services.impl.command.query.query_command import QueryCommand
 class Schema(QueryCommand):
 
     def __init__(self, connection):
-        """ Constructor for class Schema, from QueryCommand
+        """
+        Constructor for class Schema, from QueryCommand
 
         :param connection: The connection command
         """

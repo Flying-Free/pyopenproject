@@ -7,7 +7,8 @@ class TypeService(AbstractService):
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):
-        """ Constructor for class TypeService, from AbstractService
+        """
+        Constructor for class TypeService, from AbstractService
         :param connection: The connection data
         """
         super().__init__(connection)

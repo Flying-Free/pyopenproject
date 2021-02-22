@@ -1,7 +1,8 @@
 class URLParameter:
 
     def __init__(self, name, value):
-        """ Constructor for class URLParameter
+        """
+        Constructor for class URLParameter
 
         :param name: Parameter name
         :param value: Parameter value
