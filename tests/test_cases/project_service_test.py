@@ -49,30 +49,8 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual("New project name", current.name)
         # Update
         current.name = "New project name changed"
-        # FIXME:  {
-        #  "_type":"Error",
-        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MultipleErrors",
-        #  "message":"Multiple field constraints have been violated.",
-        #  "_embedded":{
-        #  "errors":
-        #  {
-        #  "_type":"Error",
-        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
-        #  "message":"Created on was attempted to be written but is not writable.",
-        #  "_embedded":{"details":{"attribute":"createdAt"}}
-        #  },
-        #  {
-        #  "_type":"Error",
-        #  "errorIdentifier":"urn:openproject-org:api:v3:errors:PropertyIsReadOnly",
-        #  "message":"Updated on was attempted to be written but is not writable.",
-        #  "_embedded":{"details":{"attribute":"updatedAt"}}
-        #  }
-        #  ]
-        #  }
-        #  }
         project = self.proSer.update(current)
         self.assertEqual("New project name changed", project.name)
-        # FIXME Permission denied
         self.proSer.delete(project)
 
     def test_find_schema(self):

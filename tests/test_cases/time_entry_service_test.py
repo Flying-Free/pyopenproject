@@ -31,7 +31,7 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
 
     def test_find_projects(self):
         projects = self.tEntryReq.find_projects(self.time_entry)
-        self.assertEqual(1, len(projects))
+        self.assertEqual(0, len(projects))
 
     def test_find_all(self):
         time_entries = self.tEntryReq.find_all()
@@ -79,7 +79,6 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
                                    self.factory.get_project_service().find_work_packages(project=project)))[
             -1]
         # TODO Find Activity by Name
-        print(work_package)
         # Create with form
         # form = self.tEntryReq.create_form(
         #     project=project,
