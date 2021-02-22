@@ -8,6 +8,10 @@ from model.form import Form
 class CreateForm(WorkPackageCommand):
 
     def __init__(self, connection):
+        """Constructor for class CreateForm, from WorkPackageCommand
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def execute(self):
@@ -17,4 +21,4 @@ class CreateForm(WorkPackageCommand):
                                    context=f"{self.CONTEXT}form").execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating work package form") from re
+            raise BusinessError("Error creating work package form") from re

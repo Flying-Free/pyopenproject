@@ -8,8 +8,7 @@ from model.configuration import Configuration
 class Find(ConfigurationCommand):
 
     def __init__(self, connection):
-        """
-        Constructor for class Find, from ConfigurationCommand
+        """Constructor for class Find, from ConfigurationCommand
 
         :param connection: The connection data
         """
@@ -20,4 +19,4 @@ class Find(ConfigurationCommand):
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
             return Configuration(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error listing configuration") from re
+            raise BusinessError("Error listing configuration") from re

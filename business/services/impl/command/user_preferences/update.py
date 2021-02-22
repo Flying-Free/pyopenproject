@@ -10,6 +10,12 @@ from model.user_preferences import UserPreferences
 class Update(UserPreferencesCommand):
 
     def __init__(self, connection, user_preferences):
+        """Constructor for class Update, from UserPreferencesCommand
+
+        :param connection: The connection data
+        :param user_preferences: The user preferences to update
+        """
+
         super().__init__(connection)
         self.userPreferences = user_preferences
 
@@ -21,7 +27,7 @@ class Update(UserPreferencesCommand):
                                     json=self.userPreferences.__dict__).execute()
             return UserPreferences(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error updating user preferences") from re
+            raise BusinessError("Error updating user preferences") from re
 
     def __remove_readonly_attributes(self):
         with suppress(KeyError): del self.userPreferences.__dict__["_links"]

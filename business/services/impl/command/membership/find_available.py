@@ -8,6 +8,10 @@ from business.services.impl.command.membership.membership_command import Members
 class FindAvailable(MembershipCommand):
 
     def __init__(self, connection):
+        """Constructor for class FindAvailable, from MembershipCommand
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def execute(self):
@@ -16,4 +20,4 @@ class FindAvailable(MembershipCommand):
             for tEntry in json_obj['_embedded']['elements']:
                 yield p.Project(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding the available memberships") from re
+            raise BusinessError("Error finding the available memberships") from re
