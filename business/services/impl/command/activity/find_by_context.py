@@ -19,7 +19,7 @@ class FindByContext(ActivityCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.context}").execute()
+            json_obj = GetRequest(self.connection, self.context).execute()
             if json_obj["_type"] == "Activity::Comment":
                 return act.Activity(json_obj)
             elif json_obj["_type"] == "Error":
@@ -27,5 +27,4 @@ class FindByContext(ActivityCommand):
                                     f"\tError Identifier: {json_obj['errorIdentifier']}\n"
                                     f"\tMessage: {json_obj['message']}")
         except RequestError as re:
-            raise BusinessError(f"Error finding activity by context: {self.context}") from re
-
+            raise BusinessError(f"Error finding activity by context: {self.context}")(re)

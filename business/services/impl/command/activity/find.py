@@ -22,4 +22,4 @@ class Find(ActivityCommand):
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/{self.activity.id}").execute()
             return act.Activity(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding activity by id: {self.activity.id}") from re
+            raise BusinessError(f"Error finding activity by id: {self.activity.id}")(re)
