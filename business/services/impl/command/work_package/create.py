@@ -10,6 +10,12 @@ from util.URLParameter import URLParameter
 class Create(WorkPackageCommand):
 
     def __init__(self, connection, work_package, notify):
+        """Constructor for class Create, from WorkPackageCommand
+
+        :param connection: The connection data
+        :param work_package: The work package to create
+        :param notify: Do you want to notify to watchers?
+        """
         super().__init__(connection)
         self.work_package = work_package
         self.notify = notify
@@ -25,4 +31,4 @@ class Create(WorkPackageCommand):
                                    json=self.work_package.__dict__).execute()
             return wp.WorkPackage(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating work package") from re
+            raise BusinessError("Error creating work package") from re
