@@ -33,6 +33,7 @@ jobs:
       - name: Install dependencies
 #       unittest is a standard module, which you don't need to install
         run: |
+               apt-get install -y curl
                python -m pip install --upgrade pip
                if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Bring test environment up
@@ -40,7 +41,7 @@ jobs:
         run: |
           docker-compose up -d
           printf 'WAITING FOR APIv3'
-          until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do
+          until $(curl --output /dev/null --silent --head --fail http://localhost:8080); do
               printf '.';
               sleep 5;
           done
