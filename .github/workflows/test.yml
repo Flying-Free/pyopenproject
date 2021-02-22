@@ -36,9 +36,8 @@ jobs:
                python -m pip install --upgrade pip
                if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Bring test environment up
-        working-directory: ./tests-infra
+        working-directory: ./tests/infra
         run: |
-          echo "----- PATH: " $(pwd)
           docker-compose up -d
           printf 'WAITING FOR APIv3'
           until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do
@@ -49,7 +48,6 @@ jobs:
       - name: Test with unittest
         run: python -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
       - name: Bring test environment down
-        working-directory: ./tests-infra
+        working-directory: ./tests/infra
         run: |
-          echo "----- PATH: " $(pwd)
           docker-compose down --volumes
