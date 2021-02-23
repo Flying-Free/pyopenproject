@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod
 
 from api_connection.exceptions.request_exception import RequestError
 from api_connection.requests.get_request import GetRequest
@@ -7,7 +7,6 @@ from business.services.impl.command.command import Command
 
 
 class AbstractFindAll(Command):
-    __metaclass__ = ABCMeta
 
     def __init__(self):
         """ Abtract class instance action handling """

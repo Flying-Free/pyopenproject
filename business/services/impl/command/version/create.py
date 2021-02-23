@@ -9,6 +9,11 @@ from business.services.impl.command.version.version_command import VersionComman
 class Create(VersionCommand):
 
     def __init__(self, connection, version):
+        """Constructor for Create, from VersionCommand
+
+        :param connection: The connection data
+        :param version: The version to create
+        """
         super().__init__(connection)
         self.version = version
 
@@ -20,4 +25,4 @@ class Create(VersionCommand):
                                    json=self.version.__dict__).execute()
             return v.Version(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating version") from re
+            raise BusinessError("Error creating version") from re

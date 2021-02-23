@@ -7,8 +7,7 @@ from business.services.impl.command.grid.grid_command import GridCommand
 class CreateForm(GridCommand):
 
     def __init__(self, connection):
-        """
-        Constructor for class CreateForm, from GridCommand
+        """Constructor for class CreateForm, from GridCommand
 
         :param connection: The connection data
         """
@@ -21,4 +20,4 @@ class CreateForm(GridCommand):
                                    context=f"{self.CONTEXT}/form").execute()
             return json_obj
         except RequestError as re:
-            raise BusinessError(f"Error creating a grid form") from re
+            raise BusinessError("Error creating a grid form") from re

@@ -8,6 +8,11 @@ from model.form import Form
 class CreateForm(MembershipCommand):
 
     def __init__(self, connection, membership):
+        """Constructor for class CreateForm, from MembershipCommand
+
+        :param connection: The connection data
+        :param membership: The membership to create the form
+        """
         super().__init__(connection)
         self.membership = membership
 
@@ -19,4 +24,5 @@ class CreateForm(MembershipCommand):
                                    json=self.membership.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating membership") from re
+            raise BusinessError(f"Error creating form from membership "
+                                f"'{self.membership.__dict__['_links']['self']['href']}'") from re

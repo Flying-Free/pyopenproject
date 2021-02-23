@@ -15,4 +15,4 @@ class FindSchema(ProjectCommand):
             json_obj = GetRequest(self.connection, f"{self.CONTEXT}/schema").execute()
             return Schema(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding the version schema") from re
+            raise BusinessError("Error finding the version schema") from re

@@ -16,4 +16,4 @@ class FindProjects(VersionCommand):
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield p.Project(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding projects available for versions") from re
+            raise BusinessError("Error finding projects available for versions") from re
