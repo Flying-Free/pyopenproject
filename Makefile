@@ -8,7 +8,9 @@ pyenv: requirements.txt
 	python -m ${VENV_NAME} ./${VENV_NAME} && \
 	${VENV_ACTIVATE} && \
     ${PYTHON} -m pip install --upgrade pip && \
-	${PYTHON} -m pip install -Ur requirements.txt
+	${PYTHON} -m pip install -Ur requirements.txt && \
+	${PYTHON} -m pip install coverage
+
 
 clean_pyenv:
 	rm -rf ./${VENV_NAME}
@@ -25,7 +27,10 @@ env_up:
 
 
 pytest:
-	${PYTHON} -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+	${PYTHON} -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py && \
+	${PYTHON} -m coverage report -m && \
+	${PYTHON} -m coverage html && \
+	${PYTHON} -m coverage xml
 
 env_down:
 	cd ./tests/infra && \
