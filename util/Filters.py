@@ -4,7 +4,7 @@ from util.URLParameter import URLParameter
 class Filters(URLParameter):
 
     def __init__(self, name, value):
-        """ Constructor for class Filters, from URLParameter
+        """Constructor for class Filters, from URLParameter
 
         :param name: Parameter name
         :param value: Parameter value
@@ -12,7 +12,7 @@ class Filters(URLParameter):
         super().__init__(name, value)
 
     def __str__(self) -> str:
-        """ Return the Filters as a string
+        """Return the Filters as a string
 
         :return: The filters as a string
         """
