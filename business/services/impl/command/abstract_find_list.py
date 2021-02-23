@@ -6,12 +6,13 @@ from business.exception.business_error import BusinessError
 from business.services.impl.command.command import Command
 
 
-class AbstractFindAll(Command):
+class AbstractFindList(Command):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
+    def __init__(self, connection):
         """ Abtract class instance action handling """
-        if self.__class__ is AbstractFindAll:
+        super().__init__(connection)
+        if self.__class__ is AbstractFindList:
             raise TypeError('Abstract class cannot be instantiated')
 
     def execute(self):
