@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Test
+name: Run Test Cases
 
 # Controls when the action will run. 
 on:
@@ -50,12 +50,11 @@ jobs:
           printf '####### UP & RUNNING #######\n'
           printf '############################\n'
           printf '############################'
-      - name: Generate Coverage Report
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        run: |
-          coverage xml
-          bash <(curl -Ls https://coverage.codacy.com/get.sh) report
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: cobertura.xml
       - name: Test with unittest
         run: coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
       - name: Bring test environment down
