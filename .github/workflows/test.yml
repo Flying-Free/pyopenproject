@@ -51,8 +51,13 @@ jobs:
           printf '####### UP & RUNNING #######\n'
           printf '############################\n'
           printf '############################'
-      - name: Test with unittest
-        run: coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+      #      - name: Test with unittest
+      #        run: coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+      - name: Generate Coverage Report
+      - run: |
+          coverage xml
+          export CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) report
       - name: Bring test environment down
         working-directory: ./tests/infra
         run: |
