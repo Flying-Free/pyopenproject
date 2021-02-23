@@ -18,4 +18,4 @@ class CreateForm(VersionCommand):
                                    json=self.version.__dict__).execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating version") from re
+            raise BusinessError("Error creating version") from re

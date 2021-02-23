@@ -17,4 +17,4 @@ class FindVersions(TypeCommand):
             for tEntry in json_obj["_embedded"]["elements"]:
                 yield Version(tEntry)
         except RequestError as re:
-            raise BusinessError(f"Error finding all time entries") from re
+            raise BusinessError("Error finding all time entries") from re
