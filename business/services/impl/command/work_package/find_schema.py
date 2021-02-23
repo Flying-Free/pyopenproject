@@ -17,4 +17,4 @@ class FindSchema(WorkPackageCommand):
                                   context=f"{self.CONTEXT}schemas/{self.work_package.id}").execute()
             return Schema(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error finding the work package schema") from re
+            raise BusinessError("Error finding the work package schema") from re
