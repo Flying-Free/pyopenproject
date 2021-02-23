@@ -1,7 +1,7 @@
 class URLParameter:
 
     def __init__(self, name, value):
-        """Constructor for class URLParameter
+        """Constructor for class URLParameter.
 
         :param name: The parameter name
         :param value: The parameter value
@@ -10,7 +10,7 @@ class URLParameter:
         self.value = value
 
     def __str__(self) -> str:
-        """Converts the URL parameter to a string
+        """Converts the URL parameter to a string.
 
         :return: The URL as a string
         """
