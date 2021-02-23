@@ -1,11 +1,13 @@
-
-from business.services.impl.command.abstract_find_all import AbstractFindAll
+from api_connection.exceptions.request_exception import RequestError
+from api_connection.requests.get_request import GetRequest
+from business.exception.business_error import BusinessError
+from business.services.impl.command.document.document_command import DocumentCommand
 from model.document import Document
 from util.URL import URL
 from util.URLParameter import URLParameter
 
 
-class FindAll(AbstractFindAll):
+class FindAll(DocumentCommand):
 
     def __init__(self, connection, offset, page_size, sort_by):
         """
@@ -21,12 +23,16 @@ class FindAll(AbstractFindAll):
         self.page_size = page_size
         self.sort_by = sort_by
 
-    def cast(self, endpoint):
-        return Document(endpoint)
+    def execute(self):
+        try:
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+                                                           [
+                                                               URLParameter("offset", self.offset),
+                                                               URLParameter("pageSize", self.page_size),
+                                                               URLParameter("sortBy", self.sort_by)
+                                                           ]))).execute()
 
-    def request_url(self):
-        return str(URL(f"{self.CONTEXT}", [
-            URLParameter("offset", self.offset),
-            URLParameter("pageSize", self.page_size),
-            URLParameter("sortBy", self.sort_by)
-        ]))
+            for document in json_obj["_embedded"]["elements"]:
+                yield Document(document)
+        except RequestError as re:
+            raise BusinessError(f"Error finding all documents") from re

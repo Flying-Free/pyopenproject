@@ -1,15 +1,20 @@
 
-from business.services.impl.command.abstract_find_all import AbstractFindAll
+from api_connection.exceptions.request_exception import RequestError
+from api_connection.requests.get_request import GetRequest
+from business.exception.business_error import BusinessError
+from business.services.impl.command.status.status_command import StatusCommand
 from model.status import Status
 
 
-class FindAll(AbstractFindAll):
+class FindAll(StatusCommand):
 
     def __init__(self, connection):
         super().__init__(connection)
 
-    def cast(self, endpoint):
-        return Status(endpoint)
-
-    def request_url(self):
-        return f"{self.CONTEXT}"
+    def execute(self):
+        try:
+            json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
+            for status in json_obj["_embedded"]["elements"]:
+                yield Status(status)
+        except RequestError as re:
+            raise BusinessError(f"Error finding all statuses") from re
