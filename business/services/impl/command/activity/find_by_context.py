@@ -27,4 +27,4 @@ class FindByContext(ActivityCommand):
                                     f"\tError Identifier: {json_obj['errorIdentifier']}\n"
                                     f"\tMessage: {json_obj['message']}")
         except RequestError as re:
-            raise BusinessError(f"Error finding activity by context: {self.context}")(re)
+            raise BusinessError(f"Error finding activity by context: {self.context}") from re

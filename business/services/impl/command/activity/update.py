@@ -30,7 +30,7 @@ class Update(ActivityCommand):
 
             return act.Activity(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error updating activity: {activity_id}")(re)
+            raise BusinessError(f"Error updating activity: {activity_id}") from re
 
     def __remove_readonly_attributes(self):
         with suppress(KeyError): del self.activity.__dict__["_type"]
