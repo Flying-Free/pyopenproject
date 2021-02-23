@@ -9,6 +9,10 @@ class GridCommand(Command):
     CONTEXT = "/api/v3/grids"
 
     def __init__(self, connection):
+        """Constructor for class GridCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

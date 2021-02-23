@@ -8,6 +8,11 @@ from model.group import Group
 class Find(GroupCommand):
 
     def __init__(self, connection, group):
+        """Constructor for class Find, from GroupCommand.
+
+        :param connection: The connection data
+        :param group: The group to find
+        """
         super().__init__(connection)
         self.group = group
 

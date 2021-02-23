@@ -9,6 +9,10 @@ class GroupCommand(Command):
     CONTEXT = "/api/v3/groups"
 
     def __init__(self, connection):
+        """Constructor for class GroupCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

@@ -7,7 +7,7 @@ from business.services.impl.command.grid.grid_command import GridCommand
 class CreateForm(GridCommand):
 
     def __init__(self, connection):
-        """Constructor for class CreateForm, from GridCommand
+        """Constructor for class CreateForm, from GridCommand.
 
         :param connection: The connection data
         """

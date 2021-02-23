@@ -9,6 +9,10 @@ class CustomObjectCommand(Command):
     CONTEXT = "/api/v3/custom_objects"
 
     def __init__(self, connection):
+        """Constructor for class CustomObjectCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

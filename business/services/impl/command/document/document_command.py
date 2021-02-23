@@ -9,6 +9,10 @@ class DocumentCommand(Command):
     CONTEXT = "/api/v3/documents"
 
     def __init__(self, connection):
+        """Constructor for class DocumentCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

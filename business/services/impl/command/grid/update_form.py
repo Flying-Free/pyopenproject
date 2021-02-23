@@ -8,7 +8,7 @@ from model.grid import Grid
 class UpdateForm(GridCommand):
 
     def __init__(self, connection, grid, grid_form):
-        """Constructor for class UpdateForm, from GridCommand
+        """Constructor for class UpdateForm, from GridCommand.
 
         :param connection: The connection data
         :param grid: The grid
