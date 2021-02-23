@@ -45,12 +45,11 @@ jobs:
               sleep 5;
           done
           printf '\n\n'
+          printf '############################\n'
+          printf '############################\n'
+          printf '####### UP & RUNNING #######\n'
+          printf '############################\n'
           printf '############################'
-          printf '############################'
-          printf '####### UP & RUNNING #######'
-          printf '############################'
-          printf '############################'
-
       - name: Test with unittest
         run: python -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
       - name: Bring test environment down
