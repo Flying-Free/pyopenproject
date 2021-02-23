@@ -58,7 +58,7 @@ jobs:
           python -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
       - name: Create coverage.xml
         id: coverage-file
-        if: ${{ steps.run-tests.outcome }} == 'success' || ${{ steps.run-tests.outcome }} == 'failure'
+        if: ${{ steps.run-tests.outputs.status }} == 'success' || ${{ steps.run-tests.outputs.status }} == 'failure'
         run: |
           python -m coverage report -m
           python -m coverage xml
@@ -68,10 +68,10 @@ jobs:
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: coverage.xml
-        if: ${{ steps.coverage-file.outcome }} == 'success'
+        if: ${{ steps.coverage-file.outputs.status }} == 'success'
       - name: Bring test environment down
         id: compose-down
-        if: ${{ steps.compose-up.outcome }} == 'success'
+        if: ${{ steps.compose-up.outputs.status }} == 'success'
         working-directory: ./tests/infra
         run: |
           docker-compose down --volumes
