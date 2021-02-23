@@ -9,6 +9,10 @@ class ConfigurationCommand(Command):
     CONTEXT = "/api/v3/configuration"
 
     def __init__(self, connection):
+        """Constructor for class ConfigurationCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

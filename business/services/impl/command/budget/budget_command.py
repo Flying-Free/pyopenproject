@@ -9,6 +9,10 @@ class BudgetCommand(Command):
     CONTEXT = "/api/v3/budgets"
 
     def __init__(self, connection):
+        """Constructor for class BudgetCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

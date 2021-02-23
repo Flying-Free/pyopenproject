@@ -8,7 +8,7 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class FindAll(AttachmentCommand):
 
     def __init__(self, connection):
-        """Constructor for class DownloadByContext, from AttachmentCommand
+        """Constructor for class DownloadByContext, from AttachmentCommand.
 
         :param connection: The connection data
         """

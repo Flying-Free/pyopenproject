@@ -8,7 +8,7 @@ from model.custom_action import CustomAction
 class Execute(CustomActionCommand):
 
     def __init__(self, connection, custom_action):
-        """Constructor for class Execute, from CustomActionCommand
+        """Constructor for class Execute, from CustomActionCommand.
 
         :param connection: The connection data
         :param custom_action: The custom action to execute

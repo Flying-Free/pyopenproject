@@ -9,6 +9,10 @@ class CategoryCommand(Command):
     CONTEXT = "/api/v3/categories/"
 
     def __init__(self, connection):
+        """Constructor for class CategoryCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

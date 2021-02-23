@@ -9,6 +9,10 @@ class CustomActionCommand(Command):
     CONTEXT = "/api/v3/custom_actions"
 
     def __init__(self, connection):
+        """Constructor for class CustomActionCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod

@@ -9,6 +9,10 @@ class AttachmentCommand(Command):
     CONTEXT = "/api/v3/attachments"
 
     def __init__(self, connection):
+        """Constructor for AttachmentCommand, from Command.
+
+        :param connection: The connection data
+        """
         self.connection = connection
 
     @abstractmethod
