@@ -16,4 +16,4 @@ class UpdateForm(WorkPackageCommand):
                                    context=f"{self.CONTEXT}/form").execute()
             return Form(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating work package form") from re
+            raise BusinessError("Error creating work package form") from re

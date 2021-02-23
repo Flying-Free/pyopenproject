@@ -30,4 +30,4 @@ class FindParents(ProjectCommand):
                 yield p.Project(tEntry)
 
         except RequestError as re:
-            raise BusinessError(f"Error finding parent project candidates") from re
+            raise BusinessError("Error finding parent project candidates") from re
