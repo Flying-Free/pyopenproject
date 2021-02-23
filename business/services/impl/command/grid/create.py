@@ -8,8 +8,7 @@ from model.grid import Grid
 class Create(GridCommand):
 
     def __init__(self, connection, grid):
-        """
-        Constructor for class Create, from GridCommand
+        """Constructor for class Create, from GridCommand
 
         :param connection: The connection data
         :param grid: The grid to create
@@ -25,4 +24,4 @@ class Create(GridCommand):
                                    data=self.grid.__dict__).execute()
             return Grid(json_obj)
         except RequestError as re:
-            raise BusinessError(f"Error creating grid") from re
+            raise BusinessError("Error creating grid") from re

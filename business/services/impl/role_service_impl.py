@@ -7,6 +7,10 @@ from business.services.role_service import RoleService
 class RoleServiceImpl(RoleService):
 
     def __init__(self, connection):
+        """Constructor for RoleServiceImpl, from RoleService
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     def find_all(self, filters=None):

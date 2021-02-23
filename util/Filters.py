@@ -6,8 +6,8 @@ class Filters(URLParameter):
     def __init__(self, name, value):
         """Constructor for class Filters, from URLParameter
 
-        :param name: Parameter name
-        :param value: Parameter value
+        :param name: name 'filters'
+        :param value: Value
         """
         super().__init__(name, value)
 
