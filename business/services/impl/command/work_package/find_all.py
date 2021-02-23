@@ -33,4 +33,4 @@ class FindAll(WorkPackageCommand):
             for work_package in json_obj["_embedded"]["elements"]:
                 yield wp.WorkPackage(work_package)
         except RequestError as re:
-            raise BusinessError(f"Error finding all work packages") from re
+            raise BusinessError("Error finding all work packages") from re

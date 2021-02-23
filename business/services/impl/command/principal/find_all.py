@@ -23,4 +23,4 @@ class FindAll(PrincipalCommand):
             for principal in json_obj["_embedded"]["elements"]:
                 yield p.Principal(principal)
         except RequestError as re:
-            raise BusinessError(f"Error finding all principals") from re
+            raise BusinessError("Error finding all principals") from re

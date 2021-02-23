@@ -22,4 +22,4 @@ class FindAll(MembershipCommand):
             for membership in json_obj['_embedded']['elements']:
                 yield mem.Membership(membership)
         except RequestError as re:
-            raise BusinessError(f"Error finding all memberships") from re
+            raise BusinessError("Error finding all memberships") from re

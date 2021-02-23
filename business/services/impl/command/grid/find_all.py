@@ -38,4 +38,4 @@ class FindAll(GridCommand):
             for grid in json_obj["_embedded"]["elements"]:
                 yield Grid(grid)
         except RequestError as re:
-            raise BusinessError(f"Error finding all grids") from re
+            raise BusinessError("Error finding all grids") from re
