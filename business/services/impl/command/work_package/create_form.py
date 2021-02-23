@@ -8,8 +8,7 @@ from model.form import Form
 class CreateForm(WorkPackageCommand):
 
     def __init__(self, connection):
-        """
-        Constructor for class CreateForm, from WorkPackageCommand
+        """Constructor for class CreateForm, from WorkPackageCommand
 
         :param connection: The connection data
         """

@@ -4,8 +4,7 @@ import json
 class Connection:
 
     def __init__(self, url, apikey, user=None):
-        """
-        Constructor for class Connection
+        """Constructor for class Connection
         :param url: The application url
         :param apikey: The apikey
         :param user: The user (optional)

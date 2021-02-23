@@ -4,8 +4,7 @@ import json
 class Version:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Version
+        """Constructor for class Version
 
         :param json_obj: The dict with the object data
         """

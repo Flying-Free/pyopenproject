@@ -4,8 +4,7 @@ import json
 class CustomAction:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class CustomAction
+        """Constructor for class CustomAction
 
         :param json_obj: The dict with the object data
         """

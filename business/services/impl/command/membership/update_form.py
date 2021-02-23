@@ -10,8 +10,7 @@ from model.form import Form
 class UpdateForm(MembershipCommand):
 
     def __init__(self, connection, membership):
-        """
-        Constructor for class TypeServiceImpl, from TypeService
+        """Constructor for class TypeServiceImpl, from TypeService
         :param connection: The connection data
         :param membership: The membership to update its form
         """

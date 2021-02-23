@@ -8,8 +8,7 @@ from model.root import Root
 class Find(RootCommand):
 
     def __init__(self, connection):
-        """
-        Constructor for class Find, from RootCommand
+        """Constructor for class Find, from RootCommand
 
         :param connection: The connection data
         """

@@ -7,6 +7,10 @@ class CategoryService(AbstractService):
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):
+        """Constructor of abstract class CategoryService, from AbstractService
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     @abstractmethod

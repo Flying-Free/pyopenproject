@@ -4,8 +4,7 @@ import json
 class Priority:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Priority
+        """Constructor for class Priority
 
         :param json_obj: The dict with the object data
         """

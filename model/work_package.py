@@ -4,8 +4,7 @@ import json
 class WorkPackage:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class WorkPackage
+        """Constructor for class WorkPackage
 
         :param json_obj: The dict with the object data
         """

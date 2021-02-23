@@ -4,8 +4,7 @@ import json
 class Attachment:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Attachment
+        """Constructor for class Attachment
 
         :param json_obj: The dict with the object data
         """

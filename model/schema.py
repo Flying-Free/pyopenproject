@@ -4,8 +4,7 @@ import json
 class Schema:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Schema
+        """Constructor for class Schema
 
         :param json_obj: The dict with the object data
         """

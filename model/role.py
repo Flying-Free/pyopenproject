@@ -4,8 +4,7 @@ import json
 class Role:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Role
+        """Constructor for class Role
 
         :param json_obj: The dict with the object data
         """

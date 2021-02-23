@@ -10,8 +10,7 @@ from model.user_preferences import UserPreferences
 class Update(UserPreferencesCommand):
 
     def __init__(self, connection, user_preferences):
-        """
-        Constructor for class Update, from UserPreferencesCommand
+        """Constructor for class Update, from UserPreferencesCommand
 
         :param connection: The connection data
         :param user_preferences: The user preferences to update

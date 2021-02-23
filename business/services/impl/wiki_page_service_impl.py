@@ -7,8 +7,7 @@ from business.services.wiki_page_service import WikiPageService
 class WikiPageServiceImpl(WikiPageService):
 
     def __init__(self, connection):
-        """
-        Constructor for class WikiPageServiceImpl, from WikiPageService
+        """Constructor for class WikiPageServiceImpl, from WikiPageService
 
         :param connection: The connection data
         """

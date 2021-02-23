@@ -8,8 +8,7 @@ from business.services.impl.command.user.user_command import UserCommand
 class Create(UserCommand):
 
     def __init__(self, connection, login, email, first_name, last_name, admin, language, status, password):
-        """
-        Constructor for class FindVersions, from ProjectCommand
+        """Constructor for class FindVersions, from ProjectCommand
 
         :param connection: The connection data
         :param login: The user login

@@ -12,8 +12,7 @@ from business.services.relation_service import RelationService
 class RelationServiceImpl(RelationService):
 
     def __init__(self, connection):
-        """
-        Constructor for class RelationServiceImpl, from RelationService
+        """Constructor for class RelationServiceImpl, from RelationService
         :param connection: The connection data
         """
         super().__init__(connection)

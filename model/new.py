@@ -4,8 +4,7 @@ import json
 class New:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class New
+        """Constructor for class New
 
         :param json_obj: The dict with the object data
         """

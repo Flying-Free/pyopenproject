@@ -9,8 +9,7 @@ from business.services.impl.command.attachment.attachment_command import Attachm
 class DownloadByContext(AttachmentCommand):
 
     def __init__(self, connection, attachment, folder):
-        """
-        Constructor for class DownloadByContext, from AttachmentCommand
+        """Constructor for class DownloadByContext, from AttachmentCommand
 
         :param connection: The connection data
         :param attachment: The attachment to download

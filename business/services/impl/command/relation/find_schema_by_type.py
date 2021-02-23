@@ -8,8 +8,7 @@ from model.schema import Schema
 class FindSchemaByType(RelationCommand):
 
     def __init__(self, connection, relation_type):
-        """
-        Constructor for class FindSchemaByType, from RelationCommand
+        """Constructor for class FindSchemaByType, from RelationCommand
         :param connection:
         :param relation_type:
         """

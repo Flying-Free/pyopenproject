@@ -8,8 +8,7 @@ from business.services.impl.command.project.project_command import ProjectComman
 class FindVersions(ProjectCommand):
 
     def __init__(self, connection, project):
-        """
-        Constructor for class FindVersions, from ProjectCommand
+        """Constructor for class FindVersions, from ProjectCommand
 
         :param connection: The connection data
         :param project: The project to find its versions

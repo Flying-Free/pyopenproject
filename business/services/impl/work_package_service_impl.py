@@ -31,8 +31,7 @@ from business.services.work_package_service import WorkPackageService
 class WorkPackageServiceImpl(WorkPackageService):
 
     def __init__(self, connection):
-        """
-        Constructor for class WorkPackageServiceImpl, from WorkPackageService
+        """Constructor for class WorkPackageServiceImpl, from WorkPackageService
 
         :param connection: The connection data
         """

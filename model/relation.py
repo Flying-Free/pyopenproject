@@ -4,8 +4,7 @@ import json
 class Relation:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Relation
+        """Constructor for class Relation
 
         :param json_obj: The dict with the object data
         """

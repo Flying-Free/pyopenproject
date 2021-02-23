@@ -4,8 +4,7 @@ import json
 class Revision:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Revision
+        """Constructor for class Revision
 
         :param json_obj: The dict with the object data
         """

@@ -8,8 +8,7 @@ from business.services.impl.command.work_package.work_package_command import Wor
 class CreateRelation(WorkPackageCommand):
 
     def __init__(self, connection, relation_type, work_package_from, work_package_to, description):
-        """
-        Constructor for class CreateRelation, from WorkPackageCommand
+        """Constructor for class CreateRelation, from WorkPackageCommand
 
         :param connection: The connection data
         :param relation_type: The type of the relation

@@ -9,8 +9,7 @@ from model.type import Type
 class FindTypes(ProjectCommand):
 
     def __init__(self, connection, project):
-        """
-        Constructor for class FindTypes, from ProjectCommand
+        """Constructor for class FindTypes, from ProjectCommand
 
         :param connection: The connection data
         :param project: The project to get its types

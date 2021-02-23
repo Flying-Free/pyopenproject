@@ -8,8 +8,7 @@ from business.services.impl.command.wiki_page.wiki_command import WikiPageComman
 class AddAttachment(WikiPageCommand):
 
     def __init__(self, connection, wiki_page, attachment, file_path):
-        """
-        Constructor for class AddAttachment, from WikiPageCommand
+        """Constructor for class AddAttachment, from WikiPageCommand
 
         :param connection: The connection data
         :param wiki_page: The wiki page to add the attachment

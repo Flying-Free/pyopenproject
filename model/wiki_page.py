@@ -4,8 +4,7 @@ import json
 class WikiPage:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class WikiPage
+        """Constructor for class WikiPage
 
         :param json_obj: The dict with the object data
         """

@@ -4,8 +4,7 @@ import json
 class TimeEntry:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class TimeEntry
+        """Constructor for class TimeEntry
 
         :param json_obj: The dict with the object data
         """

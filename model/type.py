@@ -4,8 +4,7 @@ import json
 class Type:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class Type
+        """Constructor for class Type
 
         :param json_obj: The dict with the object data
         """

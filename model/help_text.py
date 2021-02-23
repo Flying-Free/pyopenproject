@@ -4,8 +4,7 @@ import json
 class HelpText:
 
     def __init__(self, json_obj):
-        """
-        Constructor for class HelpText
+        """Constructor for class HelpText
 
         :param json_obj: The dict with the object data
         """

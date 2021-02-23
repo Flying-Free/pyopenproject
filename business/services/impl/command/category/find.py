@@ -8,8 +8,7 @@ from business.services.impl.command.category.category_command import CategoryCom
 class Find(CategoryCommand):
 
     def __init__(self, connection, category):
-        """
-        Constructor for class Find, from CategoryCommand
+        """Constructor for class Find, from CategoryCommand
 
         :param connection: The connection data
         :param category: The category to find
