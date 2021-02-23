@@ -16,4 +16,4 @@ class FindAll(HelpTextsCommand):
             for help_text in json_obj['_embedded']['elements']:
                 yield HelpText(help_text)
         except RequestError as re:
-            raise BusinessError(f"Error finding all grids") from re
+            raise BusinessError("Error finding all grids") from re

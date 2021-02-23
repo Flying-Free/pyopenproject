@@ -17,4 +17,4 @@ class FindAll(StatusCommand):
             for status in json_obj["_embedded"]["elements"]:
                 yield Status(status)
         except RequestError as re:
-            raise BusinessError(f"Error finding all statuses") from re
+            raise BusinessError("Error finding all statuses") from re

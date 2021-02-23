@@ -31,4 +31,4 @@ class FindAll(NewsCommand):
             for news in json_obj['_embedded']['elements']:
                 yield New(news)
         except RequestError as re:
-            raise BusinessError(f"Error finding all news") from re
+            raise BusinessError("Error finding all news") from re

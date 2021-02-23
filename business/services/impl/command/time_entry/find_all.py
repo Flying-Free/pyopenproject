@@ -30,4 +30,4 @@ class FindAll(TimeEntryCommand):
             for time_entry in json_obj["_embedded"]["elements"]:
                 yield te.TimeEntry(time_entry)
         except RequestError as re:
-            raise BusinessError(f"Error finding all time entries") from re
+            raise BusinessError("Error finding all time entries") from re

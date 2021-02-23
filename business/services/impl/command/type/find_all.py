@@ -17,4 +17,4 @@ class FindAll(TypeCommand):
             for typ in json_obj["_embedded"]["elements"]:
                 yield Type(typ)
         except RequestError as re:
-            raise BusinessError(f"Error finding all time entries") from re
+            raise BusinessError("Error finding all time entries") from re

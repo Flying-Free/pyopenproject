@@ -34,4 +34,4 @@ class FindAll(DocumentCommand):
             for document in json_obj["_embedded"]["elements"]:
                 yield Document(document)
         except RequestError as re:
-            raise BusinessError(f"Error finding all documents") from re
+            raise BusinessError("Error finding all documents") from re
