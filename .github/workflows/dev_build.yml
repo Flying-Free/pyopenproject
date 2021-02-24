@@ -31,12 +31,12 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.event.head_commit.message }}
           name: openproject-sdk-${{ github.ref }}
           body_path: CHANGELOG.md
           files: |
-            openproject-sdk-${{ github.ref }}.tar.gz
-            openproject_sdk-${{ github.ref }}-py3-none-any.whl
+            ./dist/openproject-sdk-${{ github.event.head_commit.message }}.tar.gz
+            ./dist/openproject_sdk-${{ github.event.head_commit.message }}-py3-none-any.whl
           draft: false
           prerelease: true
         env:
