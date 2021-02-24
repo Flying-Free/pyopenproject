@@ -8,9 +8,6 @@ on:
     tags:
       - 'v*alpha*'
       - 'v*beta*'
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
   build:
     # The type of runner that the job will run on
@@ -19,10 +16,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
