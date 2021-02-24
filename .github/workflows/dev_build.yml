@@ -32,11 +32,12 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.event.head_commit.message }}
-          name: openproject-sdk-${{ github.ref }}
+          name: openproject-sdk-${{ github.event.head_commit.message }}
           body_path: CHANGELOG.md
           files: |
-            ./dist/openproject-sdk-${{ github.event.head_commit.message }}.tar.gz
-            ./dist/openproject_sdk-${{ github.event.head_commit.message }}-py3-none-any.whl
+            dist/openproject-sdk-${{ github.event.head_commit.message }}.tar.gz
+            dist/openproject_sdk-${{ github.event.head_commit.message }}-py3-none-any.whl
+          fail_on_unmatched_files: true
           draft: false
           prerelease: true
         env:
