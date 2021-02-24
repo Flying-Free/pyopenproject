@@ -132,3 +132,4 @@ dmypy.json
 **.vagrant
 env
 **.log
+**.coverage

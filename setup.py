@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Alan Padierna & Marcelo Torrejon",
     author_email="alanpadierna9595@gmail.com; marcelo.torrejn@gmail.com",
-    description="A small example package",
+    description="Openproject SDK for Python developers",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Flying-Free/python-openproject-api",

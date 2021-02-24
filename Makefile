@@ -27,10 +27,8 @@ env_up:
 
 
 pytest:
-	${PYTHON} -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py && \
-	${PYTHON} -m coverage report -m && \
-	${PYTHON} -m coverage html && \
-	${PYTHON} -m coverage xml
+	- ${PYTHON} -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+	- ${PYTHON} -m coverage report -m
 
 env_down:
 	cd ./tests/infra && \
@@ -38,8 +36,12 @@ env_down:
 
 test: pyenv env_up pytest env_down clean_pyenv
 
-build: test
-	docker build .
+build:
+	- python -m pip install --upgrade build
+	- python -m build
+
+clean: clean_pyenv
+	- rm -rf ./openproject_sdk.egg-info ./build ./dist .coverage
 
 help:
 	@echo "    clean"
@@ -49,4 +51,4 @@ help:
 	@echo '    test'
 	@echo '        Run tests '
 
-.PHONY: clean help test test
+.PHONY: clean help test build
