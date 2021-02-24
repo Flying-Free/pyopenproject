@@ -4,7 +4,8 @@
 # python-openproject-api
 
 Python library to interact with OpenProject API. 
-In this library could be understood as a compendium of OpenProject endpoints services to use in a client project with 
+
+This library could be understood as a compendium of OpenProject endpoints services to use in a client project with 
 the purpose of interact with OpenProject instance through its API.
 
 ## Contributing
