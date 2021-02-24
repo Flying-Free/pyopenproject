@@ -58,7 +58,7 @@ jobs:
           python -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
       - name: Create coverage.xml
         id: coverage
-        if: ${{ steps.test.outcome }} == 'success' || ${{ steps.test.outcome }} == 'failure'
+        if: ${{ steps.test.outcome }} == 'success' || ${{ steps.test.outcome }} == 'failure' || ${{ steps.test.outcome }} == 'canceled'
         run: |
           python -m coverage report -m
           python -m coverage xml
