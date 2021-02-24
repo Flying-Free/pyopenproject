@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="openproject-sdk",  # Replace with your own username
-    version="0.0.1",
+    version="v0.1-alpha",
     author="Alan Padierna & Marcelo Torrejon",
     author_email="alanpadierna9595@gmail.com; marcelo.torrejn@gmail.com",
     description="Openproject SDK for Python developers",
