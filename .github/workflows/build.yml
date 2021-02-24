@@ -7,12 +7,6 @@ on:
     types:
       - completed
       - requested
-    # Sequence of patterns matched against refs/tags
-    tags-ignore:
-      - 'v*alpha*'
-      - 'v*beta*'
-    tags:
-      - 'v*'
 jobs:
   build:
     # The type of runner that the job will run on
