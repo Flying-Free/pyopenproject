@@ -21,8 +21,6 @@ only available for Python 3.6 or more.
 
 - Service factory pattern to organize the multiple methods for the different classes of the model.
 - Model classes based on API endpoints
-- [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
-  PATCH Ticket title goes here.
 
 ### Changed
 

@@ -5,7 +5,7 @@ on:
     branches: [ dev ]
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v.*' # Push events to matching v*, i.e. v1.0, v20.15.10
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,7 +30,6 @@ jobs:
           python -m build
       - name: Create Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           body_path: CHANGELOG.md
           files: |
