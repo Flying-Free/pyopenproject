@@ -31,6 +31,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ github.ref }}
+          name: openproject-sdk-${{ github.ref }}
           body_path: CHANGELOG.md
           files: |
             openproject-sdk-${{ github.ref }}.tar.gz
