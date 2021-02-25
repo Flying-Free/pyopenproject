@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Grid implementation for service factory methods
+- Test Errors like:
+  ```json
+  {
+     "_type":"Error",
+     "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+     "message":"You are not authorized to access this resource."
+  }
+  ```
 
 ## [v0.1-alpha] - 2021-02-24
 
