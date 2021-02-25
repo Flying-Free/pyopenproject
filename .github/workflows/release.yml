@@ -2,8 +2,6 @@ name: Publish Release
 
 on:
   push:
-    branches-ignore:
-      - dev
     # Sequence of patterns matched against refs/tags
     tags-ignore:
       - 'v*alpha*'
