@@ -3,7 +3,6 @@ name: Build Package
 on:
   workflow_run:
     workflows: [ "Publish Release" ]
-    branches: [ main ]
     types:
       - completed
       - requested
