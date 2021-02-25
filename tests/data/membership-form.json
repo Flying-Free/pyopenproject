@@ -1,0 +1,13 @@
+{
+  "project": {
+    "href": "/api/v3/projects/1"
+  },
+  "principal": {
+    "href": "/api/v3/users/5"
+  },
+  "roles": [
+    {
+      "href": "/api/v3/roles/2"
+    }
+  ]
+}

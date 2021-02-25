@@ -1,0 +1,19 @@
+{
+  "_links": {
+    "activity": {
+      "href": "/api/v3/time_entries/activities/18"
+    },
+    "workPackage": {
+      "href": "/api/v3/work_packages/5"
+    }
+  },
+  "hours": "PT5H",
+  "comment": {
+    "raw": "Some comment"
+  },
+  "spentOn": "2017-07-28",
+  "customField1": {
+    "raw": "some text custom field value"
+  },
+  "customField8": 5
+}

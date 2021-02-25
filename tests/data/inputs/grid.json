@@ -1,0 +1,26 @@
+{
+  "rowCount": 4,
+  "columnCount": 5,
+  "options": {},
+  "widgets": [
+    {
+      "_type": "GridWidget",
+      "id": 20,
+      "identifier": "custom_text",
+      "startRow": 2,
+      "endRow": 5,
+      "startColumn": 1,
+      "endColumn": 2,
+      "options": {
+        "name": "Demo Grid",
+        "text": {
+          "format": "markdown",
+          "raw": "This is a Demo grid to test the creation functionality available in the API"
+        }
+      }
+    }
+  ],
+  "_links": {
+    "attachments": []
+  }
+}

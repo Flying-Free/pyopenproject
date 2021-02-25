@@ -1,0 +1,40 @@
+{
+  "_type": "Attachment",
+  "id": 3,
+  "fileName": "cute-cat.png",
+  "fileSize": 651748,
+  "description": {
+    "format": "plain",
+    "raw": "A cute kitty, cuddling with its friends!",
+    "html": "<p>A cute kitty, cuddling with its friends!</p>"
+  },
+  "contentType": "image/png",
+  "digest": {
+    "algorithm": "md5",
+    "hash": "74f5b409de8c6a1ba444d6f65d015ff2"
+  },
+  "createdAt": "2021-01-19T15:42:22Z",
+  "_links": {
+    "self": {
+      "href": "/api/v3/attachments/4",
+      "title": "cute-cat.png"
+    },
+    "author": {
+      "href": "/api/v3/users/3",
+      "title": "System"
+    },
+    "container": {
+      "href": null
+    },
+    "staticDownloadLocation": {
+      "href": "/api/v3/attachments/4/content"
+    },
+    "downloadLocation": {
+      "href": "/api/v3/attachments/4/content"
+    },
+    "delete": {
+      "href": "/api/v3/attachments/4",
+      "method": "delete"
+    }
+  }
+}

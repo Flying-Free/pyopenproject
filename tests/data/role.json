@@ -1,0 +1,11 @@
+{
+    "_type": "Role",
+    "id": 6,
+    "name": "Project creator",
+    "_links": {
+        "self": {
+            "href": "/api/v3/roles/6",
+            "title": "Project creator"
+        }
+    }
+}

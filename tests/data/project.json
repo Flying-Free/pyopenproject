@@ -1,0 +1,69 @@
+{
+  "_links": {
+    "categories": {
+      "href": "/api/v3/projects/2/categories"
+    },
+    "createWorkPackage": {
+      "href": "/api/v3/projects/2/work_packages/form",
+      "method": "post"
+    },
+    "createWorkPackageImmediately": {
+      "href": "/api/v3/projects/2/work_packages",
+      "method": "post"
+    },
+    "delete": {
+      "href": "/api/v3/projects/2",
+      "method": "delete"
+    },
+    "memberships": {
+      "href": "/api/v3/memberships?filters=%5B%7B%22project%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%222%22%5D%7D%7D%5D"
+    },
+    "parent": {
+      "href": null,
+      "title": null
+    },
+    "schema": {
+      "href": "/api/v3/projects/schema"
+    },
+    "self": {
+      "href": "/api/v3/projects/2",
+      "title": "Scrum project"
+    },
+    "types": {
+      "href": "/api/v3/projects/2/types"
+    },
+    "update": {
+      "href": "/api/v3/projects/2/form",
+      "method": "post"
+    },
+    "updateImmediately": {
+      "href": "/api/v3/projects/2",
+      "method": "patch"
+    },
+    "versions": {
+      "href": "/api/v3/projects/2/versions"
+    },
+    "workPackages": {
+      "href": "/api/v3/projects/2/work_packages"
+    }
+  },
+  "_type": "Project",
+  "active": true,
+  "createdAt": "2021-01-14T12:19:43Z",
+  "description": {
+    "format": "markdown",
+    "html": "<p class=\"op-uc-p\">This is a short summary of the goals of this demo Scrum project.</p>",
+    "raw": "This is a short summary of the goals of this demo Scrum project."
+  },
+  "id": 2,
+  "identifier": "your-scrum-project",
+  "name": "Scrum project",
+  "public": true,
+  "status": "on track",
+  "statusExplanation": {
+    "format": "markdown",
+    "html": "<p class=\"op-uc-p\">All tasks are on schedule. The people involved know their tasks. The system is completely set up.</p>",
+    "raw": "All tasks are on schedule. The people involved know their tasks. The system is completely set up."
+  },
+  "updatedAt": "2021-01-14T12:19:43Z"
+}

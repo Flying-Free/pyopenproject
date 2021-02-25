@@ -1,0 +1,138 @@
+{
+  "_embedded": {
+    "project": {
+      "_type": "Project",
+      "id": 1,
+      "identifier": "demo-project",
+      "name": "Demo project",
+      "active": true,
+      "public": true,
+      "description": {
+        "format": "markdown",
+        "raw": "This is a short summary of the goals of this demo project.",
+        "html": "<p class=\"op-uc-p\">This is a short summary of the goals of this demo project.</p>"
+      },
+      "createdAt": "2021-01-14T12:19:40Z",
+      "updatedAt": "2021-01-14T12:19:40Z",
+      "status": "on track",
+      "statusExplanation": {
+        "format": "markdown",
+        "raw": "All tasks are on schedule. The people involved know their tasks. The system is completely set up.",
+        "html": "<p class=\"op-uc-p\">All tasks are on schedule. The people involved know their tasks. The system is completely set up.</p>"
+      },
+      "_links": {
+        "self": {
+          "href": "/api/v3/projects/1",
+          "title": "Demo project"
+        },
+        "createWorkPackage": {
+          "href": "/api/v3/projects/1/work_packages/form",
+          "method": "post"
+        },
+        "createWorkPackageImmediately": {
+          "href": "/api/v3/projects/1/work_packages",
+          "method": "post"
+        },
+        "workPackages": {
+          "href": "/api/v3/projects/1/work_packages"
+        },
+        "categories": {
+          "href": "/api/v3/projects/1/categories"
+        },
+        "versions": {
+          "href": "/api/v3/projects/1/versions"
+        },
+        "memberships": {
+          "href": "/api/v3/memberships?filters=%5B%7B%22project%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%221%22%5D%7D%7D%5D"
+        },
+        "types": {
+          "href": "/api/v3/projects/1/types"
+        },
+        "update": {
+          "href": "/api/v3/projects/1/form",
+          "method": "post"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/projects/1",
+          "method": "patch"
+        },
+        "delete": {
+          "href": "/api/v3/projects/1",
+          "method": "delete"
+        },
+        "schema": {
+          "href": "/api/v3/projects/schema"
+        },
+        "parent": {
+          "href": null,
+          "title": null
+        }
+      }
+    },
+    "author": {
+      "_type": "User",
+      "id": 1,
+      "name": "OpenProject Admin",
+      "createdAt": "2021-01-14T12:19:39Z",
+      "updatedAt": "2021-01-20T10:09:12Z",
+      "login": "admin",
+      "admin": true,
+      "firstName": "OpenProject",
+      "lastName": "Admin",
+      "email": "admin@example.net",
+      "avatar": "http://gravatar.com/avatar/cb4f282fed12016bd18a879c1f27ff97?default=404&secure=false",
+      "status": "active",
+      "identityUrl": null,
+      "language": "en",
+      "_links": {
+        "self": {
+          "href": "/api/v3/users/1",
+          "title": "OpenProject Admin"
+        },
+        "memberships": {
+          "href": "/api/v3/memberships?filters=%5B%7B%22principal%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%221%22%5D%7D%7D%5D",
+          "title": "Members"
+        },
+        "showUser": {
+          "href": "/users/1",
+          "type": "text/html"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/users/1",
+          "title": "Update admin",
+          "method": "patch"
+        },
+        "lock": {
+          "href": "/api/v3/users/1/lock",
+          "title": "Set lock on admin",
+          "method": "post"
+        }
+      }
+    }
+  },
+  "_type": "News",
+  "id": 1,
+  "title": "Welcome to your demo project",
+  "summary": "We are glad you joined. In this module you can communicate project news to your team members.\n",
+  "description": {
+    "format": "markdown",
+    "raw": "The actual news",
+    "html": "<p class=\"op-uc-p\">The actual news</p>"
+  },
+  "createdAt": "2021-01-14T12:19:40Z",
+  "updatedAt": "2021-01-14T12:19:40Z",
+  "_links": {
+    "self": {
+      "href": "/api/v3/news/1",
+      "title": "Welcome to your demo project"
+    },
+    "project": {
+      "href": "/api/v3/projects/1",
+      "title": "Demo project"
+    },
+    "author": {
+      "href": "/api/v3/users/1",
+      "title": "OpenProject Admin"
+    }
+  }
+}

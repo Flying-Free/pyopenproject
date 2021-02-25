@@ -1,0 +1,9 @@
+{
+  "_links": {
+    "self": {
+      "href": "/api/v3/custom_objects/1"
+    }
+  },
+  "_type": "CustomObject",
+  "value": "Foo"
+}

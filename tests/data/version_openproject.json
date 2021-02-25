@@ -1,0 +1,26 @@
+{
+    "_links": {
+        "self": { "href": "/api/v3/versions/11" },
+        "update": { "href": "/api/v3/versions/11/form", "method": "POST" },
+        "updateImmediately": { "href": "/api/v3/versions/11", "method": "PATCH" },
+        "definingProject": { "href": "/api/v3/projects/11" },
+        "availableInProjects": { "href": "/api/v3/versions/11/projects" },
+        "customField4": {
+            "href": "/api/v3/custom_options/5",
+            "title": "Custom field option"
+        }
+    },
+    "_type": "Version",
+    "id": 11,
+    "name": "v3.0 Alpha",
+    "description": {
+        "format": "plain",
+        "raw": "This version has a description",
+        "html": "This version has a description"
+    },
+    "startDate": "2014-11-20",
+    "endDate": null,
+    "status": "open",
+    "sharing": "system",
+    "customField14": "1234567890"
+}

@@ -1,0 +1,14 @@
+{
+  "_links": {
+    "self": {
+      "href": "/api/v3/statuses/1"
+    }
+  },
+  "_type": "Status",
+  "id": 1,
+  "name": "New",
+  "position": 1,
+  "isDefault": true,
+  "isClosed": false,
+  "defaultDoneRatio": 0
+}

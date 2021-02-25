@@ -1,0 +1,208 @@
+{
+  "_embedded": {
+    "author": {
+      "_type": "User",
+      "id": 1,
+      "name": "OpenProject Admin",
+      "createdAt": "2021-01-14T12:19:39Z",
+      "updatedAt": "2021-01-14T12:19:39Z",
+      "login": "admin",
+      "admin": true,
+      "firstName": "OpenProject",
+      "lastName": "Admin",
+      "email": "admin@example.net",
+      "avatar": "http://gravatar.com/avatar/cb4f282fed12016bd18a879c1f27ff97?default=404&secure=false",
+      "status": "active",
+      "identityUrl": null,
+      "language": "en",
+      "_links": {
+        "self": {
+          "href": "/api/v3/users/1",
+          "title": "OpenProject Admin"
+        },
+        "memberships": {
+          "href": "/api/v3/memberships?filters=%5B%7B%22principal%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%221%22%5D%7D%7D%5D",
+          "title": "Members"
+        },
+        "showUser": {
+          "href": "/users/1",
+          "type": "text/html"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/users/1",
+          "title": "Update admin",
+          "method": "patch"
+        },
+        "lock": {
+          "href": "/api/v3/users/1/lock",
+          "title": "Set lock on admin",
+          "method": "post"
+        }
+      }
+    },
+    "container": {
+      "_type": "Grid",
+      "id": 6,
+      "rowCount": 6,
+      "columnCount": 2,
+      "options": {},
+      "widgets": [
+        {
+          "_type": "GridWidget",
+          "id": 19,
+          "identifier": "custom_text",
+          "startRow": 1,
+          "endRow": 2,
+          "startColumn": 1,
+          "endColumn": 3,
+          "options": {
+            "name": "Welcome",
+            "text": {
+              "format": "markdown",
+              "raw": "![Teaser](/api/v3/attachments/1/content)",
+              "html": "<p class=\"op-uc-p\"><figure class=\"op-uc-figure\"><div class=\"op-uc-figure--content\"><img src=\"/api/v3/attachments/1/content\" alt=\"Teaser\" class=\"op-uc-image\"></div></figure></p>"
+            }
+          }
+        },
+        {
+          "_type": "GridWidget",
+          "id": 20,
+          "identifier": "custom_text",
+          "startRow": 2,
+          "endRow": 5,
+          "startColumn": 1,
+          "endColumn": 2,
+          "options": {
+            "name": "Getting started",
+            "text": {
+              "format": "markdown",
+              "raw": "We are glad you joined! We suggest to try a few things to get started in OpenProject.\n\nDiscover the most important features with our [Guided Tour](/projects/demo-project/work_packages/?start_onboarding_tour=true).\n\n_Try the following steps:_\n\n1. *Invite new members to your project*: &rightarrow; Go to [Members](/projects/demo-project/members) in the project navigation.\n2. *View the work in your project*: &rightarrow; Go to [Work packages](/projects/demo-project/work_packages) in the project navigation.\n3. *Create a new work package*: &rightarrow; Go to [Work packages &rightarrow; Create](/projects/demo-project/work_packages/new).\n4. *Create and update a project plan*: &rightarrow; Go to [Project plan](/projects/demo-project/work_packages?query_id=1) in the project navigation.\n5. *Activate further modules*: &rightarrow; Go to [Project settings &rightarrow; Modules](/projects/demo-project/settings/modules).\n6. *Complete your tasks in the project*: &rightarrow; Go to [Work packages &rightarrow; Tasks](/projects/demo-project/work_packages/details/3/overview?query_id=3).\n\nHere you will find our [User Guides](https://docs.openproject.org/user-guide/).\nPlease let us know if you have any questions or need support. Contact us: [support[at]openproject.com](mailto:support@openproject.com).\n",
+              "html": "<p class=\"op-uc-p\">We are glad you joined! We suggest to try a few things to get started in OpenProject.</p>\n<p class=\"op-uc-p\">Discover the most important features with our <a href=\"/projects/demo-project/work_packages/?start_onboarding_tour=true\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Guided Tour</a>.</p>\n<p class=\"op-uc-p\"><em>Try the following steps:</em></p>\n<ol class=\"op-uc-list\">\n<li class=\"op-uc-list--item\">\n<em>Invite new members to your project</em>: \u2192 Go to <a href=\"/projects/demo-project/members\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Members</a> in the project navigation.</li>\n<li class=\"op-uc-list--item\">\n<em>View the work in your project</em>: \u2192 Go to <a href=\"/projects/demo-project/work_packages\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Work packages</a> in the project navigation.</li>\n<li class=\"op-uc-list--item\">\n<em>Create a new work package</em>: \u2192 Go to <a href=\"/projects/demo-project/work_packages/new\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Work packages \u2192 Create</a>.</li>\n<li class=\"op-uc-list--item\">\n<em>Create and update a project plan</em>: \u2192 Go to <a href=\"/projects/demo-project/work_packages?query_id=1\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Project plan</a> in the project navigation.</li>\n<li class=\"op-uc-list--item\">\n<em>Activate further modules</em>: \u2192 Go to <a href=\"/projects/demo-project/settings/modules\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Project settings \u2192 Modules</a>.</li>\n<li class=\"op-uc-list--item\">\n<em>Complete your tasks in the project</em>: \u2192 Go to <a href=\"/projects/demo-project/work_packages/details/3/overview?query_id=3\" rel=\"noopener noreferrer\" class=\"op-uc-link\">Work packages \u2192 Tasks</a>.</li>\n</ol>\n<p class=\"op-uc-p\">Here you will find our <a href=\"https://docs.openproject.org/user-guide/\" rel=\"noopener noreferrer\" class=\"op-uc-link\">User Guides</a>.<br>\nPlease let us know if you have any questions or need support. Contact us: <a href=\"mailto:support@openproject.com\" rel=\"noopener noreferrer\" class=\"op-uc-link\">support[at]openproject.com</a>.</p>"
+            }
+          }
+        },
+        {
+          "_type": "GridWidget",
+          "id": 21,
+          "identifier": "project_status",
+          "startRow": 2,
+          "endRow": 3,
+          "startColumn": 2,
+          "endColumn": 3,
+          "options": {}
+        },
+        {
+          "_type": "GridWidget",
+          "id": 22,
+          "identifier": "project_description",
+          "startRow": 3,
+          "endRow": 4,
+          "startColumn": 2,
+          "endColumn": 3,
+          "options": {}
+        },
+        {
+          "_type": "GridWidget",
+          "id": 23,
+          "identifier": "members",
+          "startRow": 4,
+          "endRow": 5,
+          "startColumn": 2,
+          "endColumn": 3,
+          "options": {
+            "name": "Members"
+          }
+        },
+        {
+          "_type": "GridWidget",
+          "id": 24,
+          "identifier": "work_packages_overview",
+          "startRow": 5,
+          "endRow": 6,
+          "startColumn": 1,
+          "endColumn": 3,
+          "options": {
+            "name": "Work packages"
+          }
+        },
+        {
+          "_type": "GridWidget",
+          "id": 25,
+          "identifier": "work_packages_table",
+          "startRow": 6,
+          "endRow": 7,
+          "startColumn": 1,
+          "endColumn": 3,
+          "options": {
+            "name": "Milestones",
+            "queryId": "2"
+          }
+        }
+      ],
+      "createdAt": "2021-01-14T12:19:48Z",
+      "updatedAt": "2021-01-14T12:19:48Z",
+      "_links": {
+        "attachments": {
+          "href": "/api/v3/grids/6/attachments"
+        },
+        "addAttachment": {
+          "href": "/api/v3/grids/6/attachments",
+          "method": "post"
+        },
+        "scope": {
+          "href": "/projects/demo-project",
+          "type": "text/html"
+        },
+        "self": {
+          "href": "/api/v3/grids/6"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/grids/6",
+          "method": "patch"
+        },
+        "update": {
+          "href": "/api/v3/grids/6/form",
+          "method": "post"
+        }
+      }
+    }
+  },
+  "_type": "Attachment",
+  "id": 1,
+  "fileName": "demo_project_teaser.png",
+  "fileSize": 455768,
+  "description": {
+    "format": "plain",
+    "raw": null,
+    "html": ""
+  },
+  "contentType": "image/png",
+  "digest": {
+    "algorithm": "md5",
+    "hash": "2a53ddc815206499a480d08e38272b8a"
+  },
+  "createdAt": "2021-01-14T12:19:48Z",
+  "_links": {
+    "self": {
+      "href": "/api/v3/attachments/1",
+      "title": "demo_project_teaser.png"
+    },
+    "author": {
+      "href": "/api/v3/users/1",
+      "title": "OpenProject Admin"
+    },
+    "container": {
+      "href": "/api/v3/grids/6"
+    },
+    "staticDownloadLocation": {
+      "href": "/api/v3/attachments/1/content"
+    },
+    "downloadLocation": {
+      "href": "/api/v3/attachments/1/content"
+    },
+    "delete": {
+      "href": "/api/v3/attachments/1",
+      "method": "delete"
+    }
+  }
+}

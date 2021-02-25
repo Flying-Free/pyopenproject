@@ -1,0 +1,27 @@
+{
+    "_type": "Revision",
+    "_links": {
+        "self": {
+            "href": "/api/v3/revisions/1"
+        },
+        "project": {
+            "href": "/api/v3/projects/1"
+        },
+        "author": {
+            "href": "/api/v3/users/1"
+        },
+        "showRevision": {
+            "href": "/projects/identifier/repository/revision/11f4b07"
+        }
+    },
+    "id": 1,
+    "identifier": "11f4b07dff4f4ce9548a52b7d002daca7cd63ec6",
+    "formattedIdentifier": "11f4b07",
+    "authorName": "Some Developer",
+    "message": {
+        "format": "plain",
+        "raw": "This revision provides new features\n\nAn elaborate description",
+        "html": "<p>This revision provides new features<br/><br/>An elaborate description</p>"
+    },
+    "createdAt": "2015-07-21T13:36:59Z"
+}

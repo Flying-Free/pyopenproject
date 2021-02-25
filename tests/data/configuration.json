@@ -1,0 +1,42 @@
+{
+  "_embedded": {
+    "userPreferences": {
+      "_links": {
+        "self": {
+          "href": "/api/v3/my_preferences"
+        },
+        "updateImmediately": {
+          "href": "/api/v3/my_preferences",
+          "method": "patch"
+        },
+        "user": {
+          "href": "/api/v3/users/3",
+          "title": "System"
+        }
+      },
+      "_type": "UserPreferences",
+      "autoHidePopups": true,
+      "commentSortDescending": false,
+      "hideMail": true,
+      "timeZone": null,
+      "warnOnLeavingUnsaved": true
+    }
+  },
+  "_links": {
+    "self": {
+      "href": "/api/v3/configuration"
+    },
+    "userPreferences": {
+      "href": "/api/v3/my_preferences"
+    }
+  },
+  "_type": "Configuration",
+  "dateFormat": null,
+  "maximumAttachmentFileSize": 5242880,
+  "perPageOptions": [
+    20,
+    100
+  ],
+  "startOfWeek": null,
+  "timeFormat": null
+}
