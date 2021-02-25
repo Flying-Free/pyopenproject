@@ -1,12 +1,12 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.form import Form
-from model.user import User
-from model.work_package import WorkPackage
+from pyopenproject.business.exception import BusinessError
+from pyopenproject.business.util import Filter
+from pyopenproject.model import Form
+from pyopenproject.model import User
+from pyopenproject.model import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class WorkPackageServiceTestCase(OpenProjectTestCase):

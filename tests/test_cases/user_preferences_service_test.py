@@ -1,7 +1,7 @@
 import json
 import os
 
-from model.user_preferences import UserPreferences
+from pyopenproject.model import UserPreferences
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

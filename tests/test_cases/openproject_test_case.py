@@ -3,7 +3,7 @@ import unittest
 
 import yaml
 
-from business.service_factory import ServiceFactory
+from pyopenproject.business import ServiceFactory
 
 
 class OpenProjectTestCase(unittest.TestCase):

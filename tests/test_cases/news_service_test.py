@@ -1,9 +1,9 @@
 import json
 import os
 
-from model.new import New
+from pyopenproject.business.util import Filter
+from pyopenproject.model import New
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class NewsServiceTestCase(OpenProjectTestCase):

@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.version import Version
+from pyopenproject.business.exception import BusinessError
+from pyopenproject.model import Version
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

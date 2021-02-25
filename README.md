@@ -2,13 +2,13 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f8f668fa0b344ba7bea7b56ba743a091)](https://www.codacy.com/gh/Flying-Free/python-openproject-api/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Flying-Free/python-openproject-api&utm_campaign=Badge_Coverage)
 [![Run Test Cases](https://github.com/Flying-Free/python-openproject-api/actions/workflows/test_cases.yml/badge.svg?branch=main)](https://github.com/Flying-Free/python-openproject-api/actions/workflows/test_cases.yml)
 
-# python-openproject-api
+# PyOpenProject
 Python library to interact with OpenProject API.
 
 ```python
-from openproject-sdk import ServiceFactory
-services = ServiceFactory(url="http://localhost:8080", apikey="6289058256894568479567886794")
-user = services.get_user_services().create(
+from pyopenproject import OpenProject
+op = OpenProject(url="http://localhost:8080", apikey="6289058256894568479567886794")
+user = op.get_user_services().create(
                     login="h.wurst",
                     email="h.wurst@openproject.com",
                     first_name="Hans",
@@ -24,12 +24,12 @@ user = services.get_user_services().create(
 This library could be understood as a compendium of OpenProject endpoints services to use in a client project with the
 purpose of interact with OpenProject instance through its API.
 
-## Installing openproject-sdk and Supported Versions
+## Installing pyopenproject
 
-Openproject-sdk is available on PyPI:
+Pyopenproject is available on PyPI:
 
 ```console
-python -m pip install openproject-sdk
+python -m pip install pyopenproject
 ```
 
 ## Documentation
@@ -39,7 +39,7 @@ python -m pip install openproject-sdk
 
 ## Contributing
 
-1. Fork it (<https://github.com/Flying-Free/python-openproject-api/fork>)
+1. Fork it (<https://github.com/Flying-Free/pyopenproject/fork>)
 2. Create your feature branch (`git checkout -b feature/newEndpoint`)
 3. Commit your changes (`git commit -am 'Add some new Endpoint'`)
 4. Push to the branch (`git push origin feature/newEndpoint`)

@@ -1,9 +1,9 @@
 import json
 import os
 
-from model.principal import Principal
+from pyopenproject.business.util import Filter
+from pyopenproject.model import Principal
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class PrincipalServiceTestCase(OpenProjectTestCase):
