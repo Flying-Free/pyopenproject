@@ -1,12 +1,42 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e6003c0b47144e30b64e39601709778f)](https://app.codacy.com/gh/Flying-Free/python-openproject-api?utm_source=github.com&utm_medium=referral&utm_content=Flying-Free/python-openproject-api&utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f8f668fa0b344ba7bea7b56ba743a091)](https://www.codacy.com/gh/Flying-Free/python-openproject-api/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Flying-Free/python-openproject-api&utm_campaign=Badge_Coverage)
 [![Run Test Cases](https://github.com/Flying-Free/python-openproject-api/actions/workflows/test_cases.yml/badge.svg?branch=dev)](https://github.com/Flying-Free/python-openproject-api/actions/workflows/test_cases.yml)
+
 # python-openproject-api
 
-Python library to interact with OpenProject API. 
+Python library to interact with OpenProject API.
 
-This library could be understood as a compendium of OpenProject endpoints services to use in a client project with 
-the purpose of interact with OpenProject instance through its API.
+```python
+from openproject-sdk import ServiceFactory
+services = ServiceFactory(url="http://localhost:8080", apikey="6289058256894568479567886794")
+user = services.get_user_services().create(
+                    login="h.wurst",
+                    email="h.wurst@openproject.com",
+                    first_name="Hans",
+                    last_name="Wurst",
+                    admin=False,
+                    language="de",
+                    status="active",
+                    # Password minimum is 10 characters)
+                    password="h.wurst1234567890"
+                )
+```
+
+This library could be understood as a compendium of OpenProject endpoints services to use in a client project with the
+purpose of interact with OpenProject instance through its API.
+
+## Installing openproject-sdk and Supported Versions
+
+Openproject-sdk is available on PyPI:
+
+```console
+python -m pip install openproject-sdk
+```
+
+## Documentation
+
+- [API Reference](https://docs.openproject.org/api/)
+- [Wiki Page](https://github.com/Flying-Free/python-openproject-api/wiki)
 
 ## Contributing
 
