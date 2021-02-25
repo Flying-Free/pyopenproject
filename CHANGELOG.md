@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
+## [v0.1.beta.1] - 2021-02-25
+
+### Fixed
+
+- GitHub workflows that create releases and build the package
+
 ## [v0.1-alpha] - 2021-02-24
 
 First alpha version of openproject-sdk library. This library is a way to enable Python developers to communicate with
