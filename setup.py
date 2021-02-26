@@ -1,9 +1,6 @@
 import os
 
 import setuptools
-from dotenv import load_dotenv
-
-load_dotenv()
 
 VERSION = os.getenv('VERSION')
 
