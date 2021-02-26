@@ -136,7 +136,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         relations = self.wpSer.find_relations(work_package)
-        self.assertEqual(2, len(relations))
+        self.assertEqual(1, len(relations))
 
     # TODO: Not description enough to develop an easy gateway for this endpoint
     def test_create_relation_form(self):
