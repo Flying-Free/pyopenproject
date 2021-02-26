@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class PriorityService(AbstractService):
+    """
+    Class PriorityService,
+    service for priority endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

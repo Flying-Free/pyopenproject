@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class VersionService(AbstractService):
+    """
+    Class VersionService,
+    service for version endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

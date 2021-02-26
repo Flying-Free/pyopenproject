@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class TimeEntryService(AbstractService):
+    """
+    Class TimeEntryService,
+    service for time entry endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

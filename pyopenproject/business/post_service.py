@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class PostService(AbstractService):
+    """
+    Class PostService,
+    service for post endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

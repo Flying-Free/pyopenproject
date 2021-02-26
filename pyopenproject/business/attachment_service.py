@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class AttachmentService(AbstractService):
+    """
+    Class AttachmentService,
+    service for attachment endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

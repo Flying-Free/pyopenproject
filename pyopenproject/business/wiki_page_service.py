@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class WikiPageService(AbstractService):
+    """
+    Class WikiPageService,
+    service for user preferences endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

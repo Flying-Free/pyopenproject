@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class QueryService(AbstractService):
+    """
+    Class QueryService,
+    service for query endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):
