@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class UserPreferencesService(AbstractService):
+    """
+    Class UserPreferencesService,
+    service for user preferences endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

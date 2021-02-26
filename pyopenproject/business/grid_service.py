@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class GridService(AbstractService):
+    """
+    Class GridService,
+    service for grid endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

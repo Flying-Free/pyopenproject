@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class RelationService(AbstractService):
+    """
+    Class RelationService,
+    service for relation endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):

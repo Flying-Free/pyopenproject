@@ -4,6 +4,10 @@ from pyopenproject.business.abstract_service import AbstractService
 
 
 class TypeService(AbstractService):
+    """
+    Class TypeService,
+    service for type endpoint
+    """
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):
