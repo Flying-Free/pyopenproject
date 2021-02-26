@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
+## [v0.1-beta.1] - 2021-02-26
+
+First alpha version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
 ## [v0.1-alpha] - 2021-02-24
 
 First alpha version of pyopenproject library. This library is a way to enable Python developers to communicate with
