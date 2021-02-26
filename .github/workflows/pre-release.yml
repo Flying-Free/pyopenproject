@@ -16,14 +16,17 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       - name: Install pypa/build
-        run: python -m pip install build python-dotenv
+        run: python -m pip install build
       - name: Build a binary wheel and a source tarball
         run: |
           echo "$VERSION"
           python -m build
         env:
-          VERSION: ${{ github.ref##*/ }}
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
