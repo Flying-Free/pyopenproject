@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.model import Activity
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.activity import Activity
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class ActivityServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/activity.json')
-        self.actSer = self.factory.get_activity_service()
+        self.actSer = self.op.get_activity_service()
         with open(DATA) as f:
             self.activity = Activity(json.load(f))
 

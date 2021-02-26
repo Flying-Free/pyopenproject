@@ -1,9 +1,9 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.business.util import Filter
-from pyopenproject.model import Role
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.role import Role
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -12,7 +12,7 @@ class RoleServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/role.json')
-        self.roleSer = self.factory.get_role_service()
+        self.roleSer = self.op.get_role_service()
         with open(DATA) as f:
             self.role = Role(json.load(f))
 

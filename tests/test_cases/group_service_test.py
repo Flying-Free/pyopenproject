@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.model import Group
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.group import Group
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class GroupServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/group.json')
-        self.groupSer = self.factory.get_group_service()
+        self.groupSer = self.op.get_group_service()
         with open(DATA) as f:
             self.group = Group(json.load(f))
 

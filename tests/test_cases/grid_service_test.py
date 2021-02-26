@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.util import Filter
-from pyopenproject.model import Grid
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.grid import Grid
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class GridServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/grid.json')
-        self.gridSer = self.factory.get_grid_service()
+        self.gridSer = self.op.get_grid_service()
         with open(DATA) as f:
             self.grid = Grid(json.load(f))
 

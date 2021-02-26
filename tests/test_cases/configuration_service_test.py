@@ -1,7 +1,7 @@
 import json
 import os
 
-from pyopenproject.model import Configuration
+from pyopenproject.model.configuration import Configuration
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -10,7 +10,7 @@ class ConfigurationServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         CONFIGURATION = os.path.join(self.TEST_CASES, '../data/configuration.json')
-        self.confSer = self.factory.get_configuration_service()
+        self.confSer = self.op.get_configuration_service()
         with open(CONFIGURATION) as f:
             self.configuration = Configuration(json.load(f))
 

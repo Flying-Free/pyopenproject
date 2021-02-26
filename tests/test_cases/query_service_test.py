@@ -1,10 +1,10 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.business.util import Filter
-from pyopenproject.model import Form
-from pyopenproject.model import Query
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.form import Form
+from pyopenproject.model.query import Query
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -13,7 +13,7 @@ class QueryServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/inputs/query.json')
-        self.querySer = self.factory.get_query_service()
+        self.querySer = self.op.get_query_service()
         with open(DATA) as f:
             self.query = Query(json.load(f))
         QUERY_FORM = os.path.join(self.TEST_CASES, '../data/inputs/query_form.json')

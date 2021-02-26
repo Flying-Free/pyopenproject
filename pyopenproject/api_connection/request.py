@@ -4,7 +4,7 @@ from json.decoder import JSONDecodeError
 import requests
 
 from pyopenproject.api_connection.command import Command
-from pyopenproject.api_connection.exceptions import RequestError
+from pyopenproject.api_connection.exceptions.request_exception import RequestError
 
 
 class Request(Command):

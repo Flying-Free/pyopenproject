@@ -5,7 +5,7 @@ class PreviewingServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.previewingSer = self.factory.get_previewing_service()
+        self.previewingSer = self.op.get_previewing_service()
 
     def test_to_markdown(self):
         current = self.previewingSer.from_markdown(text='Hello world! "This":http://example.com **is** markdown')

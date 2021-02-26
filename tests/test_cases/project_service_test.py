@@ -1,11 +1,11 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.business.util import Filter
-from pyopenproject.model import Project
-from pyopenproject.model import User
-from pyopenproject.model import WorkPackage
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.project import Project
+from pyopenproject.model.user import User
+from pyopenproject.model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -14,19 +14,19 @@ class ProjectServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/project.json')
-        self.proSer = self.factory.get_project_service()
+        self.proSer = self.op.get_project_service()
         with open(DATA) as f:
             self.project = Project(json.load(f))
 
         USER_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/user.json')
-        self.usrSer = self.factory.get_user_service()
+        self.usrSer = self.op.get_user_service()
         with open(USER_INPUT) as f:
             self.new_user = User(json.load(f))
 
         PROJECT_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/project.json')
         with open(PROJECT_INPUT) as f:
             self.new_project = Project(json.load(f))
-        self.wpSer = self.factory.get_work_package_service()
+        self.wpSer = self.op.get_work_package_service()
 
     def test_find(self):
         current = self.proSer.find(self.project)

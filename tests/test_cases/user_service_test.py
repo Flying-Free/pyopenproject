@@ -1,9 +1,9 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.business.util import Filter
-from pyopenproject.model import User
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.user import User
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -13,7 +13,7 @@ class UserServiceTestCase(OpenProjectTestCase):
         super().setUp()
         USER = os.path.join(self.TEST_CASES, '../data/user.json')
         USER_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/user.json')
-        self.usrSer = self.factory.get_user_service()
+        self.usrSer = self.op.get_user_service()
         with open(USER) as f:
             self.user = User(json.load(f))
         with open(USER_INPUT) as f:

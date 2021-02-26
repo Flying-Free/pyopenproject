@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.util import Filter
-from pyopenproject.model import Principal
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.principal import Principal
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/principal.json')
-        self.principalSer = self.factory.get_principal_service()
+        self.principalSer = self.op.get_principal_service()
         with open(DATA) as f:
             self.principal = Principal(json.load(f))
 

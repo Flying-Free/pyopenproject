@@ -1,7 +1,7 @@
 import json
 import os
 
-from pyopenproject.model import UserPreferences
+from pyopenproject.model.user_preferences import UserPreferences
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -10,7 +10,7 @@ class UserPreferencesServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/user_preferences.json')
-        self.userPrefSer = self.factory.get_user_preferences_service()
+        self.userPrefSer = self.op.get_user_preferences_service()
         with open(DATA) as f:
             self.user_preferences = UserPreferences(json.load(f))
 

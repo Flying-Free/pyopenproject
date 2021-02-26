@@ -1,9 +1,9 @@
 import json
 import os
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.model import Attachment
-from pyopenproject.model import Post
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.attachment import Attachment
+from pyopenproject.model.post import Post
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -12,7 +12,7 @@ class PostServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/post.json')
-        self.postSer = self.factory.get_post_service()
+        self.postSer = self.op.get_post_service()
         with open(DATA) as f:
             self.post = Post(json.load(f))
 

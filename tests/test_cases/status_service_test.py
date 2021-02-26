@@ -1,7 +1,7 @@
 import json
 import os
 
-from pyopenproject.model import Status
+from pyopenproject.model.status import Status
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -10,7 +10,7 @@ class StatusServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/status.json')
-        self.statusSer = self.factory.get_status_service()
+        self.statusSer = self.op.get_status_service()
         with open(DATA) as f:
             self.status = Status(json.load(f))
 

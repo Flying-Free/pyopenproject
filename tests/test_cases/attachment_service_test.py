@@ -2,8 +2,8 @@ import json
 import os
 from pathlib import Path
 
-from pyopenproject.business.exception import BusinessError
-from pyopenproject.model import Attachment
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.attachment import Attachment
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -14,7 +14,7 @@ class AttachmentServiceTestCase(OpenProjectTestCase):
         ATTACHMENT = os.path.join(self.TEST_CASES, '../data/attachment.json')
         ATTACHMENT_TO_CREATE = os.path.join(self.TEST_CASES, '../data/attachment-created.json')
         self.IMAGE = os.path.join(self.TEST_CASES, '../img/cute-cat.png')
-        self.attSer = self.factory.get_attachment_service()
+        self.attSer = self.op.get_attachment_service()
         with open(ATTACHMENT) as f:
             self.attachment = Attachment(json.load(f))
         with open(ATTACHMENT_TO_CREATE) as f:
