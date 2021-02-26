@@ -35,4 +35,3 @@ class UserPreferencesServiceTestCase(OpenProjectTestCase):
         # updated_user_preferences = self.userPrefSer.update(self.user_preferences)
         # self.assertNotEqual(user_preferences.timeZone, updated_user_preferences.timeZone)
         # self.assertNotEqual(user_preferences.hideMail, updated_user_preferences.hideMail)
-        pass
