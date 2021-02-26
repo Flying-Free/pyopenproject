@@ -45,4 +45,4 @@ jobs:
           prerelease: true
       - name: Delete tag
         run: git push --delete origin ${{ github.ref }}
-        if: ${{ failed() }}
+        if: ${{ failure() }}
