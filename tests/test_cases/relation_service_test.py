@@ -79,7 +79,6 @@ class RelationServiceTestCase(OpenProjectTestCase):
             self.relationSer.find_schema()
         # s = self.relationSer.find_schema_by_type("follows")
         # self.assertIsNotNone(s)
-        pass
 
     def test_update_form(self):
         work_packages = self.op.get_work_package_service().find_all()
@@ -100,4 +99,3 @@ class RelationServiceTestCase(OpenProjectTestCase):
         # FIXME: 404 Client Error: Not Found for url
         # self.assertIsNotNone(self.relationSer.update_form(relation, form))
         self.op.get_relation_service().delete(relation)
-        pass

@@ -45,7 +45,6 @@ class GridServiceTestCase(OpenProjectTestCase):
         g.widgets.append(demo_widget)
         # g = self.gridSer.create(g)
         # self.assertEqual(g.widgets[0], self.gridSer.find(g).widgets[0])
-        pass
 
     # FIXME
     #  {
@@ -66,7 +65,6 @@ class GridServiceTestCase(OpenProjectTestCase):
         grid.widgets.append(demo_widget)
         # grid = self.gridSer.update(grid)
         # self.assertEqual(demo_widget, grid.widgets[0])
-        pass
 
     def test_create_form(self):
         expected = Grid({'rowCount': 4, 'columnCount': 5, 'options': {}, 'widgets': [], '_links': {'attachments': []}})

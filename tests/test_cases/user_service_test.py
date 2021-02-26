@@ -69,7 +69,6 @@ class UserServiceTestCase(OpenProjectTestCase):
         #  "message":"You are not authorized to access this resource."
         #  }
         # self.usrSer.delete(new_usr)
-        pass
 
     def test_operations_user(self):
         # Create

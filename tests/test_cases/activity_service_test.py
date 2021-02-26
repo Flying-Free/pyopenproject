@@ -30,4 +30,3 @@ class ActivityServiceTestCase(OpenProjectTestCase):
         # FIXME: Bug "message":"Bad request: comment is invalid"
         # activity_updated = self.actSer.update(activity)
         # self.assertEqual(activity.comment, activity_updated.comment)
-        pass
