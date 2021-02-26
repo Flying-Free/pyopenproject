@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [v0.1-alpha] - 2021-02-24
 
-First alpha version of openproject-sdk library. This library is a way to enable Python developers to communicate with
+First alpha version of pyopenproject library. This library is a way to enable Python developers to communicate with
 the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
 only available for Python 3.6 or more.
 
@@ -32,12 +32,12 @@ only available for Python 3.6 or more.
 
 ### Changed
 
-- [Update/create methods in model classes.](https://github.com/Flying-Free/python-openproject-api/issues/2)
+- [Update/create methods in model classes.](https://github.com/Flying-Free/pyopenproject/issues/2)
   Model classes don't have implemented methods from service factory
 
 ### Fixed
 
-- [Classes "Delete" in service command.](https://github.com/Flying-Free/python-openproject-api/issues/3)
+- [Classes "Delete" in service command.](https://github.com/Flying-Free/pyopenproject/issues/3)
   Delete classes are not given Request errors
-- [Create/Update classes in service command.](https://github.com/Flying-Free/python-openproject-api/issues/1)
+- [Create/Update classes in service command.](https://github.com/Flying-Free/pyopenproject/issues/1)
   Create/Update classes are not given Request errors
