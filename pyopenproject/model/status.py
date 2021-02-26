@@ -2,7 +2,10 @@ import json
 
 
 class Status:
-
+    """
+    Class Status,
+    emulates a status
+    """
     def __init__(self, json_obj):
         """Constructor for class Status
 

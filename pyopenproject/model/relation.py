@@ -2,7 +2,10 @@ import json
 
 
 class Relation:
-
+    """
+    Class Relation,
+    emulates a work packages relation
+    """
     def __init__(self, json_obj):
         """Constructor for class Relation
 

@@ -2,7 +2,10 @@ import json
 
 
 class Principal:
-
+    """
+    Class Principal,
+    emulates a principal, the superclass of groups and users
+    """
     def __init__(self, json_obj):
         """Constructor for class Principal
 

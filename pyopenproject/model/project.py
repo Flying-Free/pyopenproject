@@ -2,7 +2,11 @@ import json
 
 
 class Project:
-
+    """
+    Class Project,
+    emulates a project, container structuring the information (e.g. work packages, wikis) into smaller groups.
+    They can be used in a classic project management approach but also when structuring work by departments
+    """
     def __init__(self, json_obj):
         """Constructor for class Project
 

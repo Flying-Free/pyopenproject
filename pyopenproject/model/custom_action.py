@@ -2,7 +2,10 @@ import json
 
 
 class CustomAction:
-
+    """
+    Class CustomAction,
+    emulates a custom action, is a preconfigured set of changes that are applied to a work package
+    """
     def __init__(self, json_obj):
         """Constructor for class CustomAction
 

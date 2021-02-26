@@ -2,7 +2,10 @@ import json
 
 
 class Post:
-
+    """
+    Class Post,
+    represents a post in a board. Posts are also referred to as messages in the application
+    """
     def __init__(self, json_obj):
         """Constructor for class Post
 

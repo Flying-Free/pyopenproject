@@ -2,7 +2,10 @@ import json
 
 
 class Configuration:
-
+    """
+    Class Configuration,
+    represents the configuration of web application
+    """
     def __init__(self, json_obj):
         """Constructor for class Configuration
 

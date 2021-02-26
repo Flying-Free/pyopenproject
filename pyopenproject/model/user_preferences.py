@@ -2,7 +2,10 @@ import json
 
 
 class UserPreferences:
-
+    """
+    Class UserPreferences,
+    used to handle user preferences
+    """
     def __init__(self, json_obj):
         """Constructor for class UserPreferences
 

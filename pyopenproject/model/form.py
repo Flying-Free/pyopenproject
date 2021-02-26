@@ -2,7 +2,10 @@ import json
 
 
 class Form:
-
+    """
+    Class Form,
+    emulates a form
+    """
     def __init__(self, json_obj):
         """Constructor for class Form
 

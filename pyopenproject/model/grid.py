@@ -2,7 +2,10 @@ import json
 
 
 class Grid:
-
+    """
+    Class Grid,
+    emulates a grid as a concept to aid in editing or creating resources
+    """
     def __init__(self, json_obj):
         """Constructor for class Grid
 

@@ -2,7 +2,10 @@ import json
 
 
 class Revision:
-
+    """
+    Class Revision,
+    emulates a revision, is a set of updates to files in the context of repositories linked in OpenProject
+    """
     def __init__(self, json_obj):
         """Constructor for class Revision
 

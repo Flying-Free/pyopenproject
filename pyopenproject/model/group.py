@@ -2,7 +2,11 @@ import json
 
 
 class Group:
-
+    """
+    Class Group,
+    emulates a group, is a collection of users. They support assigning/unassigning multiple users to/from
+    a project in one operation
+    """
     def __init__(self, json_obj):
         """Constructor for class Group
 

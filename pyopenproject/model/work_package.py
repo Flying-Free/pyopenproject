@@ -2,7 +2,11 @@ import json
 
 
 class WorkPackage:
-
+    """
+    Class WorkPackage,
+    emulates a work package, can basically be everything you need to keep track off within your projects.
+    It can be e.g. a task, a feature, a bug, a risk, a milestone or a project phase
+    """
     def __init__(self, json_obj):
         """Constructor for class WorkPackage
 

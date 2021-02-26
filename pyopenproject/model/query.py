@@ -2,7 +2,11 @@ import json
 
 
 class Query:
-
+    """
+    Class Query,
+    emulates a query, defines how work packages can be filtered and displayed. Clients can define a query once,
+    store it, and use it later on to load the same set of filters
+    """
     def __init__(self, json_obj):
         """Constructor for class Query
 

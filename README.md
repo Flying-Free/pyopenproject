@@ -34,18 +34,21 @@ python -m pip install pyopenproject
 
 ## Documentation
 
-- [API Reference](https://docs.openproject.org/api/)
-- [Wiki Page](https://github.com/Flying-Free/python-openproject-api/wiki)
+  - [API Reference](https://docs.openproject.org/api/)
+  - [Wiki Page](https://github.com/Flying-Free/python-openproject-api/wiki)
 
 ## Contributing
 
-1. Fork it (<https://github.com/Flying-Free/pyopenproject/fork>)
-2. Create your feature branch (`git checkout -b feature/newEndpoint`)
-3. Commit your changes (`git commit -am 'Add some new Endpoint'`)
-4. Push to the branch (`git push origin feature/newEndpoint`)
-5. Create a new Pull Request
+ 1. Fork it (<https://github.com/Flying-Free/pyopenproject/fork>)
+ 2. Create your feature branch (`git checkout -b feature/newEndpoint`)
+ 3. Commit your changes (`git commit -am 'Add some new Endpoint'`)
+ 4. Push to the branch (`git push origin feature/newEndpoint`)
+ 5. Create a new Pull Request
 
 ## Authors
 Alan Padierna Fernández - [@AlanPadi95](https://github.com/AlanPadi95) - [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5.svg?logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alan-padierna-fern%C3%A1ndez-199a48152/)
 
 Marcelo Torrejón Manso - [@marcelotm23](https://github.com/marcelotm23) - [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5.svg?logo=LinkedIn&logoColor=white)](https://es.linkedin.com/in/marcelo-torrej%C3%B3n-manso-b45952160)
+
+## Contributors
+Pablo Suarez García - [@PabloSuaGar](https://github.com/PabloSuaGar)

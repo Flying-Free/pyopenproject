@@ -2,9 +2,13 @@ import json
 
 
 class Activity:
-
+    """
+    Class Activity,
+    emulates a module that displays the actions performed in a project over a certain period of time
+    """
     def __init__(self, json_obj):
-        """Constructor for class Activity
+        """
+        Constructor for class Activity
 
         :param json_obj: The dict with the object data
         """

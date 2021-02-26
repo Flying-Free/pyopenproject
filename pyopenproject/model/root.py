@@ -2,7 +2,11 @@ import json
 
 
 class Root:
-
+    """
+    Class Root,
+    emulates a root,  contains links to available resources in the API. By following these links a client should be
+    able to discover further resources in the API
+    """
     def __init__(self, json_obj):
         """Constructor for class Root
 

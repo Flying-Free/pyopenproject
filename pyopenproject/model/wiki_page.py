@@ -2,7 +2,10 @@ import json
 
 
 class WikiPage:
-
+    """
+    Class WikiPage,
+    represents an individual page in a project’s wiki.
+    """
     def __init__(self, json_obj):
         """Constructor for class WikiPage
 

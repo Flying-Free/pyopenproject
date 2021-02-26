@@ -2,7 +2,10 @@ import json
 
 
 class Priority:
-
+    """
+    Class Priority,
+    emulates a priority
+    """
     def __init__(self, json_obj):
         """Constructor for class Priority
 

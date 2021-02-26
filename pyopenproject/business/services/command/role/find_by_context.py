@@ -2,6 +2,7 @@ from pyopenproject.api_connection.exceptions.request_exception import RequestErr
 from pyopenproject.api_connection.requests.get_request import GetRequest
 from pyopenproject.business.exception.business_error import BusinessError
 from pyopenproject.business.services.command.role.role_command import RoleCommand
+from pyopenproject.model.role import Role
 
 
 class FindByContext(RoleCommand):
@@ -18,6 +19,6 @@ class FindByContext(RoleCommand):
     def execute(self):
         try:
             json_obj = GetRequest(self.connection, f"{self.context}").execute()
-            return r.Role(json_obj)
+            return Role(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error finding category by context: {self.context}") from re
