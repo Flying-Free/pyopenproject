@@ -20,11 +20,16 @@ env_reset: clean_pyenv env_down pyenv env_up
 
 env_up:
 	cd ./tests/infra && \
-	docker-compose up -d && printf 'WAITING FOR APIv3' && \
+	docker-compose up -d && printf '\nWAITING FOR APIv3' && \
 	until $$(curl --output /dev/null --silent --head --fail http://localhost:8080); do \
 		printf '.'; \
 		sleep 5; \
-	done && printf '\n'
+	done && printf '\n\n' && \
+	printf '############################\n' && \
+	printf '############################\n' && \
+	printf '####### UP & RUNNING #######\n' && \
+	printf '############################\n' && \
+	printf '############################'
 
 
 pytest:
