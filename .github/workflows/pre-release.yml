@@ -21,7 +21,7 @@ jobs:
       - name: Build a binary wheel and a source tarball
         run: python -m build
         env:
-          VERSION: ${GITHUB_REF##*/}
+          VERSION: ${{ GITHUB_REF##*/ }}
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
@@ -33,8 +33,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${GITHUB_REF##*/}
-          release_name: PyOpenProject ${GITHUB_REF##*/}
+          tag_name: ${{ GITHUB_REF##*/ }}
+          release_name: PyOpenProject ${{ GITHUB_REF##*/ }}
           body_path: CHANGELOG.md
           draft: false
           prerelease: true
