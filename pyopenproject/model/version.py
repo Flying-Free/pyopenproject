@@ -2,7 +2,11 @@ import json
 
 
 class Version:
-
+    """
+    Class Version,
+    emulates a version, serve to group Work Packages into logical units where each group comprises all the work packages
+    that needs to be finished in order for the version to be finished
+    """
     def __init__(self, json_obj):
         """Constructor for class Version
 

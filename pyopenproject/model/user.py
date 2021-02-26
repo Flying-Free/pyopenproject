@@ -2,7 +2,10 @@ import json
 
 
 class User:
-
+    """
+    Class User,
+    emulates a user
+    """
     def __init__(self, json_obj):
         """Constructor for class User
 

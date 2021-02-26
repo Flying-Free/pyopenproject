@@ -2,7 +2,10 @@ import json
 
 
 class Category:
-
+    """
+    Class Category,
+    emulates a category
+    """
     def __init__(self, json_obj):
         """Constructor for class Category
 

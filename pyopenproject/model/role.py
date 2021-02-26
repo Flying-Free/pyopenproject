@@ -2,7 +2,11 @@ import json
 
 
 class Role:
-
+    """
+    Class Role,
+    emulates a role. When principals (groups or users) are assigned to a project, they are receive roles in
+    that project. Roles regulate access to specific resources by having permissions configured for them.
+    """
     def __init__(self, json_obj):
         """Constructor for class Role
 

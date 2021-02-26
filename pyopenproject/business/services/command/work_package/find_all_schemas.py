@@ -3,6 +3,7 @@ from pyopenproject.api_connection.requests.get_request import GetRequest
 from pyopenproject.business.exception.business_error import BusinessError
 from pyopenproject.business.services.command.work_package.work_package_command import WorkPackageCommand
 from pyopenproject.business.util.filters import Filters
+from pyopenproject.business.util.url import URL
 from pyopenproject.model.schema import Schema
 
 
@@ -13,7 +14,7 @@ class FindAllSchemas(WorkPackageCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, str(url(f"{self.CONTEXT}/schemas",
+            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}/schemas",
                                                            [
                                                                Filters(
                                                                    self.filters)

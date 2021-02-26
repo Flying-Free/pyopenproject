@@ -2,7 +2,10 @@ import json
 
 
 class Schema:
-
+    """
+    Class Schema,
+    emulates a schema
+    """
     def __init__(self, json_obj):
         """Constructor for class Schema
 

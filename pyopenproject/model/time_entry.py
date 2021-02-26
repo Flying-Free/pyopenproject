@@ -2,7 +2,10 @@ import json
 
 
 class TimeEntry:
-
+    """
+    Class TimeEntry,
+    emulates a time entry
+    """
     def __init__(self, json_obj):
         """Constructor for class TimeEntry
 

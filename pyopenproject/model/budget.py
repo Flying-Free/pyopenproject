@@ -2,7 +2,10 @@ import json
 
 
 class Budget:
-
+    """
+    Class Budget,
+    emulates a project budget to keep track of your available and spent costs in a project
+    """
     def __init__(self, json_obj):
         """Constructor for class Budget
 

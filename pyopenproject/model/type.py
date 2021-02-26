@@ -2,7 +2,10 @@ import json
 
 
 class Type:
-
+    """
+    Class Type,
+    emulates a type
+    """
     def __init__(self, json_obj):
         """Constructor for class Type
 

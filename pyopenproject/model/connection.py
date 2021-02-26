@@ -2,7 +2,10 @@ import json
 
 
 class Connection:
-
+    """
+    Class Configuration,
+    represents the connection realized with the web application
+    """
     def __init__(self, url, apikey, user=None):
         """Constructor for class Connection
         :param url: The application url

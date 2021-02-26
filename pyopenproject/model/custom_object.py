@@ -2,7 +2,10 @@ import json
 
 
 class CustomObject:
-
+    """
+    Class CustomObject,
+    emulates a custom object, is a option of list custom fields.
+    """
     def __init__(self, json_obj):
         """Constructor for class CustomObject
 

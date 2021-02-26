@@ -2,7 +2,10 @@ import json
 
 
 class HelpText:
-
+    """
+    Class HelpText,
+    emulates a help test
+    """
     def __init__(self, json_obj):
         """Constructor for class HelpText
 

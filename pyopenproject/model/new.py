@@ -2,7 +2,10 @@ import json
 
 
 class New:
-
+    """
+    Class New,
+    emulates a news, are articles written by users in order to inform other users of important information
+    """
     def __init__(self, json_obj):
         """Constructor for class New
 

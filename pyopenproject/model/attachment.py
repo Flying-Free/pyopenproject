@@ -2,7 +2,10 @@ import json
 
 
 class Attachment:
-
+    """
+    Class Attachment,
+    emulates an file attachment
+    """
     def __init__(self, json_obj):
         """Constructor for class Attachment
 

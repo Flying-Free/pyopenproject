@@ -2,7 +2,10 @@ import json
 
 
 class Membership:
-
+    """
+    Class Membership,
+    emulates a membership, control the permissions a user has within a project
+    """
     def __init__(self, json_obj):
         """Constructor for class Membership
 

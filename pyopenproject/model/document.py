@@ -2,7 +2,10 @@ import json
 
 
 class Document:
-
+    """
+    Class Document,
+    emulates a document, is a file containing a list of attachments
+    """
     def __init__(self, json_obj):
         """Constructor for class Document
 
