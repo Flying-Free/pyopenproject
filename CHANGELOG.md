@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Grid implementation for service factory methods
+- Grid implementation for service factory methods.
+
 - Test Errors like:
 
   ```json
@@ -45,6 +46,7 @@ only available for Python 3.6 or more.
 ### Added
 
 - Service factory pattern to organize the multiple methods for the different classes of the model.
+
 - Model classes based on API endpoints
 
 ### Changed
@@ -56,5 +58,6 @@ only available for Python 3.6 or more.
 
 - [Classes "Delete" in service command.](https://github.com/Flying-Free/pyopenproject/issues/3)
   Delete classes are not given Request errors
+
 - [Create/Update classes in service command.](https://github.com/Flying-Free/pyopenproject/issues/1)
   Create/Update classes are not given Request errors
