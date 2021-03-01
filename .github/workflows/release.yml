@@ -16,25 +16,33 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
+      - name: Get Version
+        id: get_version
+        run: echo "##[set-output name=version;]$(source ./.env && export VERSION && echo $VERSION)"
       - name: Install pypa/build
         run: python -m pip install build
       - name: Build a binary wheel and a source tarball
         run: python -m build
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
-        env:
-          VERSION: $(source ./.env && export VERSION && echo $VERSION)
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          VERSION: $(source ./.env && export VERSION && echo $VERSION)
+          VERSION: ${{ steps.get_version.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: PyOpenProject ${{ env.VERSION }}
+          tag_name: ${{ steps.get_version.outputs.version }}
+          release_name: PyOpenProject ${{ steps.get_version.outputs.version }}
           body_path: CHANGELOG.md
           draft: false
           prerelease: false
+      - name: Delete tag
+        run: |
+          echo "${{ steps.get_version.outputs.version }}"
+          git push --delete origin "${{ steps.get_version.outputs.version }}"
+        if: ${{ failure() }}
