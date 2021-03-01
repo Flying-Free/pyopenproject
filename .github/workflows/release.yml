@@ -1,11 +1,11 @@
 name: Publish Release
 
 on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags-ignore:
-      - 'v*alpha*'
-      - 'v*beta*'
+  workflow_run:
+    workflows: [ "Run Test Cases" ]
+    branches: [ main ]
+    types:
+      - completed
 jobs:
   build:
     # The type of runner that the job will run on
@@ -16,19 +16,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body_path: CHANGELOG.md
-          draft: false
-          prerelease: false
       - name: Install pypa/build
-        run: python -m pip install build --user
+        run: python -m pip install build
       - name: Build a binary wheel and a source tarball
         run: python -m build
       - name: Publish distribution 📦 to PyPI
@@ -36,3 +25,15 @@ jobs:
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          VERSION: $(source ./.env && export VERSION && echo $VERSION)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${VERSION}
+          release_name: PyOpenProject ${VERSION}
+          body_path: CHANGELOG.md
+          draft: false
+          prerelease: false

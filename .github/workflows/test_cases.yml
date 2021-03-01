@@ -59,6 +59,7 @@ jobs:
           python -m coverage report -m
           python -m coverage xml
       - name: Run codacy-coverage-reporter
+        if: always()
         uses: codacy/codacy-coverage-reporter-action@master
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}

@@ -1,12 +1,12 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.form import Form
-from model.user import User
-from model.work_package import WorkPackage
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.form import Form
+from pyopenproject.model.user import User
+from pyopenproject.model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class WorkPackageServiceTestCase(OpenProjectTestCase):
@@ -19,7 +19,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         USER = os.path.join(self.TEST_CASES, '../data/user.json')
         ACTIVITY = os.path.join(self.TEST_CASES, '../data/activity.json')
         ATTACHMENT = os.path.join(self.TEST_CASES, '../data/attachment.json')
-        self.wpSer = self.factory.get_work_package_service()
+        self.wpSer = self.op.get_work_package_service()
         with open(WORK_PACKAGE) as f:
             self.work_package = WorkPackage(json.load(f))
         with open(WORK_PACKAGE_FORM) as f:
@@ -40,7 +40,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         wP._links["project"]["href"] = project['href']
         work_package_type = list(filter(
             lambda x: x.name == 'Task',
-            self.factory.get_type_service().find_all()
+            self.op.get_type_service().find_all()
         ))[0].__dict__['_links']['self']['href']
         wP.__dict__["_links"]["type"]["href"] = work_package_type
         return wP
@@ -130,13 +130,13 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual("Demo relation created using the API", relation.description)
         self.assertEqual("follows", relation.type)
         self.assertEqual("precedes", relation.reverseType)
-        self.factory.get_relation_service().delete(relation)
+        self.op.get_relation_service().delete(relation)
 
     def test_find_relations(self):
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         relations = self.wpSer.find_relations(work_package)
-        self.assertEqual(2, len(relations))
+        self.assertEqual(1, len(relations))
 
     # TODO: Not description enough to develop an easy gateway for this endpoint
     def test_create_relation_form(self):
@@ -150,7 +150,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertEqual(0, len(watchers))
 
     def test_create_watcher(self):
-        user = self.factory.get_user_service().find_all()[0]
+        user = self.op.get_user_service().find_all()[0]
         work_packages = self.wpSer.find_all()
         work_package = list(filter(lambda x: x.__dict__["_links"]["status"]["title"] == "New", work_packages))[0]
         watcher = self.wpSer.create_watcher(work_package, user)

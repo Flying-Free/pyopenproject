@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.custom_object import CustomObject
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.custom_object import CustomObject
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class CustomObjectServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/custom_object.json')
-        self.coSer = self.factory.get_custom_object_service()
+        self.coSer = self.op.get_custom_object_service()
         with open(DATA) as f:
             self.custom_object = CustomObject(json.load(f))
 

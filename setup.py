@@ -1,14 +1,18 @@
+import os
+
 import setuptools
+
+VERSION = os.getenv('VERSION')
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="openproject-sdk",  # Replace with your own username
-    version="v0.1",
-    author="Alan Padierna Fernandez",
+    name="pyopenproject",  # Replace with your own username
+    version=VERSION,
+    author="Alan Padierna Fernández",
     author_email="alanpadierna9595@gmail.com",
-    description="Openproject SDK for Python developers",
+    description="Python library to manage OpenProject API endpoints",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Flying-Free/python-openproject-api",

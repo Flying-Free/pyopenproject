@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.budget import Budget
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.budget import Budget
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class BudgetServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         BUDGET = os.path.join(self.TEST_CASES, '../data/budget.json')
-        self.budSer = self.factory.get_budget_service()
+        self.budSer = self.op.get_budget_service()
         with open(BUDGET) as f:
             self.budget = Budget(json.load(f))
 

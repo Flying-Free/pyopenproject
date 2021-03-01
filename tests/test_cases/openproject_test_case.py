@@ -3,7 +3,7 @@ import unittest
 
 import yaml
 
-from business.service_factory import ServiceFactory
+from pyopenproject.openproject import OpenProject
 
 
 class OpenProjectTestCase(unittest.TestCase):
@@ -16,4 +16,4 @@ class OpenProjectTestCase(unittest.TestCase):
         url_base = cfg["api_conn"]["host"] + ":" + str(cfg["api_conn"]["port"])
         api_user = cfg["api_conn"]["user"]
         api_key = cfg["api_conn"]["password"]
-        self.factory = ServiceFactory(url=url_base, user=api_user, api_key=api_key)
+        self.op = OpenProject(url=url_base, user=api_user, api_key=api_key)

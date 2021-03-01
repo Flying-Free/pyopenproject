@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.priority import Priority
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.priority import Priority
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class PriorityServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/priority.json')
-        self.prioritySer = self.factory.get_priority_service()
+        self.prioritySer = self.op.get_priority_service()
         with open(DATA) as f:
             self.priority = Priority(json.load(f))
 

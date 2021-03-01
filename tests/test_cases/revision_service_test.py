@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.revision import Revision
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.revision import Revision
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class RevisionServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/type.json')
-        self.revisionSer = self.factory.get_revision_service()
+        self.revisionSer = self.op.get_revision_service()
         with open(DATA) as f:
             self.revision = Revision(json.load(f))
 

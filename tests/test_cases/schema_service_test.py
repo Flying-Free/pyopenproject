@@ -5,6 +5,6 @@ class SchemaServiceTestCase(OpenProjectTestCase):
 
     def setUp(self):
         super().setUp()
-        self.schemaSer = self.factory.get_schema_service()
+        self.schemaSer = self.op.get_schema_service()
 
     # TODO: OpenProject organization hasn't develop it yet

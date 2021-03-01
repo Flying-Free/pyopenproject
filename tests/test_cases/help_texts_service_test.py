@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.help_text import HelpText
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.help_text import HelpText
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -11,7 +11,7 @@ class HelpTextsServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/help_text.json')
-        self.helpSer = self.factory.get_help_texts_service()
+        self.helpSer = self.op.get_help_texts_service()
         with open(DATA) as f:
             self.help_text = HelpText(json.load(f))
 

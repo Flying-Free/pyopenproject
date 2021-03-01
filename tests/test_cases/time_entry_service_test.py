@@ -4,8 +4,8 @@ from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 
-from model.form import Form
-from model.time_entry import TimeEntry
+from pyopenproject.model.form import Form
+from pyopenproject.model.time_entry import TimeEntry
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -15,7 +15,7 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
         super().setUp()
         TIME_ENTRY = os.path.join(self.TEST_CASES, '../data/time_entry.json')
         TIME_ENTRY_INPUT = os.path.join(self.TEST_CASES, '../data/inputs/time_entry_form.json')
-        self.tEntryReq = self.factory.get_time_entry_service()
+        self.tEntryReq = self.op.get_time_entry_service()
         with open(TIME_ENTRY) as f:
             self.time_entry = TimeEntry(json.load(f))
         with open(TIME_ENTRY_INPUT) as f:

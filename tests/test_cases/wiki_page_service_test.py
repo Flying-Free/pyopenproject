@@ -1,8 +1,8 @@
 import json
 import os
 
-from business.exception.business_error import BusinessError
-from model.wiki_page import WikiPage
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.wiki_page import WikiPage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
@@ -12,7 +12,7 @@ class WikiPageServiceTestCase(OpenProjectTestCase):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/work_package.json')
         ATTACHMENT = os.path.join(self.TEST_CASES, '../data/attachment.json')
-        self.wikiPageSer = self.factory.get_wiki_page_service()
+        self.wikiPageSer = self.op.get_wiki_page_service()
         with open(DATA) as f:
             self.wiki = WikiPage(json.load(f))
         with open(ATTACHMENT) as f:

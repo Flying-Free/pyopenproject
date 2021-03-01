@@ -1,9 +1,9 @@
 import json
 import os
 
-from model.new import New
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.new import New
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
-from util.Filter import Filter
 
 
 class NewsServiceTestCase(OpenProjectTestCase):
@@ -11,7 +11,7 @@ class NewsServiceTestCase(OpenProjectTestCase):
     def setUp(self):
         super().setUp()
         DATA = os.path.join(self.TEST_CASES, '../data/new.json')
-        self.newsSer = self.factory.get_news_service()
+        self.newsSer = self.op.get_news_service()
         with open(DATA) as f:
             self.new = New(json.load(f))
 
