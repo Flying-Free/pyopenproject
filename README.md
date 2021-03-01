@@ -36,8 +36,8 @@ python -m pip install pyopenproject
 
 ## Documentation
 
-- [API Reference](https://docs.openproject.org/api/)
-- You can see some code examples developed in our [test cases](./tests/test_cases)
+-   [API Reference](https://docs.openproject.org/api/)
+-   You can see some code examples developed in our [test cases](./tests/test_cases)
 
 ## Contributing
 

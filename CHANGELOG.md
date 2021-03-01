@@ -5,13 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## Unreleased
 
 ### Fixed
 
-- Grid implementation for service factory methods.
+-   Grid implementation for service factory methods.
 
-- Test Errors like:
+-   Test Errors like:
 
   ```json
   {
@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
-## [v0.1] - 2021-02-26
+## [v0.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.1-beta.1) - 2021-02-26
 
 First major version of pyopenproject library. This library is a way to enable Python developers to communicate with
 the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
@@ -29,15 +29,15 @@ only available for Python 3.6 or more.
 
 ### Fixed
 
-- GitHub Workflows has been fixed to make CI after PR and .
+-   GitHub Workflows has been fixed to make CI after PR and .
 
-## [v0.1-beta.1] - 2021-02-26
+## [v0.1-beta.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.1-beta.1) - 2021-02-26
 
 First alpha version of pyopenproject library. This library is a way to enable Python developers to communicate with
 the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
 only available for Python 3.6 or more.
 
-## [v0.1-alpha] - 2021-02-24
+## [v0.1-alpha](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.1-alpha) - 2021-02-24
 
 First alpha version of pyopenproject library. This library is a way to enable Python developers to communicate with
 the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
@@ -45,19 +45,19 @@ only available for Python 3.6 or more.
 
 ### Added
 
-- Service factory pattern to organize the multiple methods for the different classes of the model.
+-   Service factory pattern to organize the multiple methods for the different classes of the model.
 
-- Model classes based on API endpoints
+-   Model classes based on API endpoints
 
 ### Changed
 
-- [Update/create methods in model classes.](https://github.com/Flying-Free/pyopenproject/issues/2)
-  Model classes don't have implemented methods from service factory
+-   [Update/create methods in model classes.](https://github.com/Flying-Free/pyopenproject/issues/2)
+    Model classes don't have implemented methods from service factory
 
 ### Fixed
 
-- [Classes "Delete" in service command.](https://github.com/Flying-Free/pyopenproject/issues/3)
-  Delete classes are not given Request errors
+-   [Classes "Delete" in service command.](https://github.com/Flying-Free/pyopenproject/issues/3)
+    Delete classes are not given Request errors
 
-- [Create/Update classes in service command.](https://github.com/Flying-Free/pyopenproject/issues/1)
-  Create/Update classes are not given Request errors
+-   [Create/Update classes in service command.](https://github.com/Flying-Free/pyopenproject/issues/1)
+    Create/Update classes are not given Request errors
