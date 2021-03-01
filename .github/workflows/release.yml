@@ -23,6 +23,8 @@ jobs:
         run: python -m pip install build
       - name: Build a binary wheel and a source tarball
         run: python -m build
+        env:
+          VERSION: ${{ steps.get_version.outputs.version }}
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
