@@ -51,19 +51,15 @@ If you want to contribute, please:
 
 ## Authors
 
-- **Alan Padierna Fernández**
-
+- #### Alan Padierna Fernández
   [@AlanPadi95](https://github.com/AlanPadi95)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5.svg?logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/alan-padierna-fern%C3%A1ndez-199a48152/)
 
-
-- **Marcelo Torrejón Manso**
-
+- #### Marcelo Torrejón Manso
   [@marcelotm23](https://github.com/marcelotm23)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5.svg?logo=LinkedIn&logoColor=white)](https://es.linkedin.com/in/marcelo-torrej%C3%B3n-manso-b45952160)
 
 ## Contributors
 
-- **Pablo Suarez García**
-
+- #### Pablo Suarez García
   [@PabloSuaGar](https://github.com/PabloSuaGar)
