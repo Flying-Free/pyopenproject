@@ -90,12 +90,12 @@ class RelationServiceTestCase(OpenProjectTestCase):
             work_package_from=f,
             work_package_to=t,
             description="Demo relation created using the API")
-        form = {
-            "_type": "Relation",
-            "type": "follows",
-            "description": "let it rest for 3 days",
-            "delay": 3
-        }
+        # form = {
+        #     "_type": "Relation",
+        #     "type": "follows",
+        #     "description": "let it rest for 3 days",
+        #     "delay": 3
+        # }
         # FIXME: 404 Client Error: Not Found for url
         # self.assertIsNotNone(self.relationSer.update_form(relation, form))
         self.op.get_relation_service().delete(relation)
