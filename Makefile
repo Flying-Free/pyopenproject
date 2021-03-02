@@ -9,8 +9,7 @@ pyenv: requirements.txt
 	${VENV_ACTIVATE} && \
     ${PYTHON} -m pip install --upgrade pip && \
 	${PYTHON} -m pip install -Ur requirements.txt && \
-	${PYTHON} -m pip install coverage && \
-	${PYTHON} -m pip install python-dotenv
+	${PYTHON} -m pip install coverage
 
 
 clean_pyenv:
