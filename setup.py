@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 # parse_requirements() returns generator of pip.req.InstallRequirement objects
 install_requirements = parse_requirements('requirements.txt', session='hack')
-requirements = [str(ir.req) for ir in install_requirements]
+requirements = [str(ir.requirement) for ir in install_requirements]
 
 setuptools.setup(
     name="pyopenproject",  # Replace with your own username
