@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
-## [v0.1.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.1.1) - 2021-03-03
+## [v0.2](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.2) - 2021-03-03
 
 Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
 the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
