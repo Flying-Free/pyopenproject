@@ -21,15 +21,13 @@ class UserServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         # Order by status doesnt work
-        users = self.usrSer.find_all(1, 25,
-                                     [
+        users = self.usrSer.find_all([
                                          Filter("status", "=", ["invited"]),
                                          Filter("name", "=", ["OpenProject Admin"])
                                      ],
                                      '[["id", "asc"]]')
         self.assertEqual(0, len(users))
-        users = self.usrSer.find_all(1, 25,
-                                     [
+        users = self.usrSer.find_all([
                                          Filter("status", "=", ["active"]),
                                          Filter("name", "=", ["OpenProject Admin"])],
                                      '[["id", "asc"]]')

@@ -17,4 +17,4 @@ class DocumentService(AbstractService):
     def find(self, document): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset=None, page_size=None, sort_by=None): raise NotImplementedError
+    def find_all(self, sort_by=None): raise NotImplementedError

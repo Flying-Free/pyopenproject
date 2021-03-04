@@ -14,8 +14,8 @@ class GridServiceImpl(GridService):
     def find(self, grid):
         return Find(self.connection, grid).execute()
 
-    def find_all(self, offset=None, page_size=None, filters=None, sort_by=None):
-        return list(FindAll(self.connection, offset, page_size, filters, sort_by).execute())
+    def find_all(self, filters=None, sort_by=None):
+        return list(FindAll(self.connection, filters, sort_by).execute())
 
     def create(self, grid):
         return Create(self.connection, grid).execute()

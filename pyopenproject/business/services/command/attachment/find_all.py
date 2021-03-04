@@ -2,7 +2,8 @@ from pyopenproject.api_connection.exceptions.request_exception import RequestErr
 from pyopenproject.api_connection.requests.get_request import GetRequest
 from pyopenproject.business.exception.business_error import BusinessError
 from pyopenproject.business.services.command.attachment.attachment_command import AttachmentCommand
-from pyopenproject.model import attachment as att
+from pyopenproject.business.services.command.find_list_command import FindListCommand
+from pyopenproject.model.attachment import Attachment
 
 
 class FindAll(AttachmentCommand):
@@ -16,8 +17,9 @@ class FindAll(AttachmentCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, f"{self.CONTEXT}").execute()
-            for attachment in json_obj["_embedded"]["elements"]:
-                yield att.Attachment(attachment)
+            request = GetRequest(self.connection, f"{self.CONTEXT}")
+            return FindListCommand(self.connection, request, class_type=Attachment).execute()
+            # for attachment in json_obj["_embedded"]["elements"]:
+            #     yield att.Attachment(attachment)
         except RequestError as re:
             raise BusinessError("Error finding all attachments") from re

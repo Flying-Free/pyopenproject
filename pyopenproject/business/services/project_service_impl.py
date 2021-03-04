@@ -59,9 +59,9 @@ class ProjectServiceImpl(ProjectService):
     def find_budgets(self, project):
         return list(FindBudgets(self.connection, project).execute())
 
-    def find_work_packages(self, project, offset=None, page_size=None, filters=None, group_by=None, sort_by=None,
+    def find_work_packages(self, project, filters=None, group_by=None, sort_by=None,
                            show_sums=None):
-        return list(FindWorkPackages(self.connection, project, offset, page_size, filters, group_by, sort_by, show_sums)
+        return list(FindWorkPackages(self.connection, project, filters, group_by, sort_by, show_sums)
                     .execute())
 
     def create_work_package(self, project, work_package, notify=None):

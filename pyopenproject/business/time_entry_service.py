@@ -29,7 +29,7 @@ class TimeEntryService(AbstractService):
     def create(self, time_entry): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset, page_size, filters, sort_by): raise NotImplementedError
+    def find_all(self, filters, sort_by): raise NotImplementedError
 
     @abstractmethod
     def find_schema(self): raise NotImplementedError

@@ -17,4 +17,4 @@ class PriorityService(AbstractService):
     def find(self, priority): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset, page_size, filters, sort_by): raise NotImplementedError
+    def find_all(self, filters, sort_by): raise NotImplementedError

@@ -27,5 +27,5 @@ class DocumentServiceTestCase(OpenProjectTestCase):
             self.docSer.find(self.document)
 
     def test_find_all(self):
-        documents = self.docSer.find_all(25, 25, '[["created_at", "asc"]]')
+        documents = self.docSer.find_all('[["created_at", "asc"]]')
         self.assertEqual(0, len(documents))

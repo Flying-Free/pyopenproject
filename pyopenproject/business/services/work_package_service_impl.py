@@ -61,8 +61,8 @@ class WorkPackageServiceImpl(WorkPackageService):
     def update_form(self, work_package):
         return UpdateForm(self.connection)
 
-    def find_all(self, offset=None, page_size=None, filters=None, sort_by=None, group_by=None, show_sums=None):
-        return list(FindAll(self.connection, offset, page_size, filters, sort_by, group_by, show_sums).execute())
+    def find_all(self, filters=None, sort_by=None, group_by=None, show_sums=None):
+        return list(FindAll(self.connection, filters, sort_by, group_by, show_sums).execute())
 
     def create(self, work_package, notify=None):
         return Create(self.connection, work_package, notify).execute()
@@ -88,8 +88,8 @@ class WorkPackageServiceImpl(WorkPackageService):
     def delete_watcher(self, work_package, watcher):
         DeleteWatcher(self.connection, work_package, watcher).execute()
 
-    def find_relation_candidates(self, work_package, query, filters=None, relation_type=None, page_size=None):
-        return list(FindRelationCandidates(self.connection, work_package, filters, query, relation_type, page_size)
+    def find_relation_candidates(self, work_package, query, filters=None, relation_type=None):
+        return list(FindRelationCandidates(self.connection, work_package, filters, query, relation_type)
                     .execute())
 
     def find_available_watchers(self, work_package):
