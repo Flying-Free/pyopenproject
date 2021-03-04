@@ -46,7 +46,7 @@ build:
 	- python -m build
 
 clean: clean_pyenv
-	- rm -rf ./openproject_sdk.egg-info ./build ./dist .coverage
+	- rm -rf ./pyopenproject.egg-info ./build ./dist .coverage
 
 vars:
 	source ./.env && \

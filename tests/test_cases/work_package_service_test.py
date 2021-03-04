@@ -100,9 +100,13 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         self.assertIsNotNone(self.wpSer.update_form(self.work_package))
 
     def test_find_all(self):
-        work_packages = self.wpSer.find_all(25, 25, [Filter("type_id", "=", ["1", "2"])],
+        work_packages = self.wpSer.find_all([Filter("type_id", "=", ["1", "2"])],
                                             '[["status", "asc"]]', "status", True)
-        self.assertEqual(0, len(work_packages))
+        for w in work_packages:
+                self.assertTrue(
+                    "Task" == w.__dict__["_links"]["type"]["title"] or
+                    "Milestone" ==  w.__dict__["_links"]["type"]["title"]
+                )
 
     def test_create(self):
         wP = self.new_work_package()
@@ -174,8 +178,7 @@ class WorkPackageServiceTestCase(OpenProjectTestCase):
         relations = self.wpSer.find_relation_candidates(work_package,
                                                         query="rollout",
                                                         # filters=[Filter("status_id", "o", ["null"])],
-                                                        relation_type="follows",
-                                                        page_size=25)
+                                                        relation_type="follows")
         self.assertEqual(0, len(relations))
 
     def test_find_available_watchers(self):

@@ -20,8 +20,8 @@ class UserServiceImpl(UserService):
     def unlock(self, user):
         return Unlock(self.connection, user).execute()
 
-    def find_all(self, offset=None, page_size=None, filters=None, sort_by=None):
-        return list(FindAll(self.connection, offset, page_size, filters, sort_by).execute())
+    def find_all(self, filters=None, sort_by=None):
+        return list(FindAll(self.connection, filters, sort_by).execute())
 
     def find(self, user):
         return Find(self.connection, user).execute()

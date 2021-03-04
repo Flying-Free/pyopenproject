@@ -41,7 +41,7 @@ class WorkPackageService(AbstractService):
     def update_form(self, work_package): raise NotImplementedError
 
     @abstractmethod
-    def find_all(self, offset, page_size, filters, sort_by, group_by, show_sums): raise NotImplementedError
+    def find_all(self, filters, sort_by, group_by, show_sums): raise NotImplementedError
 
     @abstractmethod
     def create(self, work_package, notify): raise NotImplementedError
@@ -72,8 +72,7 @@ class WorkPackageService(AbstractService):
                                  work_package,
                                  query,
                                  filters=None,
-                                 relation_type=None,
-                                 page_size=None): raise NotImplementedError
+                                 relation_type=None): raise NotImplementedError
 
     @abstractmethod
     def find_available_watchers(self, work_package): raise NotImplementedError

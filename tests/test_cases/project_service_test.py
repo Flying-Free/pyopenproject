@@ -92,7 +92,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         pass
 
     def test_find_work_packages(self):
-        work_packages = self.proSer.find_work_packages(self.project, 1, 25, [Filter("type_id", "=", ["1", "2"])],
+        work_packages = self.proSer.find_work_packages(self.project, [Filter("type_id", "=", ["1", "2"])],
                                                        "status", '[["status", "asc"]]', "true")
         self.assertEqual(6, len(work_packages))
 

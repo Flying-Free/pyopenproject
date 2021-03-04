@@ -1,6 +1,7 @@
 from pyopenproject.api_connection.exceptions.request_exception import RequestError
 from pyopenproject.api_connection.requests.get_request import GetRequest
 from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.services.command.find_list_command import FindListCommand
 from pyopenproject.business.services.command.priority.priority_command import PriorityCommand
 from pyopenproject.business.util.filters import Filters
 from pyopenproject.business.util.url import URL
@@ -20,19 +21,15 @@ class FindAll(PriorityCommand):
 
     def execute(self):
         try:
-            json_obj = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
+            request = GetRequest(self.connection, str(URL(f"{self.CONTEXT}",
                                                            [
-                                                               URLParameter
-                                                               ("offset", self.offset),
-                                                               URLParameter
-                                                               ("pageSize", self.page_size),
                                                                Filters(
                                                                    self.filters),
                                                                URLParameter
                                                                ("sortBy", self.sort_by)
-                                                           ]))).execute()
-
-            for priority in json_obj["_embedded"]["elements"]:
-                yield Priority(priority)
+                                                           ])))
+            return FindListCommand(self.connection, request, Priority).execute()
+            # for priority in json_obj["_embedded"]["elements"]:
+            #     yield Priority(priority)
         except RequestError as re:
             raise BusinessError("Error finding all priorities") from re
