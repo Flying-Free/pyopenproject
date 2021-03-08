@@ -33,7 +33,6 @@ env_up:
 
 pytest:
 	- ${PYTHON} -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
-	- ${PYTHON} -m coverage report -m
 
 env_down:
 	cd ./tests/infra && \
