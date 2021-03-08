@@ -42,6 +42,12 @@ class UserServiceTestCase(OpenProjectTestCase):
         expected = self.usrSer.find(self.user)
         self.assertEqual(self.user.name, expected.name)
 
+    def test_find_by_context(self):
+        current = self.usrSer.find(self.user)
+        expected = self.usrSer.find_by_context(self.user.__dict__["_links"]["self"]["href"])
+        self.assertEqual(self.user.name, expected.name)
+        self.assertEqual(current.__dict__, expected.__dict__)
+
     def test_not_found(self):
         user = User({"id": 50})
         # Result is 404

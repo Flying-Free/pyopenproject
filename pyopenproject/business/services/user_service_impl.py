@@ -2,6 +2,7 @@ from pyopenproject.business.services.command.user.create import Create
 from pyopenproject.business.services.command.user.delete import Delete
 from pyopenproject.business.services.command.user.find import Find
 from pyopenproject.business.services.command.user.find_all import FindAll
+from pyopenproject.business.services.command.user.find_by_context import FindByContext
 from pyopenproject.business.services.command.user.invite import Invite
 from pyopenproject.business.services.command.user.lock import Lock
 from pyopenproject.business.services.command.user.unlock import Unlock
@@ -25,6 +26,9 @@ class UserServiceImpl(UserService):
 
     def find(self, user):
         return Find(self.connection, user).execute()
+
+    def find_by_context(self, context):
+        return FindByContext(self.connection, context).execute()
 
     def update(self, user):
         return Update(self.connection, user).execute()
