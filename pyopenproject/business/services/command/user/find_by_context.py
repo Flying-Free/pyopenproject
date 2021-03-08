@@ -8,6 +8,12 @@ from pyopenproject.model.user import User
 class FindByContext(UserCommand):
 
     def __init__(self, connection, context):
+        """
+        Contructor for class FindByContext, from UserCommand
+
+        :param connection: The connection data
+        :param context: The user's url context
+        """
         super().__init__(connection)
         self.context = context
 
