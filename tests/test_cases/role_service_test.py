@@ -16,15 +16,11 @@ class RoleServiceTestCase(OpenProjectTestCase):
         with open(DATA) as f:
             self.role = Role(json.load(f))
 
-    # FIXME: {
-    #  "_type":"Error",
-    #  "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
-    #  "message":"You are not authorized to access this resource."
-    #  }
     def test_find(self):
         roles = list(filter(lambda x: x.name == "Anonymous", self.roleSer.find_all()))
         self.assertEqual(1, len(roles))
-        # self.assertIsNotNone(self.roleSer.find(roles[0]))
+        current = self.roleSer.find(roles[0])
+        self.assertEqual(roles[0].__dict__, current.__dict__)
 
     def test_find_all(self):
         roles = self.roleSer.find_all([Filter("unit", "=", ["system"])])
@@ -34,4 +30,4 @@ class RoleServiceTestCase(OpenProjectTestCase):
 
     def test_not_found_by_context(self):
         with self.assertRaises(BusinessError):
-            self.roleSer.find_by_context(f"/api/v3/roles/{self.role.id}")
+            self.roleSer.find_by_context(f"/api/v3/roles/10000")
