@@ -11,10 +11,18 @@ class ProjectService(AbstractService):
     __metaclass__ = ABCMeta
 
     def __init__(self, connection):
+        """
+        Constructor of ProjectService, from AbstractService
+
+        :param connection: The connection data
+        """
         super().__init__(connection)
 
     @abstractmethod
     def find(self, project): raise NotImplementedError
+
+    @abstractmethod
+    def find_by_context(self, context): raise NotImplementedError
 
     @abstractmethod
     def update(self, project): raise NotImplementedError
@@ -54,7 +62,8 @@ class ProjectService(AbstractService):
 
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
-    def find_work_packages(self, project, offset, page_size, filters, group_by, sort_by, show_sums):
+    def find_work_packages(self, project, filters=None, group_by=None, sort_by=None,
+                           show_sums=None):
         raise NotImplementedError
 
     # Documentation in the page for the Work Package endpoint

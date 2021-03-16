@@ -9,6 +9,7 @@ from pyopenproject.business.services.command.project.find_all import FindAll
 from pyopenproject.business.services.command.project.find_available_assignees import FindAvailableAssignees
 from pyopenproject.business.services.command.project.find_available_responsibles import FindAvailableResponsibles
 from pyopenproject.business.services.command.project.find_budgets import FindBudgets
+from pyopenproject.business.services.command.project.find_by_context import FindByContext
 from pyopenproject.business.services.command.project.find_parents import FindParents
 from pyopenproject.business.services.command.project.find_schema import FindSchema
 from pyopenproject.business.services.command.project.find_types import FindTypes
@@ -25,6 +26,9 @@ class ProjectServiceImpl(ProjectService):
 
     def find(self, project):
         return Find(self.connection, project).execute()
+
+    def find_by_context(self, context):
+        return FindByContext(self.connection, context).execute()
 
     def update(self, project):
         return Update(self.connection, project).execute()

@@ -21,6 +21,57 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
+## [v0.5](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.5) - 2021-03-16
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Added
+
+- Project's FindByContext class. Now, _pyopenproject_ can requests a project by its context.
+
+
+### Fixed
+
+- Find Role:
+
+```json
+{
+     "_type":"Error",
+     "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+     "message":"You are not authorized to access this resource."
+}
+```
+
+## [v0.5-beta.2](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.5-beta.2) - 2021-03-16
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Fixed
+
+- Find Role:
+
+```json
+{
+     "_type":"Error",
+     "errorIdentifier":"urn:openproject-org:api:v3:errors:MissingPermission",
+     "message":"You are not authorized to access this resource."
+}
+```
+
+## [v0.5-beta.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.5-beta.1) - 2021-03-15
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Added
+
+- Project's FindByContext class. Now, _pyopenproject_ can requests a project by its context.
+
 ## [v0.4](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.4) - 2021-03-08
 
 Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
