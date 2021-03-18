@@ -1,3 +1,5 @@
+from contextlib import suppress
+
 from pyopenproject.api_connection.exceptions.request_exception import RequestError
 from pyopenproject.api_connection.requests.patch_request import PatchRequest
 from pyopenproject.business.exception.business_error import BusinessError
@@ -13,10 +15,20 @@ class Update(TimeEntryCommand):
 
     def execute(self):
         try:
+            time_entry_id = self.time_entry.id
+            self.__remove_readonly_attributes()
             json_obj = PatchRequest(connection=self.connection,
-                                    context=f"{self.CONTEXT}/{self.time_entry.id}",
+                                    context=f"{self.CONTEXT}/{time_entry_id}",
                                     json=self.time_entry.__dict__).execute()
             return te.TimeEntry(json_obj)
 
         except RequestError as re:
-            raise BusinessError(f"Error deleting a time entry with ID: {self.time_entry.id}") from re
+            raise BusinessError(f"Error updating a time entry with ID: {time_entry_id}") from re
+
+    def __remove_readonly_attributes(self):
+        with suppress(KeyError): del self.time_entry.__dict__["_type"]
+        with suppress(KeyError): del self.time_entry.__dict__["_links"]["self"]
+        with suppress(KeyError): del self.time_entry.__dict__["_links"]["user"]
+        with suppress(KeyError): del self.time_entry.__dict__["id"]
+        with suppress(KeyError): del self.time_entry.__dict__["createdAt"]
+        with suppress(KeyError): del self.time_entry.__dict__["updatedAt"]
