@@ -1,10 +1,10 @@
 from contextlib import suppress
 
-from pyopenquery.api_connection.exceptions.request_exception import RequestError
-from pyopenquery.api_connection.requests.patch_request import PatchRequest
-from pyopenquery.business.exception.business_error import BusinessError
-from pyopenquery.business.services.command.query.query_command import QueryCommand
-from pyopenquery.model.query import Query
+from pyopenproject.api_connection.exceptions.request_exception import RequestError
+from pyopenproject.api_connection.requests.patch_request import PatchRequest
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.services.command.query.query_command import QueryCommand
+from pyopenproject.model.query import Query
 
 
 class Update(QueryCommand):
