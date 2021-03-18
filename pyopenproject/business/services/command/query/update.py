@@ -24,7 +24,7 @@ class Update(QueryCommand):
             return Query(json_obj)
         except RequestError as re:
             raise BusinessError(f"Error updating query by id: {self.query.id}") from re
-        
+
     def __remove_readonly_attributes(self):
         with suppress(KeyError): del self.query.__dict__["_links"]["self"]
         with suppress(KeyError): del self.query.__dict__["_links"]["user"]
