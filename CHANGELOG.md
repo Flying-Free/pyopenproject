@@ -21,6 +21,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
+## [v0.6](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.6) - 2021-03-19
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Added
+Fix some update commands adding a rule to exclude read only fields:
+
+- Time entry update
+- Grid update
+- Relation update
+- Query update 
+
 ## [v0.5](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.5) - 2021-03-16
 
 Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
