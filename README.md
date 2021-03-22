@@ -7,20 +7,20 @@
 Python library to interact with OpenProject API.
 
 ```python
-from pyopenproject.openproject import OpenProject
+from openproject import OpenProject
 
 op = OpenProject(url="http://localhost:8080", apikey="6289058256894568479567886794")
 user = op.get_user_services().create(
-                    login="h.wurst",
-                    email="h.wurst@openproject.com",
-                    first_name="Hans",
-                    last_name="Wurst",
-                    admin=False,
-                    language="de",
-                    status="active",
-                    # Password minimum is 10 characters)
-                    password="h.wurst1234567890"
-                )
+    login="h.wurst",
+    email="h.wurst@openproject.com",
+    first_name="Hans",
+    last_name="Wurst",
+    admin=False,
+    language="de",
+    status="active",
+    # Password minimum is 10 characters)
+    password="h.wurst1234567890"
+)
 ```
 
 This library could be understood as a compendium of OpenProject endpoints services to use in a client project with the
