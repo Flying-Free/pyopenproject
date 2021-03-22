@@ -7,19 +7,32 @@ from pyopenproject.model import user  as usr
 
 class Invite(UserCommand):
 
-    def __init__(self, connection, first_name, email):
+    def __init__(self, connection, email, login, first_name, last_name, admin, language):
         """Constructor for class Invite, from UserCommand
 
         :param connection: The connection data
-        :param first_name: The user's first name
         :param email: The users's email address
+        :param login: The user's login
+        :param first_name: The user's first name
+        :param last_name: The user's last name
+        :param admin: True if the user is an admin
+        :param language: The application language for the user
+
         """
         super().__init__(connection)
         self.user = {
             "email": email,
-            "firstName": first_name,
+            "admin": admin,
+            "language": language,
             "status": "invited"
         }
+        if login:
+            self.user["login"] = login
+        if first_name:
+            self.user["firstName"] = first_name
+        if last_name:
+            self.user["lastName"] = last_name
+
 
     def execute(self):
         try:
