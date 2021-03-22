@@ -3,7 +3,7 @@ import unittest
 
 import yaml
 
-from pyopenproject.openproject import OpenProject
+from pyopenproject import OpenProject
 
 
 class OpenProjectTestCase(unittest.TestCase):

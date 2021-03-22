@@ -1,9 +1,9 @@
 import json
 import os
 
-from pyopenproject.business.exception.business_error import BusinessError
-from pyopenproject.model.attachment import Attachment
-from pyopenproject.model.post import Post
+from src.business.exception.business_error import BusinessError
+from src.model.attachment import Attachment
+from src.model.post import Post
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

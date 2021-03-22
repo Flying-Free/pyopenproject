@@ -1,7 +1,7 @@
 import json
 import os
 
-from pyopenproject.model.configuration import Configuration
+from src.model.configuration import Configuration
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

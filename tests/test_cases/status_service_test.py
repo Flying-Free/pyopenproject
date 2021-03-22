@@ -1,7 +1,7 @@
 import json
 import os
 
-from pyopenproject.model.status import Status
+from src.model.status import Status
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

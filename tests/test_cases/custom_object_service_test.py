@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.exception.business_error import BusinessError
-from pyopenproject.model.custom_object import CustomObject
+from src.business.exception.business_error import BusinessError
+from src.model.custom_object import CustomObject
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.exception.business_error import BusinessError
-from pyopenproject.model.help_text import HelpText
+from src.business.exception.business_error import BusinessError
+from src.model.help_text import HelpText
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

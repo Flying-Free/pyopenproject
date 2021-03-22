@@ -1,8 +1,8 @@
 import json
 import os
 
-from pyopenproject.business.exception.business_error import BusinessError
-from pyopenproject.model.budget import Budget
+from src.business.exception.business_error import BusinessError
+from src.model.budget import Budget
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
