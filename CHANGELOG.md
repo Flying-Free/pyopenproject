@@ -29,9 +29,26 @@ only available for Python 3.6 or more.
 
 ### Changed
 
-- Folder tree changed in order to make the import like:
+- Folder tree changed in order to make the imports like:
+
 ```python
 from pyopenproject import OpenProject
+from openproject.model import WorkPackage
+```
+
+## [v0.7.1-beta.2](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.1-beta.2) - 2021-03-22
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Changed
+
+- Folder tree changed in order to make the imports like:
+
+```python
+from pyopenproject import OpenProject
+from openproject.model import WorkPackage
 ```
 
 
@@ -44,8 +61,9 @@ only available for Python 3.6 or more.
 ### Changed
 
 - Folder tree changed in order to make the import like:
+
 ```python
-from pyopenproject import OpenProject
+from openproject import OpenProject
 ```
 
 ## [v0.7](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7) - 2021-03-22

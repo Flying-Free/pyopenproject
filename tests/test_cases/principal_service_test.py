@@ -1,8 +1,8 @@
 import json
 import os
 
-from src.business.util.filter import Filter
-from src.model.principal import Principal
+from openproject.business.util.filter import Filter
+from openproject.model.principal import Principal
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

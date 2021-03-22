@@ -4,8 +4,8 @@ from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 
-from src.model.form import Form
-from src.model.time_entry import TimeEntry
+from openproject.model.form import Form
+from openproject.model.time_entry import TimeEntry
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

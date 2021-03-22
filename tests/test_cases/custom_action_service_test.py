@@ -1,8 +1,8 @@
 import json
 import os
 
-from src.business.exception.business_error import BusinessError
-from src.model.custom_action import CustomAction
+from openproject.business.exception.business_error import BusinessError
+from openproject.model.custom_action import CustomAction
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

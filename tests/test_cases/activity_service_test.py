@@ -1,8 +1,8 @@
 import json
 import os
 
-from src.business.exception.business_error import BusinessError
-from src.model.activity import Activity
+from openproject.business.exception.business_error import BusinessError
+from openproject.model.activity import Activity
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

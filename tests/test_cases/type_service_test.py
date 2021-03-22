@@ -1,7 +1,7 @@
 import json
 import os
 
-from src.model.type import Type
+from openproject.model.type import Type
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

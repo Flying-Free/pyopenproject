@@ -7,7 +7,7 @@
 Python library to interact with OpenProject API.
 
 ```python
-from pyopenproject import OpenProject
+from openproject import OpenProject
 
 op = OpenProject(url="http://localhost:8080", apikey="6289058256894568479567886794")
 user = op.get_user_services().create(

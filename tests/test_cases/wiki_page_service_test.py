@@ -1,8 +1,8 @@
 import json
 import os
 
-from src.business.exception.business_error import BusinessError
-from src.model.wiki_page import WikiPage
+from openproject.business.exception.business_error import BusinessError
+from openproject.model.wiki_page import WikiPage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

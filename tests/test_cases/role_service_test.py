@@ -1,9 +1,9 @@
 import json
 import os
 
-from src.business.exception.business_error import BusinessError
-from src.business.util.filter import Filter
-from src.model.role import Role
+from openproject.business.exception.business_error import BusinessError
+from openproject.business.util.filter import Filter
+from openproject.model.role import Role
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

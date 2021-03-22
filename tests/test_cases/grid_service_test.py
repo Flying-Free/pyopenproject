@@ -1,7 +1,7 @@
 import json
 import os
 
-from src.model.grid import Grid
+from openproject.model.grid import Grid
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
