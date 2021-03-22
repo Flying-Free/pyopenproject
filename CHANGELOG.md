@@ -20,7 +20,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
      "message":"You are not authorized to access this resource."
   }
   ```
-  
+
+## [v0.7.3](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.3) - 2021-03-22
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Fixed
+
+- Folder tree changed in order to make the imports like:
+
+```python
+from pyopenproject.openproject import OpenProject
+from pyopenproject.model import WorkPackage
+```
+
 ## [v0.7.2](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.2) - 2021-03-22
 
 Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
@@ -32,8 +47,8 @@ only available for Python 3.6 or more.
 - Folder tree changed in order to make the imports like:
 
 ```python
-from pyopenproject import OpenProject
-from openproject.model import WorkPackage
+from pyopenproject.openproject import OpenProject
+from pyopenproject.model import WorkPackage
 ```
 
 ## [v0.7.2-beta.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.2-beta.1) - 2021-03-22
@@ -47,8 +62,8 @@ only available for Python 3.6 or more.
 - Folder tree changed in order to make the imports like:
 
 ```python
-from pyopenproject import OpenProject
-from openproject.model import WorkPackage
+from pyopenproject.openproject import OpenProject
+from pyopenproject.model import WorkPackage
 ```
 
 ## [v0.7.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.1) - 2021-03-22
@@ -62,8 +77,8 @@ only available for Python 3.6 or more.
 - Folder tree changed in order to make the imports like:
 
 ```python
-from pyopenproject import OpenProject
-from openproject.model import WorkPackage
+from pyopenproject.openproject import OpenProject
+from pyopenproject.model import WorkPackage
 ```
 
 ## [v0.7.1-beta.2](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.1-beta.2) - 2021-03-22
@@ -77,8 +92,8 @@ only available for Python 3.6 or more.
 - Folder tree changed in order to make the imports like:
 
 ```python
-from pyopenproject import OpenProject
-from openproject.model import WorkPackage
+from pyopenproject.openproject import OpenProject
+from pyopenproject.model import WorkPackage
 ```
 
 
@@ -93,7 +108,7 @@ only available for Python 3.6 or more.
 - Folder tree changed in order to make the import like:
 
 ```python
-from openproject import OpenProject
+from pyopenproject import OpenProject
 ```
 
 ## [v0.7](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7) - 2021-03-22

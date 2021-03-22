@@ -2,8 +2,8 @@ import json
 import os
 from pathlib import Path
 
-from openproject.business.exception.business_error import BusinessError
-from openproject.model.attachment import Attachment
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.model.attachment import Attachment
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
