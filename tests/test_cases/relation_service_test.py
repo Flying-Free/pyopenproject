@@ -1,10 +1,10 @@
 import json
 import os
 
-from openproject.business.exception.business_error import BusinessError
-from openproject.business.util.filter import Filter
-from openproject.model.form import Form
-from openproject.model.relation import Relation
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.form import Form
+from pyopenproject.model.relation import Relation
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

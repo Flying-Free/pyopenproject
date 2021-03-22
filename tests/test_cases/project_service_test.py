@@ -1,11 +1,11 @@
 import json
 import os
 
-from openproject.business.exception.business_error import BusinessError
-from openproject.business.util.filter import Filter
-from openproject.model.project import Project
-from openproject.model.user import User
-from openproject.model.work_package import WorkPackage
+from pyopenproject.business.exception.business_error import BusinessError
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.project import Project
+from pyopenproject.model.user import User
+from pyopenproject.model.work_package import WorkPackage
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 

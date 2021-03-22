@@ -1,8 +1,8 @@
 import json
 import os
 
-from openproject.business.util.filter import Filter
-from openproject.model.new import New
+from pyopenproject.business.util.filter import Filter
+from pyopenproject.model.new import New
 from tests.test_cases.openproject_test_case import OpenProjectTestCase
 
 
