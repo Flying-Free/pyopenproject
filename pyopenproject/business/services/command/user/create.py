@@ -32,9 +32,9 @@ class Create(UserCommand):
             "password": password
         }
         # Combine with optional parameters if exist
-        params=dict(params())
-        if 'kwargs' in locals:
-            self.user =  self.user | params['kwargs']
+        params = dict(locals())
+        if 'kwargs' in params:
+            self.user = {**self.user, **params['kwargs']}
 
     def execute(self):
         try:

@@ -7,7 +7,7 @@ from pyopenproject.model import user  as usr
 
 class Invite(UserCommand):
 
-    def __init__(self, connection, email, login, first_name, last_name, admin, language):
+    def __init__(self, connection, email, login, first_name, last_name, admin, language, **kwargs):
         """Constructor for class Invite, from UserCommand
 
         :param connection: The connection data
@@ -32,6 +32,10 @@ class Invite(UserCommand):
             self.user["firstName"] = first_name
         if last_name:
             self.user["lastName"] = last_name
+        # Combine with optional parameters if exist
+        params = dict(locals())
+        if 'kwargs' in params:
+            self.user = {**self.user, **params['kwargs']}
 
 
     def execute(self):
