@@ -36,8 +36,9 @@ class UserServiceImpl(UserService):
     def delete(self, user):
         Delete(self.connection, user).execute()
 
-    def create(self, login, email, first_name, last_name, admin, language, status, password):
-        return Create(self.connection, login, email, first_name, last_name, admin, language, status, password).execute()
+    def create(self, login, email, first_name, last_name, admin, language, status, password, **kwargs):
+        return Create(self.connection, login, email, first_name, last_name, admin, language, status, password, **kwargs)\
+            .execute()
 
-    def invite(self, email, login=None, first_name=None, last_name=None, admin=False, language="EN"):
-        return Invite(self.connection, email, login, first_name, last_name, admin, language).execute()
+    def invite(self, email, login=None, first_name=None, last_name=None, admin=False, language="EN", **kwargs):
+        return Invite(self.connection, email, login, first_name, last_name, admin, language, **kwargs).execute()

@@ -43,7 +43,8 @@ class UserService(AbstractService):
                admin,
                language,
                status,
-               password): raise NotImplementedError
+               password,
+               **kwargs): raise NotImplementedError
 
     @abstractmethod
-    def invite(self, email, login, fist_name, last_name, admin, language): raise NotImplementedError
+    def invite(self, email, login, first_name, last_name, admin, language, **kwargs): raise NotImplementedError

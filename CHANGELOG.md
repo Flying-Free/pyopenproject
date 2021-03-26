@@ -21,6 +21,51 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   }
   ```
 
+## [v0.7.4](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.4) - 2021-03-26
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Changed
+
+- User service test revert
+
+### Fixed
+
+- [Issue #24: TimeEntryServiceImpl find_between_days not working](https://github.com/Flying-Free/pyopenproject/issues/24)
+- Codacy issues
+
+## [v0.7.4-beta.3](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.4-beta.3) - 2021-03-26
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Fixed
+
+- Codacy issues
+
+## [v0.7.4-beta.2](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.4-beta.2) - 2021-03-26
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Changed
+
+- User service test revert
+
+## [v0.7.4-beta.1](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.4-beta.1) - 2021-03-26
+
+Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with
+the [OpenProject API](https://docs.openproject.org/api/) with simplicity. Take in consideration that this development is
+only available for Python 3.6 or more.
+
+### Fixed
+
+- [Issue #24: TimeEntryServiceImpl find_between_days not working](https://github.com/Flying-Free/pyopenproject/issues/24)
+
 ## [v0.7.3](https://github.com/Flying-Free/pyopenproject/releases/tag/v0.7.3) - 2021-03-22
 
 Beta version of pyopenproject library. This library is a way to enable Python developers to communicate with

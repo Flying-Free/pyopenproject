@@ -7,7 +7,7 @@ from pyopenproject.model import user  as usr
 
 class Create(UserCommand):
 
-    def __init__(self, connection, login, email, first_name, last_name, admin, language, status, password):
+    def __init__(self, connection, login, email, first_name, last_name, admin, language, status, password, **kwargs):
         """Constructor for class FindVersions, from ProjectCommand
 
         :param connection: The connection data
@@ -31,6 +31,10 @@ class Create(UserCommand):
             "status": status,
             "password": password
         }
+        # Combine with optional parameters if exist
+        params = dict(locals())
+        if 'kwargs' in params:
+            self.user = {**self.user, **params['kwargs']}
 
     def execute(self):
         try:
