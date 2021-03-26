@@ -85,7 +85,11 @@ class UserServiceTestCase(OpenProjectTestCase):
             language="de",
             status="active",
             # Password minimum is 10 characters)
-            password="h.wurst1234567890"
+            password="h.wurst1234567890",
+            customField12=38283,
+            customField13="2021-03-23",
+            customField15=8
+
         )
         self.assertIsNotNone(user)
         self.assertEqual("h.wurst", user.login)
