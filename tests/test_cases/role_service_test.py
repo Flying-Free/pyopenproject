@@ -30,4 +30,4 @@ class RoleServiceTestCase(OpenProjectTestCase):
 
     def test_not_found_by_context(self):
         with self.assertRaises(BusinessError):
-            self.roleSer.find_by_context(f"/api/v3/roles/10000")
+            self.roleSer.find_by_context("/api/v3/roles/10000")
