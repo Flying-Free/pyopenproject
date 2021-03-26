@@ -24,7 +24,7 @@ class TimeEntryServiceTestCase(OpenProjectTestCase):
     def test_find_between_days(self):
         today = datetime.today()
         end_date = today.strftime("%Y-%m-%d")
-        start_date = datetime.today() + relativedelta(months=-3)
+        start_date = datetime.today() + relativedelta(days=-1)
         start_date = start_date.strftime("%Y-%m-%d")
         time_entries = self.tEntryReq.find_between_days(start_date, end_date)
         self.assertEqual(0, len(time_entries))
