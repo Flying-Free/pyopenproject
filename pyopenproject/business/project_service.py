@@ -60,6 +60,10 @@ class ProjectService(AbstractService):
     @abstractmethod
     def find_budgets(self, project): raise NotImplementedError
 
+    # Documentation in the page for the Category endpoint
+    @abstractmethod
+    def find_categories(self, project): raise NotImplementedError
+
     # Documentation in the page for the Work Package endpoint
     @abstractmethod
     def find_work_packages(self, project, filters=None, group_by=None, sort_by=None,

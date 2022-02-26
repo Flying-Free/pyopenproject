@@ -10,6 +10,7 @@ from pyopenproject.business.services.command.project.find_available_assignees im
 from pyopenproject.business.services.command.project.find_available_responsibles import FindAvailableResponsibles
 from pyopenproject.business.services.command.project.find_budgets import FindBudgets
 from pyopenproject.business.services.command.project.find_by_context import FindByContext
+from pyopenproject.business.services.command.project.find_categories import FindCategories
 from pyopenproject.business.services.command.project.find_parents import FindParents
 from pyopenproject.business.services.command.project.find_schema import FindSchema
 from pyopenproject.business.services.command.project.find_types import FindTypes
@@ -62,6 +63,9 @@ class ProjectServiceImpl(ProjectService):
 
     def find_budgets(self, project):
         return list(FindBudgets(self.connection, project).execute())
+
+    def find_categories(self, project):
+        return list(FindCategories(self.connection, project).execute())
 
     def find_work_packages(self, project, filters=None, group_by=None, sort_by=None,
                            show_sums=None):
