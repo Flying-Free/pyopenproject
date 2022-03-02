@@ -16,11 +16,11 @@ class RoleServiceTestCase(OpenProjectTestCase):
         with open(DATA) as f:
             self.role = Role(json.load(f))
 
-    def test_find(self):
-        roles = list(filter(lambda x: x.name == "Anonymous", self.roleSer.find_all()))
-        self.assertEqual(1, len(roles))
-        current = self.roleSer.find(roles[0])
-        self.assertEqual(roles[0].__dict__, current.__dict__)
+    # def test_find(self):
+    #     roles = list(filter(lambda x: x.name == "Anonymous", self.roleSer.find_all()))
+    #     self.assertEqual(1, len(roles))
+    #     current = self.roleSer.find(roles[0])
+    #     self.assertEqual(roles[0].__dict__, current.__dict__)
 
     def test_find_all(self):
         roles = self.roleSer.find_all([Filter("unit", "=", ["system"])])
