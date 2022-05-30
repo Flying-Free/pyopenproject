@@ -13,5 +13,5 @@ class PatchRequest(Request):
         with requests.Session() as s:
             s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
             s.headers.update({"Content-Type": "application/json"})
-            response = s.patch(self.connection.url_base + self.context, json=self.json)
+            response = s.patch(self.connection.url_base + self.context, json=self.json, **self.connection.request_args)
         return response

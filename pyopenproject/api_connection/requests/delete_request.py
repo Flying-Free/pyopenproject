@@ -13,5 +13,5 @@ class DeleteRequest(Request):
         with requests.Session() as s:
             s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
             s.headers.update({'Content-Type': 'application/json;charset=utf-8'})
-            response = s.delete(url=self.connection.url_base + self.context)
+            response = s.delete(url=self.connection.url_base + self.context, **self.connection.request_args)
         return response
