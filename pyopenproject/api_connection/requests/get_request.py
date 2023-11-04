@@ -13,5 +13,5 @@ class GetRequest(Request):
         with requests.Session() as s:
             s.auth = HTTPBasicAuth(self.connection.api_user, self.connection.api_key)
             s.headers.update({"Content-Type": "application/hal+json"})
-            response = s.get(self.connection.url_base + self.context)
+            response = s.get(self.connection.url_base + self.context, **self.connection.request_args)
         return response
