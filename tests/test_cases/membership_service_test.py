@@ -57,7 +57,7 @@ class MembershipServiceTestCase(OpenProjectTestCase):
             membership_to_create.__dict__['_links']['principal']["href"])
         membership_aux = Membership(membership.__dict__.copy())
         updated_form = self.membershipSer.update_form(membership_aux)
-        self.assertEqual({'_links': {'roles': [{'href': '/api/v3/roles/5', 'title': 'Reader'}]}},
+        self.assertEqual({'_links': {'roles': [{'href': '/api/v3/roles/5', 'title': 'Reader'}]}, '_meta': {'notificationMessage': {'format': 'markdown', 'html': '', 'raw': None}}},
                          updated_form._embedded['payload'])
         membership = self.membershipSer.find(membership)
         self.assertIsNotNone(membership)
