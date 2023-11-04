@@ -1,5 +1,6 @@
 from pyopenproject.business.project_service import ProjectService
 from pyopenproject.business.services.command.project.create import Create
+from pyopenproject.business.services.command.project.create_copy import CreateCopy
 from pyopenproject.business.services.command.project.create_form import CreateForm
 from pyopenproject.business.services.command.project.create_work_package import CreateWorkPackage
 from pyopenproject.business.services.command.project.create_work_package_form import CreateWorkPackageForm
@@ -42,6 +43,9 @@ class ProjectServiceImpl(ProjectService):
 
     def create(self, project):
         return Create(self.connection, project).execute()
+    
+    def create_copy(self, project, project_id):
+        return CreateCopy(self.connection, project, project_id).execute()
 
     def find_schema(self):
         return FindSchema(self.connection).execute()

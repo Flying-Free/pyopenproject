@@ -53,6 +53,13 @@ class ProjectServiceTestCase(OpenProjectTestCase):
         self.assertEqual("New project name changed", project.name)
         self.proSer.delete(project)
 
+    def test_create_copy(self):
+        # Create
+        project = self.proSer.create(self.new_project)
+        # Copy
+        project_copy = self.proSer.create_copy(project, project.id)
+        self.assertEqual(project.name, project_copy.name)
+
     def test_find_schema(self):
         schema = self.proSer.find_schema()
         self.assertIsNotNone(schema)
