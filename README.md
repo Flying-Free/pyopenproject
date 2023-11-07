@@ -4,7 +4,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f8f668fa0b344ba7bea7b56ba743a091)](https://www.codacy.com/gh/Flying-Free/pyopenproject/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Flying-Free/pyopenproject&utm_campaign=Badge_Coverage)
 [![Run Test Cases](https://github.com/Flying-Free/pyopenproject/actions/workflows/test_cases.yml/badge.svg?branch=main)](https://github.com/Flying-Free/pyopenproject/actions/workflows/test_cases.yml)
 
-Python library to interact with OpenProject API.
+Python library to interact with OpenProject 11.1 API.
 
 ```python
 from pyopenproject.openproject import OpenProject
@@ -32,6 +32,34 @@ PyOpenProject is available on PyPI:
 
 ```shell
 python -m pip install pyopenproject
+```
+
+## How to run test suite
+
+```shell
+python -m pip install --upgrade pip
+python -m pip install coverage
+if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+docker-compose up -d
+printf 'WAITING FOR APIv3'
+until $(curl --output /dev/null --silent --head --fail http://localhost:8080); do
+    printf '.';
+    sleep 5;
+    done
+printf '\n\n'
+printf '############################\n'
+printf '############################\n'
+printf '####### UP & RUNNING #######\n'
+printf '############################\n'
+printf '############################'
+          
+python -m coverage run -m unittest discover -s ./tests/test_cases -t tests/test_cases -p *_test.py
+
+python -m coverage report -m
+python -m coverage xml 
+
+docker-compose down --volumes          
 ```
 
 ## Documentation

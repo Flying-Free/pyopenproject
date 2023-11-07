@@ -20,7 +20,7 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
         self.assertEqual(2, len(principals))
 
     def test_filters(self):
-        # Filter member cant be tested with default user
+        # Filter member can not be tested with default user
         users = self.principalSer.find_all([Filter("type", "=", ["User"])])
         self.assertEqual("User", users[0]._type)
         # groups = self.principalSer.find_all([Filter("member", "=", ["Scrum project"])])
