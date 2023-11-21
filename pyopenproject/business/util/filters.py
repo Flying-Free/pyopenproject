@@ -1,6 +1,8 @@
 from pyopenproject.business.util.url_parameter import URLParameter
 import urllib
 import json
+
+
 class Filters(URLParameter):
 
     def __init__(self, value):
@@ -28,6 +30,6 @@ class Filters(URLParameter):
         #     output += "]}}"
         #     output += "," if len(self.value) != 1 and i != len(self.value)-1 else ""
         # output += "]"
-        params = urllib.parse.quote_plus(json.dumps(self.value,separators=(',', ':')))
-        return f"filters={params}"
-
+        params = urllib.parse.quote_plus(
+            json.dumps(self.value, separators=(',', ':')))
+        return f"{self.name}={params}"

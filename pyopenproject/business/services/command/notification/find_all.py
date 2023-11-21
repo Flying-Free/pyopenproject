@@ -37,7 +37,6 @@ class FindAll(NotificationCommand):
                                                  "pageSize", self.page_size),
                                          ])
                                      ))
-            print(request)
             return FindListCommand(self.connection, request, Notification).execute()
 
         except RequestError as re:
