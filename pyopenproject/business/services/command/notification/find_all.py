@@ -42,4 +42,4 @@ class FindAll(NotificationCommand):
 
         except RequestError as re:
             raise BusinessError(
-                f"Error finding notifications ")
+                f"Error finding notifications:{re.args}")
