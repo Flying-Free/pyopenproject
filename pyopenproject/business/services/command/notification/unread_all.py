@@ -22,4 +22,4 @@ class UnReadAll(NotificationCommand):
             return response
         except RequestError as re:
             raise BusinessError(
-                f"Error creating project form: {self.form.name}") from re
+                f"Error unreading all notifications: {re.args}") 

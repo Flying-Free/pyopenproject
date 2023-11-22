@@ -30,6 +30,7 @@ class ProjectServiceTestCase(OpenProjectTestCase):
 
     def test_find(self):
         current = self.proSer.find(self.project)
+        print(current)
         self.assertEqual(self.project.identifier, current.identifier)
 
     def test_find_all(self):

@@ -23,4 +23,4 @@ class ReadAll(NotificationCommand):
             return response
         except RequestError as re:
             raise BusinessError(
-                f"Error creating project form: {self.form.name}") from re
+                f"Error reading notifications: {re.args}") 

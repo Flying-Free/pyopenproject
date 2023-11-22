@@ -8,9 +8,8 @@ import json
 
 class Read(NotificationCommand):
 
-    def __init__(self, connection, notification_id, filters):
+    def __init__(self, connection, notification_id):
         super().__init__(connection)
-        self.filters = json.dumps({'filters': filters})
         self.notification_id = notification_id
 
     def execute(self):
@@ -18,9 +17,8 @@ class Read(NotificationCommand):
             response = PostRequest(connection=self.connection,
                                    headers={
                                        "Content-Type": "application/json"},
-                                   context=f"{self.CONTEXT}/{self.notification_id}/read_ian",
-                                   json=self.filters).execute()
+                                   context=f"{self.CONTEXT}/{self.notification_id}/read_ian").execute()
             return response
         except RequestError as re:
             raise BusinessError(
-                f"Error creating project form: {self.form.name}") from re
+                f"Error reading notification: {re.args}")

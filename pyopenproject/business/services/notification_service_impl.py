@@ -5,6 +5,8 @@ from pyopenproject.business.services.command.notification.read_all import ReadAl
 from pyopenproject.business.services.command.notification.unread_all import UnReadAll
 from pyopenproject.business.services.command.notification.read import Read
 from pyopenproject.business.services.command.notification.unread import UnRead
+from pyopenproject.business.services.command.notification.detail import Detail
+
 
 class NotificationServiceImpl(NotificationService):
 
@@ -62,19 +64,18 @@ class NotificationServiceImpl(NotificationService):
         """
         return UnReadAll(self.connection, filters).execute()
 
-    def read_notification(notification_id=None, filters=None):
+    def read_notification(self, notification_id=None):
         """
         Marks the given notification as read.
         Args:
             notification_id (integer, optional): _description_. Defaults to None.
-            filters (list, optional): _description_. Defaults to None.
-
+            
         Returns:
             _type_: _description_
         """
-        return Read(self.connection, notification_id, filters)
+        return Read(self.connection, notification_id).execute()
 
-    def unread_notification(notification_id=None):
+    def unread_notification(self, notification_id=None):
         """
 
         Args:
@@ -83,8 +84,8 @@ class NotificationServiceImpl(NotificationService):
         Returns:
             _type_: _description_
         """
-        return UnRead(self.connection, notification_id, filters)
+        return UnRead(self.connection, notification_id).execute()
 
     def find_notification_detail(
             notification_id=None, detail_id=None):
-        pass
+        return Detail(self.connection, notification_id, detail_id)
