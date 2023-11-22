@@ -40,6 +40,9 @@ class Request(Command):
                     return response.content
                 elif 'text' in response.headers['Content-Type']:
                     return response.content.decode("utf-8")
+            # for responses only received with control code
+            elif response.status_code == 204 and not response.content:
+                return response
         except requests.exceptions.Timeout as err:
             # Maybe set up for a retry, or continue in a retry loop
             raise RequestError(f"Timeout running request with the URL (Timeout):"

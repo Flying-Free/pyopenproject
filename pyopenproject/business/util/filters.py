@@ -1,4 +1,6 @@
 from pyopenproject.business.util.url_parameter import URLParameter
+import urllib
+import json
 
 
 class Filters(URLParameter):
@@ -15,17 +17,19 @@ class Filters(URLParameter):
 
         :return: The filters as a string
         """
-        output = f"{self.name}=["
-        for i in range(len(self.value)):
-            output += "{"
-            output += f"\"{self.value[i].name}\":"
-            output += "{"
-            output += f"\"operator\":\"{self.value[i].operator}\",\"values\":["
-            for j in range(len(self.value[i].values)):
-                if j != 0:
-                    output += ","
-                output += f"\"{self.value[i].values[j]}\""
-            output += "]}}"
-            output += "," if len(self.value) != 1 and i != len(self.value)-1 else ""
-        output += "]"
-        return output
+        # output = f"{self.name}=["
+        # for i in range(len(self.value)):
+        #     output += "{"
+        #     output += f"\"{self.value[i].name}\":"
+        #     output += "{"
+        #     output += f"\"operator\":\"{self.value[i].operator}\",\"values\":["
+        #     for j in range(len(self.value[i].values)):
+        #         if j != 0:
+        #             output += ","
+        #         output += f"\"{self.value[i].values[j]}\""
+        #     output += "]}}"
+        #     output += "," if len(self.value) != 1 and i != len(self.value)-1 else ""
+        # output += "]"
+        params = urllib.parse.quote_plus(
+            json.dumps(self.value, separators=(',', ':')))
+        return f"{self.name}={params}"

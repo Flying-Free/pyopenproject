@@ -30,6 +30,8 @@ from pyopenproject.business.services.user_service_impl import UserServiceImpl
 from pyopenproject.business.services.version_service_impl import VersionServiceImpl
 from pyopenproject.business.services.wiki_page_service_impl import WikiPageServiceImpl
 from pyopenproject.business.services.work_package_service_impl import WorkPackageServiceImpl
+from pyopenproject.business.services.notification_service_impl import NotificationServiceImpl
+
 from pyopenproject.model.connection import Connection
 
 
@@ -135,3 +137,6 @@ class OpenProject:
 
     def get_work_package_service(self):
         return WorkPackageServiceImpl(self.conn)
+
+    def get_notification_service(self):
+        return NotificationServiceImpl(self.conn)
