@@ -37,6 +37,9 @@ class ProjectService(AbstractService):
     def create(self, project): raise NotImplementedError
 
     @abstractmethod
+    def create_copy(self, project, project_id): raise NotImplementedError
+
+    @abstractmethod
     def find_schema(self): raise NotImplementedError
 
     @abstractmethod
