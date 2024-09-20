@@ -6,13 +6,14 @@ class Connection:
     Class Configuration,
     represents the connection realized with the web application
     """
-    def __init__(self, url, apikey, user=None):
+    def __init__(self, url, apikey, user=None, **kwargs):
         """Constructor for class Connection
         :param url: The application url
         :param apikey: The apikey
         :param user: The user (optional)
         """
         self.url_base = url
+        self.request_args = kwargs
         self.api_user = "apikey" if user is None else user
         self.api_key = apikey
 

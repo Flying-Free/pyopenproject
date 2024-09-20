@@ -13,5 +13,6 @@ class PutRequest(Request):
             self.connection.url_base + self.context,
             auth=HTTPBasicAuth(self.connection.api_user, self.connection.api_key),
             data=self.json,
-            headers=self.headers
+            headers=self.headers,
+            **self.connection.request_args
         )

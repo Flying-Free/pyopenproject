@@ -17,5 +17,6 @@ class PostRequest(Request):
                 url=self.connection.url_base + self.context,
                 json=self.json,
                 files=self.files,
-                data=self.data)
+                data=self.data,
+                **self.connection.request_args)
         return response

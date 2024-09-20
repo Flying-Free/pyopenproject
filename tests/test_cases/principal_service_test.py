@@ -17,7 +17,7 @@ class PrincipalServiceTestCase(OpenProjectTestCase):
 
     def test_find_all(self):
         principals = self.principalSer.find_all(filters=None)
-        self.assertEqual(1, len(principals))
+        self.assertEqual(2, len(principals))
 
     def test_filters(self):
         # Filter member can not be tested with default user

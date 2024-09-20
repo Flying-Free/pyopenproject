@@ -22,6 +22,7 @@ from pyopenproject.business.services.command.work_package.find_schema import Fin
 from pyopenproject.business.services.command.work_package.find_watchers import FindWatchers
 from pyopenproject.business.services.command.work_package.update import Update
 from pyopenproject.business.services.command.work_package.update_form import UpdateForm
+from pyopenproject.business.services.command.work_package.find_children import FindChildren
 from pyopenproject.business.work_package_service import WorkPackageService
 
 
@@ -106,3 +107,6 @@ class WorkPackageServiceImpl(WorkPackageService):
 
     def create_activity(self, work_package, comment, notify=None):
         return CreateActivity(self.connection, work_package, comment, notify).execute()
+
+    def find_children(self, work_package):
+        return list(FindChildren(self.connection, work_package).execute())
