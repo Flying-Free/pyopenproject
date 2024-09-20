@@ -21,10 +21,13 @@ class Filters(URLParameter):
             output += f"\"{self.value[i].name}\":"
             output += "{"
             output += f"\"operator\":\"{self.value[i].operator}\",\"values\":["
-            for j in range(len(self.value[i].values)):
-                if j != 0:
-                    output += ","
-                output += f"\"{self.value[i].values[j]}\""
+            if type(self.value[i].values) is int:
+                output += f"\"{str(self.value[i].values)}\""
+            else:
+                for j in range(len(self.value[i].values)):
+                    if j != 0:
+                        output += ","
+                    output += f"\"{self.value[i].values[j]}\""            
             output += "]}}"
             output += "," if len(self.value) != 1 and i != len(self.value)-1 else ""
         output += "]"
